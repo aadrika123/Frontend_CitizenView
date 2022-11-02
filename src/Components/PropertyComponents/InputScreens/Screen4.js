@@ -14,7 +14,7 @@ import Info from '../../Common/Info'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 
-function Screen2(props) {
+function Screen4(props) {
   //destructuring predefined colors to maintain uniform theme everywhere
   const {bgHeaderColor,titleColor,nextButtonColor,nextBtnHoverColor,backButtonColor,backBtnHoverColor,bgCardColor,bgInfoColor,infoTextColor} = ThemeStyle()
   return (
@@ -25,19 +25,19 @@ function Screen2(props) {
          </div>
           <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
               <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
-                  <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Type of Property</h1></div>
+                  <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Number of Basements</h1></div>
                   <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                       <div className="flex items-center mb-4">
-                          <input id="option1" type="radio" value="" name="propertyType" className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600" />
-                          <label for="option1" className="ml-2 text-sm font-medium text-gray-900 ">Independent Building</label>
+                          <input id="option1" type="radio" value="" name="basementNo" className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600" />
+                          <label for="option1" className="ml-2 text-sm font-medium text-gray-900 ">No Basement</label>
                       </div>
                       <div className="flex items-center mb-4">
-                          <input checked id="option2" type="radio" value="" name="propertyType" className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600" />
-                          <label for="option2" className="ml-2 text-sm font-medium text-gray-900 ">Flat/Part of the building</label>
+                          <input checked id="option2" type="radio" value="" name="basementNo" className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600" />
+                          <label for="option2" className="ml-2 text-sm font-medium text-gray-900 ">1 Basement</label>
                       </div>
                       <div className="flex items-center">
-                          <input checked id="option3" type="radio" value="" name="propertyType" className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600" />
-                          <label for="option3" className="ml-2 text-sm font-medium text-gray-900 ">Vaccant Land</label>
+                          <input checked id="option3" type="radio" value="" name="basementNo" className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600" />
+                          <label for="option3" className="ml-2 text-sm font-medium text-gray-900 ">2 Basement</label>
                       </div>
                   </div>
 
@@ -53,4 +53,4 @@ function Screen2(props) {
   )
 }
 
-export default Screen2
+export default Screen4
