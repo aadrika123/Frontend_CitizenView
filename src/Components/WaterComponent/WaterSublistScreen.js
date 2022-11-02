@@ -1,10 +1,21 @@
+//////////////////////////////////////////////////////////////////////////////////////
+//    Author - Swati Sharma
+//    Version - 1.0
+//    Date - 02 november 2022
+//    Revision - 1
+//    Project - JUIDCO
+//    Component  - Water sublist
+//    DESCRIPTION - water sublist compomnent which sublist category
+//////////////////////////////////////////////////////////////////////////////////////
+
 import React from 'react'
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
+import { Link } from 'react-router-dom'
 
 
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
-import ThemeStyle from '../../../Components/Styles/ThemeStyle'
+import ThemeStyle from '../Styles/ThemeStyle'
 
 function WaterSublist() {
 
@@ -26,12 +37,17 @@ function WaterSublist() {
                     </div>
 
                     {/* {******  APPLY NEW CONNECTION *********} */}
-                    <div className="col-span-12 flex flex-row w-full bg-gray-50   p-4 shadow-md text-sm mx-auto ">
-                        <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class={`w-6 h-6 ${iconColor}`}>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z" />
-                        </svg>
-                        </span>
-                        <h1 className={`font-semibold ${titleColor} ml-2  `}>Apply For New Connection</h1>
+
+                    <div className="col-span-12  w-full bg-gray-50 p-4 shadow-md text-sm mx-auto ">
+                        <Link to='/water-requiredDoc'>
+                            <div className='flex flex-row'>
+                                <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class={`w-6 h-6 ${iconColor}`}>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z" />
+                                </svg>
+                                </span>
+                                <h1 className={`font-semibold ${titleColor}  ml-2 `}>Apply For New Connection</h1>
+                            </div>
+                        </Link>
                     </div>
 
                     {/* {******  PAY WATER & SEWERAGE BILL *********} */}
@@ -84,15 +100,7 @@ function WaterSublist() {
                     </div>
 
                 </div>
-
             </div>
-            {/* <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
-                <div className='p-2 relative '>
-                    <div className={`absolute top-0 left-0 w-full h-full ${bgInfoColor} opacity-20`}></div>
-                    <div className={`font-semibold ${infoTextColor} `}><AiFillInfoCircle className="inline" /> Info</div>
-                    <div className={`text-xs ${infoTextColor} mt-2`}>Select independent build if you're assessing for the complete constructed area of the property</div>
-                </div>
-            </div> */}
         </>
     )
 }

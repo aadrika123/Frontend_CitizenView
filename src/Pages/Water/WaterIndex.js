@@ -1,10 +1,10 @@
 import React from 'react'
-import WaterSublist from './WaterSublist/WaterSublist'
+import WaterSublistScreen from '../../Components/WaterComponent/WaterSublistScreen'
 
 function WaterIndex() {
   return (
     <>
-      <WaterSublist />
+      <WaterSublistScreen />
     </>
   )
 }
