@@ -6,6 +6,7 @@ export default function ThemeStyle() {
         bgCardColor: 'bg-white',
         bgInfoColor: 'bg-sky-400',
         infoTextColor: 'text-sky-600'
+        
     }
 
     return style
