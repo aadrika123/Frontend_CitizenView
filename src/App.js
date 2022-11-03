@@ -9,6 +9,7 @@ import PropertyRoutes from './Pages/Property/PropertyRoutes';
 import WaterRoutes from './Pages/Water/WaterRoutes';
 import TradeRoutes from './Pages/Trade/TradeRoutes';
 import Header from './Components/Header/Header';
+import GrievanceRoutes from './Pages/Grievances/GrievanceRoutes';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <PropertyRoutes />
         <WaterRoutes />
         <TradeRoutes />
+        <GrievanceRoutes/>
       </BrowserRouter>
     </>
   );
