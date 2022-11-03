@@ -29,11 +29,11 @@ const GrievancesIndex = () => {
                  <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                      <div className="flex items-center mb-4">
                         <span><SlArrowRight/></span>
-                        <span className={`text-zinc-800 cursor-pointer hover:bg-amber-300 px-4 rounded-md py-1.3 transition-all duration-300 ease-in-out`} onClick={() => navigate('/grievances-citizen-form')}>File a Complaint</span>
+                        <span className={`text-zinc-800 cursor-pointer hover:bg-amber-300 px-4 rounded-md py-1.3 transition-all duration-300 ease-in-out`} onClick={() => navigate('/grievance-citizen-form')}>File a Complaint</span>
                      </div>
                      <div className="flex items-center mb-4">
                         <span><SlArrowRight/></span>
-                        <span className={`text-zinc-800 cursor-pointer hover:bg-amber-300 px-4 rounded-md py-1.3 transition-all duration-300 ease-in-out`} onClick={() => navigate('/grievances-complaints')}>My Complaints</span>
+                        <span className={`text-zinc-800 cursor-pointer hover:bg-amber-300 px-4 rounded-md py-1.3 transition-all duration-300 ease-in-out`} onClick={() => navigate('/grievance-complaints')}>My Complaints</span>
                      </div>
                  </div>
 
