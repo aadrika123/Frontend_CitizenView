@@ -4,22 +4,17 @@
 //    Date - 3rd November 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - Screen 8
-//    DESCRIPTION - Screen 8 is single input component
+//    Component  - Screen 7
+//    DESCRIPTION - Screen 7 is single input component
 //////////////////////////////////////////////////////////////////////////////////////
 
 import { BiAddToQueue } from 'react-icons/bi'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
-import {AiTwotoneLike} from 'react-icons/ai'
 import Info from '../../Common/Info'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
-import { Navigate, useNavigate } from 'react-router-dom'
 
-function Screen8(props) {
-
-    const navigate = useNavigate()
-
+function ComplaintImage(props) {
     //destructuring predefined colors to maintain uniform theme everywhere
     const {bgHeaderColor,titleColor,nextButtonColor,nextBtnHoverColor,backButtonColor,backBtnHoverColor,bgCardColor,bgInfoColor,infoTextColor} = ThemeStyle()
     return (
@@ -39,33 +34,46 @@ function Screen8(props) {
       <div
         className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}
       >
-        <div className="col-span-12 my-2">
+
+        <div className="col-span-12">
           {" "}
-          <div className='flex flex-col space-y-2 items-center border py-4 bg-green-800 rounded-sm shadow-md text-white'>
-            <span className='font-bold text-3xl'>Complaint Submitted</span>
-            <span className='border p-4 rounded-full bg-white text-green-800 text-3xl'><AiTwotoneLike/></span>
-            <span className='font-semibold'>Complaint No.</span>
-            <span className='font-semibold'>PG-PGR-2021-02-04-000553</span>
-          </div>
+          <h1 className={`font-bold ${titleColor} text-2xl`}>
+            Provide Additional Details
+          </h1>
         </div>
         <div className="col-span-12">
           {" "}
-          <h1 className={` ${titleColor} opacity-70`}>
-            The notification along with complaint number is sent to your registered mobile number. You can track the complaint status using mobile or web app.
+          <h1 className={` ${titleColor} text-xs opacity-40`}>
+            If you think apart from information provided till now additional details are required to resolve complaint, provide it below:
           </h1>
         </div>
 
+        <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
+                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Additional Address Information</label>
+                        <textarea type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                             />
+
+                    </div>
 
         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
-
-          <div className="col-span-12">
+          <div className="col-span-6">
             {" "}
             <button
-              onClick={() => navigate('/grievance-index')}
+              onClick={() => props.backFun()}
+              type="submit"
+              className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
+            >
+              Back
+            </button>
+          </div>
+          <div className="col-span-6">
+            {" "}
+            <button
+              onClick={() => props.nextFun()}
               type="submit"
               className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
             >
-              Go back to home page
+              Submit
             </button>
           </div>
 
@@ -76,4 +84,4 @@ function Screen8(props) {
     )
 }
 
-export default Screen8
+export default ComplaintImage
