@@ -4,6 +4,7 @@ import Screen2 from '../../Components/PropertyComponents/InputScreens/Screen2'
 import Screen3 from '../../Components/PropertyComponents/InputScreens/Screen3'
 import Screen4 from '../../Components/PropertyComponents/InputScreens/Screen4'
 import Screen5 from '../../Components/PropertyComponents/InputScreens/Screen5'
+import Screen6 from '../../Components/PropertyComponents/InputScreens/Screen6'
 
 function PropertyCitizenEntryForm() {
     //formIndex variable to hold number of screen to show in form
@@ -24,6 +25,7 @@ function PropertyCitizenEntryForm() {
             {formIndex == 3 && <Screen3 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
             {formIndex == 4 && <Screen4 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
             {formIndex == 5 && <Screen5 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
+            {formIndex == 6 && <Screen6 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
         </>
     )
 }
