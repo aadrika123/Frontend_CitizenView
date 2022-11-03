@@ -9,13 +9,17 @@ import PropertyRoutes from './Pages/Property/PropertyRoutes';
 import WaterRoutes from './Pages/Water/WaterRoutes';
 import TradeRoutes from './Pages/Trade/TradeRoutes';
 import Header from './Components/Header/Header';
+import IndividualRoutes from './Components/IndividualRoutes/IndividualRoutes';
 
 function App() {
   return (
     <>
       <BrowserRouter>
-      <Header/>
-
+        <Header />
+        <Routes>
+          <Route path="/" element={<IndividualRoutes />} />
+          <Route index element={<IndividualRoutes />} />
+        </Routes>
 
         <PropertyRoutes />
         <WaterRoutes />
