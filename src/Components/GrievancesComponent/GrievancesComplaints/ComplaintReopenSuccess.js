@@ -16,7 +16,7 @@ import Info from '../../Common/Info'
 import ThemeStyle from '../../Styles/ThemeStyle'
 import { Navigate, useNavigate } from 'react-router-dom'
 
-function ComplaintSuccess2(props) {
+function ComplaintReopenSuccess(props) {
 
     const navigate = useNavigate()
 
@@ -24,17 +24,6 @@ function ComplaintSuccess2(props) {
     const {bgHeaderColor,titleColor,nextButtonColor,nextBtnHoverColor,backButtonColor,backBtnHoverColor,bgCardColor,bgInfoColor,infoTextColor} = ThemeStyle()
     return (
         <>
-    <div className="text-xs font-semibold px-2 mt-4 flex">
-      <div className="flex-1">
-        <span onClick={props.backFun} className="border-b border-black">
-          <RiArrowDropLeftFill className="inline text-xl" />
-          Back
-        </span>
-      </div>
-      <div className="flex-1 text-right">
-        <span className="">{props?.formIndex} of 10</span>
-      </div>
-    </div>
     <div className="p-2 md:p-10 flex justify-center items-center  overflow-hidden">
       <div
         className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}
@@ -42,7 +31,7 @@ function ComplaintSuccess2(props) {
         <div className="col-span-12 my-2">
           {" "}
           <div className='flex flex-col space-y-2 items-center border py-4 bg-green-800 rounded-sm shadow-md text-white'>
-            <span className='font-bold text-3xl'>Complaint Submitted</span>
+            <span className='font-bold text-3xl'>Complaint Reopened</span>
             <span className='border p-4 rounded-full bg-white text-green-800 text-3xl'><AiTwotoneLike/></span>
             <span className='font-semibold'>Complaint No.</span>
             <span className='font-semibold'>PG-PGR-2021-02-04-000553</span>
@@ -76,4 +65,4 @@ function ComplaintSuccess2(props) {
     )
 }
 
-export default ComplaintSuccess2
+export default ComplaintReopenSuccess

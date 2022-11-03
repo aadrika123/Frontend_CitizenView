@@ -21,40 +21,31 @@ function ComplaintAdditionalDetails(props) {
         <>
     <div className="text-xs font-semibold px-2 mt-4 flex">
       <div className="flex-1">
-        <span onClick={props.backFun} className="border-b border-black">
+        <span onClick={props.backFun} className="border-b cursor-pointer border-black">
           <RiArrowDropLeftFill className="inline text-xl" />
           Back
         </span>
-      </div>
-      <div className="flex-1 text-right">
-        <span className="">{props?.formIndex} of 10</span>
       </div>
     </div>
     <div className="p-2 md:p-10 flex justify-center items-center  overflow-hidden">
       <div
         className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}
       >
-        <div className="col-span-12">
-          {" "}
-          <h1 className={` ${titleColor} opacity-70`}>
-            Complaint's Location
-          </h1>
-        </div>
+
         <div className="col-span-12">
           {" "}
           <h1 className={`font-bold ${titleColor} text-2xl`}>
-            Provide Landmark
+            Provide Additional Details
           </h1>
         </div>
         <div className="col-span-12">
           {" "}
           <h1 className={` ${titleColor} text-xs opacity-40`}>
-            Provide the landmark to help us reacth the complaint location easily.
+           If you think apart from information provided till now additional details are required to resolve complaint, provide it below :
           </h1>
         </div>
 
         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Landmark</label>
                         <textarea type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                              />
 
@@ -78,21 +69,9 @@ function ComplaintAdditionalDetails(props) {
               type="submit"
               className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
             >
-              Next
+              Reopen Complaint
             </button>
           </div>
-
-          <div className="col-span-12 my-4 text-center">
-                {" "}
-                <button
-                  onClick={() => props.nextFun()}
-                  type="submit"
-                  className={`text-blue-400 hover:underline hover:text-blue-600`}
-                >
-                  Skip and Continue
-                </button>
-              </div>
-
         </div>
       </div>
     </div>

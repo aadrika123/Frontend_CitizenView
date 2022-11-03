@@ -20,11 +20,14 @@ function ComplaintReopenImage
   const {bgHeaderColor,titleColor,nextButtonColor,nextBtnHoverColor,backButtonColor,backBtnHoverColor,bgCardColor,bgInfoColor,infoTextColor} = ThemeStyle()
   return (
       <>
+
+<div className='text-xs font-semibold px-2 mt-4 flex'>
+                    <div className="flex-1"><span onClick={props.backFun} className='cursor-pointer border-b border-black'><RiArrowDropLeftFill className="inline text-xl" />Back</span></div>
+                </div>
+                
         
           <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
               <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
-                  <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Upload Complaint Photos</h1></div>
-                  <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>Click on the icon below to upload the complaint photos as evidence. You can capture photos directly through your camera or upload from your Gallery. If you do not have complaint photo, you can skip and continue for next step.</h1></div>
                   <div className="form-group md:mb-6 col-span-12 mt-6">
                       <div className="flex items-center mb-4">
                           <input id="option1" type="file" value="" name="residentialType" className="hidden" />

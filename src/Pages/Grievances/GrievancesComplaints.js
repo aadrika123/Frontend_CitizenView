@@ -15,6 +15,8 @@ import ComplaintRate from '../../Components/GrievancesComponent/GrievancesCompla
 import ComplaintReopen from '../../Components/GrievancesComponent/GrievancesComplaints/ComplaintReopen'
 import ComplaintRateSuccess from '../../Components/GrievancesComponent/GrievancesComplaints/ComplaintRateSuccess'
 import ComplaintReopenImage from '../../Components/GrievancesComponent/GrievancesComplaints/ComplaintReopenImage'
+import ComplaintAdditionalDetails from '../../Components/GrievancesComponent/GrievancesComplaints/ComplaintAdditionalDetails'
+import ComplaintReopenSuccess from '../../Components/GrievancesComponent/GrievancesComplaints/ComplaintReopenSuccess'
 
 const GrievancesComplaints = () => {
 
@@ -32,6 +34,13 @@ const GrievancesComplaints = () => {
         setToggleReopen(false)
         setToggleSubmitRate(false)
     }
+
+    const backReopen = () => {
+      setFormIndex(prev => prev - 1)
+      setToggleRate(false)
+      setToggleReopen(true)
+      setToggleSubmitRate(false)
+  }
  
      //forward 1 step from currentIndex
      const summary = () => setFormIndex(2)
@@ -60,6 +69,20 @@ const GrievancesComplaints = () => {
         setToggleRate(false)
         setToggleReopen(true)
      }
+
+     const nextAdd = () => {
+      setFormIndex(prev => prev + 1)
+      setToggleRate(false)
+      setToggleReopen(true)
+      setToggleSubmitRate(false)
+  }
+
+  const reopenSuccess = () => {
+   setFormIndex(prev => prev + 1)
+   setToggleRate(false)
+   setToggleReopen(true)
+   setToggleSubmitRate(false)
+}
  
      console.log('form index',formIndex)
  
@@ -70,8 +93,10 @@ const GrievancesComplaints = () => {
                 {formIndex == 2 && <ComplaintSummary summary={summary} backFun={backFun} rate={rate} reopen={reopen} />}
                 {(formIndex == 3 && toggleRate) ? <ComplaintRate backFun={backFun} submitRate={submitRate} /> : null}
                 {(formIndex == 3 && toggleReopen) ? <ComplaintReopen backFun={backFun} reopenNext={reopenNext}/> : null}
-                {(formIndex == 4 && toggleSubmitRate) ? <ComplaintRateSuccess backFun={backFun} /> : null}
-                {/* {formIndex = 4  && <ComplaintReopenImage/>} */}
+                {(formIndex == 4 && toggleSubmitRate) ? <ComplaintRateSuccess /> : null}
+                {(formIndex == 4 && toggleReopen) ? <ComplaintReopenImage backFun={backReopen} nextFun={nextAdd}/> : null}
+                {(formIndex == 5 && toggleReopen) ? <ComplaintAdditionalDetails backFun={backReopen} nextFun={reopenSuccess}/> : null}
+                {(formIndex == 6 && toggleReopen) ? <ComplaintReopenSuccess /> : null}
 
          </>
      )
