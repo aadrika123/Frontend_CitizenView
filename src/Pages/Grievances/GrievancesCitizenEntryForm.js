@@ -1,3 +1,13 @@
+//////////////////////////////////////////////////////////////////////////////////////
+//    Author - R U Bharti
+//    Version - 1.0
+//    Date - 3rd November 2022
+//    Revision - 1
+//    Project - JUIDCO
+//    Component  - Grievance Entry Form
+//    DESCRIPTION - Citizen register their complaints
+//////////////////////////////////////////////////////////////////////////////////////
+
 import React, {useState} from 'react'
 import Screen1 from '../../Components/GrievancesComponent/GrievancesForm/Screen1'
 import Screen2 from '../../Components/GrievancesComponent/GrievancesForm/Screen2'

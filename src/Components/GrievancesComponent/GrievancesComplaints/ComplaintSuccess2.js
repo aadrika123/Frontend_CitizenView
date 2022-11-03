@@ -16,7 +16,7 @@ import Info from '../../Common/Info'
 import ThemeStyle from '../../Styles/ThemeStyle'
 import { Navigate, useNavigate } from 'react-router-dom'
 
-function Screen8(props) {
+function ComplaintSuccess2(props) {
 
     const navigate = useNavigate()
 
@@ -76,4 +76,4 @@ function Screen8(props) {
     )
 }
 
-export default Screen8
+export default ComplaintSuccess2

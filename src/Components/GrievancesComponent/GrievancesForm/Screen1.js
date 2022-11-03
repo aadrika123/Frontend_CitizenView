@@ -9,6 +9,7 @@
 
 import { AiFillInfoCircle } from "react-icons/ai";
 import { RiArrowDropLeftFill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from "../../Styles/ThemeStyle";
 
@@ -26,14 +27,16 @@ function Screen1(props) {
     infoTextColor,
   } = ThemeStyle();
 
+  const navigate= useNavigate()
+
   return (
 
     <>
       <div className="text-xs font-semibold px-2 mt-4 flex">
         <div className="flex-1">
-          <span onClick={props.backFun} className="border-b border-black">
+          <span onClick={() => navigate('/grievance-index')} className="border-b border-black">
             <RiArrowDropLeftFill className="inline text-xl" />
-            Back
+            Home
           </span>
         </div>
         <div className="flex-1 text-right">
