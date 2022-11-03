@@ -21,8 +21,6 @@ function WaterDocScreen(props) {
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
     return (
         <>
-
-
             <div>
                 <div className='text-xs font-semibold px-2 mt-4 flex'>
                     <div className="flex-1"><span onClick={props.backFun} className='border-b border-black'><RiArrowDropLeftFill className="inline text-xl" />Back</span></div>
