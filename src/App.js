@@ -11,7 +11,7 @@ import TradeRoutes from './Pages/Trade/TradeRoutes';
 import Header from './Components/Header/Header';
 import GrievancesRoutes from './Pages/Grievances/GrievancesRoutes';
 import IndividualRoutes from './Components/IndividualRoutes/IndividualRoutes';
-import GrievanceRoutes from './Pages/Grievances/GrievanceRoutes';
+
 
 function App() {
   return (
