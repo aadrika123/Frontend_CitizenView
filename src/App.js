@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
+        {/* <Header /> */}
         <Routes>
           <Route path="/" element={<IndividualRoutes />} />
           <Route index element={<IndividualRoutes />} />
@@ -26,7 +26,7 @@ function App() {
         <PropertyRoutes />
         <WaterRoutes />
         <TradeRoutes />
-        <GrievancesRoutes/>
+        <GrievancesRoutes />
       </BrowserRouter>
     </>
   );
