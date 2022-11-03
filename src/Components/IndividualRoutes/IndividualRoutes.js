@@ -67,6 +67,25 @@ function IndividualRoutes() {
                     </p>
                 </div>
             </div>
+
+
+            <div className={`${boxStyle}`}>
+                <div className="flex justify-between">
+                    <h1 className="font-bold text-2xl text-stone-600 px-2">GRIEVANCE REDRESSAL</h1>
+                    <img src={water} alt="property" className='h-12 w-12 mr-2' />
+                </div>
+                <div className='mt-4 text-lg'>
+
+                    <p className='px-2 text-orange-500 font-semibold text-md'>
+                        <Link to="/grievance-index">Lodge a Complain</Link>
+                    </p>
+
+                    <p className='px-2 text-orange-500 font-semibold '>
+                        <Link to="/">Track Your Grievance status</Link>
+                    </p>
+
+                </div>
+            </div>
         </div>
     )
 }
