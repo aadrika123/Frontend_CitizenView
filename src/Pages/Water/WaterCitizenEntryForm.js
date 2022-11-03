@@ -8,6 +8,8 @@
 //    DESCRIPTION - WaterCitizenEntryForm compomnent 
 //////////////////////////////////////////////////////////////////////////////////////
 import React,{useState} from 'react'
+import DocumentEdit from '../../Components/WaterComponent/DocumentEdit'
+import UploadDocument from '../../Components/WaterComponent/UploadDocument'
 import ConnectionDetailScreen from '../../Components/WaterComponent/WaterNewApply/ConnectionDetailScreen'
 import PropertyDetailScreen from '../../Components/WaterComponent/WaterNewApply/PropertyDetailScreen'
 import PropertyRegistryScreen from '../../Components/WaterComponent/WaterNewApply/PropertyRegistryScreen'
@@ -30,8 +32,8 @@ function WaterCitizenEntryForm() {
       {formIndex == 1 && <PropertyDetailScreen nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
       {formIndex == 2 && <ConnectionDetailScreen nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
        {formIndex == 3 && <PropertyRegistryScreen nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-      {/* {formIndex == 4 && <Screen4 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-      {formIndex == 5 && <Screen5 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}  */}
+      {formIndex == 4 && <UploadDocument nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
+      {formIndex == 5 && <DocumentEdit nextFun={nextFun} backFun={backFun} formIndex={formIndex} />} 
     </>
   )
 }

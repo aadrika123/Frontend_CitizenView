@@ -11,6 +11,7 @@
 import React from 'react'
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
+import { Link } from 'react-router-dom'
 import Info from '../../Common/Info'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
@@ -39,7 +40,7 @@ function PropertyRegistryScreen(props) {
                                 <label className="ml-2 text-sm font-medium text-gray-500 ">city<span className='text-red-600 text-lg'>*</span></label>
                             </div>
                             <div className="flex items-center -mt-3">
-                            <select className='border bg-gray-50 shadow-md   px-20 text-left text-gray-500 '>
+                                <select className='border bg-gray-50 shadow-md   px-20 text-left text-gray-500 '>
                                     <option>select city</option>
                                     <option>1</option>
                                     <option>1</option>
@@ -69,9 +70,11 @@ function PropertyRegistryScreen(props) {
 
                             </div>
                             <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
-                            <div className="col-span-6"> <button  type="submit" className={`shadow-lg float-right px-8 py-1.5 ${resetBtnColor} text-amber-600 font-medium text-xs leading-tight  rounded   hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Reset</button></div>
-                            <div className="col-span-6"> <button  type="submit" className={`shadow-lg float-left px-8 py-2 -ml-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Search</button></div>
-                        </div>
+                                <div className="col-span-6"> <button type="submit" className={`shadow-lg float-right px-8 py-1.5 ${resetBtnColor} text-amber-600 font-medium text-xs leading-tight  rounded   hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Reset</button></div>
+                                <Link to='/water-searchProprty'>
+                                    <div className="col-span-6"> <button type="submit" className={`shadow-lg float-left px-8 py-2 -ml-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Search</button></div>
+                                </Link>
+                            </div>
 
                         </div>
 
