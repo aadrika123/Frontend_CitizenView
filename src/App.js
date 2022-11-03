@@ -10,13 +10,18 @@ import WaterRoutes from './Pages/Water/WaterRoutes';
 import TradeRoutes from './Pages/Trade/TradeRoutes';
 import Header from './Components/Header/Header';
 import GrievancesRoutes from './Pages/Grievances/GrievancesRoutes';
+import IndividualRoutes from './Components/IndividualRoutes/IndividualRoutes';
+import GrievanceRoutes from './Pages/Grievances/GrievanceRoutes';
 
 function App() {
   return (
     <>
       <BrowserRouter>
-      <Header/>
-
+        <Header />
+        <Routes>
+          <Route path="/" element={<IndividualRoutes />} />
+          <Route index element={<IndividualRoutes />} />
+        </Routes>
 
         <PropertyRoutes />
         <WaterRoutes />

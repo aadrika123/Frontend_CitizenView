@@ -28,8 +28,7 @@ function Screen3(props) {
                     <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Plot Size</h1></div>
                     <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                         <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Plot Size (sq ft)<span className='text-red-500'>*</span></label>
-                        <input type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                             />
+                        <input type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"/>
 
                     </div>
 

@@ -19,16 +19,16 @@ const GrievancesRoutes = () => {
       <Routes>
 
         <Route
-            path="/grievances"
+            path="/grievance-index"
             element={<GrievancesIndex/>}
         />
 
         <Route
-          path="/grievances-citizen-form"
+          path="/grievance-citizen-form"
           element={<GrievancesCitizenEntryForm />}
         />
         <Route
-          path="/grievances-complaints"
+          path="/grievance-complaints"
           element={<GrievancesComplaints />}
         />
       </Routes>
