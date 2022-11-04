@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////////
-//    Author - Talib Hussain
+//    Author - Dipu Singh
 //    Version - 1.0
 //    Date - 02 november 2022
 //    Revision - 1
@@ -10,13 +10,18 @@
 
 import {AiFillInfoCircle} from 'react-icons/ai'
 import {RiArrowDropLeftFill} from 'react-icons/ri'
+import { useNavigate } from 'react-router-dom'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 
-function Screen1
-(props) {
+function Screen1(props) {
   //destructuring predefined colors to maintain uniform theme everywhere
   const {bgHeaderColor,titleColor,nextButtonColor,nextBtnHoverColor,backButtonColor,backBtnHoverColor,bgCardColor,bgInfoColor,infoTextColor} = ThemeStyle()
+  
+  const navigate = useNavigate();
+  const goToHome=()=>{
+  }
+
   return (
       <>
          <div className='text-xs font-semibold px-2 mt-4 flex'>
@@ -40,7 +45,7 @@ function Screen1
                   </div>
 
                   <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
-                     <div className="col-span-6"> <button onClick={()=>props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
+                     <div className="col-span-6"> <button onClick={()=>navigate("/")} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
                      <div className="col-span-6"> <button onClick={()=>props.nextFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>
                   </div>
               </div>
