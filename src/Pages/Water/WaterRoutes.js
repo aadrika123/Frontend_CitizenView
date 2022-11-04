@@ -1,9 +1,17 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import ApplicationDetailScreen from '../../Components/WaterComponent/ApplicationDetailScreen'
+import ConnectionDetailScreen from '../../Components/WaterComponent/ConnectionDetailScreen'
+import ConsumptionDetailScreen from '../../Components/WaterComponent/ConsumptionDetailScreen'
+import MakePayment from '../../Components/WaterComponent/MakePayment'
 import MyApplication from '../../Components/WaterComponent/MyApplication'
 import MyConnectionScreen from '../../Components/WaterComponent/MyConnectionScreen'
+import PastPaymentScreen from '../../Components/WaterComponent/PastPaymentScreen'
+import PayBillScreen from '../../Components/WaterComponent/PayBillScreen'
+import PayNowScreen from '../../Components/WaterComponent/PayNowScreen'
+import SearchPayList from '../../Components/WaterComponent/SearchPayList'
 import SubmitScreen from '../../Components/WaterComponent/SubmitScreen'
+import SuccessPaymentScreen from '../../Components/WaterComponent/SuccessPaymentScreen'
 import ViewBreakupScreen from '../../Components/WaterComponent/ViewBreakupScreen'
 import ViewHistoryScreen from '../../Components/WaterComponent/ViewHistoryScreen'
 import WaterDocScreen from '../../Components/WaterComponent/WaterDocScreen'
@@ -26,6 +34,14 @@ function WaterRoutes() {
             <Route path='/water-viewHistory' element={<ViewHistoryScreen/>} />
             <Route path='/water-viewBreakup' element={<ViewBreakupScreen/>} />
             <Route path='/water-myConnection' element={<MyConnectionScreen/>} />
+            <Route path='/water-connectionDetail' element={<ConnectionDetailScreen/>} />
+            <Route path='/water-consumptionDetail' element={<ConsumptionDetailScreen/>} />
+            <Route path='/water-payBill' element={<PayBillScreen/>} />
+            <Route path='/water-searchPayList' element={<SearchPayList/>} />
+            <Route path='/water-payNow' element={<PayNowScreen/>} />
+            <Route path='/water-confirmPayment' element={<MakePayment/>} />
+            <Route path='/water-paymentSuccess' element={<SuccessPaymentScreen/>} />
+            <Route path='/water-pastPayment' element={<PastPaymentScreen/>} />
             
         </Routes>
     )
