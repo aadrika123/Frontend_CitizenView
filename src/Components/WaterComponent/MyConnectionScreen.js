@@ -50,14 +50,16 @@ function MyConnectionScreen(props) {
                                                 <label className={`text-xs ml-2 font-medium text-gray-800`}>water</label>
                                             </div>
                                         </div>
-                                        <div className='grid grid-cols-2 '>
-                                            <div className="">
-                                                <label className={`text-xs ml-2 font-medium text-amber-600`}>Consumer Number</label>
+                                        <Link to='/water-connectionDetail'>
+                                            <div className='grid grid-cols-2 '>
+                                                <div className="">
+                                                    <label className={`text-xs ml-2 font-medium text-amber-600`}>Consumer Number</label>
+                                                </div>
+                                                <div className=''>
+                                                    <label className={`text-xs ml-2 font-medium text-amber-600`} >WC_1234567890</label>
+                                                </div>
                                             </div>
-                                            <div className=''>
-                                                <label className={`text-xs ml-2 font-medium text-amber-600`} >WC_1234567890</label>
-                                            </div>
-                                        </div>
+                                        </Link>
                                         <div className='grid grid-cols-2 '>
                                             <div className="">
                                                 <label className={`text-xs ml-2 font-medium text-gray-500`}>Status</label>
@@ -90,7 +92,7 @@ function MyConnectionScreen(props) {
                                                 <label className={`text-xs ml-2 font-medium text-gray-800`} >NA</label>
                                             </div>
                                         </div>
-                                        
+
                                         <div className=' text-center mt-4'>
                                             <Link to='/water-viewDetail'>
                                                 <button className={`shadow-lg px-3 py-2 ml-1  ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`} >Pay Now</button>

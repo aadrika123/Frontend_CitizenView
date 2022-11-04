@@ -43,31 +43,31 @@ function SearchPropertyScreen(props) {
                                     <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                                         <div className='grid grid-cols-2 '>
                                             <div className="">
-                                                <label className="ml-2 text-xs font-medium text-gray-400 dark:text-gray-300 ">Unique Property ID</label>
+                                                <label className={`ml-2 text-xs font-medium text-gray-500`}>Unique Property ID</label>
                                             </div>
                                             <div className=''>
-                                                <label className=" text-xs font-medium text-gray-600 dark:text-gray-300 " >PROP134456567</label>
+                                                <label className={`ml-2 text-xs font-medium text-gray-800`} >PROP134456567</label>
                                             </div>
                                         </div>
                                         <div className='grid grid-cols-2 '>
                                             <div className="">
-                                                <label className="ml-2 text-xs font-medium text-gray-400 dark:text-gray-300 ">OwnerName</label>
+                                                <label className={`ml-2 text-xs font-medium text-gray-500`}>OwnerName</label>
                                             </div>
                                             <div className=''>
-                                                <label className=" text-xs font-medium text-gray-600 dark:text-gray-300 " >Demo Testing</label>
+                                                <label className={`ml-2 text-xs font-medium text-gray-800`} >Demo Testing</label>
                                             </div>
                                         </div>
                                         <div className='grid grid-cols-2 '>
                                             <div className="">
-                                                <label className="ml-2 text-xs font-medium text-gray-400 dark:text-gray-300 ">Address</label>
+                                                <label className={`ml-2 text-xs font-medium text-gray-500`}>Address</label>
                                             </div>
                                             <div className=''>
-                                                <label className=" text-xs font-medium text-gray-600 dark:text-gray-300 " >Lorem ipsum dolor sit amet consectetur</label>
+                                                <label className={`ml-2 text-xs font-medium text-gray-800`} >Lorem ipsum dolor sit amet consectetur</label>
                                             </div>
                                         </div>
                                         <div className='grid grid-cols-2 '>
                                             <div className="">
-                                                <label className="ml-2 text-xs font-medium text-gray-400 dark:text-gray-300 ">Action</label>
+                                                <label className={`ml-2 text-xs font-medium text-gray-500`}>Action</label>
                                             </div>
                                             <div className=''>
                                                 <Link to='/water-holderDetail'>
