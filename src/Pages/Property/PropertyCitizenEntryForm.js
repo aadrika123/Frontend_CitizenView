@@ -35,13 +35,19 @@ function PropertyCitizenEntryForm() {
     const screen2Data =(e)=>{
         console.log("Screen 2 Data in Entry Form",e)
     }
+    const screen3Data =(e)=>{
+        console.log("Screen 3 Data in Entry Form",e)
+    }
+    const screen4Data =(e)=>{
+        console.log("Screen 4 Data in Entry Form",e)
+    }
 
     return (
         <>
             {formIndex == 1 && <Screen1 nextFun={nextFun} backFun={backFun} data={screen1Data} formIndex={formIndex} />}
             {formIndex == 2 && <Screen2 nextFun={nextFun} backFun={backFun} data={screen2Data} formIndex={formIndex} />}
-            {formIndex == 3 && <Screen3 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-            {formIndex == 4 && <Screen4 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
+            {formIndex == 3 && <Screen3 nextFun={nextFun} backFun={backFun} data={screen3Data} formIndex={formIndex} />}
+            {formIndex == 4 && <Screen4 nextFun={nextFun} backFun={backFun} data={screen4Data} formIndex={formIndex} />}
             {formIndex == 5 && <Screen5 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
             {formIndex == 6 && <Screen6 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
             {formIndex == 7 && <Screen7 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
