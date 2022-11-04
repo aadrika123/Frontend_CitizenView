@@ -8,45 +8,97 @@
 //    DESCRIPTION - Scrren 1 is single input component
 //////////////////////////////////////////////////////////////////////////////////////
 
+import { useState } from 'react'
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
+import { Link } from 'react-router-dom'
 import Info from '../../Common/Info'
-import CommonStyles from '../../IndividualRoutes/CommonStyles';
+import CommonStyles from '../../IndividualRoutes/CommonStyles'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
-import ThemeStyle from '../../Styles/ThemeStyle'
+import ThemeStyle from '../../Styles/ThemeStyle';
+import * as yup from 'yup';
+import { Formik, useFormik } from 'formik'
 
-function Screen2(props) {
+function Screen2
+    (props) {
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle();
-
     const { labelStyle, inputStyle } = CommonStyles();
+    const [noticeToggle, setnoticeToggle] = useState(false);
+
+    const initialValues = {
+        applyWith: '',
+        noticeDate: '',
+        noticeNo: ''
+    }
+
+    const validationSchema = yup.object(
+        {
+            applyWith: yup.number().required("This field is required !"),
+        }
+    );
+
+    const formik = useFormik({
+        initialValues: initialValues,
+
+        onSubmit: (values) => {
+            alert(JSON.stringify(values));
+            props.nextFun();
+        },
+        validationSchema
+    });
+
+    const handleOnChange = (e) => {
+        let name = e.target.name;
+        let vals = e.target.value;
+
+        console.log("name : " + name + "values : " + vals);
+        { name === 'applyWith' && (vals == 1 ? setnoticeToggle(true) : setnoticeToggle(false)) }
+    }
+
+    console.log(noticeToggle)
     return (
         <>
             <div className='text-xs font-semibold px-2 mt-4 flex'>
                 <div className="flex-1"><span onClick={props.backFun} className='border-b border-black'><RiArrowDropLeftFill className="inline text-xl" />Back</span></div>
                 <div className="flex-1 text-right"><span className=''>{props?.formIndex} of 10</span></div>
             </div>
-            <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
-                <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
-                    <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Enter Your Trade Name</h1></div>
-                    <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>It would take 2 minutes to complete this application and the following documents are required in .pdf or jpg format to complete the application.</h1></div>
-                    <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                        <div className="col-span-12">
-                            <label htmlFor="tradename" className={`${labelStyle} `}>
-                                Trade Name
-                            </label>
-                            <input type="text" className={`${inputStyle}`} />
+            <form onSubmit={formik.handleSubmit} onChange={handleOnChange}>
+                <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
+                    <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
+                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Apply With </h1></div>
+                        <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>Do you have a notice no to apply with or it's a normal application. select accordingly</h1></div>
+                        <div className="form-group mb-4 md:mb-6 col-span-12 mt-4 text-gray-600 font-semibold">
+                            <div className=" items-center mb-4">
+                                <select name="applyWith" className={`${inputStyle}`} value={formik.values.applyWith} onChange={formik.handleChange}>
+                                    <option value="">SELECT</option>
+                                    <option value="1">Notice No.</option>
+                                    <option value="2">New Application</option>
+                                </select>
+
+                                <span className='text-red-500 text-xs'>{formik.touched.applyWith && formik.errors.applyWith ? formik.errors.applyWith : null}</span>
+                            </div>
+
+                            <div className={`${noticeToggle ? 'grid' : 'hidden'}`}>
+                                <div className=" items-center mb-4">
+                                    <input type="date" name="noticeDate" className={`${inputStyle}`} value={formik.values.noticeDate} onChange={formik.handleChange} />
+                                </div>
+                                <div className=" items-center mb-4">
+                                    <input type="text" name="noticeNo" className={`${inputStyle}`} placeholder="Search With Notice No" value={formik.values.noticeNo} onChange={formik.handleChange} />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
+                            <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}><Link to="/">Back </Link> </button></div>
+                            <div className="col-span-6"> <button type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>
                         </div>
                     </div>
 
-                    <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
-                        <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
-                        <div className="col-span-6"> <button onClick={() => props.nextFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>
-                    </div>
                 </div>
-
-            </div>
-            <Info infoText="Your license will be issued for the current year 2022-23" />
+            </form>
+            <Info infoText="Maximum file size allowed is 5 MB" />
         </>
     )
 }
