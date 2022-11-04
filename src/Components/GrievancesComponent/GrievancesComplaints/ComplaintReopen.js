@@ -61,7 +61,6 @@ function ComplaintReopen(props) {
           </div>
           <div className="flex items-center mb-4">
             <input
-              checked
               id="option2"
               type="radio"
               value=""
@@ -77,7 +76,6 @@ function ComplaintReopen(props) {
           </div>
           <div className="flex items-center mb-4">
             <input
-              checked
               id="option3"
               type="radio"
               value=""
@@ -93,7 +91,6 @@ function ComplaintReopen(props) {
           </div>
           <div className="flex items-center mb-4">
             <input
-              checked
               id="option4"
               type="radio"
               value=""
