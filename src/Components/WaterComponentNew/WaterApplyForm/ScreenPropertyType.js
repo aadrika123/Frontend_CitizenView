@@ -7,9 +7,12 @@
 //    Component  - ScreenPropertyType
 //    DESCRIPTION - ScreenPropertyType compomnent 
 //////////////////////////////////////////////////////////////////////////////////////
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
+import * as yup from 'yup';
+import CommonStyles from '../../IndividualRoutes/CommonStyles';
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 
@@ -19,119 +22,91 @@ function ScreenPropertyType(props) {
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, bgCardColor, bgInfoColor, infoTextColor, backButtonColor, backBtnHoverColor, nextBtnHoverColor } = ThemeStyle()
 
+    const { labelStyle, inputStyle } = CommonStyles();
+    const [residentialTypeToggle, setResidentialTypeToggle] = useState()
+
+    const validationSchema = yup.object(
+        {
+            typeOfProperty: yup.string().required(),
+            // categoryType: yup.string().required(),
+            // categoryType: yup.string().required(),
+        }
+    );
+
     const formik = useFormik({
         initialValues: {
             typeOfProperty: '',
+            categoryType: '',
+            pipelineType: '',
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
             props.CollectScreenDataFun("screen value to be passed 1", values)
-            props.nextFun(4)
+            props.nextFun()
             console.log("ScreenPropType value 2", values)
         },
+
+        validationSchema
     });
+
+    const handleOnChange = (e) => {
+        let name = e.target.name;
+        let vals = e.target.value;
+
+        console.log("name : " + name + "values : " + vals);
+        { name === 'typeOfProperty' && (vals == 1 ? setResidentialTypeToggle(true) : setResidentialTypeToggle(false)) }
+    }
     return (
         <>
             <div>
-                <form onSubmit={formik.handleSubmit}>
+                <form onSubmit={formik.handleSubmit} onChange={handleOnChange}>
                     <div className='text-xs font-semibold pl-2 mt-4'><span className='border-b border-black'><RiArrowDropLeftFill className="inline text-xl" />Back</span></div>
+
                     <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                         <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 md:p-10`}>
                             <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Property Type</h1></div>
-                            <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                                <div className="flex items-center mb-4">
-                                    <input
-                                        className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
-                                        type="radio"
-                                        id="residential"
-                                        name="typeOfProperty"
-                                        value="residential"
-                                        onChange={formik.handleChange}
-                                        required
-                                    />
-                                    <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Residential</label>
+                            <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>Do you have a notice no to apply with or it's a normal application. select accordingly</h1></div>
+                            <div className="form-group mb-4 md:mb-6 col-span-12 mt-4 text-gray-600 font-semibold">
+                                <div className={``}>
+                                    <div className="col-span-12"> <h1 className={` ${titleColor} text-md`}>Property Type</h1></div>
+                                    <select name="typeOfProperty" className={`${inputStyle}`} value={formik.values.typeOfProperty} onChange={formik.handleChange}>
+                                        <option value="">SELECT</option>
+                                        <option value="1">Residential</option>
+                                        <option value="2">Commercial</option>
+                                        <option value="3">Government & PSU</option>
+                                        <option value="4">Institutional</option>
+                                        <option value="5">SSI Unit</option>
+                                        <option value="6">Industrial</option>
+                                        <option value="7">Appartment/Multi Stored unit</option>
+                                    </select>
+                                </div>
 
+                                <div className={`${residentialTypeToggle ? 'grid' : 'hidden'}`}>
+
+                                    <div className=" items-center mb-4 mt-4">
+                                        <div className="col-span-12"> <h1 className={` ${titleColor} text-md`}>Category Type</h1></div>
+                                        <select name="categoryType" className={`${inputStyle}`} value={formik.values.categoryType} onChange={formik.handleChange}>
+                                            <option value="">SELECT</option>
+                                            <option value="1">APL</option>
+                                            <option value="2">BPL</option>
+                                        </select>
+                                    </div>
+                                    <div className=" items-center mb-4">
+                                        <div className="col-span-12"> <h1 className={` ${titleColor} text-md`}>Pipeline Type</h1></div>
+                                        <select name="pipelineType" className={`${inputStyle}`} value={formik.values.pipelineType} onChange={formik.handleChange}>
+                                            <option value="">SELECT</option>
+                                            <option value="1">New Pipline</option>
+                                            <option value="2">Old Pipeline</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div className="flex items-center mb-4">
-                                    <input
-                                        className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
-                                        type="radio"
-                                        id="commercial"
-                                        name="typeOfProperty"
-                                        value="commercial"
-                                        onChange={formik.handleChange}
-                                        required
-                                    />
-                                    <label for="option2" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Commercial</label>
-                                </div>
-                                <div className="flex items-center mb-4">
-                                    <input
-                                        className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
-                                        type="radio"
-                                        id="govtPSU"
-                                        name="typeOfProperty"
-                                        value="govtPSU"
-                                        onChange={formik.handleChange}
-                                        required
-                                    />
-                                    <label for="option2" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Government & PSU</label>
-                                </div>
-                                <div className="flex items-center mb-4">
-                                    <input
-                                        className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
-                                        type="radio"
-                                        id="institutional"
-                                        name="typeOfProperty"
-                                        value="institutional"
-                                        onChange={formik.handleChange}
-                                        required
-                                    />
-                                    <label for="option2" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Institutional</label>
-                                </div>
-                                <div className="flex items-center mb-4">
-                                    <input
-                                        className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
-                                        type="radio"
-                                        id="ssiUnit"
-                                        name="typeOfProperty"
-                                        value="ssiUnit"
-                                        onChange={formik.handleChange}
-                                        required
-                                    />
-                                    <label for="option2" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">SSI Unit</label>
-                                </div>
-                                <div className="flex items-center mb-4">
-                                    <input
-                                        className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
-                                        type="radio"
-                                        id="industrial"
-                                        name="typeOfProperty"
-                                        value="industrial"
-                                        onChange={formik.handleChange}
-                                        required
-                                    />
-                                    <label for="option2" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Industrial</label>
-                                </div>
-                                <div className="flex items-center mb-4">
-                                    <input
-                                        className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
-                                        type="radio"
-                                        id="apptMSU"
-                                        name="typeOfProperty"
-                                        value="apptMSU"
-                                        onChange={formik.handleChange}
-                                        required
-                                    />
-                                    <label for="option2" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Appartment/Multi Stored unit</label>
-                                </div>
+
                             </div>
-
                             <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
                                 <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
                                 <div className="col-span-6"> <button type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>
                             </div>
                         </div>
-
                     </div>
                     <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                         <div className='p-2 relative '>

@@ -1,24 +1,33 @@
 //////////////////////////////////////////////////////////////////////////////////////
 //    Author - Swati Sharma
 //    Version - 1.0
-//    Date - 04 november 2022
+//    Date - 05 november 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - ScreenPropertyType
-//    DESCRIPTION - ScreenPropertyType compomnent 
+//    Component  - ScreenSafNo
+//    DESCRIPTION - ScreenSafNo compomnent 
 //////////////////////////////////////////////////////////////////////////////////////
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
+import * as yup from 'yup';
+import CommonStyles from '../../IndividualRoutes/CommonStyles';
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
-
 
 function ScreenSafNo(props) {
 
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, bgCardColor, bgInfoColor, infoTextColor, backButtonColor, backBtnHoverColor, nextBtnHoverColor } = ThemeStyle()
 
+    const { labelStyle, inputStyle } = CommonStyles();
+
+    const validationSchema = yup.object(
+        {
+            safNo: yup.string().required("Enter Saf no."),
+        }
+    );
     const formik = useFormik({
         initialValues: {
             safNo: '',
@@ -29,6 +38,7 @@ function ScreenSafNo(props) {
             props.nextFun(6)
             console.log("ScreenSafNo value 2", values)
         },
+        validationSchema
     });
     return (
         <>
@@ -39,15 +49,11 @@ function ScreenSafNo(props) {
                         <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 md:p-10`}>
                             <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Property Type</h1></div>
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                                <div  className="col-span-12">
-                                <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">SAF No.</label>
+                                <div className="col-span-12">
+                                    <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">SAF No.</label>
                                 </div>
                                 <div className="flex items-center mb-4">
-                                    <input {...formik.getFieldProps('safNo')}
-                                        className='border bg-gray-50 shadow-md  px-9 ml-2 '
-                                        name='safNo'
-                                        type="text"
-                                    />
+                                    <input type="text" name="safNo" className={`${inputStyle}`} placeholder="Enter Saf No." value={formik.values.safNo} onChange={formik.handleChange} />
                                 </div>
 
                             </div>
