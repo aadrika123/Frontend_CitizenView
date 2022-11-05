@@ -13,8 +13,21 @@ import { RiArrowDropLeftFill } from 'react-icons/ri'
 import Info from '../../Common/Info'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
+import { useFormik } from 'formik'
 
 function ComplaintAdditionalDetails(props) {
+
+  const formik = useFormik({
+    initialValues: {
+      complaintAdditionalDetails: ""
+    }, 
+
+    onSubmit: (values) => {
+      console.log("Reopen Additional Details => ", values)
+      props.reopenSuccess(values)
+    }
+  })
+
     //destructuring predefined colors to maintain uniform theme everywhere
     const {bgHeaderColor,titleColor,nextButtonColor,nextBtnHoverColor,backButtonColor,backBtnHoverColor,bgCardColor,bgInfoColor,infoTextColor} = ThemeStyle()
     return (
@@ -27,7 +40,8 @@ function ComplaintAdditionalDetails(props) {
         </span>
       </div>
     </div>
-    <div className="p-2 md:p-10 flex justify-center items-center  overflow-hidden">
+
+    <form onSubmit={formik.handleSubmit} onChange={formik.handleChange} className="p-2 md:p-10 flex justify-center items-center  overflow-hidden">
       <div
         className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}
       >
@@ -46,7 +60,7 @@ function ComplaintAdditionalDetails(props) {
         </div>
 
         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                        <textarea type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                        <textarea name='complaintAdditionalDetails' type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                              />
 
                     </div>
@@ -56,7 +70,6 @@ function ComplaintAdditionalDetails(props) {
             {" "}
             <button
               onClick={() => props.backFun()}
-              type="submit"
               className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
             >
               Back
@@ -65,7 +78,6 @@ function ComplaintAdditionalDetails(props) {
           <div className="col-span-6">
             {" "}
             <button
-              onClick={() => props.nextFun()}
               type="submit"
               className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
             >
@@ -74,7 +86,7 @@ function ComplaintAdditionalDetails(props) {
           </div>
         </div>
       </div>
-    </div>
+    </form>
   </>
     )
 }

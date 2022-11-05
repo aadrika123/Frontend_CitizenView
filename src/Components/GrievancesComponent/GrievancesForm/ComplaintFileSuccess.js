@@ -4,19 +4,16 @@
 //    Date - 3rd November 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - Screen 8
-//    DESCRIPTION - Screen 8 is single input component
+//    Component  - Complaint File Success
+//    DESCRIPTION - Complaint File Success is single input component
 //////////////////////////////////////////////////////////////////////////////////////
 
-import { BiAddToQueue } from 'react-icons/bi'
-import { RiArrowDropLeftFill } from 'react-icons/ri'
 import {AiTwotoneLike} from 'react-icons/ai'
-import Info from '../../Common/Info'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 import { Navigate, useNavigate } from 'react-router-dom'
 
-function Screen8(props) {
+function ComplaintFileSuccess(props) {
 
     const navigate = useNavigate()
 
@@ -25,15 +22,6 @@ function Screen8(props) {
     return (
         <>
     <div className="text-xs font-semibold px-2 mt-4 flex">
-      <div className="flex-1">
-        <span onClick={props.backFun} className="border-b border-black">
-          <RiArrowDropLeftFill className="inline text-xl" />
-          Back
-        </span>
-      </div>
-      <div className="flex-1 text-right">
-        <span className="">{props?.formIndex} of 10</span>
-      </div>
     </div>
     <div className="p-2 md:p-10 flex justify-center items-center  overflow-hidden">
       <div
@@ -76,4 +64,4 @@ function Screen8(props) {
     )
 }
 
-export default Screen8
+export default ComplaintFileSuccess
