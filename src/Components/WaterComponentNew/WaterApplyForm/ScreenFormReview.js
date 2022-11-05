@@ -180,10 +180,11 @@ function ScreenFormReview(props) {
                                 </>
                             ))}
                         </div>
-                        <div className='md:px-10 ml-20'>
-                            <button onClick={() => props.submitFun()} type="button" className=" px-6 py-1 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out">Submit</button>
-                        </div>
-
+                        <Link to='/water-submitNewApply'>
+                            <div className='md:px-10 ml-20'>
+                                <button onClick={() => props.submitFun()} type="button" className=" px-6 py-1 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out">Submit</button>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>
