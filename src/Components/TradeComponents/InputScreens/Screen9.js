@@ -8,14 +8,14 @@
 //    DESCRIPTION - Scrren 1 is single input component
 //////////////////////////////////////////////////////////////////////////////////////
 
-import { BiAddToQueue } from 'react-icons/bi'
+import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
-import Info from '../../Common/Info'
 import CommonStyles from '../../IndividualRoutes/CommonStyles'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 
-function Screen5(props) {
+function Screen9
+    (props) {
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
@@ -28,25 +28,42 @@ function Screen5(props) {
             </div>
             <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                 <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
-                    <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Firm Type</h1></div>
-                    <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>Describe the type of your firm from the given below list.</h1></div>
+                    <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Property Details</h1></div>
+                    <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>Enter a valid holding no to get property details</h1></div>
                     {/* <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                         <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Enter a valid holding no to get property details<span className='text-red-500'>*</span></label>
                     </div> */}
-                    <div className="form-group mb-4 md:mb-6 col-span-12 mt-4 ">
-                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Firm Type.<span className='text-red-500'>*</span></label>
-                        <select name='firmType' className={`${inputStyle} uppercase`} placeholder='Search Your Holding No.' >
-                            <option value="">SELECT</option>
-                            <option value="1">Proprietorship</option>
-                            <option value="">Partnership</option>
-                            <option value="">pvt. ltd.</option>
-                            <option value="">public ltd.</option>
-                            <option value="">other</option>
-                        </select>
+                    <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
+                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Holding No.<span className='text-red-500'>*</span></label>
+                        <input type="text" name='holdingNo' className={`${inputStyle}`} placeholder='Search Your Holding No.' />
 
                     </div>
                     {/* //////////// */}
 
+                    <div className={`form-group mb-4 md:mb-6 col-span-12 `}>
+                        <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
+                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Owner of Business Premises.<span className='text-red-500'>*</span></label>
+                            <input type="text" name='holdingNo' className={`${inputStyle}`} placeholder='Enter Holding No.' />
+
+                        </div>
+
+                        <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
+                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Business Address.<span className='text-red-500'>*</span></label>
+                            <input type="text" name='holdingNo' className={`${inputStyle}`} placeholder='Enter Holding No.' />
+
+                        </div>
+                        <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
+                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Landmark<span className='text-red-500'>*</span></label>
+                            <input type="text" name='holdingNo' className={`${inputStyle}`} placeholder='Enter Landmark.' />
+
+                        </div>
+                        
+                        <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
+                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Pincode<span className='text-red-500'>*</span></label>
+                            <input type="text" name='holdingNo' className={`${inputStyle}`} placeholder='Enter Pincode.' />
+
+                        </div>
+                    </div>
 
                     {/* <div className="col-span-12 text-amber-600 font-semibold mt-4"><BiAddToQueue className="inline" /> Add Floor</div> */}
                     <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
@@ -56,9 +73,8 @@ function Screen5(props) {
                 </div>
 
             </div>
-            <Info infoText="Selecting correct type of the firm will lead to the correct evaluation of the firm and will help you ease up the process in the longer run." />
         </>
     )
 }
 
-export default Screen5
+export default Screen9

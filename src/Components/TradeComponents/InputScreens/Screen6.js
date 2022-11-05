@@ -28,26 +28,22 @@ function Screen6
             </div>
             <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                 <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
-                    <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Nature of Business</h1></div>
-                    <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>Choose Nature of Your Business from the below given list</h1></div>
+                    <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Onwership Type</h1></div>
+                    <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40 capitalize`}>Are You running your business on your own property or is it a rented property. Select relevant options below.</h1></div>
+
                     <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                    
-                    <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Nature of your Business<span className='text-red-500'>*</span></label>
-                        <div className="flex items-center mb-4">
-                            <select name="natureOfBusiness" id="" className={`${inputStyle}`}>
-                                <option value="">SELECT</option>
-                                <option value="">(198) OTHERS</option>
-                                <option value="">(197) CLEANING, CUTTING, GRINDING, MIXING ETC</option>
-                            </select>
-                            {/* <label for="option1" className="ml-2 text-sm font-medium text-gray-900 ">Yes</label> */}
-                        </div>
-                        {/* <div className="flex items-center mb-4">
-                            <input checked id="option2" type="radio" value="" name="residentialType" className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600" />
-                            <label for="option2" className="ml-2 text-sm font-medium text-gray-900 ">No</label>
-                        </div> */}
-
+                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Ownership Type.<span className='text-red-500'>*</span></label>
+                        <select type="text" name='holdingNo' className={`${inputStyle} uppercase`} placeholder='S Your Holding No.' >
+                            <option value="">SELECT</option>
+                            <option value="">OWN PROPERTY</option>
+                            <option value="">ON RENT</option>
+                            <option value="">ON LEASE</option>
+                        </select>
                     </div>
+                    {/* //////////// */}
 
+
+                    {/* <div className="col-span-12 text-amber-600 font-semibold mt-4"><BiAddToQueue className="inline" /> Add Floor</div> */}
                     <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
                         <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
                         <div className="col-span-6"> <button onClick={() => props.nextFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>

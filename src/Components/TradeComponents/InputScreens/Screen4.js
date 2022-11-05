@@ -28,20 +28,18 @@ function Screen4(props) {
             </div>
             <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                 <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
-                    <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Firm Establishment Date</h1></div>
+                    <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Area Of the Firm </h1></div>
                     <div className="col-span-12">
                         <h1 className={` ${titleColor} text-xs opacity-40`}>
-                            Enter the date at which the business was started in the current location
+                            What is the area of the premises, you are running your business on !
                         </h1>
                     </div>
 
                     <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                         <div className="   items-center mb-4">
-
-                            <label for="option1" className={`${labelStyle}`}>Firm Establishment Date</label>
-                            <input id="option1" type="date" value="" name="basementNo" className={`${inputStyle}`} />
+                            <label for="option1" className={`${labelStyle}`}>Plot Area<span className='text-red-500'>*</span></label>
+                            <input id="areaInSqft" type="number" value="" name="areaInSqft" className={`${inputStyle}`} placeholder="Enter area in Sqft." />
                         </div>
-
                     </div>
 
                     <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
