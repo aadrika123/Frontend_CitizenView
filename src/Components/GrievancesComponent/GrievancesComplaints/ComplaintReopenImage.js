@@ -38,11 +38,11 @@ function ComplaintReopenImage
 
                   <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-2">
                      <div className="col-span-6"> <button onClick={()=>props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
-                     <div className="col-span-6"> <button onClick={()=>props.nextFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>
+                     <div className="col-span-6"> <button onClick={()=>props.reopenNext()} type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>
                      <div className="col-span-12 my-4 text-center">
                 {" "}
                 <button
-                  onClick={() => props.nextFun()}
+                  onClick={() => props.reopenNext()}
                   type="submit"
                   className={`text-blue-400 hover:underline hover:text-blue-600`}
                 >

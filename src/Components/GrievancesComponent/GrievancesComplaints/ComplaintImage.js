@@ -4,8 +4,8 @@
 //    Date - 3rd November 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - Screen 7
-//    DESCRIPTION - Screen 7 is single input component
+//    Component  - Complaint Image
+//    DESCRIPTION - Complaint Image is single input component
 //////////////////////////////////////////////////////////////////////////////////////
 
 import { BiAddToQueue } from 'react-icons/bi'

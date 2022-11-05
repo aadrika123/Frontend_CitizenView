@@ -15,8 +15,35 @@ import ThemeStyle from '../../Styles/ThemeStyle'
 import StarsRating from 'stars-rating'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useFormik } from 'formik'
+import apiLinks from "../../GrievancesComponent/Api/GrievanceApi"
+import axios from 'axios'
 
 function ComplaintRate(props) {
+
+  const {rateComplaint} = apiLinks()
+
+  const formik = useFormik({
+    initialValues:{
+      complaintRate: '',
+      complaintRemark: '',
+      complaintComment: ""
+    },
+
+    onSubmit: (values) => {
+      console.log("values => ", values)
+      funSubmit(values)
+    }
+  })
+
+  const funSubmit = (values) => {
+    axios.post(rateComplaint, values)
+    .then((res) => {
+      props.submitRate()
+      console.log("success rated...")
+    })
+    .catch((err) => console.log(err))
+  }
 
   const navigate = useNavigate()
 
@@ -40,7 +67,7 @@ function ComplaintRate(props) {
           </span>
         </div>
       </div>
-      <div className="p-2 md:p-10 flex justify-center items-center  overflow-hidden">
+      <form onSubmit={formik.handleSubmit} onChange={formik.handleChange} className="p-2 md:p-10 flex justify-center items-center  overflow-hidden">
         <div
           className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}
         >
@@ -59,10 +86,12 @@ function ComplaintRate(props) {
   size={50}
   color2={'#ffd700'} 
   color1= {'#cccccc'}
-  edit={true} />
+  name="complaintRate"
+  edit={true} 
+  value={formik.values.complaintRate = rateValue}/>
             </div>
   <div className='text-xl font-bold bg-yellow-400 px-4 py-1 mt-2 shadow-md rounded-md'>
-    {rateValue}
+    {formik.values.complaintRate}
   </div>
           </div>
           <div className="col-span-12">
@@ -76,8 +105,8 @@ function ComplaintRate(props) {
               <input
                 id="option1"
                 type="checkbox"
-                value=""
-                name="complaintRating"
+                value="Services"
+                name="complaintRemark"
                 className="w-6 h-6 text-blue-600 cursor-pointer bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
               />
               <label
@@ -91,8 +120,8 @@ function ComplaintRate(props) {
               <input
                 id="option2"
                 type="checkbox"
-                value=""
-                name="complaintRating"
+                value="Resolution Time"
+                name="complaintRemark"
                 className="w-6 h-6 text-blue-600 cursor-pointer bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
               />
               <label
@@ -106,8 +135,8 @@ function ComplaintRate(props) {
               <input
                 id="option3"
                 type="checkbox"
-                value=""
-                name="complaintRating"
+                value="Quality of Work"
+                name="complaintRemark"
                 className="w-6 h-6 text-blue-600 cursor-pointer bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
               />
               <label
@@ -121,8 +150,8 @@ function ComplaintRate(props) {
               <input
                 id="option4"
                 type="checkbox"
-                value=""
-                name="complaintRating"
+                value="Others"
+                name="complaintRemark"
                 className="w-6 h-6 text-blue-600 cursor-pointer bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
               />
               <label
@@ -137,7 +166,7 @@ function ComplaintRate(props) {
            {/* Comments */}
         <div className="form-group col-span-12">
                         <label className="form-label inline-block mb-1 font-semibold">Comments</label>
-                        <textarea type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                        <textarea name='complaintComment' value={formik.values.complaintComment} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                              />
 
                     </div>
@@ -147,7 +176,6 @@ function ComplaintRate(props) {
               {" "}
               <button
                 onClick={() => props.backFun()}
-                type="submit"
                 className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
               >
                 Back
@@ -156,7 +184,6 @@ function ComplaintRate(props) {
             <div className="col-span-6">
               {" "}
               <button
-                onClick={() => props.submitRate()}
                 type="submit"
                 className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
               >
@@ -165,7 +192,7 @@ function ComplaintRate(props) {
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </>
 
     )

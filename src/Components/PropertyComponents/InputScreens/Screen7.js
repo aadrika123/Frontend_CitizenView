@@ -24,8 +24,8 @@ function Screen7(props) {
          </div>
           <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
               <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
-                  <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Do you know the pincode ?</h1></div>
-                  <div className="col-span-12"> <h1 className={` ${titleColor} text-sm my-4 opacity-40`}>If you know the pincode of the property, provide below. It will helop us identify property location easily.</h1></div>
+                  <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Do you know the complaintPincode ?</h1></div>
+                  <div className="col-span-12"> <h1 className={` ${titleColor} text-sm my-4 opacity-40`}>If you know the complaintPincode of the property, provide below. It will helop us identify property location easily.</h1></div>
                   <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                   <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Pin Code</label>
 

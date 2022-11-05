@@ -70,6 +70,7 @@ function ComplaintSummary(props) {
           </div>
           <hr />
           <div className="col-span-12 w-full flex flex-wrap my-1">
+          <div className="col-span-6 text-sm font-bold text-zinc-800  w-1/2 ">Filed Date</div>
             <div className="col-span-6 text-sm w-1/2 ">4-Feb-2021</div>
           </div>
           <hr />
