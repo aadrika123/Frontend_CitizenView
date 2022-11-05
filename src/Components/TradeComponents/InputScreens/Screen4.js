@@ -1,21 +1,25 @@
 //////////////////////////////////////////////////////////////////////////////////////
-//    Author - Dipu Kumar Singh
+//    Author - Talib Hussain
 //    Version - 1.0
-//    Date - 03 november 2022
+//    Date - 02 november 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - Screen9
-//    DESCRIPTION - Scrren7 is single input component
+//    Component  - Screen1
+//    DESCRIPTION - Scrren 1 is single input component
 //////////////////////////////////////////////////////////////////////////////////////
 
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
+import Info from '../../Common/Info'
+import CommonStyles from '../../IndividualRoutes/CommonStyles'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 
-function Screen9(props) {
+function Screen4(props) {
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
+
+    const { labelStyle, inputStyle } = CommonStyles();
     return (
         <>
             <div className='text-xs font-semibold px-2 mt-4 flex'>
@@ -24,14 +28,17 @@ function Screen9(props) {
             </div>
             <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                 <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
-                    <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Property Details</h1></div>
-                    <div className="col-span-12"> <h1 className={` ${titleColor} text-sm mt-2 opacity-40`}>Provide the landmark to help us react the property location easily.</h1></div>
+                    <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Area Of the Firm </h1></div>
+                    <div className="col-span-12">
+                        <h1 className={` ${titleColor} text-xs opacity-40`}>
+                            What is the area of the premises, you are running your business on !
+                        </h1>
+                    </div>
+
                     <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                        
-                        <div>
-                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Landmark<span className='text-red-500'>*</span></label>
-                            {/* <input type="textarea" /> */}
-                        <textarea name="" id="" rows="3" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"></textarea>
+                        <div className="   items-center mb-4">
+                            <label for="option1" className={`${labelStyle}`}>Plot Area<span className='text-red-500'>*</span></label>
+                            <input id="areaInSqft" type="number" value="" name="areaInSqft" className={`${inputStyle}`} placeholder="Enter area in Sqft." />
                         </div>
                     </div>
 
@@ -42,8 +49,9 @@ function Screen9(props) {
                 </div>
 
             </div>
+            <Info infoText="Select independent building if you're assessing for the complete constructed area of the property" />
         </>
     )
 }
 
-export default Screen9
+export default Screen4

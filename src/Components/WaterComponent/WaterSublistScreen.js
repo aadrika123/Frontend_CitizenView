@@ -52,12 +52,15 @@ function WaterSublist() {
 
                     {/* {******  PAY WATER & SEWERAGE BILL *********} */}
                     <div className="col-span-12 flex flex-row w-full  bg-gray-50 p-4 shadow-md text-sm mx-auto ">
-                        <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class={`w-6 h-6 ${iconColor}`}>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 8.25H9m6 3H9m3 6l-3-3h1.5a3 3 0 100-6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-
-                        </span>
-                        <h1 className={`font-semibold ${titleColor} ml-2  `}>Pay Water & Sewerage Bill</h1>
+                        <Link to='/water-payBill'>
+                            <div className='flex flex-row'>
+                                <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class={`w-6 h-6 ${iconColor}`}>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 8.25H9m6 3H9m3 6l-3-3h1.5a3 3 0 100-6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                </span>
+                                <h1 className={`font-semibold ${titleColor} ml-2  `}>Pay Water & Sewerage Bill</h1>
+                            </div>
+                        </Link>
                     </div>
 
                     {/* {******  MY CONNECTION *********} */}
@@ -90,11 +93,15 @@ function WaterSublist() {
 
                     {/* {******  PAST PAYMENT *********} */}
                     <div className="col-span-12 flex flex-row w-full  bg-gray-50 p-4 shadow-md text-sm mx-auto ">
-                        <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class={`w-6 h-6 ${iconColor}`}>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 8.25H9m6 3H9m3 6l-3-3h1.5a3 3 0 100-6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        </span>
-                        <h1 className={`font-semibold ${titleColor} ml-2  `}>Past Payment</h1>
+                        <Link to='/water-pastPayment'>
+                            <div className='flex flex-row'>
+                                <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class={`w-6 h-6 ${iconColor}`}>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 8.25H9m6 3H9m3 6l-3-3h1.5a3 3 0 100-6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                </span>
+                                <h1 className={`font-semibold ${titleColor} ml-2  `}>Past Payment</h1>
+                            </div>
+                        </Link>
                     </div>
 
                     {/* {******  HOW IT WORK *********} */}

@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 
 function BottomNavigation(props) {
     return (
-        <div className='w-full fixed bottom-0 h-16 flex justify-evenly shadow bg-white'>
+        <div className='w-full md:w-1/3 lg:1/3 md:mx-auto lg:mx-auto fixed bottom-0 h-16 flex justify-evenly shadow bg-white'>
             <div className=' hover:bg-stone-100' onClick={()=>{props.setShowModuleFun('INITIAL')}}>
                 <img src={home} alt="" className='ml-2 h-8 w-8' title='HOME' />
                 <p className='font-bold'><Link to="/">Home</Link> </p>
