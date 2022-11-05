@@ -57,11 +57,11 @@ function NewApplication() {
 
             {/* Business Description */}
             {formIndex == 10 && <Screen10 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-            
+
             {/* Nature Of business */}
             {formIndex == 11 && <Screen11 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
 
-            {/* Nature Of business */}
+            {/* Owner Details */}
             {formIndex == 12 && <Screen12 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
 
         </>

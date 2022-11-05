@@ -10,11 +10,8 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "formik": "^2.2.9",
-<<<<<<< HEAD
-    "multiselect-react-dropdown": "^2.0.25",
-=======
     "json-server": "^0.17.1",
->>>>>>> fa561eae331bd2fefa680133a802a1fa4cabfbfc
+    "multiselect-react-dropdown": "^2.0.25",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.39.1",
