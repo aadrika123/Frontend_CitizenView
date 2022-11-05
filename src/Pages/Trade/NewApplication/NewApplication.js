@@ -12,6 +12,8 @@ import Screen7 from '../../../Components/TradeComponents/InputScreens/Screen7'
 import Screen8 from '../../../Components/TradeComponents/InputScreens/Screen8'
 import Screen11 from '../../../Components/TradeComponents/InputScreens/Screen11'
 import Screen12 from '../../../Components/TradeComponents/InputScreens/Screen12'
+import Screen13 from '../../../Components/TradeComponents/InputScreens/Screen13'
+import Screen14 from '../../../Components/TradeComponents/InputScreens/Screen14'
 
 
 function NewApplication() {
@@ -63,6 +65,12 @@ function NewApplication() {
 
             {/* Owner Details */}
             {formIndex == 12 && <Screen12 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
+
+            {/* License For Details */}
+            {formIndex == 13 && <Screen13 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
+
+            {/* Success Screen */}
+            {formIndex == 14 && <Screen14 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
 
         </>
     )
