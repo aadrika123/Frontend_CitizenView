@@ -24,7 +24,7 @@ function Screen9(props) {
             </div>
             <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                 <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
-                    <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Property Details</h1></div>
+                    <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Provide Landmark</h1></div>
                     <div className="col-span-12"> <h1 className={` ${titleColor} text-sm mt-2 opacity-40`}>Provide the landmark to help us react the property location easily.</h1></div>
                     <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                         

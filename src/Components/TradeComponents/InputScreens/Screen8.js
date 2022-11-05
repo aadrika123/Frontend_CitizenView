@@ -10,6 +10,7 @@
 
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
+import Info from '../../Common/Info'
 import CommonStyles from '../../IndividualRoutes/CommonStyles'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
@@ -26,7 +27,7 @@ function Screen8(props) {
             </div>
             <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                 <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
-                    <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Coose Your Ward No.</h1></div>
+                    <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Choose Your Ward No.</h1></div>
                     <div className="col-span-12"> <h1 className={` ${titleColor} text-sm mt-2 opacity-40`}>Provide ward details of your business ..</h1></div>
                     <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                         <div>
@@ -57,6 +58,9 @@ function Screen8(props) {
                 </div>
 
             </div>
+
+
+            <Info infoText="The current ward No. and the previos ward No. indicates the changes that has been in the ULB'S ward System." />
         </>
     )
 }

@@ -10,6 +10,7 @@
 
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
+import Info from '../../Common/Info';
 import CommonStyles from '../../IndividualRoutes/CommonStyles';
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
@@ -51,6 +52,7 @@ function Screen7(props) {
                 </div>
 
             </div>
+            <Info infoText="Business Category." />
         </>
     )
 }

@@ -1,6 +1,7 @@
 
 import { useState } from 'react'
-import Screen9 from '../../../Components/PropertyComponents/InputScreens/Screen9'
+import Screen10 from '../../../Components/TradeComponents/InputScreens/Screen10'
+import Screen9 from '../../../Components/TradeComponents/InputScreens/Screen9'
 import Screen1 from '../../../Components/TradeComponents/InputScreens/Screen1'
 import Screen2 from '../../../Components/TradeComponents/InputScreens/Screen2'
 import Screen3 from '../../../Components/TradeComponents/InputScreens/Screen3'
@@ -9,6 +10,8 @@ import Screen5 from '../../../Components/TradeComponents/InputScreens/Screen5'
 import Screen6 from '../../../Components/TradeComponents/InputScreens/Screen6'
 import Screen7 from '../../../Components/TradeComponents/InputScreens/Screen7'
 import Screen8 from '../../../Components/TradeComponents/InputScreens/Screen8'
+import Screen11 from '../../../Components/TradeComponents/InputScreens/Screen11'
+import Screen12 from '../../../Components/TradeComponents/InputScreens/Screen12'
 
 
 function NewApplication() {
@@ -51,6 +54,15 @@ function NewApplication() {
 
             {/* Premises owner details */}
             {formIndex == 9 && <Screen9 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
+
+            {/* Business Description */}
+            {formIndex == 10 && <Screen10 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
+            
+            {/* Nature Of business */}
+            {formIndex == 11 && <Screen11 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
+
+            {/* Nature Of business */}
+            {formIndex == 12 && <Screen12 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
 
         </>
     )
