@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Screen10 from '../../../Components/TradeComponents/InputScreens/Screen10'
 import Screen9 from '../../../Components/TradeComponents/InputScreens/Screen9'
 import Screen1 from '../../../Components/TradeComponents/InputScreens/Screen1'
@@ -14,9 +14,16 @@ import Screen11 from '../../../Components/TradeComponents/InputScreens/Screen11'
 import Screen12 from '../../../Components/TradeComponents/InputScreens/Screen12'
 import Screen13 from '../../../Components/TradeComponents/InputScreens/Screen13'
 import Screen14 from '../../../Components/TradeComponents/InputScreens/Screen14'
+import { contextVar } from '../../../Components/GlobalState/ContextVar'
 
 
 function NewApplication() {
+
+    const globalData = useContext(contextVar)
+    useEffect(() => {
+        globalData.setModule('TRADE');
+    }, [])
+
     //formIndex variable to hold number of screen to show in form
     const [formIndex, setFormIndex] = useState(1)
 

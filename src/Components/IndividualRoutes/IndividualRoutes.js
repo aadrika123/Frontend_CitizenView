@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import CommonStyles from './CommonStyles'
 
 import { Link } from 'react-router-dom';
@@ -9,13 +9,20 @@ import TradeMenuList from './MenuList/TradeMenuList'
 import WaterMenuList from './MenuList/WaterMenuList'
 import GrievancMenuList from './MenuList/GrievancMenuList'
 import InitialMenuList from './MenuList/InitialMenuList'
-import TopBlock from './TopBlock'
+import TopBlock from './TopBlock';
+import { contextVar } from '../GlobalState/ContextVar';
 
 
 function IndividualRoutes() {
     const child = { width: `300em`, height: `100%` }
     const { container, boxStyle } = CommonStyles();
     const [showModule, setShowModule] = useState('INITIAL');
+    
+    const globalData = useContext(contextVar);
+    useEffect(() => {
+        globalData.setModule('JUIDCO')
+    }, [])
+
 
     return (
         <div className={`${container}`}>
@@ -102,11 +109,11 @@ function IndividualRoutes() {
             <HorizontalScrollScreen showModule={showModule} setShowModuleFun={setShowModule} />
 
             <div className='bg-white my-auto h-64 md:h-80 overflow-auto mt-4'>
-                { showModule == 'INITIAL'       &&<> <InitialMenuList />    </> }
-                { showModule == 'PROPERTY'      &&<> <PropertyMenuList />   </> }
-                { showModule == 'TRADE'         &&<> <TradeMenuList />      </> }
-                { showModule == 'WATER'         &&<> <WaterMenuList />      </> }
-                { showModule == 'GRIEVANCES'    &&<> <GrievancMenuList />   </> }
+                {showModule == 'INITIAL' && <> <InitialMenuList />    </>}
+                {showModule == 'PROPERTY' && <> <PropertyMenuList />   </>}
+                {showModule == 'TRADE' && <> <TradeMenuList />      </>}
+                {showModule == 'WATER' && <> <WaterMenuList />      </>}
+                {showModule == 'GRIEVANCES' && <> <GrievancMenuList />   </>}
             </div>
 
             {/* Bottom Navigation */}

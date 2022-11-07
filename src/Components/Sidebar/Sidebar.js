@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
 function Sidebar(props) {
 
@@ -6,8 +6,15 @@ function Sidebar(props) {
         props.showSidebar();
     }
 
+    const componentRef = useRef();
+    useEffect(() => {
+
+        console.log(componentRef);
+    }, []);
+
+
     return (
-        <body class={`font-poppins antialiased absolute top-10 left-0 z-20 transition-all duration-500 ease-in-out ${props.show ? '' : ' -translate-x-full'}`} onMouseLeave={contaractSidebar}>
+        <body class={`font-poppins antialiased absolute top-10 left-0 z-20 transition-all duration-500 ease-in-out ${props.show ? '' : ' -translate-x-full'}`} onBlur={contaractSidebar}  ref={componentRef} id="sidebarBody">
             <div id="view" class="h-full w-screen flex flex-row" x-data="{ sidenav: true }" >
                 <div id="sidebar" class="bg-white h-screen md:block shadow-xl px-3 w-48 md:w-60 lg:w-60 overflow-x-hidden transition-transform duration-300 ease-in-out" x-show="sidenav" >
                     <div class="space-y-6 md:space-y-10 mt-10">

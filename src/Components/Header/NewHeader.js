@@ -9,14 +9,12 @@ import { contextVar } from '../GlobalState/ContextVar'
 function NewHeader(props) {
 
     const globalData = useContext(contextVar);
-
     const { headerBgColor } = CommonStyles();
-
     const handleClick = () => {
         props.showSidebar()
     }
 
-    console.log("globalVals", globalData?.values.moduleName)
+    console.log("globalVals", globalData)
 
 
     return (
@@ -39,6 +37,7 @@ function NewHeader(props) {
 
                     }
                 </button>
+                <h1 className='font-bold text-teal-400 text-lg'>{globalData.moduleName}</h1>
                 <img src={logo} alt="" className='h-8 w-8' />
 
             </h1>

@@ -13,13 +13,14 @@ import GrievancesRoutes from './Pages/Grievances/GrievancesRoutes';
 import IndividualRoutes from './Components/IndividualRoutes/IndividualRoutes';
 import NewHeader from './Components/Header/NewHeader';
 import Sidebar from './Components/Sidebar/Sidebar';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { contextVar } from './Components/GlobalState/ContextVar';
 
 
 function App() {
   const [sideShow, setsideShow] = useState(false);
   const [moduleName, setmoduleName] = useState("JUIDCO")
+  const [sidebarBody, setsidebarBody] = useState('')
   const setHeader = (e) => {
     // console.log(e.target)
     sideShow ? setsideShow(false) : setsideShow(true);
@@ -35,12 +36,13 @@ function App() {
   }
   console.log("values ", globals)
 
+
   return (
     <>
-      <contextVar.Provider values={globals} >
+      <contextVar.Provider value={globals} >
         <BrowserRouter>
           <NewHeader showSidebar={setHeader} show={sideShow} />
-          <Sidebar showSidebar={setHeader} show={sideShow} />
+          <Sidebar showSidebar={setHeader} show={sideShow} sidebarBody={sidebarBody} sidebarBodyFun={setsidebarBody} />
           <div className={`${sideShow ? 'opacity-70' : ''}`}>
             <Routes>
               <Route path="/" element={<IndividualRoutes />} />
