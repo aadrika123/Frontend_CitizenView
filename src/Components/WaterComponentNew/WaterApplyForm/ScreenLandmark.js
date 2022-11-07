@@ -25,7 +25,7 @@ function ScreenLandmark(props) {
 
     const validationSchema = yup.object(
         {
-            landMark: yup.string().required(),
+            landMark: yup.string().required("This is a required field !"),
         }
     );
 
@@ -35,9 +35,9 @@ function ScreenLandmark(props) {
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
-            props.CollectScreenDataFun("screen value to be passed 1", values)
+            props.CollectScreenDataFun("landmark", values)
             props.nextFun()
-            console.log("ScreenTotalArea value 2", values)
+            console.log("landmark", values)
         },
         validationSchema
     });
@@ -53,8 +53,9 @@ function ScreenLandmark(props) {
                                 <div className="col-span-12">
                                     <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Landmark</label>
                                 </div>
-                                <div className="flex items-center mb-4">
+                                <div className=" items-center mb-4">
                                     <textarea name="landMark" className={`${inputStyle}`} placeholder="What does your firm do. Tell us about the services you offer !" value={formik.values.landMark} onChange={formik.handleChange}></textarea>
+                                    <p className='text-red-500 text-xs'>{formik.touched.landMark && formik.errors.landMark ? formik.errors.landMark : null}</p>
                                 </div>
 
                             </div>

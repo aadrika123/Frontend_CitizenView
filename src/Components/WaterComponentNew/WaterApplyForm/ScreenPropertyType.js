@@ -27,9 +27,10 @@ function ScreenPropertyType(props) {
 
     const validationSchema = yup.object(
         {
-            typeOfProperty: yup.string().required(),
-            // categoryType: yup.string().required(),
-            // categoryType: yup.string().required(),
+            typeOfProperty: yup.string().required("This is a required field !"),
+            categoryType: yup.string().when("typeOfProperty", { is: (typeOfProperty) => typeOfProperty == "1" , then: yup.string().required('This is a required field !') }),
+            pipelineType: yup.string().when("typeOfProperty", { is: (typeOfProperty) => typeOfProperty == "1" , then: yup.string().required('This is a required field !') }),
+           
         }
     );
 
@@ -41,9 +42,9 @@ function ScreenPropertyType(props) {
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
-            props.CollectScreenDataFun("screen value to be passed 1", values)
+            props.CollectScreenDataFun("PropType", values)
             props.nextFun()
-            console.log("ScreenPropType value 2", values)
+            console.log("PropType", values)
         },
 
         validationSchema
@@ -79,6 +80,7 @@ function ScreenPropertyType(props) {
                                         <option value="6">Industrial</option>
                                         <option value="7">Appartment/Multi Stored unit</option>
                                     </select>
+                                    <p className='text-red-500 text-xs'>{formik.touched.typeOfProperty && formik.errors.typeOfProperty ? formik.errors.typeOfProperty : null}</p>
                                 </div>
 
                                 <div className={`${residentialTypeToggle ? 'grid' : 'hidden'}`}>
@@ -90,6 +92,7 @@ function ScreenPropertyType(props) {
                                             <option value="1">APL</option>
                                             <option value="2">BPL</option>
                                         </select>
+                                        <p className='text-red-500 text-xs'>{formik.touched.categoryType && formik.errors.categoryType ? formik.errors.categoryType : null}</p>
                                     </div>
                                     <div className=" items-center mb-4">
                                         <div className="col-span-12"> <h1 className={` ${titleColor} text-md`}>Pipeline Type</h1></div>
@@ -98,6 +101,7 @@ function ScreenPropertyType(props) {
                                             <option value="1">New Pipline</option>
                                             <option value="2">Old Pipeline</option>
                                         </select>
+                                        <p className='text-red-500 text-xs'>{formik.touched.pipelineType && formik.errors.pipelineType ? formik.errors.pipelineType : null}</p>
                                     </div>
                                 </div>
 

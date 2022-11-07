@@ -24,7 +24,7 @@ function ScreenOwnerType(props) {
 
     const validationSchema = yup.object(
         {
-            typeOfOwner: yup.string().required(),
+            typeOfOwner: yup.string().required("This is a required field !"),
 
         }
     );
@@ -34,9 +34,9 @@ function ScreenOwnerType(props) {
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
-            props.CollectScreenDataFun("screen value to be passed 1", values)
+            props.CollectScreenDataFun("ownerType", values)
             props.nextFun(5)
-            console.log("ScreenTypeOfOwner value 2", values)
+            console.log("ownerType ", values)
         },
         validationSchema
     });
@@ -59,6 +59,7 @@ function ScreenOwnerType(props) {
                                             <option value="1">Owner</option>
                                             <option value="2">Tenant</option>
                                         </select>
+                                        <p className='text-red-500 text-xs'>{formik.touched.typeOfOwner && formik.errors.typeOfOwner ? formik.errors.typeOfOwner : null}</p>
                                     </div>
                                 </div>
                             </div>

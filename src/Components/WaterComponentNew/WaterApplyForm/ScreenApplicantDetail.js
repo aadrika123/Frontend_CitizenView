@@ -47,7 +47,7 @@ function ScreenApplicantDetail(props) {
     }
 
     const submitRecord = () => {
-        props.CollectScreenDataFun("screen Applicant Detail", ownerRecord)
+        props.CollectScreenDataFun("applicantList", ownerRecord)
         props.nextFun(13)
     }
 
@@ -59,9 +59,6 @@ function ScreenApplicantDetail(props) {
             emailId: '',
         },
         onSubmit: (values, { setSubmitting, resetForm }) => {
-            // props.CollectScreenDataFun("screen value to be passed 1", values)
-
-            // props.nextFun(13)
             resetForm();
             setOwnerRecord([...ownerRecord, values]);
 
@@ -70,7 +67,7 @@ function ScreenApplicantDetail(props) {
     });
 
 
-    console.log("owner record value 2", ownerRecord)
+    console.log("applicantList", ownerRecord)
     return (
         <>
             <div>

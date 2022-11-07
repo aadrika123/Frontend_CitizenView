@@ -26,7 +26,9 @@ function ScreenConnectionThrough(props) {
 
     const validationSchema = yup.object(
         {
-            connectionThrough: yup.string().required(),
+            connectionThrough: yup.string().required("This is a required field !"),
+            holdingNo: yup.string().when("connectionThrough", { is: "1", then: yup.string().required("This is a required field !") }),
+            safNo: yup.string().when("connectionThrough", { is: "2", then: yup.string().required("This is a required field !") })
         }
     );
 
@@ -35,12 +37,13 @@ function ScreenConnectionThrough(props) {
             connectionThrough: '',
             holdingNo: '',
             safNo: '',
+
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
-            props.CollectScreenDataFun("screen value to be passed 1", values)
+            props.CollectScreenDataFun("connectionThrough", values)
             props.nextFun()
-            console.log("ScreenConnThrough value 2", values)
+            // console.log("ScreenConnThrough value 2", values)
         },
         validationSchema
     });
@@ -72,20 +75,23 @@ function ScreenConnectionThrough(props) {
                                         <option value="2">SAF</option>
                                         <option value="3">ID Proof</option>
                                     </select>
+                                    <p className='text-red-500 text-xs'>{formik.touched.connectionThrough && formik.errors.connectionThrough ? formik.errors.connectionThrough : null}</p>
                                 </div>
                             </div>
                             <div className={`form-group mb-4 md:mb-6 col-span-12 mt-4 text-gray-600 font-semibold ${connThroughHolding ? 'grid' : 'hidden'}`}>
                                 <div className={``}>
                                     <div className="col-span-12"> <h1 className={` ${titleColor} text-md`}>Holding No</h1></div>
                                     <input type="text" name="holdingNo" className={`${inputStyle}`} placeholder="Search With Holding No" value={formik.values.holdingNo} onChange={formik.handleChange} />
+                                    <p className='text-red-500 text-xs'>{formik.touched.holdingNo && formik.errors.holdingNo ? formik.errors.holdingNo : null}</p>
                                 </div>
                             </div>
 
-                      
+
                             <div className={`form-group mb-4 md:mb-6 col-span-12 mt-4 text-gray-600 font-semibold ${connThroughSaf ? 'grid' : 'hidden'}`}>
                                 <div className=" items-center mb-4">
                                     <div className="col-span-12"> <h1 className={` ${titleColor} text-md`}>SAF</h1></div>
                                     <input type="text" name="safNo" className={`${inputStyle} `} placeholder="Search With SAF No" value={formik.values.safNo} onChange={formik.handleChange} />
+                                    <p className='text-red-500 text-xs'>{formik.touched.safNo && formik.errors.safNo ? formik.errors.safNo : null}</p>
                                 </div>
                             </div>
 

@@ -26,7 +26,7 @@ function ScreenBindBookNo(props) {
 
     const validationSchema = yup.object(
         {
-            bindBookNo: yup.string().required(),
+            bindBookNo: yup.string().required("This is a required field !"),
         }
     );
 
@@ -37,9 +37,9 @@ function ScreenBindBookNo(props) {
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
-            props.CollectScreenDataFun("screen value to be passed 1", values)
+            props.CollectScreenDataFun("bindBookNo", values)
             props.nextFun()
-            console.log("Screen khata no value 2", values)
+            console.log("bindBookNo", values)
         },
         validationSchema
     });
@@ -55,9 +55,9 @@ function ScreenBindBookNo(props) {
                                 <div className="col-span-12">
                                     <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Bind Book No.</label>
                                 </div>
-                                <div className="flex items-center mb-4">
+                                <div className=" items-center mb-4">
                                 <input type="text" name="bindBookNo" className={`${inputStyle}`} placeholder="Enter bind Book No" value={formik.values.bindBookNo} onChange={formik.handleChange} />
-                                   
+                                <p className='text-red-500 text-xs'>{formik.touched.bindBookNo && formik.errors.bindBookNo ? formik.errors.bindBookNo : null}</p>
                                 </div>
 
                             </div>

@@ -26,7 +26,7 @@ function ScreenAccountNo(props) {
 
     const validationSchema = yup.object(
         {
-            accountNo: yup.string().required(),
+            accountNo: yup.string().required("This is a required field !"),
         }
     );
 
@@ -36,9 +36,9 @@ function ScreenAccountNo(props) {
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
-            props.CollectScreenDataFun("screen value to be passed 1", values)
+            props.CollectScreenDataFun("accountNo", values)
             props.nextFun(16)
-            console.log("Screen account no 2", values)
+            console.log("accountNo", values)
         },
 
         validationSchema
@@ -55,8 +55,9 @@ function ScreenAccountNo(props) {
                                 <div className="col-span-12">
                                     <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Account No.</label>
                                 </div>
-                                <div className="flex items-center mb-4">
+                                <div className=" items-center mb-4">
                                 <input type="text" name="accountNo" className={`${inputStyle}`} placeholder="Enter Account No" value={formik.values.accountNo} onChange={formik.handleChange} />
+                                <p className='text-red-500 text-xs'>{formik.touched.accountNo && formik.errors.accountNo ? formik.errors.accountNo : null}</p>
                                 </div>
 
                             </div>

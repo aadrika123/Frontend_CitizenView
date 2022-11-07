@@ -26,7 +26,7 @@ function ScreenTotalArea(props) {
 
     const validationSchema = yup.object(
         {
-            totalArea: yup.number().required("Enter Total Area"),
+            totalArea: yup.number().required("This is a required field !"),
         }
     );
 
@@ -36,9 +36,9 @@ function ScreenTotalArea(props) {
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
-            props.CollectScreenDataFun("screen value to be passed 1", values)
+            props.CollectScreenDataFun("totalArea", values)
             props.nextFun(8)
-            console.log("ScreenTotalArea value 2", values)
+            console.log("totalArea", values)
         },
         validationSchema
     });
@@ -53,6 +53,7 @@ function ScreenTotalArea(props) {
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                                 <div className="col-span-12"> <h1 className={` ${titleColor} text-md`}>Total Area(in sq. Ft)</h1></div>
                                 <input type="text" name="totalArea" className={`${inputStyle}`} placeholder="Enter total area" value={formik.values.totalArea} onChange={formik.handleChange} />
+                                <p className='text-red-500 text-xs'>{formik.touched.totalArea && formik.errors.totalArea ? formik.errors.totalArea : null}</p>
                             </div>
                             <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
                                 <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>

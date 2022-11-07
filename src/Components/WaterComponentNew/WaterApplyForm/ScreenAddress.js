@@ -27,7 +27,7 @@ function ScreenAddress(props) {
 
     const validationSchema = yup.object(
         {
-            address: yup.string().required(),
+            address: yup.string().required("This is a required field !"),
         }
     );
     const formik = useFormik({
@@ -36,9 +36,9 @@ function ScreenAddress(props) {
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
-            props.CollectScreenDataFun("screen value to be passed 1", values)
+            props.CollectScreenDataFun("address", values)
             props.nextFun(11)
-            console.log("ScreenAddress value 2", values)
+            console.log("address", values)
         },
         validationSchema
     });
@@ -56,8 +56,9 @@ function ScreenAddress(props) {
                                 <div className="col-span-12">
                                     <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Address</label>
                                 </div>
-                                <div className="flex items-center mb-4">
+                                <div className=" items-center mb-4">
                                 <textarea type="text" name="address" className={`${inputStyle}`} placeholder="Enter Address" value={formik.values.address} onChange={formik.handleChange} />
+                                <p className='text-red-500 text-xs'>{formik.touched.address && formik.errors.address ? formik.errors.address : null}</p>
                                  
                                 </div>
 

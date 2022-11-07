@@ -26,7 +26,7 @@ function ScreenPin(props) {
 
     const validationSchema = yup.object(
         {
-            pinCode: yup.string().required(),
+            pinCode: yup.string().required("This is a required field !"),
         }
     );
 
@@ -36,9 +36,9 @@ function ScreenPin(props) {
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
-            props.CollectScreenDataFun("screen value to be passed 1", values)
+            props.CollectScreenDataFun("pin", values)
             props.nextFun(10)
-            console.log("ScreenPin value 2", values)
+            console.log("pin", values)
         },
         validationSchema
     });
@@ -56,8 +56,9 @@ function ScreenPin(props) {
                                 <div className="col-span-12">
                                     <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pin</label>
                                 </div>
-                                <div className="flex items-center mb-4">
+                                <div className=" items-center mb-4">
                                     <input type="text" name="pinCode" className={`${inputStyle}`} placeholder="Enter Pin code" value={formik.values.pinCode} onChange={formik.handleChange} />
+                                    <p className='text-red-500 text-xs'>{formik.touched.pinCode && formik.errors.pinCode ? formik.errors.pinCode : null}</p>
                                 </div>
                             </div>
                             <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">

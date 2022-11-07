@@ -25,7 +25,7 @@ function ScreenKhataNo(props) {
 
     const validationSchema = yup.object(
         {
-            khataNo: yup.string().required(),
+            khataNo: yup.string().required("This is a required field !"),
         }
     );
     const formik = useFormik({
@@ -34,9 +34,9 @@ function ScreenKhataNo(props) {
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
-            props.CollectScreenDataFun("screen value to be passed 1", values)
+            props.CollectScreenDataFun("khataNo", values)
             props.nextFun()
-            console.log("Screen khata no value 2", values)
+            console.log("khataNo", values)
         },
         validationSchema
     });
@@ -52,8 +52,9 @@ function ScreenKhataNo(props) {
                                 <div className="col-span-12">
                                     <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Khata No.</label>
                                 </div>
-                                <div className="flex items-center mb-4">
+                                <div className=" items-center mb-4">
                                     <input type="text" name="khataNo" className={`${inputStyle}`} placeholder="Enter No Of Flat" value={formik.values.khataNo} onChange={formik.handleChange} />
+                                    <p className='text-red-500 text-xs'>{formik.touched.khataNo && formik.errors.khataNo ? formik.errors.khataNo : null}</p>
                                 </div>
 
                             </div>

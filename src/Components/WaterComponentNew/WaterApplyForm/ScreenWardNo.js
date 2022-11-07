@@ -25,7 +25,7 @@ function ScreenWardNo(props) {
 
     const validationSchema = yup.object(
         {
-            wardNo: yup.string().required(),
+            wardNo: yup.string().required("This is a required field !"),
         }
     );
     const formik = useFormik({
@@ -34,9 +34,9 @@ function ScreenWardNo(props) {
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
-            props.CollectScreenDataFun("screen value to be passed 1", values)
+            props.CollectScreenDataFun("wardNo", values)
             props.nextFun(7)
-            console.log("ScreenWardNo value 2", values)
+            console.log("wardNo", values)
         },
         validationSchema
     });
@@ -57,6 +57,7 @@ function ScreenWardNo(props) {
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                     </select>
+                                    <p className='text-red-500 text-xs'>{formik.touched.wardNo && formik.errors.wardNo ? formik.errors.wardNo : null}</p>
                                 </div>
                             </div>
 
