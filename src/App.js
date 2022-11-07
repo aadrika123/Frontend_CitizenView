@@ -11,23 +11,51 @@ import TradeRoutes from './Pages/Trade/TradeRoutes';
 import Header from './Components/Header/Header';
 import GrievancesRoutes from './Pages/Grievances/GrievancesRoutes';
 import IndividualRoutes from './Components/IndividualRoutes/IndividualRoutes';
+import NewHeader from './Components/Header/NewHeader';
+import Sidebar from './Components/Sidebar/Sidebar';
+import { useEffect, useRef, useState } from 'react';
+import { contextVar } from './Components/GlobalState/ContextVar';
 
 
 function App() {
+  const [sideShow, setsideShow] = useState(false);
+  const [moduleName, setmoduleName] = useState("JUIDCO")
+  const [sidebarBody, setsidebarBody] = useState('')
+  const setHeader = (e) => {
+    // console.log(e.target)
+    sideShow ? setsideShow(false) : setsideShow(true);
+  }
+
+  window.onclick = () => {
+    // alert("click on dom");
+  }
+
+  const globals = {
+    moduleName: moduleName,
+    setModule: setmoduleName
+  }
+  console.log("values ", globals)
+
+
   return (
     <>
-      <BrowserRouter>
-        {/* <Header /> */}
-        <Routes>
-          <Route path="/" element={<IndividualRoutes />} />
-          <Route index element={<IndividualRoutes />} />
-        </Routes>
+      <contextVar.Provider value={globals} >
+        <BrowserRouter>
+          <NewHeader showSidebar={setHeader} show={sideShow} />
+          <Sidebar showSidebar={setHeader} show={sideShow} sidebarBody={sidebarBody} sidebarBodyFun={setsidebarBody} />
+          <div className={`${sideShow ? 'opacity-70' : ''}`}>
+            <Routes>
+              <Route path="/" element={<IndividualRoutes />} />
+              <Route index element={<IndividualRoutes />} />
+            </Routes>
 
-        <PropertyRoutes />
-        <WaterRoutes />
-        <TradeRoutes />
-        <GrievancesRoutes />
-      </BrowserRouter>
+            <PropertyRoutes />
+            <WaterRoutes />
+            <TradeRoutes />
+            <GrievancesRoutes />
+          </div>
+        </BrowserRouter>
+      </contextVar.Provider>
     </>
   );
 }

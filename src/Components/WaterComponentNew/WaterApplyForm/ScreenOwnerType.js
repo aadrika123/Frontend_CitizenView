@@ -10,6 +10,8 @@
 import { useFormik } from 'formik';
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
+import * as yup from 'yup';
+import CommonStyles from '../../IndividualRoutes/CommonStyles';
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 
@@ -17,7 +19,15 @@ function ScreenOwnerType(props) {
 
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, bgCardColor, bgInfoColor, infoTextColor, backButtonColor, backBtnHoverColor, nextBtnHoverColor } = ThemeStyle()
+    
+    const { labelStyle, inputStyle } = CommonStyles();
 
+    const validationSchema = yup.object(
+        {
+            typeOfOwner: yup.string().required(),
+
+        }
+    );
     const formik = useFormik({
         initialValues: {
             typeOfOwner: '',
@@ -28,6 +38,7 @@ function ScreenOwnerType(props) {
             props.nextFun(5)
             console.log("ScreenTypeOfOwner value 2", values)
         },
+        validationSchema
     });
 
 
@@ -38,32 +49,17 @@ function ScreenOwnerType(props) {
                     <div className='text-xs font-semibold pl-2 mt-4'><span className='border-b border-black'><RiArrowDropLeftFill className="inline text-xl" />Back</span></div>
                     <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                         <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 md:p-10`}>
-                            <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Owner Type</h1></div>
+                            <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>OwnerType </h1></div>
+                            <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>Do you have a notice no to apply with or it's a normal application. select accordingly</h1></div>
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                                <div className="flex items-center mb-4">
-                                    <input
-                                        className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
-                                        type="radio"
-                                        id="owner"
-                                        name="typeOfOwner"
-                                        value="owner"
-                                        onChange={formik.handleChange}
-                                        required
-                                    />
-                                    <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Owner</label>
-
-                                </div>
-                                <div className="flex items-center mb-4">
-                                    <input
-                                        className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
-                                        type="radio"
-                                        id="tenant"
-                                        name="typeOfOwner"
-                                        value="tenant"
-                                        onChange={formik.handleChange}
-                                        required
-                                    />
-                                    <label for="option2" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tenant</label>
+                                <div className="form-group mb-4 md:mb-6 col-span-12 mt-4 text-gray-600 font-semibold">
+                                    <div className={``}>
+                                        <select name="typeOfOwner" className={`${inputStyle}`} value={formik.values.typeOfOwner} onChange={formik.handleChange}>
+                                            <option value="">SELECT</option>
+                                            <option value="1">Owner</option>
+                                            <option value="2">Tenant</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
 

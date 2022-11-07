@@ -8,6 +8,7 @@
 //    DESCRIPTION - Screen 3 is single input component
 //////////////////////////////////////////////////////////////////////////////////////
 
+import { useState } from 'react'
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
 import {BsFillTelephoneFill} from 'react-icons/bs'
@@ -16,6 +17,7 @@ import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timel
 import 'react-vertical-timeline-component/style.min.css';
 
 function ComplaintTimeline(props) {
+
     //destructuring predefined colors to maintain uniform theme everywhere
     const {bgHeaderColor,titleColor,nextButtonColor,nextBtnHoverColor,backButtonColor,backBtnHoverColor,bgCardColor,bgInfoColor,infoTextColor} = ThemeStyle()
     return (
@@ -28,7 +30,8 @@ function ComplaintTimeline(props) {
 
       <div className='text-sm'>
        <VerticalTimeline layout={'1-column-left'}>
-  <VerticalTimelineElement
+ 
+{props.status && <> <VerticalTimelineElement
   contentStyle={{ background: '#D97706dc', color: '#fff', padding: '10px' }}
   contentArrowStyle={{ borderRight: '7px solid #D97706' }}
   position={'right'}
@@ -43,6 +46,7 @@ function ComplaintTimeline(props) {
       </div>
     </div>
   </VerticalTimelineElement>
+ 
   <VerticalTimelineElement
   position={'right'}
   contentStyle={{padding: '10px'}}
@@ -54,6 +58,7 @@ function ComplaintTimeline(props) {
       <div><a href="tel:+919876740214" className='flex items-center space-x-2'><span className='text-[#D97706]'><BsFillTelephoneFill/></span> <span>9876740214</span> </a></div>
     </div>
   </VerticalTimelineElement>
+
   <VerticalTimelineElement
   position={'right'}
   contentStyle={{padding: '10px'}}
@@ -62,6 +67,7 @@ function ComplaintTimeline(props) {
   >
     <p>Pending for assignment</p>
   </VerticalTimelineElement>
+
   <VerticalTimelineElement
   position={'right'}
   contentStyle={{padding: '10px'}}
@@ -70,6 +76,7 @@ function ComplaintTimeline(props) {
   >
     <p>Complaint Resolved</p>
   </VerticalTimelineElement>
+
   <VerticalTimelineElement
   position={'right'}
   contentStyle={{padding: '10px'}}
@@ -80,15 +87,24 @@ function ComplaintTimeline(props) {
       <div>Complaint assigned to UATLME</div>
       <div><a href="tel:+919876740214" className='flex items-center space-x-2'><span className='text-[#D97706]'><BsFillTelephoneFill/></span> <span>9876740214</span> </a></div>
     </div>
-  </VerticalTimelineElement>
-  <VerticalTimelineElement
+  </VerticalTimelineElement> </>}
+
+  {props.status ? <VerticalTimelineElement
  position={'right'}
  contentStyle={{padding: '10px'}}
    className="vertical-timeline-element--work"
    iconStyle={{ background: '#D97706', color: '#fff' }}
-  >
-    <p>Pending for assignment</p>
-  </VerticalTimelineElement>
+  > <p>Pending for assignment</p>
+  </VerticalTimelineElement>: <VerticalTimelineElement
+  contentStyle={{ background: '#D97706dc', color: '#fff', padding: '10px' }}
+  contentArrowStyle={{ borderRight: '7px solid #D97706' }}
+  position={'right'}
+     className="vertical-timeline-element--work"
+     iconStyle={{ background: '#D97706', color: '#fff' }}
+  ><p>Pending for assignment</p>
+  </VerticalTimelineElement>}
+    
+
   <VerticalTimelineElement
  position={'right'}
  contentStyle={{padding: '10px'}}
@@ -97,6 +113,7 @@ function ComplaintTimeline(props) {
   >
       <p>Complaint filed</p>
   </VerticalTimelineElement>
+
 </VerticalTimeline>
 </div>
 

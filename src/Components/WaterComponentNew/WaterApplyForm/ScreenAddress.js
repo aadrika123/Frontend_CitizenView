@@ -1,15 +1,18 @@
 //////////////////////////////////////////////////////////////////////////////////////
 //    Author - Swati Sharma
 //    Version - 1.0
-//    Date - 04 november 2022
+//    Date - 05 november 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - ScreenPropertyType
-//    DESCRIPTION - ScreenPropertyType compomnent 
+//    Component  - ScreenAddress
+//    DESCRIPTION - ScreenAddress compomnent 
 //////////////////////////////////////////////////////////////////////////////////////
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
+import * as yup from 'yup';
+import CommonStyles from '../../IndividualRoutes/CommonStyles';
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 
@@ -19,6 +22,14 @@ function ScreenAddress(props) {
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, bgCardColor, bgInfoColor, infoTextColor, backButtonColor, backBtnHoverColor, nextBtnHoverColor } = ThemeStyle()
 
+
+    const { labelStyle, inputStyle } = CommonStyles();
+
+    const validationSchema = yup.object(
+        {
+            address: yup.string().required(),
+        }
+    );
     const formik = useFormik({
         initialValues: {
             address: '',
@@ -29,6 +40,7 @@ function ScreenAddress(props) {
             props.nextFun(11)
             console.log("ScreenAddress value 2", values)
         },
+        validationSchema
     });
     return (
         <>
@@ -37,18 +49,16 @@ function ScreenAddress(props) {
                     <div className='text-xs font-semibold pl-2 mt-4'><span className='border-b border-black'><RiArrowDropLeftFill className="inline text-xl" />Back</span></div>
                     <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                         <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 md:p-10`}>
-                            <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Address</h1></div>
+                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Address</h1></div>
+                            <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>Do you have a notice no to apply with or it's a normal application. select accordingly</h1></div>
+                            
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                                <div  className="col-span-12">
-                                <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Address</label>
+                                <div className="col-span-12">
+                                    <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Address</label>
                                 </div>
                                 <div className="flex items-center mb-4">
-                                    <input {...formik.getFieldProps('address')}
-                                        className='border bg-gray-50 shadow-md  px-9 ml-2 '
-                                        name='address'
-                                        type="text"
-                                        required
-                                    />
+                                <textarea type="text" name="address" className={`${inputStyle}`} placeholder="Enter Address" value={formik.values.address} onChange={formik.handleChange} />
+                                 
                                 </div>
 
                             </div>

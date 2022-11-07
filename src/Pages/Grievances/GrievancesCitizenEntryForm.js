@@ -8,42 +8,150 @@
 //    DESCRIPTION - Citizen register their complaints
 //////////////////////////////////////////////////////////////////////////////////////
 
-import React, {useState} from 'react'
-import Screen1 from '../../Components/GrievancesComponent/GrievancesForm/Screen1'
-import Screen2 from '../../Components/GrievancesComponent/GrievancesForm/Screen2'
-import Screen3 from '../../Components/GrievancesComponent/GrievancesForm/Screen3'
-import Screen4 from '../../Components/GrievancesComponent/GrievancesForm/Screen4'
-import Screen5 from '../../Components/GrievancesComponent/GrievancesForm/Screen5'
-import Screen6 from '../../Components/GrievancesComponent/GrievancesForm/Screen6'
-import Screen7 from '../../Components/GrievancesComponent/GrievancesForm/Screen7'
-import Screen8 from '../../Components/GrievancesComponent/GrievancesForm/Screen8'
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import ComplaintType from "../../Components/GrievancesComponent/GrievancesForm/ComplaintType";
+import ComplaintSubType from "../../Components/GrievancesComponent/GrievancesForm/ComplaintSubType";
+import ComplaintPincode from "../../Components/GrievancesComponent/GrievancesForm/ComplaintPincode";
+import ComplaintAddress from "../../Components/GrievancesComponent/GrievancesForm/ComplaintAddress";
+import ComplaintLandmark from "../../Components/GrievancesComponent/GrievancesForm/ComplaintLandmark";
+import ComplaintImage from "../../Components/GrievancesComponent/GrievancesForm/ComplaintImage";
+import ComplaintAdditionalDetails from "../../Components/GrievancesComponent/GrievancesForm/ComplaintAdditionalDetails";
+import ComplaintFileSuccess from "../../Components/GrievancesComponent/GrievancesForm/ComplaintFileSuccess";
+// Importing api links
+import apiLinks from "../../Components/GrievancesComponent/Api/GrievanceApi"
 
 const GrievancesCitizenEntryForm = () => {
 
-        //formIndex variable to hold number of screen to show in form
-        const [formIndex, setFormIndex] = useState(1)
+  // storing datas
+  const [storeData, setStoreData] = useState({})
 
-        //backward 1 step from currentIndex
-        const backFun = () => setFormIndex(prev => prev - 1)
-    
-        //forward 1 step from currentIndex
-        const nextFun = () => setFormIndex(prev => prev + 1)
-    
-        console.log('form index',formIndex)
-    
-        return (
-            <>
-                {formIndex == 1 && <Screen1 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-                {formIndex == 2 && <Screen2 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-                {formIndex == 3 && <Screen3 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-                {formIndex == 4 && <Screen4 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-                {formIndex == 5 && <Screen5 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-                {formIndex == 6 && <Screen6 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-                {formIndex == 7 && <Screen7 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-                {formIndex == 8 && <Screen8 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-            </>
-        )
-    }
+  // calling api
+  const{fileComplaint} = apiLinks()
+
+  // collecting data
+  const postData = (data) => {
+    console.log("data get => ",data)
+    setStoreData(Object.assign(storeData,data))
+  };
 
 
-export default GrievancesCitizenEntryForm
+  useEffect(() => {
+    console.log("stored data => ", storeData)
+  }, [postData])
+
+  // submiting complaint data
+  const submitData = (data) => {
+    console.log("data get => ",data)
+    setStoreData(Object.assign(storeData,data))
+
+    // static added data for dummy server api
+    setStoreData(Object.assign(storeData,{complaintStatus: "Open", complaintApplicationStatus: "Pending for assignment", complaintFiledDate: "04-Feb-2021", complaintNo: "PG-PGR-2021-02-04-0005553",}))
+    
+    axios.post(fileComplaint,storeData)
+    .then((response) => {
+        setFormIndex(prev => prev+1)
+        console.log("data posted successfully....", storeData)
+    })
+    .catch((error) => console.log("data post error => ", error))
+  }
+
+  //formIndex variable to hold number of screen to show in form
+  const [formIndex, setFormIndex] = useState(1);
+
+  //backward 1 step from currentIndex
+  const backFun = () => setFormIndex((prev) => prev - 1);
+
+  //forward 1 step from currentIndex
+  const nextFun = () => setFormIndex((prev) => prev + 1);
+
+  console.log("form index", formIndex);
+
+  return (
+    <>
+
+        {/* Complaint Type */}
+        {formIndex == 1 && (
+          <ComplaintType
+            nextFun={nextFun}
+            backFun={backFun}
+            formIndex={formIndex}
+            postData={postData}
+          />
+        )}
+
+        {/* Complaint Sub Type */}
+        {formIndex == 2 && (
+          <ComplaintSubType
+            nextFun={nextFun}
+            backFun={backFun}
+            formIndex={formIndex}
+            postData={postData}
+          />
+        )}
+
+        {/* Complaint Pin Code */}
+        {formIndex == 3 && (
+          <ComplaintPincode
+            nextFun={nextFun}
+            backFun={backFun}
+            formIndex={formIndex}
+            postData={postData}
+          />
+        )}
+
+        {/* Complaint Address */}
+        {formIndex == 4 && (
+          <ComplaintAddress
+            nextFun={nextFun}
+            backFun={backFun}
+            formIndex={formIndex}
+            postData={postData}
+          />
+        )}
+
+        {/* Complaint Landmark */}
+        {formIndex == 5 && (
+          <ComplaintLandmark
+            nextFun={nextFun}
+            backFun={backFun}
+            formIndex={formIndex}
+            postData={postData}
+          />
+        )}
+
+        {/* Complaint Image */}
+        {formIndex == 6 && (
+          <ComplaintImage
+            nextFun={nextFun}
+            backFun={backFun}
+            formIndex={formIndex}
+            postData={postData}
+          />
+        )}
+
+        {/* Complaint Additional Details */}
+        {formIndex == 7 && (
+          <ComplaintAdditionalDetails
+            nextFun={nextFun}
+            backFun={backFun}
+            formIndex={formIndex}
+            submitData={submitData}
+          />
+        )}
+
+        {/* Complaint succes screen */}
+        {formIndex == 8 && (
+          <ComplaintFileSuccess
+            nextFun={nextFun}
+            backFun={backFun}
+            formIndex={formIndex}
+            postData={postData}
+          />
+        )}
+
+    </>
+  );
+};
+
+export default GrievancesCitizenEntryForm;

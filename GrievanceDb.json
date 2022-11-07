@@ -1,0 +1,92 @@
+{
+  "fileComplaint": [
+    {
+      "complaintType": "Streetlights",
+      "complaintSubType": "Burning of Garbage",
+      "complaintPincode": "324324",
+      "complaintCity": "City B",
+      "complaintLocality": "Locality A",
+      "complaintLandmark": "Sit earum quos temp",
+      "complaintAdditionalDetails": "Consequatur Ut dolo",
+      "id": 1,
+      "complaintNo": "PG-PGR-2021-02-04-0005553",
+      "complaintApplicationStatus": "Pending for Assesment",
+      "complaintFiledDate": "04-Feb-2021",
+      "complaintStatus": "Closed",
+    },
+    {
+      "complaintType": "Streetlights",
+      "complaintSubType": "Burning of Garbage",
+      "complaintPincode": "324324",
+      "complaintCity": "City B",
+      "complaintLocality": "Locality A",
+      "complaintLandmark": "Sit earum quos temp",
+      "complaintAdditionalDetails": "Consequatur Ut dolo",
+      "id": 2,
+      "complaintNo": "PG-PGR-2021-02-04-0005553",
+      "complaintApplicationStatus": "Pending for Assesment",
+      "complaintFiledDate": "04-Feb-2021",
+      "complaintStatus": "Open"
+    }
+  ],
+  "rateComplaint": [
+    {
+      "id": 1,
+      "rate": "",
+      "remark": "",
+      "comment": ""
+    },
+    {
+      "complaintRate": 3.5,
+      "complaintRemark": ["Resolution Time", "Quality of Work"],
+      "complaintComment": "Nothing",
+      "id": 2
+    },
+    {
+      "complaintRate": 4,
+      "complaintRemark": ["Resolution Time", "Others", "Quality of Work"],
+      "complaintComment": "Laboris dolores iust",
+      "id": 3
+    },
+    {
+      "complaintRate": 3.5,
+      "complaintRemark": ["Services", "Resolution Time"],
+      "complaintComment": "Est qui molestias s",
+      "id": 4
+    },
+    {
+      "complaintRate": 2,
+      "complaintRemark": "",
+      "complaintComment": "",
+      "id": 5
+    }
+  ],
+  "reopenComplaint": [
+    {
+      "id": 1,
+      "complaintReason": "",
+      "complaintImage": "",
+      "complaintAdditionalDetails": ""
+    },
+    {
+      "complaintReason": "No permanent solution",
+      "complaintAdditionalDetails": "Est explicabo Aut e",
+      "id": 2
+    },
+    {
+      "complaintReason": "No permanent solution",
+      "complaintAdditionalDetails": "Commodi voluptate et",
+      "id": 3
+    },
+    {
+      "complaintReason": "No permanent solution",
+      "complaintAdditionalDetails": "Ipsum quo enim reru",
+      "id": 4
+    },
+    {
+      "complaintReason": "Employee did not turn up",
+      "complaintAdditionalDetails": "",
+      "id": 5
+    }
+  ]
+}
