@@ -18,8 +18,6 @@ import 'react-vertical-timeline-component/style.min.css';
 
 function ComplaintTimeline(props) {
 
-  const [status, setStatus] = useState(false)
-
     //destructuring predefined colors to maintain uniform theme everywhere
     const {bgHeaderColor,titleColor,nextButtonColor,nextBtnHoverColor,backButtonColor,backBtnHoverColor,bgCardColor,bgInfoColor,infoTextColor} = ThemeStyle()
     return (
@@ -33,7 +31,7 @@ function ComplaintTimeline(props) {
       <div className='text-sm'>
        <VerticalTimeline layout={'1-column-left'}>
  
-{!status && <> <VerticalTimelineElement
+{props.status && <> <VerticalTimelineElement
   contentStyle={{ background: '#D97706dc', color: '#fff', padding: '10px' }}
   contentArrowStyle={{ borderRight: '7px solid #D97706' }}
   position={'right'}
@@ -91,7 +89,7 @@ function ComplaintTimeline(props) {
     </div>
   </VerticalTimelineElement> </>}
 
-  {!status ? <VerticalTimelineElement
+  {props.status ? <VerticalTimelineElement
  position={'right'}
  contentStyle={{padding: '10px'}}
    className="vertical-timeline-element--work"

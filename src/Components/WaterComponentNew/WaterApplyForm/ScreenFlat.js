@@ -1,15 +1,18 @@
 //////////////////////////////////////////////////////////////////////////////////////
 //    Author - Swati Sharma
 //    Version - 1.0
-//    Date - 04 november 2022
+//    Date - 05 november 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - ScreenPropertyType
-//    DESCRIPTION - ScreenPropertyType compomnent 
+//    Component  - ScreenFlat
+//    DESCRIPTION - ScreenFlat compomnent 
 //////////////////////////////////////////////////////////////////////////////////////
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
+import * as yup from 'yup';
+import CommonStyles from '../../IndividualRoutes/CommonStyles';
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 
@@ -18,6 +21,13 @@ function ScreenFlat(props) {
 
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, bgCardColor, bgInfoColor, infoTextColor, backButtonColor, backBtnHoverColor, nextBtnHoverColor } = ThemeStyle()
+    const { labelStyle, inputStyle } = CommonStyles();
+
+    const validationSchema = yup.object(
+        {
+            noFlat: yup.string().required(),
+        }
+    );
 
     const formik = useFormik({
         initialValues: {
@@ -29,6 +39,7 @@ function ScreenFlat(props) {
             props.nextFun(12)
             console.log("ScreenFlat value 2", values)
         },
+        validationSchema
     });
     return (
         <>
@@ -39,20 +50,13 @@ function ScreenFlat(props) {
                         <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 md:p-10`}>
                             <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>No. Of Flat</h1></div>
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                                <div  className="col-span-12">
-                                <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">No. Of Flat</label>
+                                <div className="col-span-12">
+                                    <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">No. Of Flat</label>
                                 </div>
                                 <div className="flex items-center mb-4">
-                                    <input {...formik.getFieldProps('noFlat')}
-                                        className='border bg-gray-50 shadow-md  px-9 ml-2 '
-                                        name='noFlat'
-                                        type="text"
-                                        required
-                                    />
+                                    <input type="text" name="noFlat" className={`${inputStyle}`} placeholder="Enter No Of Flat" value={formik.values.noFlat} onChange={formik.handleChange} />
                                 </div>
-
                             </div>
-
                             <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
                                 <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
                                 <div className="col-span-6"> <button type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>

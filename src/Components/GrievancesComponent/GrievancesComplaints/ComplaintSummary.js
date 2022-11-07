@@ -6,14 +6,40 @@
 //    Component  - Complaint Summary
 //////////////////////////////////////////////////////////////////////////////////////
 
-import {AiFillInfoCircle} from 'react-icons/ai'
 import {RiArrowDropLeftFill} from 'react-icons/ri'
-import Info from '../../Common/Info'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 import ComplaintTimeline from './ComplaintTimeline'
+import apiLinks from "../Api/GrievanceApi"
+import { useEffect } from "react";
+import axios from "axios";
+import { useState } from "react";
+import {GlobalData} from '../Context/contextVar'
+import { useContext } from 'react';
 
 function ComplaintSummary(props) {
+
+  const {getId} = useContext(GlobalData)
+
+  const {listComplaint} = apiLinks()
+
+  const [complaintData, setComplaintData] = useState([])
+  const [status, setStatus] = useState(true)
+
+  console.log("userId => ", getId)
+
+  // axios
+  useEffect(() => {
+    axios.get(listComplaint + "/" + getId)
+    .then((res) => {
+      setComplaintData(res.data)
+      console.log("Getting Complaint List => ", res.data)
+      res.data.complaintStatus == 'Closed' ? setStatus(true) : setStatus(false)
+    })
+    .catch((err) => console.log("Getting Complaint List Error => ", err))
+  },[])
+
+
   //destructuring predefined colors to maintain uniform theme everywhere
   const {bgHeaderColor,titleColor,nextButtonColor,nextBtnHoverColor,backButtonColor,backBtnHoverColor,bgCardColor,bgInfoColor,infoTextColor} = ThemeStyle()
   return (
@@ -41,49 +67,49 @@ function ComplaintSummary(props) {
         <div className="col-span-12 bg-zinc-100 rounded-md p-4 mt-4 shadow-md">
           
           <h1 className={` ${titleColor} font-bold col-span-12 pb-2`}>
-            Damaged Garbage Bin
+            {complaintData?.complaintSubType}
           </h1>
 
           <div className="col-span-12 w-full flex flex-wrap mb-1">
             <div className="col-span-6 text-sm font-bold text-zinc-800 w-1/2 ">Complaint No.</div>
-            <div className="col-span-6 text-sm w-1/2 ">PG-PGR-2021-02-04-0005553</div>
+            <div className="col-span-6 text-sm w-1/2 ">{complaintData?.complaintNo}</div>
           </div>
           <hr />
           <div className="col-span-12 w-full flex flex-wrap my-1">
             <div className="col-span-6 text-sm font-bold text-zinc-800  w-1/2 ">Application Status</div>
-            <div className="col-span-6 text-sm w-1/2 ">Pending for assignment</div>
+            <div className="col-span-6 text-sm w-1/2 ">{complaintData?.complaintApplicationStatus}</div>
           </div>
           <hr />
           <div className="col-span-12 w-full flex flex-wrap my-1">
             <div className="col-span-6 text-sm font-bold text-zinc-800  w-1/2 ">Complaint Type</div>
-            <div className="col-span-6 text-sm w-1/2 ">Garbage</div>
+            <div className="col-span-6 text-sm w-1/2 ">{complaintData?.complaintType}</div>
           </div>
           <hr />
           <div className="col-span-12 w-full flex flex-wrap my-1">
             <div className="col-span-6 text-sm font-bold text-zinc-800  w-1/2 ">Complaint Sub-Type</div>
-            <div className="col-span-6 text-sm w-1/2 ">Damage Garbage Bin</div>
+            <div className="col-span-6 text-sm w-1/2 ">{complaintData?.complaintSubType}</div>
           </div>
           <hr />
           <div className="col-span-12 w-full flex flex-wrap my-1">
             <div className="col-span-6 text-sm font-bold text-zinc-800  w-1/2 ">Additional Details</div>
-            <div className="col-span-6 text-sm w-1/2 "></div>
+            <div className="col-span-6 text-sm w-1/2 ">{complaintData?.complaintAdditionalDetails}</div>
           </div>
           <hr />
           <div className="col-span-12 w-full flex flex-wrap my-1">
           <div className="col-span-6 text-sm font-bold text-zinc-800  w-1/2 ">Filed Date</div>
-            <div className="col-span-6 text-sm w-1/2 ">4-Feb-2021</div>
+            <div className="col-span-6 text-sm w-1/2 ">{complaintData?.complaintFiledDate}</div>
           </div>
           <hr />
           <div className="col-span-12 w-full flex flex-wrap my-1">
             <div className="col-span-6 text-sm font-bold text-zinc-800  w-1/2 ">Address</div>
-            <div className="col-span-6 text-sm w-1/2 ">Main Road Abadpura City A</div>
+            <div className="col-span-6 text-sm w-1/2 ">{complaintData?.complaintLocality}{" "}{complaintData?.complaintLandmark}{" "}{complaintData?.complaintCity}{" "}{complaintData?.complaintPincode}</div>
           </div>
 
 
 
         </div>
 
-       <ComplaintTimeline rate={props.rate} reopen={props.reopen}/>
+       <ComplaintTimeline rate={props.rate} reopen={props.reopen} status={status}/>
 
         {/* Comments */}
         <div className="col-span-12 bg-zinc-100 rounded-md p-4 mt-4 shadow-md mb-4">

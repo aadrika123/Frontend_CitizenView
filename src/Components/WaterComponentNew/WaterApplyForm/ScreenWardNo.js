@@ -1,15 +1,18 @@
 //////////////////////////////////////////////////////////////////////////////////////
 //    Author - Swati Sharma
 //    Version - 1.0
-//    Date - 04 november 2022
+//    Date - 05 november 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - ScreenPropertyType
-//    DESCRIPTION - ScreenPropertyType compomnent 
+//    Component  - ScreenWardNo
+//    DESCRIPTION - ScreenWardNo compomnent 
 //////////////////////////////////////////////////////////////////////////////////////
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
+import * as yup from 'yup';
+import CommonStyles from '../../IndividualRoutes/CommonStyles';
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 
@@ -18,7 +21,13 @@ function ScreenWardNo(props) {
 
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, bgCardColor, bgInfoColor, infoTextColor, backButtonColor, backBtnHoverColor, nextBtnHoverColor } = ThemeStyle()
+    const { labelStyle, inputStyle } = CommonStyles();
 
+    const validationSchema = yup.object(
+        {
+            wardNo: yup.string().required(),
+        }
+    );
     const formik = useFormik({
         initialValues: {
             wardNo: '',
@@ -29,6 +38,7 @@ function ScreenWardNo(props) {
             props.nextFun(7)
             console.log("ScreenWardNo value 2", values)
         },
+        validationSchema
     });
     return (
         <>
@@ -39,20 +49,15 @@ function ScreenWardNo(props) {
                         <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 md:p-10`}>
                             <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Ward NO. </h1></div>
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                                <div className="flex items-center mb-4">
-                                  
-                                    <div className="col-span-12">
-                                        <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ward No.</label>
-                                    </div>
-
-                                    <select {...formik.getFieldProps('wardNo')} className="border bg-gray-50 shadow-md  px-9 ml-2"
-                                        name='wardNo'
-                                        >
-                                        <option value="0">0</option>
-                                        <option value="1">1</option>
+                            <div className={``}>
+                                    <div className="col-span-12"> <h1 className={` ${titleColor} text-md`}>Ward No.</h1></div>
+                                    <select name="wardNo" className={`${inputStyle}`} value={formik.values.wardNo} onChange={formik.handleChange}>
+                                        <option value="">SELECT</option>
+                                        <option value="1">1 </option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
                                     </select>
                                 </div>
-
                             </div>
 
                             <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">

@@ -4,8 +4,8 @@
 //    Date - 05 november 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - ScreenTotalArea
-//    DESCRIPTION - ScreenTotalArea compomnent 
+//    Component  - ScreenBindBookNo
+//    DESCRIPTION - ScreenBindBookNo compomnent 
 //////////////////////////////////////////////////////////////////////////////////////
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
@@ -16,8 +16,8 @@ import CommonStyles from '../../IndividualRoutes/CommonStyles';
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 
+function ScreenBindBookNo(props) {
 
-function ScreenTotalArea(props) {
 
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, bgCardColor, bgInfoColor, infoTextColor, backButtonColor, backBtnHoverColor, nextBtnHoverColor } = ThemeStyle()
@@ -26,19 +26,20 @@ function ScreenTotalArea(props) {
 
     const validationSchema = yup.object(
         {
-            totalArea: yup.number().required("Enter Total Area"),
+            bindBookNo: yup.string().required(),
         }
     );
 
+
     const formik = useFormik({
         initialValues: {
-            totalArea: '',
+            bindBookNo: '',
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
             props.CollectScreenDataFun("screen value to be passed 1", values)
-            props.nextFun(8)
-            console.log("ScreenTotalArea value 2", values)
+            props.nextFun()
+            console.log("Screen khata no value 2", values)
         },
         validationSchema
     });
@@ -49,11 +50,18 @@ function ScreenTotalArea(props) {
                     <div className='text-xs font-semibold pl-2 mt-4'><span className='border-b border-black'><RiArrowDropLeftFill className="inline text-xl" />Back</span></div>
                     <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                         <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 md:p-10`}>
-                            <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Total Area</h1></div>
+                            <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Bind Book No.</h1></div>
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                                <div className="col-span-12"> <h1 className={` ${titleColor} text-md`}>Total Area(in sq. Ft)</h1></div>
-                                <input type="text" name="totalArea" className={`${inputStyle}`} placeholder="Enter total area" value={formik.values.totalArea} onChange={formik.handleChange} />
+                                <div className="col-span-12">
+                                    <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Bind Book No.</label>
+                                </div>
+                                <div className="flex items-center mb-4">
+                                <input type="text" name="bindBookNo" className={`${inputStyle}`} placeholder="Enter bind Book No" value={formik.values.bindBookNo} onChange={formik.handleChange} />
+                                   
+                                </div>
+
                             </div>
+
                             <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
                                 <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
                                 <div className="col-span-6"> <button type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>
@@ -74,4 +82,4 @@ function ScreenTotalArea(props) {
     )
 }
 
-export default ScreenTotalArea
+export default ScreenBindBookNo

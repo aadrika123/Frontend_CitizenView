@@ -11,7 +11,7 @@ import React from 'react'
 
 const GrievanceApi = () => {
 
-    let baseUrl = "  http://localhost:8000"
+    let baseUrl = "http://localhost:8000"
 
     let apiList = {
         
@@ -22,7 +22,10 @@ const GrievanceApi = () => {
         rateComplaint : `${baseUrl}/rateComplaint`,
 
         // Reopen Complaint
-        reopenComplaint : `${baseUrl}/reopenComplaint`
+        reopenComplaint : `${baseUrl}/reopenComplaint`,
+
+        // Get Complaint List
+        listComplaint : `${baseUrl}/fileComplaint`,
     
     }
 

@@ -11,7 +11,7 @@
 import {AiTwotoneLike} from 'react-icons/ai'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function ComplaintFileSuccess(props) {
 

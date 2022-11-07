@@ -12,6 +12,7 @@ postFileComplaint
         ├──complaintCity
         ├──complaintLocality
         ├──complaintLandmark
+        ├──complaintImage
         └──complaintAdditionalDetails
     response
         ├──complaintFiledDate <!-- Generate new -->
@@ -34,6 +35,7 @@ getAllComplaintById
         ├──complaintCity
         ├──complaintLocality
         ├──complaintLandmark
+        ├──complaintImage
         └──complaintAdditionalDetails
 
 <!-- Comment on complaint -->
@@ -50,6 +52,7 @@ postRateComplaintById
 putReopenComplaintById
     request
         ├──complaintReopenReason <!-- Add -->
+        ├──complaintReopenImage
         └──complaintReopenAdditionalDetails <!-- update -->
     response
         ├──complaintFiledDate
@@ -62,6 +65,7 @@ putReopenComplaintById
         ├──complaintCity
         ├──complaintLocality
         ├──complaintLandmark
+        ├──complaintImage
         └──complaintAdditionalDetails
 
 <!-- On Hold -->
