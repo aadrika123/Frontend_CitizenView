@@ -7,6 +7,7 @@
 //    Component  - ScreenConnType
 //    DESCRIPTION - ScreenConnType compomnent 
 //////////////////////////////////////////////////////////////////////////////////////
+import React,{useState} from 'react';
 import { useFormik } from 'formik';
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
@@ -23,7 +24,7 @@ function ScreenConnType(props) {
 
     const validationSchema = yup.object(
         {
-            typeOfConnection: yup.string().required(),
+            typeOfConnection: yup.string().required("This is a required field !"),
         }
     );
 
@@ -35,9 +36,9 @@ function ScreenConnType(props) {
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
-            props.CollectScreenDataFun("screen value to be passed 1", values)
+            props.CollectScreenDataFun("connectionType", values)
             props.nextFun()
-            console.log("ScreenConnType value 2", values)
+            // console.log("ScreenConnType value 2", values)
         },
 
         validationSchema
@@ -60,6 +61,7 @@ function ScreenConnType(props) {
                                         <option value="1">New Connection</option>
                                         <option value="2">Regulaization</option>
                                     </select>
+                                    <p className='text-red-500 text-xs'>{formik.touched.typeOfConnection && formik.errors.typeOfConnection ? formik.errors.typeOfConnection : null}</p>
                                 </div>
                             </div>
                             <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">

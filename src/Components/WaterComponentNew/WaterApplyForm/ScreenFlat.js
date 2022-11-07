@@ -25,7 +25,7 @@ function ScreenFlat(props) {
 
     const validationSchema = yup.object(
         {
-            noFlat: yup.string().required(),
+            noFlat: yup.string().required("This is a required field !"),
         }
     );
 
@@ -35,9 +35,9 @@ function ScreenFlat(props) {
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
-            props.CollectScreenDataFun("screen value to be passed 1", values)
+            props.CollectScreenDataFun("noFlat", values)
             props.nextFun(12)
-            console.log("ScreenFlat value 2", values)
+            console.log("noFlat", values)
         },
         validationSchema
     });
@@ -53,8 +53,9 @@ function ScreenFlat(props) {
                                 <div className="col-span-12">
                                     <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">No. Of Flat</label>
                                 </div>
-                                <div className="flex items-center mb-4">
+                                <div className=" items-center mb-4">
                                     <input type="text" name="noFlat" className={`${inputStyle}`} placeholder="Enter No Of Flat" value={formik.values.noFlat} onChange={formik.handleChange} />
+                                    <p className='text-red-500 text-xs'>{formik.touched.noFlat && formik.errors.noFlat ? formik.errors.noFlat : null}</p>
                                 </div>
                             </div>
                             <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">

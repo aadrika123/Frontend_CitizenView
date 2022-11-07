@@ -1,5 +1,8 @@
 import React from 'react'
+import { useEffect } from 'react'
+import { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { contextVar } from '../../Components/GlobalState/ContextVar'
 import ApplicationDetailScreen from '../../Components/WaterComponent/ApplicationDetailScreen'
 import ConnectionDetailScreen from '../../Components/WaterComponent/ConnectionDetailScreen'
 import ConsumptionDetailScreen from '../../Components/WaterComponent/ConsumptionDetailScreen'
@@ -21,6 +24,13 @@ import WaterCitizenEntryForm from './WaterCitizenEntryForm'
 import WaterIndex from './WaterIndex'
 
 function WaterRoutes() {
+
+    const globalData = useContext(contextVar);
+
+    useEffect(() => {
+        globalData.setModule('WATER');
+    }, [])
+
     return (
         <Routes>
             <Route path='/water-index' element={<WaterIndex />} />

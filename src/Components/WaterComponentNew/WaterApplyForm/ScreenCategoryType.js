@@ -24,9 +24,9 @@ function ScreenCategoryType(props) {
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
-            props.CollectScreenDataFun("screen value to be passed 1", values)
+            props.CollectScreenDataFun("categoryType", values)
             props.nextFun(17)
-            console.log("Screen account no 2", values)
+            console.log("categoryType", values)
         },
     });
     return (

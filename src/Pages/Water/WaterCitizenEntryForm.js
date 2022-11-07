@@ -30,10 +30,18 @@ import ScreenBindBookNo from '../../Components/WaterComponentNew/WaterApplyForm/
 import ScreenAccountNo from '../../Components/WaterComponentNew/WaterApplyForm/ScreenAccountNo'
 import ScreenCategoryType from '../../Components/WaterComponentNew/WaterApplyForm/ScreenCategoryType'
 import ScreenFormReview from '../../Components/WaterComponentNew/WaterApplyForm/ScreenFormReview'
+import ThemeStyle from '../../Components/Styles/ThemeStyle'
+import FeedbackComponent from './FeedbackComponent'
 
 
 
 function WaterCitizenEntryForm() {
+
+
+  //destructuring predefined colors to maintain uniform theme everywhere
+  const { bgHeaderColor, titleColor, nextButtonColor, bgCardColor, bgInfoColor, infoTextColor, backButtonColor, backBtnHoverColor, nextBtnHoverColor } = ThemeStyle()
+
+
   //formIndex variable to hold number of screen to show in form
   const [formIndex, setFormIndex] = useState(1)
   const [allScreenData, setallScreenData] = useState({})
@@ -46,43 +54,75 @@ function WaterCitizenEntryForm() {
 
   console.log('form index', formIndex)
 
+
+  {/* After Review Submitting Final Data */ }
   const submitButtonToggle = () => {
     alert("submit")
-  
-
   }
 
-
+  {/* Collecting data from all screen */ }
   const CollectAllScreenData = (key, ScreenData) => {
-    console.log("Screen Data in main form 1", ScreenData)
     setallScreenData({ ...allScreenData, [key]: ScreenData })
+    console.log("all form Data", allScreenData)
+
   }
   return (
     <>
-      {/* <h1 className={`font-bold text-center text-lg`}>Apply For New Water & Sewerage Connection</h1> */}
-      {/* {formIndex == 1 && <PropertyDetailScreen nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-      {formIndex == 2 && <ConnectionDetailScreen nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-      {formIndex == 3 && <PropertyRegistryScreen nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-      {formIndex == 4 && <UploadDocument nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-      {formIndex == 5 && <DocumentEdit nextFun={nextFun} backFun={backFun} formIndex={formIndex} />} */}
-
+      {/* Connection Type */}
       {formIndex == 1 && <ScreenConnType nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />}
+
+      {/* Connection Through */}
       {formIndex == 2 && <ScreenConnectionThrough nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />}
+
+      {/* Property Type  */}
       {formIndex == 3 && <ScreenPropertyType nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />}
+
+      {/* owner type */}
       {formIndex == 4 && <ScreenOwnerType nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />}
 
+      {/* Ward no */}
       {formIndex == 5 && <ScreenWardNo nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />}
+
+      {/* Total area */}
       {formIndex == 6 && <ScreenTotalArea nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />}
+
+      {/* Landmark*/}
       {formIndex == 7 && <ScreenLandmark nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />}
+
+      {/* Pin code */}
       {formIndex == 8 && <ScreenPin nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />}
+
+      {/* Address */}
       {formIndex == 9 && <ScreenAddress nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />}
+
+      {/* No. of flat */}
       {formIndex == 10 && <ScreenFlat nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />}
+
+      {/*Applicant List */}
       {formIndex == 11 && <ScreenApplicantDetail nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />}
+
+      {/* khata no */}
       {formIndex == 12 && <ScreenKhataNo nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />}
+
+      {/* Bind Book No */}
       {formIndex == 13 && <ScreenBindBookNo nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />}
+
+      {/* Acount No*/}
       {formIndex == 14 && <ScreenAccountNo nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />}
+
+      {/*Category Type */}
       {formIndex == 15 && <ScreenCategoryType nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />}
+
+      {/* Review Form */}
       {formIndex == 16 && <ScreenFormReview nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} submitFun={submitButtonToggle} />}
+
+      <div>
+
+        {/* This feedback component display's real time data Entry in the form */}
+        <FeedbackComponent allFormData={allScreenData} />
+
+
+      </div>
     </>
   )
 }
