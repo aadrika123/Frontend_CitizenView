@@ -18,18 +18,21 @@ import ComplaintLandmark from "../../Components/GrievancesComponent/GrievancesFo
 import ComplaintImage from "../../Components/GrievancesComponent/GrievancesForm/ComplaintImage";
 import ComplaintAdditionalDetails from "../../Components/GrievancesComponent/GrievancesForm/ComplaintAdditionalDetails";
 import ComplaintFileSuccess from "../../Components/GrievancesComponent/GrievancesForm/ComplaintFileSuccess";
+// Importing api links
 import apiLinks from "../../Components/GrievancesComponent/Api/GrievanceApi"
 
 const GrievancesCitizenEntryForm = () => {
-  const [storeData, setStoreData] = useState({})
-  const [tempData, setTempData] = useState([])
 
+  // storing datas
+  const [storeData, setStoreData] = useState({})
+
+  // calling api
   const{fileComplaint} = apiLinks()
 
+  // collecting data
   const postData = (data) => {
     console.log("data get => ",data)
     setStoreData(Object.assign(storeData,data))
-    setTempData(storeData)
   };
 
 
@@ -37,6 +40,7 @@ const GrievancesCitizenEntryForm = () => {
     console.log("stored data => ", storeData)
   }, [postData])
 
+  // submiting complaint data
   const submitData = (data) => {
     console.log("data get => ",data)
     setStoreData(Object.assign(storeData,data))
@@ -62,6 +66,7 @@ const GrievancesCitizenEntryForm = () => {
   return (
     <>
 
+        {/* Complaint Type */}
         {formIndex == 1 && (
           <ComplaintType
             nextFun={nextFun}
@@ -70,6 +75,8 @@ const GrievancesCitizenEntryForm = () => {
             postData={postData}
           />
         )}
+
+        {/* Complaint Sub Type */}
         {formIndex == 2 && (
           <ComplaintSubType
             nextFun={nextFun}
@@ -78,6 +85,8 @@ const GrievancesCitizenEntryForm = () => {
             postData={postData}
           />
         )}
+
+        {/* Complaint Pin Code */}
         {formIndex == 3 && (
           <ComplaintPincode
             nextFun={nextFun}
@@ -86,6 +95,8 @@ const GrievancesCitizenEntryForm = () => {
             postData={postData}
           />
         )}
+
+        {/* Complaint Address */}
         {formIndex == 4 && (
           <ComplaintAddress
             nextFun={nextFun}
@@ -94,6 +105,8 @@ const GrievancesCitizenEntryForm = () => {
             postData={postData}
           />
         )}
+
+        {/* Complaint Landmark */}
         {formIndex == 5 && (
           <ComplaintLandmark
             nextFun={nextFun}
@@ -102,6 +115,8 @@ const GrievancesCitizenEntryForm = () => {
             postData={postData}
           />
         )}
+
+        {/* Complaint Image */}
         {formIndex == 6 && (
           <ComplaintImage
             nextFun={nextFun}
@@ -110,6 +125,8 @@ const GrievancesCitizenEntryForm = () => {
             postData={postData}
           />
         )}
+
+        {/* Complaint Additional Details */}
         {formIndex == 7 && (
           <ComplaintAdditionalDetails
             nextFun={nextFun}
@@ -118,6 +135,8 @@ const GrievancesCitizenEntryForm = () => {
             submitData={submitData}
           />
         )}
+
+        {/* Complaint succes screen */}
         {formIndex == 8 && (
           <ComplaintFileSuccess
             nextFun={nextFun}

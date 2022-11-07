@@ -18,6 +18,7 @@ import ComplaintReopenImage from '../../Components/GrievancesComponent/Grievance
 import ComplaintAdditionalDetails from '../../Components/GrievancesComponent/GrievancesComplaints/ComplaintAdditionalDetails'
 import ComplaintReopenSuccess from '../../Components/GrievancesComponent/GrievancesComplaints/ComplaintReopenSuccess'
 import axios from 'axios'
+// Importing api links
 import apiLinks from "../../Components/GrievancesComponent/Api/GrievanceApi"
 
 const GrievancesComplaints = () => {
@@ -36,6 +37,7 @@ const GrievancesComplaints = () => {
    //   calling api
      const {reopenComplaint} = apiLinks()
 
+   //   Forwarding Components for Reopening Complaint
      const reopenNext = (data) => {
       setFormIndex(prev => prev+1)
       setToggleRate(false)
@@ -45,6 +47,7 @@ const GrievancesComplaints = () => {
       setStoreData(Object.assign(storeData,data))
     };
 
+   //  Forwarding to reopen success
     const reopenSuccess = (data) => {
       console.log("data get => ",data)
       setStoreData(Object.assign(storeData,data))
@@ -76,6 +79,7 @@ const GrievancesComplaints = () => {
         setToggleSubmitRate(false)
     }
 
+   //  backwarding for reopen complaint component
     const backReopen = () => {
       setFormIndex(prev => prev - 1)
       setToggleRate(false)
@@ -83,15 +87,17 @@ const GrievancesComplaints = () => {
       setToggleSubmitRate(false)
   }
  
-     //forward 1 step from currentIndex
+     //forward forwarding to complaint Summary
      const summary = () => setFormIndex(2)
 
+   //   formwarding to complaint rate
      const rate = () => {
         setFormIndex(3)
         setToggleRate(true)
         setToggleReopen(false)
      }
 
+   //   Forwarding to rating complaint success
      const submitRate = () => {
         setFormIndex(4)
         setToggleRate(false)
@@ -99,25 +105,39 @@ const GrievancesComplaints = () => {
         setToggleSubmitRate(true)
      }
 
+   //   forwarding to reopen complaint
      const reopen = () => {
         setFormIndex(3)
         setToggleRate(false)
         setToggleReopen(true)
      }
 
- 
      console.log('form index',formIndex)
  
      return (
          <>
-
+                {/* Complaint List */}
                 {formIndex == 1 && <ComplaintList summary={summary} backFun={backFun} />}
+
+                {/* Complaint Summary */}
                 {formIndex == 2 && <ComplaintSummary summary={summary} backFun={backFun} rate={rate} reopen={reopen} />}
+                
+                {/* Complaint Rate */}
                 {(formIndex == 3 && toggleRate) ? <ComplaintRate backFun={backFun} submitRate={submitRate} /> : null}
+
+                {/* Complaint Reopening Reason */}
                 {(formIndex == 3 && toggleReopen) ? <ComplaintReopen backFun={backFun} reopenNext={reopenNext}/> : null}
+
+                {/* Complaint Rating Success */}
                 {(formIndex == 4 && toggleSubmitRate) ? <ComplaintRateSuccess /> : null}
+
+                {/* Complaint Reopening Image */}
                 {(formIndex == 4 && toggleReopen) ? <ComplaintReopenImage backFun={backReopen} reopenNext={reopenNext}/> : null}
+
+                {/* Complaint Reopening Additional Details */}
                 {(formIndex == 5 && toggleReopen) ? <ComplaintAdditionalDetails backFun={backReopen} reopenSuccess={reopenSuccess}/> : null}
+
+                {/* Complaint Reopen Success */}
                 {(formIndex == 6 && toggleReopen) ? <ComplaintReopenSuccess /> : null}
 
          </>

@@ -80,6 +80,21 @@
       ],
       "complaintComment": "Laboris dolores iust",
       "id": 3
+    },
+    {
+      "complaintRate": 3.5,
+      "complaintRemark": [
+        "Services",
+        "Resolution Time"
+      ],
+      "complaintComment": "Est qui molestias s",
+      "id": 4
+    },
+    {
+      "complaintRate": 2,
+      "complaintRemark": "",
+      "complaintComment": "",
+      "id": 5
     }
   ],
   "reopenComplaint": [
@@ -98,6 +113,16 @@
       "complaintReason": "No permanent solution",
       "complaintAdditionalDetails": "Commodi voluptate et",
       "id": 3
+    },
+    {
+      "complaintReason": "No permanent solution",
+      "complaintAdditionalDetails": "Ipsum quo enim reru",
+      "id": 4
+    },
+    {
+      "complaintReason": "Employee did not turn up",
+      "complaintAdditionalDetails": "",
+      "id": 5
     }
   ]
 }
