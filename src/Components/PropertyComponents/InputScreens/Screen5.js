@@ -1,11 +1,11 @@
 //////////////////////////////////////////////////////////////////////////////////////
-//    Author - Talib Hussain
+//    Author - Dipu Singh
 //    Version - 1.0
 //    Date - 02 november 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - Screen1
-//    DESCRIPTION - Scrren 1 is single input component
+//    Component  - Screen5
+//    DESCRIPTION - Scrren 5 is single input component
 //////////////////////////////////////////////////////////////////////////////////////
 
 import { BiAddToQueue } from 'react-icons/bi'
@@ -23,15 +23,19 @@ function Screen5(props) {
     const formik = useFormik({
         initialValues: {
             unitUsageType: '',
-            Occupancy: '',
+            occupancyType: '',
             totalBuiltArea: '',
         },
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+            // alert(JSON.stringify(values, null, 2));
             props.data(values)
             props.nextFun()
         },
     });
+
+    const handleUnitUsagesType = e => formik.values.unitUsageType = e.target.value
+    const handleOccupancy = e => formik.values.occupancyType = e.target.value
+    const handleTotalBulidArea = e => formik.values.totalBuiltArea = e.target.value
 
     return (
         <>
@@ -45,7 +49,11 @@ function Screen5(props) {
                         <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Ground Floor Details</h1></div>
                         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                             <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Unit usage type<span className='text-red-500'>*</span></label>
-                            <select className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                            <select
+                                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                onChange={e => handleUnitUsagesType(e)}
+                                name="unitUsageType"
+                                required
                             >
                                 <option>--select--</option>
                                 {/* {
@@ -61,7 +69,11 @@ function Screen5(props) {
                         </div>
                         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                             <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Occupancy<span className='text-red-500'>*</span></label>
-                            <select className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                            <select
+                                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                onChange={e => handleOccupancy(e)}
+                                name="occupancyType"
+                                required
                             >
                                 <option>--select--</option>
                                 {/* {
@@ -77,7 +89,11 @@ function Screen5(props) {
                         </div>
                         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                             <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Total built-up area<span className='text-red-500'>*</span></label>
-                            <select className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                            <select
+                                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                onChange={e => handleTotalBulidArea(e)}
+                                name="totalBulidArea"
+                                required
                             >
                                 <option>--select--</option>
                                 {/* {

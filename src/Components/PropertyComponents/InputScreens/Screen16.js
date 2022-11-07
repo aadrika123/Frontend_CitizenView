@@ -13,10 +13,25 @@ import { RiArrowDropLeftFill } from 'react-icons/ri'
 import { BiEdit } from 'react-icons/bi'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
+import { useState } from 'react'
 
 function Screen16(props) {
+    const [disableBtn, setDisableBtn] = useState(true)
+    const [btnOpacity, setBtnOpacity] = useState("opacity-50")
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
+
+    const handelChecked =(e)=>{
+        console.log("This is chedked",e)
+        if(e){
+            setDisableBtn(false)
+            setBtnOpacity()
+        }else{
+            setDisableBtn(true)
+            setBtnOpacity("opacity-50")
+        }
+    }
+
     return (
         <>
             <div className='text-xs font-semibold px-2 mt-4 flex'>
@@ -29,12 +44,35 @@ function Screen16(props) {
                     <div className="col-span-12"> <h1 className={` ${titleColor} text-sm mt-2 opacity-40`}>If you want to modify any value, click on change in the respected step. It will redirect you to the concerned step where you can make your changes.</h1></div>
                     <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                         <div className='grid grid-cols-12'>
-                            <div className='col-span-5'>
+                            <div className='col-span-5 leading-8'>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-base font-semibold">Property Address</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-base font-semibold">Proof of Address</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-base font-semibold">Type of Ownership</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-base font-semibold">Name</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-base font-semibold">Gender</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-base font-semibold">Mobile Number</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-base font-semibold">Gurdian</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-base font-semibold">Relationship</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-base font-semibold">Special Owner category</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-base font-semibold">Owner's Address</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-base font-semibold">Same As Property</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-base font-semibold">Proof of Identity</label>
+                                <label className="form-label inline-block mb-1 text-gray-700 text-lg font-semibold">Property Details</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-base font-semibold">Residental Property</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-base font-semibold">Type of Property</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-base font-semibold">No of Floors</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-base font-semibold">No of Basements</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-base font-semibold">Plot Size(sq)</label>
+                                <label className="form-label inline-block mb-1 text-gray-700 text-lg font-semibold">Ground Floor Details</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-base font-semibold">Plot Size(sq)</label>
+
+                            </div>
+                            <div className='col-span-6 leading-8'>
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Property Address</label>
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Proof of Address</label>
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Type of Ownership</label>
-                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Name</label>
-                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Gender</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">{props.data?.ownerDetails?.ownerName}</label>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">{props.data?.ownerDetails?.ownerGender}</label>
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Mobile Number</label>
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Gurdian</label>
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Relationship</label>
@@ -42,56 +80,41 @@ function Screen16(props) {
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Owner's Address</label>
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Same As Property</label>
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Proof of Identity</label>
-                                <label className="form-label inline-block mb-1 text-gray-700 text-lg font-semibold">Property Details</label>
-                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Residental Property<span className='text-red-500'>*</span></label>
-                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Type of Property</label>
-                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">No of Floors</label>
-                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">No of Basements</label>
-                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Plot Size(sq)</label>
-                                <label className="form-label inline-block mb-1 text-gray-700 text-lg font-semibold">Ground Floor Details</label>
-                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Plot Size(sq)</label>
 
+                                
                             </div>
-                            <div className='col-span-6'>
-                                Lorem ipsum dolor sit.
-                                Lorem ipsum dolor sit 2.
-                                Lorem ipsum dolor sit 2.
-                                Lorem ipsum dolor sit 2.
-                                Lorem ipsum dolor sit 2.
-                                Lorem ipsum dolor sit 2.
-                            </div>
-                            <div className='col-span-1'>
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
-                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1' />
+                            <div className='col-span-1 leading-8'>
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
+                                <BiEdit size={20} fill="green" className='cursor-pointer mt-1 hover:bg-gray-300 rounded-full' />
                             </div>
                         </div>
 
                         <div>
-                            <input type="checkbox" name="" id="" className='w-5 h-5 m-1' />
+                            <input type="checkbox" name="" onChange={e=>handelChecked(e.target.checked)} className='w-5 h-5 m-1' />
                             <span>I have declare and affirm that the above furnished information is true and correct and nothing has been correct.. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, quam!</span>
                         </div>
                     </div>
 
                     <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
                         <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
-                        <div className="col-span-6"> <button onClick={() => props.nextFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Submit</button></div>
+                        <div className="col-span-6"> <button disabled={disableBtn} type="submit" className={` ${btnOpacity} shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Submit</button></div>
                     </div>
                 </div>
 
