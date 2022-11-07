@@ -11,8 +11,11 @@ import {RiArrowDropLeftFill} from 'react-icons/ri'
 import { Link } from 'react-router-dom'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Components/Styles/ThemeStyle'
+import { useNavigate } from 'react-router-dom'
 
 const GrievancesIndex = () => {
+
+    const navigate = useNavigate()
 
 // theme constants
     const { bgHeaderColor, titleColor, nextButtonColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
@@ -22,7 +25,7 @@ const GrievancesIndex = () => {
     
     return (
         <>
-        <div className='text-xs font-semibold pl-2 mt-4'><span className='border-b border-black'><RiArrowDropLeftFill className="inline text-xl" />Back</span></div>
+        <div className='text-xs font-semibold pl-2 mt-4'><span onClick={()=>navigate('/')} className='border-b cursor-pointer border-black'><RiArrowDropLeftFill className="inline text-xl" />Back</span></div>
         <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
             <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 md:p-10 gap-3 `}>
 
