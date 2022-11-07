@@ -21,26 +21,111 @@ function PropertyCitizenEntryForm() {
     //formIndex variable to hold number of screen to show in form
     const [formIndex, setFormIndex] = useState(1)
 
+    const [isResidential, setIsResidential] = useState()
+    const [typeOfProperty, setTypeOfProperty] = useState()
+    const [plotSize, setPlotSize] = useState()
+    const [numberOfBasements, setNumberOfBasements] = useState()
+    const [floorDetails, setFloorDetails] = useState()
+    const [pinPropertyLocation, setPinPropertyLocation] = useState()
+    const [pincode, setPincode] = useState()
+    const [propertyAddress, setPropertyAddress] = useState()
+    const [landmark, setLandmark] = useState()
+    const [addressDocumantType, setAddressDocumantType] = useState()
+    const [ownerType, setOwnerType] = useState()
+    const [ownerDetails, setOwnerDetails] = useState()
+    const [specialOwnerCategory, setSpecialOwnerCategory] = useState()
+    const [ownerAddress, setOwnerAddress] = useState()
+    const [identityDocType, setIdentityDocType] = useState()
+
     //backward 1 step from currentIndex
     const backFun = () => setFormIndex(prev => prev - 1)
 
     //forward 1 step from currentIndex
     const nextFun = () => setFormIndex(prev => prev + 1)
 
-    console.log('form index',formIndex)
+    // console.log('form index',formIndex)
+
+    let finalData={
+        'isResidential' : isResidential?.isResidential,  //screen1
+        'typeOfProperty' :typeOfProperty?.typeOfProperty, //screen2
+        'plotSize' : plotSize?.plotSize,                    //Screen3
+        'numberOfBasements' : numberOfBasements?.numberOfBasements, //screen4
+        'floorDetails' : floorDetails, //Screen 5
+        'pinPropertyLocation' : pinPropertyLocation?.pinPropertyLocation, //Screen 6
+        'pincode' : pincode?.pincode,                    //Screen 7
+        'propertyAddress' :propertyAddress,              //Screen 8
+        'landmark' : landmark?.landmark,                  //Screen 9
+        'addressDocumantType' : addressDocumantType?.addressDocumantType, //Screen10
+        'ownerType':ownerType?.ownerType,                    //Screen 11
+        'ownerDetails' :ownerDetails,              //Screen 12
+        'specialOwnerCategory' : specialOwnerCategory?.specialOwnerCategory, //Screen 13
+        'ownerAddress' : ownerAddress,                       //Scree14
+        'identityDocType' : identityDocType                 //Screen15
+    }
+    console.log("Final Data is :- ", finalData)
 
     const screen1Data =(e)=>{
         console.log("Screen 1 Data in Entry Form",e)
+        setIsResidential(e)
     }
     const screen2Data =(e)=>{
         console.log("Screen 2 Data in Entry Form",e)
+        setTypeOfProperty(e)
     }
     const screen3Data =(e)=>{
         console.log("Screen 3 Data in Entry Form",e)
+        setPlotSize(e)
     }
     const screen4Data =(e)=>{
         console.log("Screen 4 Data in Entry Form",e)
+        setNumberOfBasements(e)
     }
+    const screen5Data =(e)=>{
+        console.log("Screen 5 Data in Entry Form",e)
+        setFloorDetails(e)
+    }
+    const screen6Data =(e)=>{
+        console.log("Screen 6 Data in Entry Form",e)
+        setPinPropertyLocation(e)
+    }
+    const screen7Data =(e)=>{
+        console.log("Screen 7 Data in Entry Form",e)
+        setPincode(e)
+    }
+    const screen8Data =(e)=>{
+        console.log("Screen 8 Data in Entry Form",e)
+        setPropertyAddress(e)
+    }
+    const screen9Data =(e)=>{
+        console.log("Screen 9 Data in Entry Form",e)
+        setLandmark(e)
+    }
+    const screen10Data =(e)=>{
+        console.log("Screen 10 Data in Entry Form",e)
+        setAddressDocumantType(e)
+    }
+    const screen11Data =(e)=>{
+        console.log("Screen 11 Data in Entry Form",e)
+        setOwnerType(e)
+    }
+    const screen12Data =(e)=>{
+        console.log("Screen 12 Data in Entry Form",e)
+        setOwnerDetails(e)
+    }
+    const screen13Data =(e)=>{
+        console.log("Screen 13 Data in Entry Form",e)
+        setSpecialOwnerCategory(e)
+    }
+    const screen14Data =(e)=>{
+        console.log("Screen 14 Data in Entry Form",e)
+        setOwnerAddress(e)
+    }
+    const screen15Data =(e)=>{
+        console.log("Screen 15 Data in Entry Form",e)
+        setIdentityDocType(e)
+    }
+
+   
 
     return (
         <>
@@ -48,18 +133,18 @@ function PropertyCitizenEntryForm() {
             {formIndex == 2 && <Screen2 nextFun={nextFun} backFun={backFun} data={screen2Data} formIndex={formIndex} />}
             {formIndex == 3 && <Screen3 nextFun={nextFun} backFun={backFun} data={screen3Data} formIndex={formIndex} />}
             {formIndex == 4 && <Screen4 nextFun={nextFun} backFun={backFun} data={screen4Data} formIndex={formIndex} />}
-            {formIndex == 5 && <Screen5 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-            {formIndex == 6 && <Screen6 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-            {formIndex == 7 && <Screen7 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-            {formIndex == 8 && <Screen8 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-            {formIndex == 9 && <Screen9 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-            {formIndex == 10 && <Screen10 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-            {formIndex == 11 && <Screen11 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-            {formIndex == 12 && <Screen12 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-            {formIndex == 13 && <Screen13 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-            {formIndex == 14 && <Screen14 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-            {formIndex == 15 && <Screen15 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
-            {formIndex == 16 && <Screen16 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
+            {formIndex == 5 && <Screen5 nextFun={nextFun} backFun={backFun} data={screen5Data} formIndex={formIndex} />}
+            {formIndex == 6 && <Screen6 nextFun={nextFun} backFun={backFun} data={screen6Data} formIndex={formIndex} />}
+            {formIndex == 7 && <Screen7 nextFun={nextFun} backFun={backFun} data={screen7Data} formIndex={formIndex} />}
+            {formIndex == 8 && <Screen8 nextFun={nextFun} backFun={backFun} data={screen8Data} formIndex={formIndex} />}
+            {formIndex == 9 && <Screen9 nextFun={nextFun} backFun={backFun} data={screen9Data} formIndex={formIndex} />}
+            {formIndex == 10 && <Screen10 nextFun={nextFun} backFun={backFun} data={screen10Data} formIndex={formIndex} />}
+            {formIndex == 11 && <Screen11 nextFun={nextFun} backFun={backFun} data={screen11Data} formIndex={formIndex} />}
+            {formIndex == 12 && <Screen12 nextFun={nextFun} backFun={backFun} data={screen12Data} formIndex={formIndex} />}
+            {formIndex == 13 && <Screen13 nextFun={nextFun} backFun={backFun} data={screen13Data} formIndex={formIndex} />}
+            {formIndex == 14 && <Screen14 nextFun={nextFun} backFun={backFun} data={screen14Data} formIndex={formIndex} />}
+            {formIndex == 15 && <Screen15 nextFun={nextFun} backFun={backFun} data={screen15Data} formIndex={formIndex} />}
+            {formIndex == 16 && <Screen16 nextFun={nextFun} backFun={backFun} data={finalData} formIndex={formIndex} />}
             {formIndex == 17 && <Screen17 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />}
         </>
     )

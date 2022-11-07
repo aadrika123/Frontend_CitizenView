@@ -11,9 +11,9 @@
 import { useState } from 'react'
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
-import { useNavigate } from 'react-router-dom'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
+import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik';
 
 function Screen1(props) {
