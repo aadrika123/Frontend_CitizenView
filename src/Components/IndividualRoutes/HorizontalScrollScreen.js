@@ -8,7 +8,7 @@ import grievance from '../../Images/grievance.png'
 function HorizontalScrollScreen(props) {
   return (
     <>
-      <div className='w-full mt-4 h-28'>
+      <div className='w-full mt-0 pt-5 h-28'>
         <HorizontalScroll>
           <div className='h-24 w-28 border text-center m-2 rounded-lg shadow-md cursor-pointer hover:bg-gray-200' onClick={() => props.setShowModuleFun('PROPERTY')}>
             <img src={property} alt="" className='h-12 w-12 ml-8 my-1' />

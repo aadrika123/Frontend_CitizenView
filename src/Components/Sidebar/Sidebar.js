@@ -2,10 +2,14 @@ import React from 'react'
 
 function Sidebar(props) {
 
+    const contaractSidebar = () => {
+        props.showSidebar();
+    }
+
     return (
-        <body class={`font-poppins antialiased absolute top-10 left-0 z-20 ${props.show ? '':'transition-all translate-x-0'}`}>
+        <body class={`font-poppins antialiased absolute top-10 left-0 z-20 transition-all duration-500 ease-in-out ${props.show ? '' : ' -translate-x-full'}`} onMouseLeave={contaractSidebar}>
             <div id="view" class="h-full w-screen flex flex-row" x-data="{ sidenav: true }" >
-                <div id="sidebar" class="bg-white h-screen md:block shadow-xl px-3 w-30 md:w-60 lg:w-60 overflow-x-hidden transition-transform duration-300 ease-in-out" x-show="sidenav" >
+                <div id="sidebar" class="bg-white h-screen md:block shadow-xl px-3 w-48 md:w-60 lg:w-60 overflow-x-hidden transition-transform duration-300 ease-in-out" x-show="sidenav" >
                     <div class="space-y-6 md:space-y-10 mt-10">
                         {/* <h1 class="font-bold text-4xl text-center md:hidden">
                             D<span class="text-teal-600">.</span>
@@ -16,7 +20,7 @@ function Sidebar(props) {
                         <div id="profile" class="space-y-3">
                             <img src="https://cdn-icons-png.flaticon.com/512/3237/3237472.png" alt="Avatar user" class="w-10 md:w-16 rounded-full mx-auto" />
                             <div>
-                                <h2 class="font-medium text-xs md:text-sm text-center text-teal-500" >  Eduard Pantazi </h2>
+                                <h2 class="font-medium text-xs md:text-sm text-center text-teal-500" >  John Doe </h2>
                                 <p class="text-xs text-gray-500 text-center">Administrator</p>
                             </div>
                         </div>
@@ -43,7 +47,7 @@ function Sidebar(props) {
                                         d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"
                                     ></path>
                                 </svg>
-                                <span class="">Products</span>
+                                <span class="">Notifications</span>
                             </a>
                             <a href="" class="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-teal-500 hover:text-white hover:scale-105 rounded-md transition duration-150 ease-in-out"   >
                                 <svg class="w-6 h-6 fill-current inline-block" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"  >
@@ -54,7 +58,7 @@ function Sidebar(props) {
                                         clip-rule="evenodd"
                                     ></path>
                                 </svg>
-                                <span class="">Reports</span>
+                                <span class="">Profile</span>
                             </a>
                             <a href="" class="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-teal-500 hover:text-white hover:scale-105 rounded-md transition duration-150 ease-in-out"  >
                                 <svg class="w-6 h-6 fill-current inline-block" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"   >
@@ -65,9 +69,9 @@ function Sidebar(props) {
                                         d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"
                                     ></path>
                                 </svg>
-                                <span class="">Messages</span>
+                                <span class="">Logout</span>
                             </a>
-                            <a href="" class="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-teal-500 hover:text-white hover:scale-105 rounded-md transition duration-150 ease-in-out"   >
+                            {/* <a href="" class="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-teal-500 hover:text-white hover:scale-105 rounded-md transition duration-150 ease-in-out"   >
                                 <svg class="w-6 h-6 fill-current inline-block" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"  >
                                     <path
                                         fill-rule="evenodd"
@@ -102,7 +106,7 @@ function Sidebar(props) {
                                     ></path>
                                 </svg>
                                 <span class="">Users</span>
-                            </a>
+                            </a> */}
                         </div>
                     </div>
                 </div>

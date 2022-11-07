@@ -11,7 +11,7 @@ function TradeMenuList() {
         <>
 
             <div className='mt-4 text-base text-gray-500 font-semibold mx-2 '>
-                <h1 className='font-bold text-lg text-slate-500 my-2'>Trade ...</h1>
+                <h1 className='font-bold text-lg text-slate-500 my-2 bg-stone-100 py-1.5 uppercase font-mono text-center'>Trade ...</h1>
                 {/* /trade-index */}
                 <p className='px-2 mt-1 shadow-md  py-2 cursor-pointer rounded-md hover:bg-gray-50 hover:scale-105 flex justify-between'>
                     <Link to="/trade-new-apply"> Apply For Services </Link>
@@ -33,7 +33,7 @@ function TradeMenuList() {
                     <Link to="/">Track Application Status</Link>
                     <img src={newapply} alt="" title='NEW APPLICATION' className={`${imgStyle}`} />
                 </p>
-               
+
             </div>
         </>
     )

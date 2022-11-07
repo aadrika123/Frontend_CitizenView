@@ -14,10 +14,12 @@ import IndividualRoutes from './Components/IndividualRoutes/IndividualRoutes';
 import NewHeader from './Components/Header/NewHeader';
 import Sidebar from './Components/Sidebar/Sidebar';
 import { useState } from 'react';
+import { contextVar } from './Components/GlobalState/ContextVar';
 
 
 function App() {
   const [sideShow, setsideShow] = useState(false);
+  const [moduleName, setmoduleName] = useState("JUIDCO")
   const setHeader = (e) => {
     // console.log(e.target)
     sideShow ? setsideShow(false) : setsideShow(true);
@@ -26,21 +28,32 @@ function App() {
   window.onclick = () => {
     // alert("click on dom");
   }
+
+  const globals = {
+    moduleName: moduleName,
+    setModule: setmoduleName
+  }
+  console.log("values ", globals)
+
   return (
     <>
-      <BrowserRouter>
-        <NewHeader showSidebar={setHeader} show={sideShow} />
-        <Sidebar show={sideShow} />
-        <Routes>
-          <Route path="/" element={<IndividualRoutes />} />
-          <Route index element={<IndividualRoutes />} />
-        </Routes>
+      <contextVar.Provider values={globals} >
+        <BrowserRouter>
+          <NewHeader showSidebar={setHeader} show={sideShow} />
+          <Sidebar showSidebar={setHeader} show={sideShow} />
+          <div className={`${sideShow ? 'opacity-70' : ''}`}>
+            <Routes>
+              <Route path="/" element={<IndividualRoutes />} />
+              <Route index element={<IndividualRoutes />} />
+            </Routes>
 
-        <PropertyRoutes />
-        <WaterRoutes />
-        <TradeRoutes />
-        <GrievancesRoutes />
-      </BrowserRouter>
+            <PropertyRoutes />
+            <WaterRoutes />
+            <TradeRoutes />
+            <GrievancesRoutes />
+          </div>
+        </BrowserRouter>
+      </contextVar.Provider>
     </>
   );
 }

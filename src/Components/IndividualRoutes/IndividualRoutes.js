@@ -97,11 +97,11 @@ function IndividualRoutes() {
                 </div>
             </div> */}
 
-            <TopBlock />
+            {/* <TopBlock /> */}
 
             <HorizontalScrollScreen showModule={showModule} setShowModuleFun={setShowModule} />
 
-            <div className='bg-white my-auto h-64 md:h-80 overflow-auto'>
+            <div className='bg-white my-auto h-64 md:h-80 overflow-auto mt-4'>
                 { showModule == 'INITIAL'       &&<> <InitialMenuList />    </> }
                 { showModule == 'PROPERTY'      &&<> <PropertyMenuList />   </> }
                 { showModule == 'TRADE'         &&<> <TradeMenuList />      </> }
@@ -110,7 +110,7 @@ function IndividualRoutes() {
             </div>
 
             {/* Bottom Navigation */}
-            <BottomNavigation showModule={showModule} setShowModuleFun={setShowModule} />
+            {/* <BottomNavigation showModule={showModule} setShowModuleFun={setShowModule} /> */}
         </div>
     )
 }
