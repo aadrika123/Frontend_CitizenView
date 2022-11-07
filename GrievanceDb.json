@@ -1,48 +1,18 @@
 {
-  "registerComplaint": [
+  "fileComplaint": [
     {
+      "complaintType": "Streetlights",
+      "complaintSubType": "Burning of Garbage",
+      "complaintPincode": "324324",
+      "complaintCity": "City B",
+      "complaintLocality": "Locality A",
+      "complaintLandmark": "Sit earum quos temp",
+      "complaintAdditionalDetails": "Consequatur Ut dolo",
       "id": 1,
-      "complaintType": "",
-      "complaintSubType": "",
-      "pincode": "",
-      "city": "",
-      "locality": "",
-      "landmark": "",
-      "image": "",
-      "additionalDetails": "",
-      "rate": "",
-      "remark": "",
-      "comment": ""
-    },
-    {
-      "complaintType": "Roads & Footpaths",
-      "complaintSubType": "Burning of Garbage",
-      "pincode": "324324",
-      "city": "City B",
-      "locality": "Locality A",
-      "landmark": "anything",
-      "additionalDetails": "Nothing",
-      "id": 2
-    },
-    {
-      "complaintType": "Trees",
-      "complaintSubType": "Burning of Garbage",
-      "pincode": "834001",
-      "city": "City A",
-      "locality": "Locality A",
-      "landmark": "",
-      "additionalDetails": "",
-      "id": 3
-    },
-    {
-      "complaintType": "",
-      "complaintSubType": "",
-      "pincode": "",
-      "city": "",
-      "locality": "",
-      "landmark": "",
-      "additionalDetails": "",
-      "id": 4
+      "complaintNo": "PG-PGR-2021-02-04-0005553",
+      "complaintApplicationStatus": "Pending for Assesment",
+      "complaintFiledDate": "04-Feb-2021",
+      "complaintStatus": "Closed",
     },
     {
       "complaintType": "Streetlights",
@@ -52,7 +22,11 @@
       "complaintLocality": "Locality A",
       "complaintLandmark": "Sit earum quos temp",
       "complaintAdditionalDetails": "Consequatur Ut dolo",
-      "id": 5
+      "id": 2,
+      "complaintNo": "PG-PGR-2021-02-04-0005553",
+      "complaintApplicationStatus": "Pending for Assesment",
+      "complaintFiledDate": "04-Feb-2021",
+      "complaintStatus": "Open"
     }
   ],
   "rateComplaint": [
@@ -64,29 +38,19 @@
     },
     {
       "complaintRate": 3.5,
-      "complaintRemark": [
-        "Resolution Time",
-        "Quality of Work"
-      ],
+      "complaintRemark": ["Resolution Time", "Quality of Work"],
       "complaintComment": "Nothing",
       "id": 2
     },
     {
       "complaintRate": 4,
-      "complaintRemark": [
-        "Resolution Time",
-        "Others",
-        "Quality of Work"
-      ],
+      "complaintRemark": ["Resolution Time", "Others", "Quality of Work"],
       "complaintComment": "Laboris dolores iust",
       "id": 3
     },
     {
       "complaintRate": 3.5,
-      "complaintRemark": [
-        "Services",
-        "Resolution Time"
-      ],
+      "complaintRemark": ["Services", "Resolution Time"],
       "complaintComment": "Est qui molestias s",
       "id": 4
     },

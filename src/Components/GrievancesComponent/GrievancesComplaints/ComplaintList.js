@@ -13,8 +13,32 @@ import {BsCalendarEvent} from 'react-icons/bs'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from "../../Styles/ThemeStyle";
 import { useNavigate } from "react-router-dom";
+// Importing api links
+import apiLinks from "../Api/GrievanceApi"
+import { useEffect } from "react";
+import axios from "axios";
+import { useState } from "react";
+import {GlobalData} from '../Context/contextVar'
+import { useContext } from 'react';
 
 function ComplaintList(props) {
+
+  const {listComplaint} = apiLinks()
+
+  const {postId} = useContext(GlobalData)
+
+  const [complaintData, setComplaintData] = useState([])
+
+  // axios
+  useEffect(() => {
+    axios.get(listComplaint)
+    .then((res) => {
+      setComplaintData(res.data)
+      console.log("Getting Complaint List => ", res.data)
+    })
+    .catch((err) => console.log("Getting Complaint List Error => ", err))
+  },[])
+
   //destructuring predefined colors to maintain uniform theme everywhere
   const {
     bgHeaderColor,
@@ -58,50 +82,36 @@ function ComplaintList(props) {
               My Complaints
             </h1>
           </div>
+
+          {
+            complaintData.map((elem) => <>
+              <div onClick={() => {
+                props.summary()
+                postId(elem.id)
+                }} className="col-span-12 bg-zinc-100 text-sm flex flex-col p-4 rounded-md shadow-sm hover:shadow-md mt-4 space-y-2 cursor-pointer hover:scale-105 hover:bg-zinc-200 transition-all duration-300 ease-in-out">
+              <div>
+              <span className={`font-bold ${titleColor} `}>
+              {elem.complaintSubType}
+            </span>
+            <span className="flex flex-wrap space-x-2 items-center space-y-1">
+              <span><BsCalendarEvent/></span><span>{elem.complaintFiledDate}</span>
+            </span>
+              </div>
+
+              <div className="flex flex-col flex-wrap space-y-1">
+              <span className={`font-bold ${titleColor} `}>
+              Complaint No
+            </span>
+            <span>{elem.complaintNo}</span>
+            <span className={(elem.complaintStatus == 'Open') ?`bg-red-100 w-max text-red-700 px-4 py-1.3 rounded-full shadow-sm uppercase`:`bg-green-100 w-max text-green-700 px-4 py-1.3 rounded-full shadow-sm uppercase`}>{elem.complaintStatus}</span>
+            <span>{elem.complaintApplicationStatus}</span>
+              </div>
+
+          </div>
+
+            </>)
+          }
           
-          {/* 1st Complaint */}
-          <div onClick={() => {props.summary()}} className="col-span-12 bg-zinc-100 text-sm flex flex-col p-4 rounded-md shadow-sm hover:shadow-md mt-4 space-y-2 cursor-pointer hover:scale-105 hover:bg-zinc-200 transition-all duration-300 ease-in-out">
-              <div>
-              <span className={`font-bold ${titleColor} `}>
-              Damage Garbage Bin
-            </span>
-            <span className="flex flex-wrap space-x-2 items-center space-y-1">
-              <span><BsCalendarEvent/></span><span>4-Feb-2021</span>
-            </span>
-              </div>
-
-              <div className="flex flex-col flex-wrap space-y-1">
-              <span className={`font-bold ${titleColor} `}>
-              Complaint No
-            </span>
-            <span>PG-PGR-2021-02-04-0005553</span>
-            <span className="bg-red-100 w-max text-red-700 px-4 py-1.3 rounded-full shadow-sm">OPEN</span>
-            <span>Pending for assignment</span>
-              </div>
-
-          </div>
-
-          {/* Second Complaint */}
-          <div onClick={() => {props.summary()}} className="col-span-12 bg-zinc-100 text-sm flex flex-col p-4 rounded-md shadow-sm hover:shadow-md my-4 space-y-2 cursor-pointer hover:scale-105 hover:bg-zinc-200 transition-all duration-300 ease-in-out">
-              <div>
-              <span className={`font-bold ${titleColor} `}>
-              Damage Garbage Bin
-            </span>
-            <span className="flex flex-wrap space-x-2 items-center space-y-1">
-              <span><BsCalendarEvent/></span><span>4-Feb-2021</span>
-            </span>
-              </div>
-
-              <div className="flex flex-col flex-wrap space-y-1">
-              <span className={`font-bold ${titleColor} `}>
-              Complaint No
-            </span>
-            <span>PG-PGR-2021-02-04-0005553</span>
-            <span className="bg-green-100 shadow-sm w-max text-green-700 px-4 py-1.3 rounded-full">CLOSED</span>
-            <span>Pending for assignment</span>
-              </div>
-
-          </div>
           
         </div>
       </div>

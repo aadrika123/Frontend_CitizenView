@@ -44,6 +44,10 @@ const GrievancesCitizenEntryForm = () => {
   const submitData = (data) => {
     console.log("data get => ",data)
     setStoreData(Object.assign(storeData,data))
+
+    // static added data for dummy server api
+    setStoreData(Object.assign(storeData,{complaintStatus: "Open", complaintApplicationStatus: "Pending for assignment", complaintFiledDate: "04-Feb-2021", complaintNo: "PG-PGR-2021-02-04-0005553",}))
+    
     axios.post(fileComplaint,storeData)
     .then((response) => {
         setFormIndex(prev => prev+1)

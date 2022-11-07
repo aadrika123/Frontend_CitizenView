@@ -20,6 +20,8 @@ import ComplaintReopenSuccess from '../../Components/GrievancesComponent/Grievan
 import axios from 'axios'
 // Importing api links
 import apiLinks from "../../Components/GrievancesComponent/Api/GrievanceApi"
+import { GlobalData } from '../../Components/GrievancesComponent/Context/contextVar'
+import { AiOutlineConsoleSql } from 'react-icons/ai'
 
 const GrievancesComplaints = () => {
 
@@ -27,6 +29,12 @@ const GrievancesComplaints = () => {
     const [toggleRate ,setToggleRate] = useState(false)
     const [toggleReopen ,setToggleReopen] = useState(false)
     const [toggleSubmitRate ,setToggleSubmitRate] = useState(false)
+    const [getId, setGetId] = useState(0)
+
+    const postId = (index) => {
+      console.log("getting id => ", index)
+      setGetId(index)
+    }
 
    //  Collecting datas
     const [storeData, setStoreData] = useState({})
@@ -88,7 +96,7 @@ const GrievancesComplaints = () => {
   }
  
      //forward forwarding to complaint Summary
-     const summary = () => setFormIndex(2)
+     const summary = () => {setFormIndex(2)}
 
    //   formwarding to complaint rate
      const rate = () => {
@@ -116,6 +124,8 @@ const GrievancesComplaints = () => {
  
      return (
          <>
+
+            <GlobalData.Provider value={{getId : getId, postId: postId}}>
                 {/* Complaint List */}
                 {formIndex == 1 && <ComplaintList summary={summary} backFun={backFun} />}
 
@@ -126,7 +136,7 @@ const GrievancesComplaints = () => {
                 {(formIndex == 3 && toggleRate) ? <ComplaintRate backFun={backFun} submitRate={submitRate} /> : null}
 
                 {/* Complaint Reopening Reason */}
-                {(formIndex == 3 && toggleReopen) ? <ComplaintReopen backFun={backFun} reopenNext={reopenNext}/> : null}
+                {(formIndex == 3 && toggleReopen) ? <ComplaintReopen backFun={backFun} reopenNext={reopenNext} /> : null}
 
                 {/* Complaint Rating Success */}
                 {(formIndex == 4 && toggleSubmitRate) ? <ComplaintRateSuccess /> : null}
@@ -139,6 +149,8 @@ const GrievancesComplaints = () => {
 
                 {/* Complaint Reopen Success */}
                 {(formIndex == 6 && toggleReopen) ? <ComplaintReopenSuccess /> : null}
+
+                </GlobalData.Provider>
 
          </>
      )
