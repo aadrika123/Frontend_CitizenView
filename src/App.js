@@ -11,13 +11,26 @@ import TradeRoutes from './Pages/Trade/TradeRoutes';
 import Header from './Components/Header/Header';
 import GrievancesRoutes from './Pages/Grievances/GrievancesRoutes';
 import IndividualRoutes from './Components/IndividualRoutes/IndividualRoutes';
+import NewHeader from './Components/Header/NewHeader';
+import Sidebar from './Components/Sidebar/Sidebar';
+import { useState } from 'react';
 
 
 function App() {
+  const [sideShow, setsideShow] = useState(false);
+  const setHeader = (e) => {
+    // console.log(e.target)
+    sideShow ? setsideShow(false) : setsideShow(true);
+  }
+
+  window.onclick = () => {
+    // alert("click on dom");
+  }
   return (
     <>
       <BrowserRouter>
-        {/* <Header /> */}
+        <NewHeader showSidebar={setHeader} show={sideShow} />
+        <Sidebar show={sideShow} />
         <Routes>
           <Route path="/" element={<IndividualRoutes />} />
           <Route index element={<IndividualRoutes />} />
