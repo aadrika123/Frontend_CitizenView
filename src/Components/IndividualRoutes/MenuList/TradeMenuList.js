@@ -33,6 +33,10 @@ function TradeMenuList() {
                     <Link to="/">Track Application Status</Link>
                     <img src={newapply} alt="" title='NEW APPLICATION' className={`${imgStyle}`} />
                 </p>
+                <p className='px-2 mt-1 shadow-md  py-2 cursor-pointer rounded-md hover:bg-gray-50 hover:scale-105  flex justify-between'>
+                    <Link to="/trade-index">/trade-index</Link>
+                    <img src={newapply} alt="" title='NEW APPLICATION' className={`${imgStyle}`} />
+                </p>
 
             </div>
         </>

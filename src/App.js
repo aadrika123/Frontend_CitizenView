@@ -35,6 +35,9 @@ function App() {
     setModule: setmoduleName
   }
   console.log("values ", globals)
+  useEffect(() => {
+    setmoduleName('JUIDCO')
+  })
 
 
   return (

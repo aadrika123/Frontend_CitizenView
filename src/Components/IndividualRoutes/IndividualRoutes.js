@@ -11,13 +11,14 @@ import GrievancMenuList from './MenuList/GrievancMenuList'
 import InitialMenuList from './MenuList/InitialMenuList'
 import TopBlock from './TopBlock';
 import { contextVar } from '../GlobalState/ContextVar';
+import HorizontalNew from './HorizontalNew';
 
 
 function IndividualRoutes() {
     const child = { width: `300em`, height: `100%` }
     const { container, boxStyle } = CommonStyles();
     const [showModule, setShowModule] = useState('INITIAL');
-    
+
     const globalData = useContext(contextVar);
     useEffect(() => {
         globalData.setModule('JUIDCO')
@@ -107,6 +108,8 @@ function IndividualRoutes() {
             {/* <TopBlock /> */}
 
             <HorizontalScrollScreen showModule={showModule} setShowModuleFun={setShowModule} />
+
+            {/* <HorizontalNew /> */}
 
             <div className='bg-white my-auto h-64 md:h-80 overflow-auto mt-4'>
                 {showModule == 'INITIAL' && <> <InitialMenuList />    </>}
