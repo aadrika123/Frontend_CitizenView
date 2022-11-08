@@ -133,21 +133,16 @@ const GrievancesCitizenEntryForm = () => {
         {/* Complaint Additional Details */}
         {formIndex == 7 && (
           <ComplaintAdditionalDetails
-            nextFun={nextFun}
             backFun={backFun}
             formIndex={formIndex}
             submitData={submitData}
+            postData={postData}
           />
         )}
 
         {/* Complaint succes screen */}
         {formIndex == 8 && (
-          <ComplaintFileSuccess
-            nextFun={nextFun}
-            backFun={backFun}
-            formIndex={formIndex}
-            postData={postData}
-          />
+          <ComplaintFileSuccess/>
         )}
 
     </>

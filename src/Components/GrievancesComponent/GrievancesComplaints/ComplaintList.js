@@ -20,6 +20,8 @@ import axios from "axios";
 import { useState } from "react";
 import {GlobalData} from '../Context/contextVar'
 import { useContext } from 'react';
+import {useQuery} from 'react-query'
+import {Puff} from 'react-loader-spinner'
 
 function ComplaintList(props) {
 
@@ -29,15 +31,17 @@ function ComplaintList(props) {
 
   const [complaintData, setComplaintData] = useState([])
 
-  // axios
-  useEffect(() => {
-    axios.get(listComplaint)
-    .then((res) => {
-      setComplaintData(res.data)
-      console.log("Getting Complaint List => ", res.data)
-    })
-    .catch((err) => console.log("Getting Complaint List Error => ", err))
-  },[])
+  const {isLoading, data, error} = useQuery("getData", () => {
+    try {
+      const data = axios.get(listComplaint);
+      console.log("getting complaint list => ", data)
+      return data;
+    }
+    catch (error) {
+      throw Error("Unable to get complaint list data", error);
+    }
+  })
+
 
   //destructuring predefined colors to maintain uniform theme everywhere
   const {
@@ -83,8 +87,8 @@ function ComplaintList(props) {
             </h1>
           </div>
 
-          {
-            complaintData.map((elem) => <>
+          { !isLoading ? 
+            data.data.map((elem) => <>
               <div onClick={() => {
                 props.summary()
                 postId(elem.id)
@@ -109,7 +113,18 @@ function ComplaintList(props) {
 
           </div>
 
-            </>)
+            </>) 
+            :
+            <Puff
+  height="80"
+  width="80"
+  radisu={1}
+  color="#B45309"
+  ariaLabel="puff-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+/> 
           }
           
           
