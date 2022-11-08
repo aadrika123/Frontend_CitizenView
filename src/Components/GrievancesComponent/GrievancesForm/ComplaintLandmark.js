@@ -42,7 +42,7 @@ function ComplaintLandmark(props) {
         </span>
       </div>
       <div className="flex-1 text-right">
-        <span className="">{props?.formIndex} of 7</span>
+        <span className="">{props?.formIndex} of 6</span>
       </div>
     </div>
 

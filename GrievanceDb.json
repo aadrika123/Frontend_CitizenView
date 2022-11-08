@@ -12,7 +12,7 @@
       "complaintNo": "PG-PGR-2021-02-04-0005553",
       "complaintApplicationStatus": "Pending for Assesment",
       "complaintFiledDate": "04-Feb-2021",
-      "complaintStatus": "Closed",
+      "complaintStatus": "Closed"
     },
     {
       "complaintType": "Streetlights",
@@ -27,6 +27,92 @@
       "complaintApplicationStatus": "Pending for Assesment",
       "complaintFiledDate": "04-Feb-2021",
       "complaintStatus": "Open"
+    },
+    {
+      "complaintType": "Streetlights",
+      "complaintSubType": "Garbage needs to be cleared",
+      "complaintPincode": "324324",
+      "complaintCity": "City A",
+      "complaintLocality": "Locality A",
+      "complaintLandmark": "dfdf",
+      "complaintStatus": "Open",
+      "complaintApplicationStatus": "Pending for assignment",
+      "complaintFiledDate": "04-Feb-2021",
+      "complaintNo": "PG-PGR-2021-02-04-0005553",
+      "id": 3
+    },
+    {
+      "complaintType": "Garbage",
+      "complaintSubType": "Garbage needs to be cleared",
+      "complaintPincode": "324324",
+      "complaintCity": "City A",
+      "complaintLocality": "Locality A",
+      "complaintLandmark": "Quo molestiae dolore",
+      "complaintStatus": "Open",
+      "complaintApplicationStatus": "Pending for assignment",
+      "complaintFiledDate": "04-Feb-2021",
+      "complaintNo": "PG-PGR-2021-02-04-0005553",
+      "id": 4
+    },
+    {
+      "complaintType": "Water & Sewage",
+      "complaintSubType": "Garbage needs to be cleared",
+      "complaintPincode": "834001",
+      "complaintCity": "City A",
+      "complaintLocality": "Locality A",
+      "complaintLandmark": "Ea nisi quaerat comm",
+      "complaintAdditionalDetails": "Quaerat sed sint ill",
+      "complaintStatus": "Open",
+      "complaintApplicationStatus": "Pending for assignment",
+      "complaintFiledDate": "04-Feb-2021",
+      "complaintNo": "PG-PGR-2021-02-04-0005553",
+      "id": 5
+    },
+    {
+      "complaintType": "",
+      "complaintSubType": "",
+      "complaintPincode": "",
+      "complaintCity": "City A",
+      "complaintLocality": "Locality A",
+      "complaintLandmark": "",
+      "complaintAdditionalDetails": "",
+      "complaintStatus": "Open",
+      "complaintApplicationStatus": "Pending for assignment",
+      "complaintFiledDate": "04-Feb-2021",
+      "complaintNo": "PG-PGR-2021-02-04-0005553",
+      "id": 6
+    },
+    {
+      "complaintType": "Garbage",
+      "complaintSubType": "Damaged garbage bin",
+      "complaintPincode": "829108",
+      "complaintCity": "City B",
+      "complaintLocality": "Locality B",
+      "complaintWardNo": "Qui iure nihil tempo",
+      "complaintHouseNo": "Non ut quibusdam qui",
+      "complaintLandmark": "Quia harum non dolor",
+      "complaintAdditionalDetails": "Ut illo dolores et n",
+      "complaintStatus": "Open",
+      "complaintApplicationStatus": "Pending for assignment",
+      "complaintFiledDate": "04-Feb-2021",
+      "complaintNo": "PG-PGR-2021-02-04-0005553",
+      "id": 7
+    },
+    {
+      "complaintType": "Drains",
+      "complaintSubType": "Garbage needs to be cleared",
+      "complaintPincode": "",
+      "complaintCity": "City A",
+      "complaintLocality": "Locality A",
+      "complaintWardNo": "A officia ea aut dol",
+      "complaintHouseNo": "Ex est Nam eius ipsu",
+      "complaintLandmark": "",
+      "complaintAdditionalDetails": "Consectetur delectus",
+      "complaintStatus": "Open",
+      "complaintApplicationStatus": "Pending for assignment",
+      "complaintFiledDate": "04-Feb-2021",
+      "complaintNo": "PG-PGR-2021-02-04-0005553",
+      "id": 8
     }
   ],
   "rateComplaint": [
@@ -38,19 +124,29 @@
     },
     {
       "complaintRate": 3.5,
-      "complaintRemark": ["Resolution Time", "Quality of Work"],
+      "complaintRemark": [
+        "Resolution Time",
+        "Quality of Work"
+      ],
       "complaintComment": "Nothing",
       "id": 2
     },
     {
       "complaintRate": 4,
-      "complaintRemark": ["Resolution Time", "Others", "Quality of Work"],
+      "complaintRemark": [
+        "Resolution Time",
+        "Others",
+        "Quality of Work"
+      ],
       "complaintComment": "Laboris dolores iust",
       "id": 3
     },
     {
       "complaintRate": 3.5,
-      "complaintRemark": ["Services", "Resolution Time"],
+      "complaintRemark": [
+        "Services",
+        "Resolution Time"
+      ],
       "complaintComment": "Est qui molestias s",
       "id": 4
     },
@@ -59,6 +155,49 @@
       "complaintRemark": "",
       "complaintComment": "",
       "id": 5
+    },
+    {
+      "complaintRate": 4.5,
+      "complaintRemark": [
+        "Services",
+        "Resolution Time"
+      ],
+      "complaintComment": "Illo minim est aut ",
+      "id": 6
+    },
+    {
+      "complaintRate": 0,
+      "complaintRemark": [
+        "Services",
+        "Resolution Time",
+        "Others"
+      ],
+      "complaintComment": "Repudiandae labore i",
+      "id": 7
+    },
+    {
+      "complaintRate": 4.5,
+      "complaintRemark": "",
+      "complaintComment": "",
+      "id": 8
+    },
+    {
+      "complaintRate": 0,
+      "complaintRemark": "",
+      "complaintComment": "",
+      "id": 9
+    },
+    {
+      "complaintRate": 0,
+      "complaintRemark": "",
+      "complaintComment": "",
+      "id": 10
+    },
+    {
+      "complaintRate": 0,
+      "complaintRemark": "",
+      "complaintComment": "",
+      "id": 11
     }
   ],
   "reopenComplaint": [
@@ -87,6 +226,26 @@
       "complaintReason": "Employee did not turn up",
       "complaintAdditionalDetails": "",
       "id": 5
+    },
+    {
+      "complaintReason": "No permanent solution",
+      "complaintAdditionalDetails": "Ab animi qui perspi",
+      "id": 6
+    },
+    {
+      "complaintReason": "No permanent solution",
+      "complaintAdditionalDetails": "",
+      "id": 7
+    },
+    {
+      "complaintReason": "No permanent solution",
+      "complaintAdditionalDetails": "",
+      "id": 8
+    },
+    {
+      "complaintReason": "No permanent solution",
+      "complaintAdditionalDetails": "Amet mollit error p",
+      "id": 9
     }
   ]
 }

@@ -16,6 +16,8 @@ import axios from "axios";
 import { useState } from "react";
 import {GlobalData} from '../Context/contextVar'
 import { useContext } from 'react';
+import {useQuery} from 'react-query'
+import {Puff} from 'react-loader-spinner'
 
 function ComplaintSummary(props) {
 
@@ -28,16 +30,22 @@ function ComplaintSummary(props) {
 
   console.log("userId => ", getId)
 
-  // axios
+  const {isLoading, data, error} = useQuery("getComplaintData", async () => {
+    try {
+      const data = await axios.get(listComplaint + "/" + getId);
+      console.log("getting complaint data => ", data)
+      setComplaintData(data.data)
+      return data;
+    }
+    catch (error) {
+      throw Error("Unable to get complaint data", error);
+    }
+  })
+
+
   useEffect(() => {
-    axios.get(listComplaint + "/" + getId)
-    .then((res) => {
-      setComplaintData(res.data)
-      console.log("Getting Complaint List => ", res.data)
-      res.data.complaintStatus == 'Closed' ? setStatus(true) : setStatus(false)
-    })
-    .catch((err) => console.log("Getting Complaint List Error => ", err))
-  },[])
+    complaintData.complaintStatus == 'Closed' ? setStatus(true) : setStatus(false)
+  }, [complaintData])
 
 
   //destructuring predefined colors to maintain uniform theme everywhere
@@ -64,7 +72,7 @@ function ComplaintSummary(props) {
         </div>
 
         {/* summary */}
-        <div className="col-span-12 bg-zinc-100 rounded-md p-4 mt-4 shadow-md">
+        {!isLoading ? <div className="col-span-12 bg-zinc-100 rounded-md p-4 mt-4 shadow-md">
           
           <h1 className={` ${titleColor} font-bold col-span-12 pb-2`}>
             {complaintData?.complaintSubType}
@@ -105,9 +113,19 @@ function ComplaintSummary(props) {
             <div className="col-span-6 text-sm w-1/2 ">{complaintData?.complaintLocality}{" "}{complaintData?.complaintLandmark}{" "}{complaintData?.complaintCity}{" "}{complaintData?.complaintPincode}</div>
           </div>
 
-
-
-        </div>
+        </div> 
+        :
+         <Puff
+            height="80"
+            width="80"
+            radisu={1}
+            color="#B45309"
+            ariaLabel="puff-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+            /> 
+          }
 
        <ComplaintTimeline rate={props.rate} reopen={props.reopen} status={status}/>
 

@@ -35,6 +35,8 @@ function Screen2
     const validationSchema = yup.object(
         {
             applyWith: yup.number().required("This field is required !"),
+            noticeNo: yup.string().when("applyWith", { is: 1, then: yup.string().required("This is a required field") }),
+            noticeDate: yup.string().when("applyWith", { is: 1, then: yup.string().required("This is a required field") }),
         }
     );
 
@@ -42,7 +44,7 @@ function Screen2
         initialValues: initialValues,
 
         onSubmit: (values) => {
-            alert(JSON.stringify(values));
+            // alert(JSON.stringify(values));
             props.nextFun();
         },
         validationSchema
@@ -82,9 +84,11 @@ function Screen2
                             <div className={`${noticeToggle ? 'grid' : 'hidden'}`}>
                                 <div className=" items-center mb-4">
                                     <input type="date" name="noticeDate" className={`${inputStyle}`} value={formik.values.noticeDate} onChange={formik.handleChange} />
+                                    <span className='text-red-500 text-xs'>{formik.touched.noticeDate && formik.errors.noticeDate ? formik.errors.noticeDate : null}</span>
                                 </div>
                                 <div className=" items-center mb-4">
                                     <input type="text" name="noticeNo" className={`${inputStyle}`} placeholder="Search With Notice No" value={formik.values.noticeNo} onChange={formik.handleChange} />
+                                    <span className='text-red-500 text-xs'>{formik.touched.noticeNo && formik.errors.noticeNo ? formik.errors.noticeNo : null}</span>
                                 </div>
                             </div>
 

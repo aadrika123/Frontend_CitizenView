@@ -38,7 +38,7 @@ function Screen4(props) {
                     <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                         <div className="   items-center mb-4">
                             <label for="option1" className={`${labelStyle}`}>Plot Area<span className='text-red-500'>*</span></label>
-                            <input id="areaInSqft" type="number" value="" name="areaInSqft" className={`${inputStyle}`} placeholder="Enter area in Sqft." />
+                            <input id="areaInSqft" type="number"  name="areaInSqft" className={`${inputStyle}`} placeholder="Enter area in Sqft." />
                         </div>
                     </div>
 

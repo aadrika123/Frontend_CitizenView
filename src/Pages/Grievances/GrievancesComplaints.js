@@ -21,7 +21,7 @@ import axios from 'axios'
 // Importing api links
 import apiLinks from "../../Components/GrievancesComponent/Api/GrievanceApi"
 import { GlobalData } from '../../Components/GrievancesComponent/Context/contextVar'
-import { AiOutlineConsoleSql } from 'react-icons/ai'
+
 
 const GrievancesComplaints = () => {
 
