@@ -19,7 +19,7 @@ function NewHeader(props) {
 
     return (
         <>
-            <h1 className={`text-gray-800 opacity-80 ${headerBgColor} px-3 text-stone-600 py-1.5 flex justify-between`}>
+            <h1 className={`text-gray-800 opacity-80 ${headerBgColor} px-3 text-stone-600 py-1.5 flex justify-between w-full md:w-1/3 mx-auto`}>
                 <button onClick={handleClick} className={`border-0 `}>
                     {props.show ?
                         <>

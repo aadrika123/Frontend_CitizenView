@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import CommonStyles from './CommonStyles'
 
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import BottomNavigation from './BottomNavigation'
 import HorizontalScrollScreen from './HorizontalScrollScreen'
 import PropertyMenuList from './MenuList/PropertyMenuList'
@@ -19,10 +19,12 @@ function IndividualRoutes() {
     const { container, boxStyle } = CommonStyles();
     const [showModule, setShowModule] = useState('INITIAL');
 
-    const globalData = useContext(contextVar);
-    useEffect(() => {
-        globalData.setModule('JUIDCO')
-    }, [])
+    // const globalData = useContext(contextVar);
+    // useEffect(() => {
+    //     globalData.setModule('JUIDCO')
+    // }, [])
+
+
 
 
     return (
