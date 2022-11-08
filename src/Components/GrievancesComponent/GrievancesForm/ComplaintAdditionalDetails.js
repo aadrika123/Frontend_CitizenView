@@ -23,8 +23,7 @@ function ComplaintAdditionalDetails(props) {
 
     onSubmit : (values) => {
       console.log("Complaint Addition Details => ", values)
-      props.submitData();
-      props.postData(values);
+      props.submitData(values);
     }
   })
 

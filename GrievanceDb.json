@@ -40,6 +40,33 @@
       "complaintFiledDate": "04-Feb-2021",
       "complaintNo": "PG-PGR-2021-02-04-0005553",
       "id": 3
+    },
+    {
+      "complaintType": "Garbage",
+      "complaintSubType": "Garbage needs to be cleared",
+      "complaintPincode": "324324",
+      "complaintCity": "City A",
+      "complaintLocality": "Locality A",
+      "complaintLandmark": "Quo molestiae dolore",
+      "complaintStatus": "Open",
+      "complaintApplicationStatus": "Pending for assignment",
+      "complaintFiledDate": "04-Feb-2021",
+      "complaintNo": "PG-PGR-2021-02-04-0005553",
+      "id": 4
+    },
+    {
+      "complaintType": "Water & Sewage",
+      "complaintSubType": "Garbage needs to be cleared",
+      "complaintPincode": "834001",
+      "complaintCity": "City A",
+      "complaintLocality": "Locality A",
+      "complaintLandmark": "Ea nisi quaerat comm",
+      "complaintAdditionalDetails": "Quaerat sed sint ill",
+      "complaintStatus": "Open",
+      "complaintApplicationStatus": "Pending for assignment",
+      "complaintFiledDate": "04-Feb-2021",
+      "complaintNo": "PG-PGR-2021-02-04-0005553",
+      "id": 5
     }
   ],
   "rateComplaint": [
