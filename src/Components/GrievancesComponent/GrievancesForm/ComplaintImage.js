@@ -40,7 +40,7 @@ function ComplaintImage(props) {
       <>
          <div className='text-xs font-semibold px-2 mt-4 flex'>
              <div className="flex-1"><span onClick={props.backFun} className='border-b cursor-pointer border-black'><RiArrowDropLeftFill className="inline text-xl"/>Back</span></div>
-             <div className="flex-1 text-right"><span className=''>{props?.formIndex} of 7</span></div>
+             <div className="flex-1 text-right"><span className=''>{props?.formIndex} of 6</span></div>
          </div>
           <form className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
               <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`} onSubmit={handleSubmit(onSubmit)}>

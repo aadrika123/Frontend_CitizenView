@@ -116,15 +116,16 @@ function ComplaintSummary(props) {
         </div> 
         :
          <Puff
-  height="80"
-  width="80"
-  radisu={1}
-  color="#B45309"
-  ariaLabel="puff-loading"
-  wrapperStyle={{}}
-  wrapperClass=""
-  visible={true}
-/> }
+            height="80"
+            width="80"
+            radisu={1}
+            color="#B45309"
+            ariaLabel="puff-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+            /> 
+          }
 
        <ComplaintTimeline rate={props.rate} reopen={props.reopen} status={status}/>
 

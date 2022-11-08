@@ -15,11 +15,17 @@ import ThemeStyle from '../../Styles/ThemeStyle'
 import StarsRating from 'stars-rating'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useFormik } from 'formik'
+import { ErrorMessage, useFormik } from 'formik'
 import apiLinks from "../../GrievancesComponent/Api/GrievanceApi"
 import axios from 'axios'
+import * as yup from 'yup'
 
 function ComplaintRate(props) {
+
+  const validationSchema = yup.object({
+      complaintRate: yup.number().required(),
+      complaintRemark: yup.string().required()
+  })
 
   const {rateComplaint} = apiLinks()
 
@@ -33,7 +39,7 @@ function ComplaintRate(props) {
     onSubmit: (values) => {
       console.log("values => ", values)
       funSubmit(values)
-    }
+    }, validationSchema
   })
 
   const funSubmit = (values) => {
@@ -193,6 +199,7 @@ function ComplaintRate(props) {
           </div>
         </div>
       </form>
+
     </>
 
     )

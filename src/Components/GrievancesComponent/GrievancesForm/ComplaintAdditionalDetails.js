@@ -12,8 +12,13 @@ import { RiArrowDropLeftFill } from 'react-icons/ri'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 import { useFormik } from 'formik'
+import * as yup from 'yup'
 
 function ComplaintAdditionalDetails(props) {
+
+  const validationSchema = yup.object({
+    complaintAdditionalDetails: yup.string().required("enter additional details")
+  })
 
   // Formik
   const formik = useFormik({
@@ -24,7 +29,7 @@ function ComplaintAdditionalDetails(props) {
     onSubmit : (values) => {
       console.log("Complaint Addition Details => ", values)
       props.submitData(values);
-    }
+    }, validationSchema
   })
 
     //destructuring predefined colors to maintain uniform theme everywhere
@@ -45,7 +50,7 @@ function ComplaintAdditionalDetails(props) {
 
       {/* page count */}
       <div className="flex-1 text-right">
-        <span className="">{props?.formIndex} of 7</span>
+        <span className="">{props?.formIndex} of 6</span>
       </div>
 
     </div>
@@ -77,6 +82,8 @@ function ComplaintAdditionalDetails(props) {
                         <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Additional Address Information</label>
                         <textarea name='complaintAdditionalDetails' value={formik.values.complaintAdditionalDetails} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                              />
+
+                  {formik.touched.complaintAdditionalDetails && formik.errors.complaintAdditionalDetails ? (<span className="text-sm text-red-600">{formik.errors.complaintAdditionalDetails}</span>): null}
 
                     </div>
 

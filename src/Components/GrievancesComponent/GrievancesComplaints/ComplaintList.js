@@ -87,7 +87,7 @@ function ComplaintList(props) {
             </h1>
           </div>
 
-          { !isLoading ? 
+          { !isLoading ?  
             data.data.map((elem) => <>
               <div onClick={() => {
                 props.summary()

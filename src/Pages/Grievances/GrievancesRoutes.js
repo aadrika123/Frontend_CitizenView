@@ -13,6 +13,8 @@ import GrievancesCitizenEntryForm from "./GrievancesCitizenEntryForm";
 import GrievancesComplaints from "./GrievancesComplaints";
 import GrievancesIndex from "./GrievancesIndex";
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const GrievancesRoutes = () => {
 
@@ -40,6 +42,20 @@ const GrievancesRoutes = () => {
       </Routes>
 
       </QueryClientProvider>
+
+      <ToastContainer
+      position="top-center"
+      limit={1}
+      autoClose={3000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      />
 
     </>
   );
