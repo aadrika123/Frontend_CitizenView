@@ -30,13 +30,12 @@ function Screen17(props) {
                     <div className='col-span-12 bg-green-400 text-center py-5 border shadow-md'>
                         <p className='font-bold text-2xl  '>Application Submitted</p>
                         <p className='flex justify-center my-2'><FcOk fill='blue' className='bg-white rounded-full' size={35} /></p>
-                        <p className='mt-2 font-semibold'>Application No :</p>
-                        <p className='font-bold text-2xl'>JH-6767GHG-AXTR</p>
+                        <p className='mt-2 font-semibold '>Your SAF No :</p>
+                        <p className='font-bold text-2xl'>{props?.safNo}</p>
                     </div>
 
                     {/* <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl text-center`}>Application Submitted</h1></div> */}
-                    <div className="col-span-12"> <h1 className={` ${titleColor} text-sm mt-2 opacity-40`}>If you want to modify any value, click on change in the respected step. It will redirect you to the concerned step where you can make your changes.</h1>
-                        <div className='text-center mt-1'><span className='font-semibold'>Unique Property ID : </span>JH-6767GHG-AXTR</div>
+                    <div className="col-span-12"> <h1 className={` ${titleColor} text-sm mt-2 opacity-40`}>If you want to modify any value, click on change in the respected step. </h1>
                         <div className='flex justify-center my-2'> <button className='bg-amber-600 px-3 py-1 text-white font-semibold'>Download Acknowledgement Form</button></div>
                         <div className='flex justify-center my-2'> <button className='bg-blue-400 px-3 py-1 font-semibold'>Goto Home</button></div>
                     </div>
