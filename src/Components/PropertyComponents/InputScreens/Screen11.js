@@ -52,7 +52,7 @@ function Screen11(props) {
                                     type="radio"
                                     id="IndependentBuilding"
                                     name="group"
-                                    value="IndependentBuilding"
+                                    value="1"
                                     onChange={e => handleRadioButtons(e)}
                                     required
                                 />
@@ -64,7 +64,7 @@ function Screen11(props) {
                                     type="radio"
                                     id="Flat/Partofthebuilding"
                                     name="group"
-                                    value="Flat/Partofthebuilding"
+                                    value="2"
                                     onChange={e => handleRadioButtons(e)}
                                 />
                                 <span htmlFor="Flat/Partofthebuilding" className="ml-2 text-sm font-medium text-gray-900 ">Institutial - Government</span>
@@ -75,7 +75,7 @@ function Screen11(props) {
                                     type="radio"
                                     id="VaccantLand"
                                     name="group"
-                                    value="VaccantLand"
+                                    value="3"
                                     onChange={e => handleRadioButtons(e)}
                                 />
                                 <span htmlFor="VaccantLand" className="ml-2 text-sm font-medium text-gray-900 ">Single Owner</span>
@@ -86,7 +86,7 @@ function Screen11(props) {
                                     type="radio"
                                     id="VaccantLand"
                                     name="group"
-                                    value="VaccantLand"
+                                    value="4"
                                     onChange={e => handleRadioButtons(e)}
                                 />
                                 <span htmlFor="VaccantLand" className="ml-2 text-sm font-medium text-gray-900 ">Multiple Owners</span>
