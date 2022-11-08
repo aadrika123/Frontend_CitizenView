@@ -14,8 +14,13 @@ import {MdCameraEnhance} from 'react-icons/md'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 import { useFormik } from 'formik'
+import * as yup from 'yup'
 
 function ComplaintReopen(props) {
+
+  const validationSchema = yup.object({
+    complaintReason: yup.string().required("select reason")
+  })
 
   const formik = useFormik({
     initialValues: {
@@ -25,7 +30,7 @@ function ComplaintReopen(props) {
     onSubmit: (values) => {
       console.log("complaint reason => ", values)
       props.reopenNext(values)
-    }
+    },validationSchema
 
   })
 
@@ -119,6 +124,7 @@ function ComplaintReopen(props) {
               No permanent solution
             </label>
             </div>
+            {formik.touched.complaintReason && formik.errors.complaintReason ? (<span className="text-sm text-red-600">{formik.errors.complaintReason}</span>): null}
         </div>
 
         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
