@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import { BrowserRouter, useNavigate, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, useNavigate, Route, Routes, useParams, useLocation } from 'react-router-dom';
 import './App.css';
 import './index.css'
 import PropertyIndex from './Pages/Property/PropertyIndex';
@@ -16,28 +16,29 @@ import Sidebar from './Components/Sidebar/Sidebar';
 import { useEffect, useRef, useState } from 'react';
 import { contextVar } from './Components/GlobalState/ContextVar';
 
-
 function App() {
   const [sideShow, setsideShow] = useState(false);
   const [moduleName, setmoduleName] = useState("JUIDCO")
   const [sidebarBody, setsidebarBody] = useState('')
-  const setHeader = (e) => {
-    // console.log(e.target)
-    sideShow ? setsideShow(false) : setsideShow(true);
-  }
 
-  window.onclick = () => {
-    // alert("click on dom");
+  const setHeader = (e) => {
+    sideShow ? setsideShow(false) : setsideShow(true);
   }
 
   const globals = {
     moduleName: moduleName,
     setModule: setmoduleName
   }
-  console.log("values ", globals)
-  useEffect(() => {
-    setmoduleName('JUIDCO')
-  })
+
+
+  // useEffect(() => {
+  //   JSON.stringify(window.location.href).split("/")[3].startsWith("home") && setmoduleName('JUIDCO');
+  //   JSON.stringify(window.location.href).split("/")[3].startsWith("trade") && setmoduleName('TRADE');
+  //   JSON.stringify(window.location.href).split("/")[3].startsWith("water") && setmoduleName('WATER');
+  //   JSON.stringify(window.location.href).split("/")[3].startsWith("prop") && setmoduleName('PROPERTY');
+
+  //   console.log("params : ", JSON.stringify(window.location.href).split("/")[3]);
+  // }, [])
 
 
   return (
@@ -49,6 +50,7 @@ function App() {
           <div className={`${sideShow ? 'opacity-70' : ''}`}>
             <Routes>
               <Route path="/" element={<IndividualRoutes />} />
+              <Route path="/home" element={<IndividualRoutes />} />
               <Route index element={<IndividualRoutes />} />
             </Routes>
 
