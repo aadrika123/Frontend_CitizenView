@@ -12,7 +12,7 @@
       "complaintNo": "PG-PGR-2021-02-04-0005553",
       "complaintApplicationStatus": "Pending for Assesment",
       "complaintFiledDate": "04-Feb-2021",
-      "complaintStatus": "Closed",
+      "complaintStatus": "Closed"
     },
     {
       "complaintType": "Streetlights",
@@ -27,6 +27,19 @@
       "complaintApplicationStatus": "Pending for Assesment",
       "complaintFiledDate": "04-Feb-2021",
       "complaintStatus": "Open"
+    },
+    {
+      "complaintType": "Streetlights",
+      "complaintSubType": "Garbage needs to be cleared",
+      "complaintPincode": "324324",
+      "complaintCity": "City A",
+      "complaintLocality": "Locality A",
+      "complaintLandmark": "dfdf",
+      "complaintStatus": "Open",
+      "complaintApplicationStatus": "Pending for assignment",
+      "complaintFiledDate": "04-Feb-2021",
+      "complaintNo": "PG-PGR-2021-02-04-0005553",
+      "id": 3
     }
   ],
   "rateComplaint": [
@@ -38,19 +51,29 @@
     },
     {
       "complaintRate": 3.5,
-      "complaintRemark": ["Resolution Time", "Quality of Work"],
+      "complaintRemark": [
+        "Resolution Time",
+        "Quality of Work"
+      ],
       "complaintComment": "Nothing",
       "id": 2
     },
     {
       "complaintRate": 4,
-      "complaintRemark": ["Resolution Time", "Others", "Quality of Work"],
+      "complaintRemark": [
+        "Resolution Time",
+        "Others",
+        "Quality of Work"
+      ],
       "complaintComment": "Laboris dolores iust",
       "id": 3
     },
     {
       "complaintRate": 3.5,
-      "complaintRemark": ["Services", "Resolution Time"],
+      "complaintRemark": [
+        "Services",
+        "Resolution Time"
+      ],
       "complaintComment": "Est qui molestias s",
       "id": 4
     },
