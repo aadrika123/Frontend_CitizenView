@@ -109,6 +109,15 @@
       "complaintRemark": "",
       "complaintComment": "",
       "id": 5
+    },
+    {
+      "complaintRate": 4.5,
+      "complaintRemark": [
+        "Services",
+        "Resolution Time"
+      ],
+      "complaintComment": "Illo minim est aut ",
+      "id": 6
     }
   ],
   "reopenComplaint": [
@@ -137,6 +146,11 @@
       "complaintReason": "Employee did not turn up",
       "complaintAdditionalDetails": "",
       "id": 5
+    },
+    {
+      "complaintReason": "No permanent solution",
+      "complaintAdditionalDetails": "Ab animi qui perspi",
+      "id": 6
     }
   ]
 }

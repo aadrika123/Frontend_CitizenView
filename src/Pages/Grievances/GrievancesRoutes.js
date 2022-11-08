@@ -12,12 +12,16 @@ import { Route, Routes } from "react-router-dom";
 import GrievancesCitizenEntryForm from "./GrievancesCitizenEntryForm";
 import GrievancesComplaints from "./GrievancesComplaints";
 import GrievancesIndex from "./GrievancesIndex";
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 const GrievancesRoutes = () => {
+
+  const queryClient = new QueryClient()
 
   return (
     <>
 
+<QueryClientProvider client={queryClient}>
       <Routes>
 
         <Route
@@ -34,6 +38,8 @@ const GrievancesRoutes = () => {
           element={<GrievancesComplaints />}
         />
       </Routes>
+
+      </QueryClientProvider>
 
     </>
   );
