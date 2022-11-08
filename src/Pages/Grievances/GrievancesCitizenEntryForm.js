@@ -80,18 +80,8 @@ const GrievancesCitizenEntryForm = () => {
           />
         )}
 
-        {/* Complaint Sub Type */}
-        {formIndex == 2 && (
-          <ComplaintSubType
-            nextFun={nextFun}
-            backFun={backFun}
-            formIndex={formIndex}
-            postData={postData}
-          />
-        )}
-
         {/* Complaint Pin Code */}
-        {formIndex == 3 && (
+        {formIndex == 2 && (
           <ComplaintPincode
             nextFun={nextFun}
             backFun={backFun}
@@ -101,7 +91,7 @@ const GrievancesCitizenEntryForm = () => {
         )}
 
         {/* Complaint Address */}
-        {formIndex == 4 && (
+        {formIndex == 3 && (
           <ComplaintAddress
             nextFun={nextFun}
             backFun={backFun}
@@ -111,7 +101,7 @@ const GrievancesCitizenEntryForm = () => {
         )}
 
         {/* Complaint Landmark */}
-        {formIndex == 5 && (
+        {formIndex == 4 && (
           <ComplaintLandmark
             nextFun={nextFun}
             backFun={backFun}
@@ -121,7 +111,7 @@ const GrievancesCitizenEntryForm = () => {
         )}
 
         {/* Complaint Image */}
-        {formIndex == 6 && (
+        {formIndex == 5 && (
           <ComplaintImage
             nextFun={nextFun}
             backFun={backFun}
@@ -131,7 +121,7 @@ const GrievancesCitizenEntryForm = () => {
         )}
 
         {/* Complaint Additional Details */}
-        {formIndex == 7 && (
+        {formIndex == 6 && (
           <ComplaintAdditionalDetails
             backFun={backFun}
             formIndex={formIndex}
@@ -141,7 +131,7 @@ const GrievancesCitizenEntryForm = () => {
         )}
 
         {/* Complaint succes screen */}
-        {formIndex == 8 && (
+        {formIndex == 7 && (
           <ComplaintFileSuccess/>
         )}
 

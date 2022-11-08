@@ -22,6 +22,8 @@ function Screen3(props) {
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
     const { labelStyle, inputStyle } = CommonStyles();
 
+    const { allFormDataFun } = props.values;
+    
     const initialValues = {
         firmName: ''
     }
@@ -37,6 +39,8 @@ function Screen3(props) {
 
         onSubmit: (values) => {
             // alert(JSON.stringify(values));
+            
+            allFormDataFun("firmName",values);
             props.nextFun();
         },
         validationSchema

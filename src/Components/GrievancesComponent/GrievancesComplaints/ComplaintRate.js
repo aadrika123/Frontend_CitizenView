@@ -15,11 +15,17 @@ import ThemeStyle from '../../Styles/ThemeStyle'
 import StarsRating from 'stars-rating'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useFormik } from 'formik'
+import { ErrorMessage, useFormik } from 'formik'
 import apiLinks from "../../GrievancesComponent/Api/GrievanceApi"
 import axios from 'axios'
+import * as yup from 'yup'
+import { toast } from 'react-toastify'
 
 function ComplaintRate(props) {
+
+  const validationSchema = yup.object({
+      complaintRate: yup.number().moreThan(0).required()
+  })
 
   const {rateComplaint} = apiLinks()
 
@@ -33,7 +39,7 @@ function ComplaintRate(props) {
     onSubmit: (values) => {
       console.log("values => ", values)
       funSubmit(values)
-    }
+    }, validationSchema
   })
 
   const funSubmit = (values) => {
@@ -184,6 +190,9 @@ function ComplaintRate(props) {
             <div className="col-span-6">
               {" "}
               <button
+              onClick={()=>{
+                formik.errors.complaintRate && toast("Please rate")
+              }}
                 type="submit"
                 className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
               >
@@ -193,6 +202,7 @@ function ComplaintRate(props) {
           </div>
         </div>
       </form>
+
     </>
 
     )

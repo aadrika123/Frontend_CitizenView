@@ -41,7 +41,7 @@ function ComplaintPincode(props) {
             </span>
           </div>
           <div className="flex-1 text-right">
-            <span className="">{props?.formIndex} of 7</span>
+            <span className="">{props?.formIndex} of 6</span>
           </div>
         </div>
 
@@ -58,7 +58,7 @@ function ComplaintPincode(props) {
             <div className="col-span-12">
               {" "}
               <h1 className={`font-bold ${titleColor} text-2xl`}>
-                Do you know the complaintPincode ?
+                Do you know the Complaint Pincode ?
               </h1>
             </div>
             <div className="col-span-12">

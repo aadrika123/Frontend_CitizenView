@@ -14,8 +14,13 @@ import Info from '../../Common/Info'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 import { useFormik } from 'formik'
+import * as yup from 'yup'
 
 function ComplaintAdditionalDetails(props) {
+
+  const validationSchema = yup.object({
+    complaintAdditionalDetails: yup.string().required("enter additional details")
+  })
 
   const formik = useFormik({
     initialValues: {
@@ -25,7 +30,7 @@ function ComplaintAdditionalDetails(props) {
     onSubmit: (values) => {
       console.log("Reopen Additional Details => ", values)
       props.reopenSuccess(values)
-    }
+    }, validationSchema
   })
 
     //destructuring predefined colors to maintain uniform theme everywhere
@@ -62,6 +67,8 @@ function ComplaintAdditionalDetails(props) {
         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                         <textarea name='complaintAdditionalDetails' type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                              />
+
+{formik.touched.complaintAdditionalDetails && formik.errors.complaintAdditionalDetails ? (<span className="text-sm text-red-600">{formik.errors.complaintAdditionalDetails}</span>): null}
 
                     </div>
 

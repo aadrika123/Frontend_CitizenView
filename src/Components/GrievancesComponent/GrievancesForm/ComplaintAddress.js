@@ -12,21 +12,30 @@ import {RiArrowDropLeftFill} from 'react-icons/ri'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 import { useFormik } from 'formik'
+import * as yup from 'yup'
 
 function ComplaintAddress(props) {
+
+  const validationSchema = yup.object({
+      complaintCity : yup.string().required("select city"),
+      complaintLocality: yup.string().required("select locality or mohalla"),
+      complaintWardNo: yup.string().required("enter ward no."),
+  })
 
   // Formik
   const formik = useFormik({
     initialValues: {
       complaintCity : '',
-      complaintLocality: ''
+      complaintLocality: '',
+      complaintWardNo: '',
+      complaintHouseNo: ''
     },
 
     onSubmit : (values) => {
       console.log("Complaint address => ", values)
       props.nextFun();
       props.postData(values);
-    }
+    }, validationSchema
   })
 
   //destructuring predefined colors to maintain uniform theme everywhere
@@ -47,7 +56,7 @@ function ComplaintAddress(props) {
 
       {/* page count */}
       <div className="flex-1 text-right">
-        <span className="">{props?.formIndex} of 7</span>
+        <span className="">{props?.formIndex} of 6</span>
       </div>
 
     </div>
@@ -98,6 +107,7 @@ function ComplaintAddress(props) {
                                         } */}
 
                         </select>
+                        {formik.touched.complaintCity && formik.errors.complaintCity ? (<span className="text-sm text-red-600">{formik.errors.complaintCity}</span>): null}
 
                     </div>
 
@@ -117,6 +127,23 @@ function ComplaintAddress(props) {
                                         } */}
 
                         </select>
+                        {formik.touched.complaintLocality && formik.errors.complaintLocality ? (<span className="text-sm text-red-600">{formik.errors.complaintLocality}</span>): null}
+
+                    </div>
+
+                    <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
+                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Ward No.<span className='text-red-500'>*</span></label>
+                        <input name="complaintWardNo" value={formik.values.complaintWardNo} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" placeholder='Enter ward no.'
+                             />
+
+                      {formik.touched.complaintWardNo && formik.errors.complaintWardNo ? (<span className="text-sm text-red-600">{formik.errors.complaintWardNo}</span>): null}
+
+                    </div>
+
+                    <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
+                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">House No. <i> (optional) </i></label>
+                        <input name="complaintHouseNo" value={formik.values.complaintHouseNo} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" placeholder='Enter house no.'
+                             />
 
                     </div>
 
