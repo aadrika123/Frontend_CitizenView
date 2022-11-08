@@ -198,6 +198,12 @@
       "complaintRemark": "",
       "complaintComment": "",
       "id": 11
+    },
+    {
+      "complaintRate": 4.5,
+      "complaintRemark": "",
+      "complaintComment": "",
+      "id": 12
     }
   ],
   "reopenComplaint": [
