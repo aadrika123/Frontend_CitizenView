@@ -41,46 +41,63 @@ function Screen4(props) {
                 </div>
                 <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                     <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
-                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Number of Basements</h1></div>
-                        
+                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Basic Address</h1></div>
 
 
-                        <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                            <div className="flex items-center mb-4">
+                        <div className="form-group md:mb-6 col-span-12 my-4">
+                            <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">City<span className='text-red-500'>*</span></label>
                                 <input
-                                    className="w-6 h-6"
-                                    type="radio"
-                                    id="noBasement"
-                                    name="group"
-                                    value="noBasement"
-                                    onChange={e => handleRadioButtons(e)}
-                                    required
+                                    type="text"
+                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                    // onChange={e => handleOccupancy(e)}
+                                    name="City"
                                 />
-                                <span htmlFor="noBasement" className="ml-2 text-sm font-medium text-gray-900 ">No Basement</span>
                             </div>
-                            <div className="flex items-center mb-4">
+                            <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">District<span className='text-red-500'>*</span></label>
                                 <input
-                                    className="w-6 h-6"
-                                    type="radio"
-                                    id="1Basement"
-                                    name="group"
-                                    value="1Basement"
-                                    onChange={e => handleRadioButtons(e)}
+                                    type="text"
+                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                    // onChange={e => handleOccupancy(e)}
+                                    name="District"
                                 />
-                                <span htmlFor="1Basement" className="ml-2 text-sm font-medium text-gray-900 ">1 Basement</span>
                             </div>
-                            <div className="flex items-center mb-4">
+                            <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">State<span className='text-red-500'>*</span></label>
                                 <input
-                                    className="w-6 h-6"
-                                    type="radio"
-                                    id="2Basement"
-                                    name="group"
-                                    value="2Basement"
-                                    onChange={e => handleRadioButtons(e)}
+                                    type="text"
+                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                    // onChange={e => handleOccupancy(e)}
+                                    name="State"
                                 />
-                                <span htmlFor="2Basement" className="ml-2 text-sm font-medium text-gray-900 ">2 Basement</span>
+                            </div>
+                            <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Pin<span className='text-red-500'>*</span></label>
+                                <input
+                                    type="text"
+                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                    // onChange={e => handleOccupancy(e)}
+                                    name="Pin"
+                                />
+                            </div>
+                            <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Locality<span className='text-red-500'>*</span></label>
+                                <input
+                                    type="text"
+                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                    // onChange={e => handleOccupancy(e)}
+                                    name="Locality"
+                                />
+                            </div>
+                            <div>
+                                <input type="checkbox" name="" id="" />
+                                <span className='text-red-700 font-semibold ml-2    '>Note </span> : If Corresponding Address Different from Property Address (Please Tick)
+                                
                             </div>
                         </div>
+
+
 
                         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
                             <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>

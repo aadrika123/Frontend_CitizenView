@@ -45,34 +45,46 @@ function Screen6(props) {
                 </div>
                 <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                     <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
-                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Pin Property Location</h1></div>
+                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Water Details</h1></div>
                         <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>Property used only for residential purpose & there are no commerical/industrail/institutional activities in this property.</h1></div>
 
 
                         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                            <div className="flex items-center mb-4">
+                            <div className="form-group mb-4 md:mb-6 col-span-12">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Building Plan Approval No.</label>
                                 <input
-                                    className="w-6 h-6"
-                                    type="radio"
-                                    id="yes"
-                                    name="group"
-                                    value="Yes"
-                                    onChange={e => handleRadioButtons(e)}
-                                    required
+                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                    // onChange={e => handleUnitUsagesType(e)}
+                                    name="unitUsageType"
                                 />
-                                <span htmlFor="yes" className="ml-2 text-sm font-medium text-gray-900 ">Yes</span>
                             </div>
-                            <div className="flex items-center mb-4">
+                            <div className="form-group mb-4 md:mb-6 col-span-12">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Building Plan Approval Date</label>
                                 <input
-                                    className="w-6 h-6"
-                                    type="radio"
-                                    id="no"
-                                    name="group"
-                                    value="No"
-                                    onChange={e => handleRadioButtons(e)}
+                                    type="date"
+                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                    // onChange={e => handleUnitUsagesType(e)}
+                                    name="unitUsageType"
                                 />
-                                <span htmlFor="no" className="ml-2 text-sm font-medium text-gray-900 ">No</span>
                             </div>
+                            <div className="form-group mb-4 md:mb-6 col-span-12">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Water Consumer No.</label>
+                                <input
+                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                    // onChange={e => handleUnitUsagesType(e)}
+                                    name="unitUsageType"
+                                />
+                            </div>
+                            <div className="form-group mb-4 md:mb-6 col-span-12">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Water Connection Date</label>
+                                <input
+                                    type="date"
+                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                    // onChange={e => handleUnitUsagesType(e)}
+                                    name="unitUsageType"
+                                />
+                            </div>
+
                         </div>
 
 
