@@ -36,7 +36,6 @@ function ScreenBindBookNo(props) {
             bindBookNo: '',
         },
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
             props.CollectScreenDataFun("bindBookNo", values)
             props.nextFun()
             console.log("bindBookNo", values)
@@ -63,7 +62,7 @@ function ScreenBindBookNo(props) {
                             </div>
 
                             <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
-                                <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
+                                <div className="col-span-6"> <button onClick={() => props.backFun()} type="button" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
                                 <div className="col-span-6"> <button type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>
                             </div>
                         </div>

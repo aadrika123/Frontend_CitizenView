@@ -205,7 +205,7 @@ function PropertyCitizenEntryForm() {
         <>
             <div>
 
-                <div className={`w-full absolute top-10 transition-all ${formIndex == 1 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen1 nextFun={nextFun} backFun={backFun} data={screen1Data} formIndex={formIndex} /> </div>
+                {/* <div className={`w-full absolute top-10 transition-all ${formIndex == 1 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen1 nextFun={nextFun} backFun={backFun} data={screen1Data} formIndex={formIndex} /> </div>
                 <div className={`w-full absolute top-10 transition-all ${formIndex == 2 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen2 nextFun={nextFun} backFun={backFun} data={screen2Data} formIndex={formIndex} /> </div>
                 <div className={`w-full absolute top-10 transition-all ${formIndex == 3 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen3 nextFun={nextFun} backFun={backFun} data={screen3Data} formIndex={formIndex} /></div>
                 <div className={`w-full absolute top-10 transition-all ${formIndex == 4 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen4 nextFun={nextFun} backFun={backFun} data={screen4Data} formIndex={formIndex} /></div>
@@ -221,34 +221,48 @@ function PropertyCitizenEntryForm() {
                 <div className={`w-full absolute top-10 transition-all ${formIndex == 14 ? 'translate-x-0' : 'translate-x-full'}`}><Screen14 nextFun={nextFun} backFun={backFun} data={screen5Data} formIndex={formIndex} /></div>
                 <div className={`w-full absolute top-10 transition-all ${formIndex == 15 ? 'translate-x-0' : 'translate-x-full'}`}><Screen15 nextFun={nextFun} backFun={backFun} data={screen5Data} formIndex={formIndex} /></div>
                 <div className={`w-full absolute top-10 transition-all ${formIndex == 16 ? 'translate-x-0' : 'translate-x-full'}`}><Screen16 nextFun={nextFun} backFun={backFun} data={screen5Data} formIndex={formIndex} /></div>
-                <div className={`w-full absolute top-10 transition-all ${formIndex == 17 ? 'translate-x-0' : 'translate-x-full'}`}><Screen17 nextFun={nextFun} backFun={backFun} data={screen5Data} formIndex={formIndex} /></div>
+                <div className={`w-full absolute top-10 transition-all ${formIndex == 17 ? 'translate-x-0' : 'translate-x-full'}`}><Screen17 nextFun={nextFun} backFun={backFun} data={screen5Data} formIndex={formIndex} /></div> */}
 
 
 
+           {/* <div className={`${formIndex == 1 ? 'block' : 'hidden' }`}> <Screen1 nextFun={nextFun} backFun={backFun} data={screen1Data} formIndex={formIndex} /> </div>
+           <div className={`${formIndex == 2 ? 'block' : 'hidden' }`}> <Screen2 nextFun={nextFun} backFun={backFun} data={screen2Data} formIndex={formIndex} /> </div>
+           <div className={`${formIndex == 3 ? 'block' : 'hidden' }`}> <Screen3 nextFun={nextFun} backFun={backFun} data={screen3Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 4 ? 'block' : 'hidden' }`}> <Screen4 nextFun={nextFun} backFun={backFun} data={screen4Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 5 ? 'block' : 'hidden' }`}> <Screen5 nextFun={nextFun} backFun={backFun} data={screen5Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 6 ? 'block' : 'hidden' }`}> <Screen6 nextFun={nextFun} backFun={backFun} data={screen6Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 7 ? 'block' : 'hidden' }`}> <Screen7 nextFun={nextFun} backFun={backFun} data={screen7Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 8 ? 'block' : 'hidden' }`}> <Screen8 nextFun={nextFun} backFun={backFun} data={screen8Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 9 ? 'block' : 'hidden' }`}> <Screen9 nextFun={nextFun} backFun={backFun} data={screen9Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 10 ? 'block' : 'hidden' }`}> <Screen10 nextFun={nextFun} backFun={backFun} data={screen10Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 11 ? 'block' : 'hidden' }`}> <Screen11 nextFun={nextFun} backFun={backFun} data={screen11Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 12 ? 'block' : 'hidden' }`}> <Screen12 nextFun={nextFun} backFun={backFun} data={screen12Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 13 ? 'block' : 'hidden' }`}> <Screen13 nextFun={nextFun} backFun={backFun} data={screen13Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 14 ? 'block' : 'hidden' }`}> <Screen14 nextFun={nextFun} backFun={backFun} data={screen14Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 15 ? 'block' : 'hidden' }`}> <Screen15 nextFun={nextFun} backFun={backFun} data={screen15Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 16 ? 'block' : 'hidden' }`}> <Screen16 nextFun={nextFun} backFun={backFun} data={screen16Data} payloadData={payloadData} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 17 ? 'block' : 'hidden' }`}> <Screen17 nextFun={nextFun} backFun={backFun} safNo={safNo} formIndex={formIndex} /></div> */}
 
 
-                {/* 
-             {formIndex == 1 && <Screen1 nextFun={nextFun} backFun={backFun} data={screen1Data} formIndex={formIndex} />}
+                {formIndex == 1 && <Screen1 nextFun={nextFun} backFun={backFun} data={screen1Data} formIndex={formIndex} />}
                 {formIndex == 2 && <Screen2 nextFun={nextFun} backFun={backFun} data={screen2Data} formIndex={formIndex} />}
-                {formIndex == 3 && <Screen2 nextFun={nextFun} backFun={backFun} data={screen2Data} formIndex={formIndex} />}
-                {formIndex == 4 && <Screen2 nextFun={nextFun} backFun={backFun} data={screen2Data} formIndex={formIndex} />}
-                {formIndex == 5 && <Screen2 nextFun={nextFun} backFun={backFun} data={screen2Data} formIndex={formIndex} />}
-            {formIndex == 6 && <Screen6 nextFun={nextFun} backFun={backFun} data={screen6Data} formIndex={formIndex} />}
-            {formIndex == 7 && <Screen7 nextFun={nextFun} backFun={backFun} data={screen7Data} formIndex={formIndex} />}
-            {formIndex == 8 && <Screen8 nextFun={nextFun} backFun={backFun} data={screen8Data} formIndex={formIndex} />}
-            {formIndex == 9 && <Screen9 nextFun={nextFun} backFun={backFun} data={screen9Data} formIndex={formIndex} />}
-            {formIndex == 10 && <Screen10 nextFun={nextFun} backFun={backFun} data={screen10Data} formIndex={formIndex} />}
-            {formIndex == 11 && <Screen11 nextFun={nextFun} backFun={backFun} data={screen11Data} formIndex={formIndex} />}
-            {formIndex == 12 && <Screen12 nextFun={nextFun} backFun={backFun} data={screen12Data} formIndex={formIndex} />}
-            {formIndex == 13 && <Screen13 nextFun={nextFun} backFun={backFun} data={screen13Data} formIndex={formIndex} />}
-            {formIndex == 14 && <Screen14 nextFun={nextFun} backFun={backFun} data={screen14Data} formIndex={formIndex} />}
-            {formIndex == 15 && <Screen15 nextFun={nextFun} backFun={backFun} data={screen15Data} formIndex={formIndex} />}
-            {formIndex == 16 && <Screen16 nextFun={nextFun} backFun={backFun} data={screen16Data} payloadData={payloadData} formIndex={formIndex} />}
-            {formIndex == 17 && <Screen17 nextFun={nextFun} backFun={backFun} safNo={safNo} formIndex={formIndex} />} */}
+                {formIndex == 3 && <Screen3 nextFun={nextFun} backFun={backFun} data={screen3Data} formIndex={formIndex} />}
+                {formIndex == 4 && <Screen4 nextFun={nextFun} backFun={backFun} data={screen4Data} formIndex={formIndex} />}
+                {formIndex == 5 && <Screen5 nextFun={nextFun} backFun={backFun} data={screen5Data} formIndex={formIndex} />}
+                {formIndex == 6 && <Screen6 nextFun={nextFun} backFun={backFun} data={screen6Data} formIndex={formIndex} />}
+                {formIndex == 7 && <Screen7 nextFun={nextFun} backFun={backFun} data={screen7Data} formIndex={formIndex} />}
+                {formIndex == 8 && <Screen8 nextFun={nextFun} backFun={backFun} data={screen8Data} formIndex={formIndex} />}
+                {formIndex == 9 && <Screen9 nextFun={nextFun} backFun={backFun} data={screen9Data} formIndex={formIndex} />}
+                {formIndex == 10 && <Screen10 nextFun={nextFun} backFun={backFun} data={screen10Data} formIndex={formIndex} />}
+                {formIndex == 11 && <Screen11 nextFun={nextFun} backFun={backFun} data={screen11Data} formIndex={formIndex} />}
+                {formIndex == 12 && <Screen12 nextFun={nextFun} backFun={backFun} data={screen12Data} formIndex={formIndex} />}
+                {formIndex == 13 && <Screen13 nextFun={nextFun} backFun={backFun} data={screen13Data} formIndex={formIndex} />}
+                {formIndex == 14 && <Screen14 nextFun={nextFun} backFun={backFun} data={screen14Data} formIndex={formIndex} />}
+                {formIndex == 15 && <Screen15 nextFun={nextFun} backFun={backFun} data={screen15Data} formIndex={formIndex} />}
+                {formIndex == 16 && <Screen16 nextFun={nextFun} backFun={backFun} data={screen16Data} payloadData={payloadData} formIndex={formIndex} />}
+                {formIndex == 17 && <Screen17 nextFun={nextFun} backFun={backFun} safNo={safNo} formIndex={formIndex} />}
 
-                {/* <div className="w-full absolute translate-y-96 clear-both "> */}
-                    <FeedbackScreen payloadData={payloadData} />
-                {/* </div> */}
+                <FeedbackScreen payloadData={payloadData} />
             </div>
         </>
     )

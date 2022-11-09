@@ -11,6 +11,8 @@ postFileComplaint
         ├──complaintPincode
         ├──complaintCity
         ├──complaintLocality
+        ├──complaintWardNo
+        ├──complaintHouseNo
         ├──complaintLandmark
         ├──complaintImage
         └──complaintAdditionalDetails
@@ -18,7 +20,7 @@ postFileComplaint
         ├──complaintFiledDate <!-- Generate new -->
         ├──complaintNo <!-- Generate new -->
         ├──complaintStatus <!-- Open or Closed -->
-        └──complaintApplicationStatus <!-- Pending or Filed -->
+        └──complaintApplicationStatus <!-- Pending or ...........  -->
 
 <!-- Get all complaints by Id -->
 getAllComplaintById
@@ -34,6 +36,8 @@ getAllComplaintById
         ├──complaintPincode
         ├──complaintCity
         ├──complaintLocality
+        ├──complaintWardNo
+        ├──complaintHouseNo
         ├──complaintLandmark
         ├──complaintImage
         └──complaintAdditionalDetails
@@ -58,19 +62,14 @@ putReopenComplaintById
         ├──complaintFiledDate
         ├──complaintStatus <!-- Open or Closed -->
         ├──complaintNo
-        ├──complaintApplicationStatus <!-- Pending or Filed -->
+        ├──complaintApplicationStatus <!-- Pending or ......... -->
         ├──complaintType
         ├──complaintSubType
         ├──complaintPincode
         ├──complaintCity
         ├──complaintLocality
+        ├──complaintWardNo
+        ├──complaintHouseNo
         ├──complaintLandmark
         ├──complaintImage
         └──complaintAdditionalDetails
-
-<!-- On Hold -->
-For Admin
-----------------------------------------------------------------------------
-
-
-

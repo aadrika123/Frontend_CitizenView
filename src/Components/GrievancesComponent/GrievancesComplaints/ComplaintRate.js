@@ -4,31 +4,32 @@
 //    Date - 3rd November 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - Complaint Rate
+//    Component  - ComplaintRate
+//    Description - Citizen gives feedback and rating here
 //////////////////////////////////////////////////////////////////////////////////////
 
-import { BiAddToQueue } from 'react-icons/bi'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
-import Info from '../../Common/Info'
-//importing Themestyle function to use predefined colors to maintain uniform theme everywhere
-import ThemeStyle from '../../Styles/ThemeStyle'
 import StarsRating from 'stars-rating'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { ErrorMessage, useFormik } from 'formik'
+import { useFormik } from 'formik'
 import apiLinks from "../../GrievancesComponent/Api/GrievanceApi"
 import axios from 'axios'
 import * as yup from 'yup'
-import { toast } from 'react-toastify'
+//importing Themestyle function to use predefined colors to maintain uniform theme everywhere
+import ThemeStyle from '../../Styles/ThemeStyle'
+
 
 function ComplaintRate(props) {
 
+  // Validation form
   const validationSchema = yup.object({
       complaintRate: yup.number().moreThan(0).required()
   })
 
+  // Destructing api
   const {rateComplaint} = apiLinks()
 
+  // formik
   const formik = useFormik({
     initialValues:{
       complaintRate: '',
@@ -38,10 +39,15 @@ function ComplaintRate(props) {
 
     onSubmit: (values) => {
       console.log("values => ", values)
+      
+      // calling submit function
       funSubmit(values)
+
     }, validationSchema
+
   })
 
+  // submit function
   const funSubmit = (values) => {
     axios.post(rateComplaint, values)
     .then((res) => {
@@ -51,10 +57,10 @@ function ComplaintRate(props) {
     .catch((err) => console.log(err))
   }
 
-  const navigate = useNavigate()
-
+  // star rating constant
   const[rateValue, setRateValue] = useState(0)
 
+  // handle star rating
   const ratingChanged = (newRating) => {
     console.log(newRating)
     setRateValue(newRating)
@@ -65,6 +71,8 @@ function ComplaintRate(props) {
     return (
         
       <>
+
+      {/* Corner back button */}
       <div className="text-xs font-semibold px-2 mt-4 flex">
         <div className="flex-1">
           <span onClick={props.backFun} className="border-b cursor-pointer border-black">
@@ -73,10 +81,14 @@ function ComplaintRate(props) {
           </span>
         </div>
       </div>
+
+      {/* form */}
       <form onSubmit={formik.handleSubmit} onChange={formik.handleChange} className="p-2 md:p-10 flex justify-center items-center  overflow-hidden">
         <div
           className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}
         >
+
+          {/* star rating */}
           <div className="col-span-12">
             {" "}
             <h1 className={`font-bold ${titleColor} text-2xl`}>
@@ -100,12 +112,16 @@ function ComplaintRate(props) {
     {formik.values.complaintRate}
   </div>
           </div>
+
+          {/* Remark feedback */}
           <div className="col-span-12">
             {" "}
             <h1 className={` ${titleColor} font-bold`}>
              What was good ?
             </h1>
           </div>
+
+          {/* Checkbox */}
           <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
             <div className="flex items-center mb-4">
               <input
@@ -177,7 +193,11 @@ function ComplaintRate(props) {
 
                     </div>
   
+
+        {/* Buttons */}
           <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
+
+            {/* Back */}
             <div className="col-span-6">
               {" "}
               <button
@@ -187,12 +207,11 @@ function ComplaintRate(props) {
                 Back
               </button>
             </div>
+
+            {/* Submit */}
             <div className="col-span-6">
               {" "}
               <button
-              onClick={()=>{
-                formik.errors.complaintRate && toast("Please rate")
-              }}
                 type="submit"
                 className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
               >
@@ -209,3 +228,7 @@ function ComplaintRate(props) {
 }
 
 export default ComplaintRate
+
+//////////////////////////////////////////////
+// Export to : GreivancesComplaints.js
+//////////////////////////////////////////////

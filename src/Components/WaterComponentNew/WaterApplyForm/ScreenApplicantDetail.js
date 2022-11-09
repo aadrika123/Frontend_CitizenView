@@ -22,11 +22,14 @@ function ScreenApplicantDetail(props) {
     const { bgHeaderColor, titleColor, nextButtonColor, bgCardColor, bgInfoColor, infoTextColor, backButtonColor, backBtnHoverColor, nextBtnHoverColor } = ThemeStyle()
     const { labelStyle, inputStyle } = CommonStyles();
 
-    // const validationSchema = yup.object(
-    //     {
-    //         noFlat: yup.string().required(),
-    //     }
-    // );
+    const validationSchema = yup.object(
+        {
+            ownerName: yup.string().required("This is a required field !"),
+            guardianName: yup.string().required("This is a required field !"),
+            mobileNo: yup.string().required("This is a required field !"),
+            emailId: yup.string().required("This is a required field !"),
+        }
+    );
 
     const [ownerRecord, setOwnerRecord] = useState([])
 
@@ -49,6 +52,7 @@ function ScreenApplicantDetail(props) {
     const submitRecord = () => {
         props.CollectScreenDataFun("applicantList", ownerRecord)
         props.nextFun(13)
+
     }
 
     const formik = useFormik({
@@ -63,7 +67,7 @@ function ScreenApplicantDetail(props) {
             setOwnerRecord([...ownerRecord, values]);
 
         },
-        // validationSchema
+        validationSchema
     });
 
 
@@ -84,38 +88,42 @@ function ScreenApplicantDetail(props) {
                                     <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Owner Name</label>
                                 </div>
 
-                                <div className="flex items-center mb-2">
+                                <div className=" items-center mb-2">
                                     <input type="text" name="ownerName" className={`${inputStyle}`} placeholder="Enter owner name" value={formik.values.ownerName} onChange={formik.handleChange} />
+                                    <p className='text-red-500 text-xs'>{formik.touched.ownerName && formik.errors.ownerName ? formik.errors.ownerName : null}</p>
 
                                 </div>
 
                                 <div className="col-span-12">
                                     <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Guardian Name</label>
                                 </div>
-                                <div className="flex items-center mb-2">
+                                <div className=" items-center mb-2">
                                     <input type="text" name="guardianName" className={`${inputStyle}`} placeholder="Enter Guardian name" value={formik.values.guardianName} onChange={formik.handleChange} />
-
+                                    <p className='text-red-500 text-xs'>{formik.touched.guardianName && formik.errors.guardianName ? formik.errors.guardianName : null}</p>
                                 </div>
                                 <div className="col-span-12">
                                     <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Mobile No. </label>
                                 </div>
-                                <div className="flex items-center mb-2">
+                                <div className=" items-center mb-2">
                                     <input type="text" name="mobileNo" className={`${inputStyle}`} placeholder="Enter mobile no" value={formik.values.mobileNo} onChange={formik.handleChange} />
+                                    <p className='text-red-500 text-xs'>{formik.touched.mobileNo && formik.errors.mobileNo ? formik.errors.mobileNo : null}</p>
+
                                 </div>
                                 <div className="col-span-12">
                                     <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email ID</label>
                                 </div>
-                                <div className="flex items-center mb-2">
+                                <div className=" items-center mb-2">
                                     <input type="text" name="emailId" className={`${inputStyle}`} placeholder="Enter email" value={formik.values.emailId} onChange={formik.handleChange} />
-
+                                    <p className='text-red-500 text-xs'>{formik.touched.emailId && formik.errors.emailId ? formik.errors.emailId : null}</p>
                                 </div>
 
 
                                 <table class="table-auto w-full mt-4">
-                                    <thead class="text-xs   text-white bg-amber-600">
+                                    <thead class="text-xs  text-gray-500 bg-gray-300">
                                         <tr>
                                             <th></th>
                                             <th></th>
+
                                             <th class="p-2">
                                                 <div class=" text-center"></div>
                                             </th>
@@ -189,7 +197,7 @@ function ScreenApplicantDetail(props) {
                             </div>
 
                             <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
-                                <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
+                                <div className="col-span-6"> <button onClick={() => props.backFun()} type="button" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
                                 <div className="col-span-6"> <button type="button" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`} onClick={submitRecord}>Next</button></div>
                             </div>
                         </div>

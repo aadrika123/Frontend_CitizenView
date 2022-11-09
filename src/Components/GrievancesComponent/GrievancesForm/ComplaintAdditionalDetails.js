@@ -4,18 +4,19 @@
 //    Date - 3rd November 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - Complaint Addition Details
-//    DESCRIPTION - Complaint Addition Details is single input component
+//    Component  - ComplaintAdditionDetails
+//    DESCRIPTION - Citizen gives additional details
 //////////////////////////////////////////////////////////////////////////////////////
 
 import { RiArrowDropLeftFill } from 'react-icons/ri'
-//importing Themestyle function to use predefined colors to maintain uniform theme everywhere
-import ThemeStyle from '../../Styles/ThemeStyle'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+//importing Themestyle function to use predefined colors to maintain uniform theme everywhere
+import ThemeStyle from '../../Styles/ThemeStyle'
 
 function ComplaintAdditionalDetails(props) {
 
+  // form validation
   const validationSchema = yup.object({
     complaintAdditionalDetails: yup.string().required("enter additional details")
   })
@@ -40,7 +41,7 @@ function ComplaintAdditionalDetails(props) {
 
     <div className="text-xs font-semibold px-2 mt-4 flex">
       
-      {/* Back button */}
+      {/* corner back button */}
       <div className="flex-1">
         <span onClick={props.backFun} className="border-b cursor-pointer border-black">
           <RiArrowDropLeftFill className="inline text-xl" />
@@ -65,7 +66,7 @@ function ComplaintAdditionalDetails(props) {
         <div className="col-span-12">
           {" "}
           <h1 className={`font-bold ${titleColor} text-2xl`}>
-            Provide Additional Details
+            Complaint Description
           </h1>
         </div>
 
@@ -73,15 +74,14 @@ function ComplaintAdditionalDetails(props) {
         <div className="col-span-12">
           {" "}
           <h1 className={` ${titleColor} text-xs opacity-40`}>
-            If you think apart from information provided till now additional details are required to resolve complaint, provide it below:
+            If you think apart from information provided till now complaint description are required to resolve complaint, provide it below:
           </h1>
         </div>
 
       {/* Textarea */}
         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Additional Address Information</label>
                         <textarea name='complaintAdditionalDetails' value={formik.values.complaintAdditionalDetails} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                             />
+                             placeholder='Write brief description about your complaint...' rows={3} />
 
                   {formik.touched.complaintAdditionalDetails && formik.errors.complaintAdditionalDetails ? (<span className="text-sm text-red-600">{formik.errors.complaintAdditionalDetails}</span>): null}
 
@@ -90,7 +90,7 @@ function ComplaintAdditionalDetails(props) {
         {/* Buttons */}
         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
 
-          {/* Back */}
+          {/* Back button */}
           <div className="col-span-6">
             {" "}
             <button
@@ -101,7 +101,7 @@ function ComplaintAdditionalDetails(props) {
             </button>
           </div>
 
-          {/* Submit */}
+          {/* Submit button */}
           <div className="col-span-6">
             {" "}
             <button
@@ -121,3 +121,7 @@ function ComplaintAdditionalDetails(props) {
 }
 
 export default ComplaintAdditionalDetails
+
+///////////////////////////////////////////////////////
+// Export to : GrievancesCitizenEntryForm.js
+///////////////////////////////////////////////////////

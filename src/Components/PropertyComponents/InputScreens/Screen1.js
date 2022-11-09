@@ -15,6 +15,9 @@ import { RiArrowDropLeftFill } from 'react-icons/ri'
 import ThemeStyle from '../../Styles/ThemeStyle'
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik';
+import Info from '../../Common/Info'
+import { BiAddToQueue } from 'react-icons/bi'
+
 
 function Screen1(props) {
 
@@ -26,7 +29,9 @@ function Screen1(props) {
 
     const formik = useFormik({
         initialValues: {
-            isResidential :'',
+            unitUsageType: '',
+            occupancyType: '',
+            totalBuiltArea: '',
         },
         onSubmit: values => {
             // alert(JSON.stringify(values, null, 2));
@@ -34,54 +39,134 @@ function Screen1(props) {
             props.nextFun()
         },
     });
-    const handleRadioButtons = e => formik.values.isResidential = e.target.value
+
+    const handleUnitUsagesType = e => formik.values.unitUsageType = e.target.value
+    const handleOccupancy = e => formik.values.occupancyType = e.target.value
+    const handleTotalBulidArea = e => formik.values.totalBuiltArea = e.target.value
 
     return (
         <>
             <form onSubmit={formik.handleSubmit}>
-
                 <div className='text-xs font-semibold px-2 mt-4 flex'>
                     <div className="flex-1"><span onClick={props.backFun} className='border-b border-black'><RiArrowDropLeftFill className="inline text-xl" />Back</span></div>
                     <div className="flex-1 text-right"><span className=''>{props?.formIndex} of 10</span></div>
                 </div>
                 <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
-                    <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
-                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Is this a Residential Property?</h1></div>
-                        <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>Property used only for residential purpose & there are no commerical/industrail/institutional activities in this property.</h1></div>
-                       
-                        <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                            <div className="flex items-center mb-4">
-                                <input
-                                    className="w-6 h-6"
-                                    type="radio"
-                                    id="yes"
-                                    name="group"
-                                    value="Yes"
-                                    onChange={e => handleRadioButtons(e)}
-                                    required
-                                />
-                                <span htmlFor="yes" className="ml-2 text-sm font-medium text-gray-900 ">Yes</span>
-                            </div>
-                            <div className="flex items-center mb-4">
-                                <input
-                                    className="w-6 h-6"
-                                    type="radio"
-                                    id="no"
-                                    name="group"
-                                    value="No"
-                                    onChange={e => handleRadioButtons(e)}
-                                />
-                                <span htmlFor="no" className="ml-2 text-sm font-medium text-gray-900 ">No</span>
-                            </div>
+                    <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-5 md:p-10`}>
+
+                    <div className="col-span-12 text-gray-400 font-semibold">Basic Details</div>
+
+                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Basic Details</h1></div>
+                        <div className="form-group mb-4 md:mb-6 col-span-12 mt-2">
+                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Ward No<span className='text-red-500'>*</span></label>
+                            <select
+                                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                onChange={e => handleUnitUsagesType(e)}
+                                name="unitUsageType"
+                                required
+                            >
+                                <option>--select--</option>
+                                {/* {
+                                            props?.preFormData?.wardList?.map((data) => (
+                                                <option value={data.id}>{data.name}</option>
+                                            ))
+                                        } */}
+                                <option value="demo1">Demo 1</option>
+                                <option value="demo2">Demo 2</option>
+
+                            </select>
+
                         </div>
 
+                        <div className="form-group mb-4 md:mb-6 col-span-12 mt-2">
+                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">New Ward No<span className='text-red-500'>*</span></label>
+                            <select
+                                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                onChange={e => handleOccupancy(e)}
+                                name="occupancyType"
+                                required
+                            >
+                                <option>--select--</option>
+                                {/* {
+                                            props?.preFormData?.wardList?.map((data) => (
+                                                <option value={data.id}>{data.name}</option>
+                                            ))
+                                        } */}
+                                <option value="demo4">Demo 4</option>
+                                <option value="demo5">Demo 5</option>
+                            </select>
+                        </div>
+                        <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
+                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Ownership Type<span className='text-red-500'>*</span></label>
+                            <select
+                                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                onChange={e => handleTotalBulidArea(e)}
+                                name="totalBulidArea"
+                                required
+                            >
+                                <option>--select--</option>
+                                {/* {
+                                            props?.preFormData?.wardList?.map((data) => (
+                                                <option value={data.id}>{data.name}</option>
+                                            ))
+                                        } */}
+
+                                <option value="demo7">Demo 7</option>
+                                <option value="demo8">Demo 8</option>
+
+                            </select>
+
+                        </div>
+                        <div className="form-group mb-4 md:mb-6 col-span-12 mt-2">
+                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Property Type<span className='text-red-500'>*</span></label>
+                            <select
+                                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                onChange={e => handleTotalBulidArea(e)}
+                                name="totalBulidArea"
+                                required
+                            >
+                                <option>--select--</option>
+                                {/* {
+                                            props?.preFormData?.wardList?.map((data) => (
+                                                <option value={data.id}>{data.name}</option>
+                                            ))
+                                        } */}
+
+                                <option value="demo7">Demo 7</option>
+                                <option value="demo8">Demo 8</option>
+
+                            </select>
+
+                        </div>
+                        <div className="form-group mb-4 md:mb-6 col-span-12 mt-2">
+                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Zone<span className='text-red-500'>*</span></label>
+                            <select
+                                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                onChange={e => handleTotalBulidArea(e)}
+                                name="totalBulidArea"
+                                required
+                            >
+                                <option>--select--</option>
+                                {/* {
+                                            props?.preFormData?.wardList?.map((data) => (
+                                                <option value={data.id}>{data.name}</option>
+                                            ))
+                                        } */}
+
+                                <option value="demo7">Demo 7</option>
+                                <option value="demo8">Demo 8</option>
+
+                            </select>
+
+                        </div>
                         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
-                            <div className="col-span-6"> <button onClick={() => navigate("/")} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
+                            <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
                             <div className="col-span-6"> <button type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>
                         </div>
                     </div>
 
                 </div>
+                <Info infoText="Select independent building if you're assessing for the complete constructed area of the property" />
             </form>
 
         </>

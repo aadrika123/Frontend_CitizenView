@@ -35,7 +35,6 @@ function ScreenPin(props) {
             pinCode: '',
         },
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
             props.CollectScreenDataFun("pin", values)
             props.nextFun(10)
             console.log("pin", values)
@@ -51,7 +50,7 @@ function ScreenPin(props) {
                         <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 md:p-10`}>
 
                             <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Pin</h1></div>
-                            <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>Do you have a notice no to apply with or it's a normal application. select accordingly</h1></div>
+                            {/* <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>Do you have a notice no to apply with or it's a normal application. select accordingly</h1></div> */}
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                                 <div className="col-span-12">
                                     <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pin</label>
@@ -62,7 +61,7 @@ function ScreenPin(props) {
                                 </div>
                             </div>
                             <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
-                                <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
+                                <div className="col-span-6"> <button onClick={() => props.backFun()} type="button" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
                                 <div className="col-span-6"> <button type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>
                             </div>
                         </div>

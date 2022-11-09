@@ -4,18 +4,19 @@
 //    Date - 3rd November 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - Complaint Address
-//    DESCRIPTION - Complaint Address is single input component
+//    Component  - ComplaintAddress
+//    DESCRIPTION - Citizen gives their address details
 //////////////////////////////////////////////////////////////////////////////////////
 
 import {RiArrowDropLeftFill} from 'react-icons/ri'
-//importing Themestyle function to use predefined colors to maintain uniform theme everywhere
-import ThemeStyle from '../../Styles/ThemeStyle'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+//importing Themestyle function to use predefined colors to maintain uniform theme everywhere
+import ThemeStyle from '../../Styles/ThemeStyle'
 
 function ComplaintAddress(props) {
 
+  // form validation
   const validationSchema = yup.object({
       complaintCity : yup.string().required("select city"),
       complaintLocality: yup.string().required("select locality or mohalla"),
@@ -100,13 +101,10 @@ function ComplaintAddress(props) {
                             <option value='' selected>--Select--</option>
                             <option value="City A">City A</option>
                             <option value="City B">City B</option>
-                            {/* {
-                                            props?.preFormData?.wardList?.map((data) => (
-                                                <option value={data.id}>{data.name}</option>
-                                            ))
-                                        } */}
 
                         </select>
+
+                        {/* formik error view */}
                         {formik.touched.complaintCity && formik.errors.complaintCity ? (<span className="text-sm text-red-600">{formik.errors.complaintCity}</span>): null}
 
                     </div>
@@ -127,20 +125,27 @@ function ComplaintAddress(props) {
                                         } */}
 
                         </select>
+
+                        {/* formik error view */}
                         {formik.touched.complaintLocality && formik.errors.complaintLocality ? (<span className="text-sm text-red-600">{formik.errors.complaintLocality}</span>): null}
 
                     </div>
 
                     <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
+
+                      {/* Ward No. */}
                         <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Ward No.<span className='text-red-500'>*</span></label>
                         <input name="complaintWardNo" value={formik.values.complaintWardNo} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" placeholder='Enter ward no.'
                              />
 
+                      {/* formik error view */}
                       {formik.touched.complaintWardNo && formik.errors.complaintWardNo ? (<span className="text-sm text-red-600">{formik.errors.complaintWardNo}</span>): null}
 
                     </div>
 
                     <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
+
+                      {/* House No. */}
                         <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">House No. <i> (optional) </i></label>
                         <input name="complaintHouseNo" value={formik.values.complaintHouseNo} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" placeholder='Enter house no.'
                              />
@@ -181,3 +186,7 @@ function ComplaintAddress(props) {
 }
 
 export default ComplaintAddress
+
+///////////////////////////////////////////////////////
+// Export to : GrievancesCitizenEntryForm.js
+///////////////////////////////////////////////////////

@@ -113,6 +113,22 @@
       "complaintFiledDate": "04-Feb-2021",
       "complaintNo": "PG-PGR-2021-02-04-0005553",
       "id": 8
+    },
+    {
+      "complaintType": "Drains",
+      "complaintSubType": "Other",
+      "complaintPincode": "",
+      "complaintCity": "City A",
+      "complaintLocality": "Locality B",
+      "complaintWardNo": "Qui iure nihil tempo",
+      "complaintHouseNo": "Non ut quibusdam qui",
+      "complaintLandmark": "",
+      "complaintAdditionalDetails": "sdfsadf",
+      "complaintStatus": "Open",
+      "complaintApplicationStatus": "Pending for assignment",
+      "complaintFiledDate": "04-Feb-2021",
+      "complaintNo": "PG-PGR-2021-02-04-0005553",
+      "id": 9
     }
   ],
   "rateComplaint": [
@@ -204,6 +220,24 @@
       "complaintRemark": "",
       "complaintComment": "",
       "id": 12
+    },
+    {
+      "complaintRate": 0.5,
+      "complaintRemark": "",
+      "complaintComment": "",
+      "id": 13
+    },
+    {
+      "complaintRate": 3.5,
+      "complaintRemark": "",
+      "complaintComment": "",
+      "id": 14
+    },
+    {
+      "complaintRate": 4.5,
+      "complaintRemark": "",
+      "complaintComment": "",
+      "id": 15
     }
   ],
   "reopenComplaint": [

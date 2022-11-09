@@ -12,15 +12,17 @@ import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
 
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
-import ThemeStyle from '../Styles/ThemeStyle'
+import ThemeStyle from '../../Styles/ThemeStyle'
 
 
-function SubmitScreen(props) {
+function ScreenPayment(props) {
 
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
     let btnBorder = "border border-2 border-amber-600"
+
+    // console.log('water apply data at payment...',props.screenDataSubmit.data)
     return (
         <>
             <div>
@@ -40,7 +42,7 @@ function SubmitScreen(props) {
                             </div>
                             <div className="text-center -mt-3 ">
                                 <label className="ml-2 text-sm font-medium text-gray-500 ">Thank You For Submitting the application </label>
-                                <label className="ml-2 text-sm font-bold text-gray-900 ">Application No. WAT345678909876 </label>
+                                {/* <label className="ml-2 text-sm font-bold text-gray-900 ">{props.screenDataSubmit.data}</label> */}
                             </div>
                         </div>
                         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
@@ -56,4 +58,4 @@ function SubmitScreen(props) {
     )
 }
 
-export default SubmitScreen
+export default ScreenPayment

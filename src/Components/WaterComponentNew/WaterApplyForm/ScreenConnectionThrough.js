@@ -7,7 +7,7 @@
 //    Component  - ScreenConnectionThrough
 //    DESCRIPTION - ScreenConnectionThrough compomnent 
 //////////////////////////////////////////////////////////////////////////////////////
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useFormik } from 'formik';
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
@@ -15,6 +15,8 @@ import * as yup from 'yup';
 import CommonStyles from '../../IndividualRoutes/CommonStyles';
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
+import CitizenApplyApiList from '../CitizenViewWaterApiList';
+import axios from 'axios';
 
 function ScreenConnectionThrough(props) {
 
@@ -23,6 +25,39 @@ function ScreenConnectionThrough(props) {
     const { labelStyle, inputStyle } = CommonStyles();
     const [connThroughHolding, setConnThroughHolding] = useState()
     const [connThroughSaf, setConnThroughSaf] = useState()
+
+    const { api_getConnectionThrough } = CitizenApplyApiList()
+    const [connThroughData, setConnThroughData] = useState()
+
+
+
+
+    {/********* Get Connection Through Master Data  ************/ }
+    useEffect(() => {
+
+        // let token = window.localStorage.getItem('token')
+        let token = '1402|aVxsPywaSl44Fgh1cTmHg0rit2Abgl2zHZJ8JAF1'
+        console.log('token at basic details is  get method...', token)
+        const header = {
+            headers:
+            {
+                Authorization: `Bearer ${token}`,
+                Accept: 'application/json',
+            }
+        }
+
+        axios.get(`${api_getConnectionThrough}`, header)
+            .then(function (response) {
+                console.log('Connection Through....', response.data.data)
+                setConnThroughData(response.data.data)
+            })
+            .catch(function (error) {
+                console.log('errorrr.... ', error);
+            })
+    }, [])
+
+    console.log("connection Through data", connThroughData)
+
 
     const validationSchema = yup.object(
         {
@@ -40,7 +75,6 @@ function ScreenConnectionThrough(props) {
 
         },
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
             props.CollectScreenDataFun("connectionThrough", values)
             props.nextFun()
             // console.log("ScreenConnThrough value 2", values)
@@ -65,15 +99,15 @@ function ScreenConnectionThrough(props) {
                     <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                         <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 md:p-10`}>
                             <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Connection Through</h1></div>
-                            <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>Do you have a notice no to apply with or it's a normal application. select accordingly</h1></div>
+                            {/* <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>Do you have a notice no to apply with or it's a normal application. select accordingly</h1></div> */}
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-4 text-gray-600 font-semibold">
                                 <div className={``}>
                                     <div className="col-span-12"> <h1 className={` ${titleColor} text-md`}>Connection Through</h1></div>
                                     <select name="connectionThrough" className={`${inputStyle}`} value={formik.values.connectionThrough} onChange={formik.handleChange}>
                                         <option value="">SELECT</option>
-                                        <option value="1">Holding Proof</option>
-                                        <option value="2">SAF</option>
-                                        <option value="3">ID Proof</option>
+                                        {connThroughData?.map((data) => (
+                                            <option value={data.id}>{data.connection_through}</option>
+                                        ))}
                                     </select>
                                     <p className='text-red-500 text-xs'>{formik.touched.connectionThrough && formik.errors.connectionThrough ? formik.errors.connectionThrough : null}</p>
                                 </div>
@@ -98,7 +132,7 @@ function ScreenConnectionThrough(props) {
 
 
                             <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
-                                <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
+                                <div className="col-span-6"> <button onClick={() => props.backFun()} type="button" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
                                 <div className="col-span-6"> <button type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>
                             </div>
                         </div>
