@@ -17,7 +17,7 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 
 
-function Screen2(props) {
+function Screen2RainWater(props) {
     const [hadMobileTower, setHadMobileTower] = useState("No")
     const [hoardingBoard, setHoardingBoard] = useState("NO")
     const [petrolPump, setPetrolPump] = useState("No")
@@ -63,13 +63,13 @@ function Screen2(props) {
 
 
 
-                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-xl`}>Mobile Tower</h1></div>
+                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-xl`}>Rainwater harvesting</h1></div>
 
                         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Property has Mobile Tower(s) ?<span className='text-red-500'>*</span></label>
+                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Rainwater harvesting provision ?<span className='text-red-500'>*</span></label>
                             <select
                                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                onChange={e => handdleHadMobileTower(e)}
+                                // onChange={e => handdleHadMobileTower(e)}
                                 name="occupancyType"
                                 required
                             >
@@ -78,32 +78,6 @@ function Screen2(props) {
                                 <option value="No">No</option>
                             </select>
                         </div>
-                        {hadMobileTower == "Yes" &&
-                            <div className='col-span-12'>
-                                <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
-                                    <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Total Area Covered<span className='text-red-500'>*</span></label>
-                                    <input
-                                        type="text"
-                                        className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                        // onChange={e => handleOccupancy(e)}
-                                        name="occupancyType"
-                                    />
-                                </div>
-                                <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
-                                    <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Installation Date<span className='text-red-500'>*</span></label>
-                                    <input
-                                        type="date"
-                                        className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                        // onChange={e => handleOccupancy(e)}
-                                        name="occupancyType"
-                                        required
-                                    />
-                                </div>
-                            </div>}
-                    
-
-                        
-
 
                         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
                             <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
@@ -118,7 +92,7 @@ function Screen2(props) {
     )
 }
 
-export default Screen2
+export default Screen2RainWater
 
 /*
 Exported to -
