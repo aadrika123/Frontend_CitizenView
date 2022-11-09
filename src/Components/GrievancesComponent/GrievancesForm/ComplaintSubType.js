@@ -67,6 +67,7 @@ function ComplaintSubType(props) {
           <option name='complaintSubType' value='Garbage needs to be cleared' >Garbage needs to be cleared</option>
           <option name='complaintSubType' value='Damaged garbage bin' >Damaged garbage bin</option>
           <option name='complaintSubType' value='Burning of garbage' >Burning of garbage</option>
+          <option name='complaintSubType' value='Other' >Other</option>
             </select>
           </div>
 

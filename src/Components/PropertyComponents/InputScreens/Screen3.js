@@ -40,22 +40,52 @@ function Screen3(props) {
                 </div>
                 <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                     <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
-                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Plot Size</h1></div>
-                        <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Plot Size (sq ft)<span className='text-red-500'>*</span></label>
-                            {/* <input type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" /> */}
+                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Property Address & Details</h1></div>
 
-                        </div>
-
-                        <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                            <div className="flex items-center mb-4">
+                        <div className="form-group md:mb-6 col-span-12 my-4">
+                            <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Khata No<span className='text-red-500'>*</span></label>
                                 <input
-                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                                     type="text"
-                                    id="yes"
-                                    name="group"
-                                    onChange={e => handleField(e)}
-                                    required
+                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                    // onChange={e => handleOccupancy(e)}
+                                    name="occupancyType"
+                                />
+                            </div>
+                            <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Plot No<span className='text-red-500'>*</span></label>
+                                <input
+                                    type="text"
+                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                    // onChange={e => handleOccupancy(e)}
+                                    name="occupancyType"
+                                />
+                            </div>
+                            <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Village/Mauja Name<span className='text-red-500'>*</span></label>
+                                <input
+                                    type="text"
+                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                    // onChange={e => handleOccupancy(e)}
+                                    name="occupancyType"
+                                />
+                            </div>
+                            <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Area of Plot (in Decimal)<span className='text-red-500'>*</span></label>
+                                <input
+                                    type="text"
+                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                    // onChange={e => handleOccupancy(e)}
+                                    name="occupancyType"
+                                />
+                            </div>
+                            <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Road Width (in ft)<span className='text-red-500'>*</span></label>
+                                <input
+                                    type="text"
+                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                    // onChange={e => handleOccupancy(e)}
+                                    name="occupancyType"
                                 />
                             </div>
                         </div>

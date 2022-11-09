@@ -225,7 +225,23 @@ function PropertyCitizenEntryForm() {
 
 
 
-
+           {/* <div className={`${formIndex == 1 ? 'block' : 'hidden' }`}> <Screen1 nextFun={nextFun} backFun={backFun} data={screen1Data} formIndex={formIndex} /> </div>
+           <div className={`${formIndex == 2 ? 'block' : 'hidden' }`}> <Screen2 nextFun={nextFun} backFun={backFun} data={screen2Data} formIndex={formIndex} /> </div>
+           <div className={`${formIndex == 3 ? 'block' : 'hidden' }`}> <Screen3 nextFun={nextFun} backFun={backFun} data={screen3Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 4 ? 'block' : 'hidden' }`}> <Screen4 nextFun={nextFun} backFun={backFun} data={screen4Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 5 ? 'block' : 'hidden' }`}> <Screen5 nextFun={nextFun} backFun={backFun} data={screen5Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 6 ? 'block' : 'hidden' }`}> <Screen6 nextFun={nextFun} backFun={backFun} data={screen6Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 7 ? 'block' : 'hidden' }`}> <Screen7 nextFun={nextFun} backFun={backFun} data={screen7Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 8 ? 'block' : 'hidden' }`}> <Screen8 nextFun={nextFun} backFun={backFun} data={screen8Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 9 ? 'block' : 'hidden' }`}> <Screen9 nextFun={nextFun} backFun={backFun} data={screen9Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 10 ? 'block' : 'hidden' }`}> <Screen10 nextFun={nextFun} backFun={backFun} data={screen10Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 11 ? 'block' : 'hidden' }`}> <Screen11 nextFun={nextFun} backFun={backFun} data={screen11Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 12 ? 'block' : 'hidden' }`}> <Screen12 nextFun={nextFun} backFun={backFun} data={screen12Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 13 ? 'block' : 'hidden' }`}> <Screen13 nextFun={nextFun} backFun={backFun} data={screen13Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 14 ? 'block' : 'hidden' }`}> <Screen14 nextFun={nextFun} backFun={backFun} data={screen14Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 15 ? 'block' : 'hidden' }`}> <Screen15 nextFun={nextFun} backFun={backFun} data={screen15Data} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 16 ? 'block' : 'hidden' }`}> <Screen16 nextFun={nextFun} backFun={backFun} data={screen16Data} payloadData={payloadData} formIndex={formIndex} /></div>
+           <div className={`${formIndex == 17 ? 'block' : 'hidden' }`}> <Screen17 nextFun={nextFun} backFun={backFun} safNo={safNo} formIndex={formIndex} /></div> */}
 
 
                 {formIndex == 1 && <Screen1 nextFun={nextFun} backFun={backFun} data={screen1Data} formIndex={formIndex} />}
@@ -246,9 +262,7 @@ function PropertyCitizenEntryForm() {
                 {formIndex == 16 && <Screen16 nextFun={nextFun} backFun={backFun} data={screen16Data} payloadData={payloadData} formIndex={formIndex} />}
                 {formIndex == 17 && <Screen17 nextFun={nextFun} backFun={backFun} safNo={safNo} formIndex={formIndex} />}
 
-                {/* <div className="w-full absolute translate-y-96 clear-both "> */}
                 <FeedbackScreen payloadData={payloadData} />
-                {/* </div> */}
             </div>
         </>
     )

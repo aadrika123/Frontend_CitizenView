@@ -39,20 +39,48 @@ function Screen7(props) {
                 </div>
                 <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                     <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
-                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Do you know the pincode ?</h1></div>
+                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Owner Details</h1></div>
                         <div className="col-span-12"> <h1 className={` ${titleColor} text-sm my-4 opacity-40`}>If you know the pincode of the property, provide below. It will helop us identify property location easily.</h1></div>
-                        <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Pin Code</label>
 
+                        <div className="form-group mb-4 md:mb-6 col-span-12">
+                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Owner Name</label>
                             <input
                                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                type="number"
+                                type="text"
                                 name="group"
-                                onChange={e => handleField(e)}
-                                required
+                            // onChange={e => handleField(e)}
                             />
-
-
+                        </div>
+                        <div className="form-group mb-4 md:mb-6 col-span-12">
+                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Gender</label>
+                            <select
+                                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                name="group"
+                            // onChange={e => handleField(e)}
+                            >
+                                <option value="">-Select-</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div className="form-group mb-4 md:mb-6 col-span-12">
+                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">DOB</label>
+                            <input
+                                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                type="date"
+                                name="group"
+                            // onChange={e => handleField(e)}
+                            />
+                        </div>
+                        <div className="form-group mb-4 md:mb-6 col-span-12">
+                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Gurdian Name</label>
+                            <input
+                                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                type="text"
+                                name="group"
+                            // onChange={e => handleField(e)}
+                            />
                         </div>
 
                         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
