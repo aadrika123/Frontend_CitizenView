@@ -7,13 +7,14 @@ function FeedbackComponent(props) {
     const { bgHeaderColor, titleColor, nextButtonColor, bgCardColor, bgInfoColor, infoTextColor, backButtonColor, backBtnHoverColor, nextBtnHoverColor } = ThemeStyle()
 
     // destructuring prop data
-    const { connectionType, connectionThrough, PropType, accountNo, address, applicantList, bindBookNo, khataNo, landmark, noFlat, ownerType, pin, totalArea, wardNo } = props?.allFormData
+    const { connectionType, connectionThrough, PropType, accountNo, address, applicantList, bindBookNo, khataNo, landmark, noFlat, ownerType, pin, totalArea, wardNo } = props?.allFormData;
 
 
-    console.log("all form data props Feedback", applicantList?.ownerName)
+    console.log("applicant List ", applicantList)
     console.log("all form data props ", connectionThrough?.connectionThrough)
     return (
         <div>
+
             <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                 <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
                     {/* {****** FeedBack Form  *********} */}
@@ -123,16 +124,64 @@ function FeedbackComponent(props) {
                                     </div>
                                 </div>
                             }
-                            {/* {ApplicantList?.ApplicantList == null ? "" :
-                                <div className='grid grid-cols-2 '>
-                                    <div className="">
-                                        <label className={`text-xs ml-2 font-medium text-gray-500`}>Applicant Detail</label>
+                            {applicantList == null ? "" :
+                                <div className='p-2'>
+                                    <div className='grid grid-cols-2  '>
+                                        <div className="">
+                                            <label className={`text-md ml-2 font-medium text-gray-800 `}>Applicant Detail</label>
+                                        </div>
                                     </div>
-                                    <div className=''>
-                                        <label className={`text-xs ml-2 font-medium text-gray-800`} ></label>
-                                    </div>
+                                    {
+                                        applicantList?.map((items) => (
+
+                                            <div className=' border border-gray-400 '>
+                                                <div className=''>
+                                                    <div className='flex '>
+                                                        <div className='flex-1'>
+                                                            <label className={`text-xs ml-2 font-medium text-gray-500`} >Owner Name</label>
+                                                        </div>
+                                                        <div className='flex-1'>
+                                                            <label className={`text-xs ml-2 font-medium text-gray-500`} >{items.ownerName}</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className=''>
+                                                    <div className='flex '>
+                                                        <div className='flex-1'>
+                                                            <label className={`text-xs ml-2 font-medium text-gray-500`} >Guardian Name</label>
+                                                        </div>
+                                                        <div className='flex-1'>
+                                                            <label className={`text-xs ml-2 font-medium text-gray-500`} >{items.guardianName}</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className=''>
+                                                    <div className='flex '>
+                                                        <div className='flex-1'>
+                                                            <label className={`text-xs ml-2 font-medium text-gray-500`} >Mobile No.</label>
+
+                                                        </div>
+                                                        <div className='flex-1'>
+                                                            <label className={`text-xs ml-2 font-medium text-gray-500`} >{items.mobileNo}</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className=''>
+                                                    <div className='flex '>
+                                                        <div className='flex-1'>
+                                                            <label className={`text-xs ml-2 font-medium text-gray-500`} >Email ID </label>
+                                                        </div>
+                                                        <div className='flex-1'>
+                                                            <label className={`text-xs ml-2 font-medium text-gray-500`} >{items.emailId}</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))
+                                    }
                                 </div>
-                            } */}
+                            }
+
                             {khataNo?.khataNot == null ? "" :
                                 <div className='grid grid-cols-2 '>
                                     <div className="">

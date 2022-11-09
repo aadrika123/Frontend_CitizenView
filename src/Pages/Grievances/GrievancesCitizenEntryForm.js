@@ -11,7 +11,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import ComplaintType from "../../Components/GrievancesComponent/GrievancesForm/ComplaintType";
-import ComplaintSubType from "../../Components/GrievancesComponent/GrievancesForm/ComplaintSubType";
 import ComplaintPincode from "../../Components/GrievancesComponent/GrievancesForm/ComplaintPincode";
 import ComplaintAddress from "../../Components/GrievancesComponent/GrievancesForm/ComplaintAddress";
 import ComplaintLandmark from "../../Components/GrievancesComponent/GrievancesForm/ComplaintLandmark";
@@ -26,7 +25,7 @@ const GrievancesCitizenEntryForm = () => {
   // storing datas
   const [storeData, setStoreData] = useState({})
 
-  // calling api
+  // Destructing api
   const{fileComplaint} = apiLinks()
 
   // collecting data
@@ -35,7 +34,7 @@ const GrievancesCitizenEntryForm = () => {
     setStoreData(Object.assign(storeData,data))
   };
 
-
+// viewing stored data
   useEffect(() => {
     console.log("stored data => ", storeData)
   }, [postData])
@@ -140,3 +139,7 @@ const GrievancesCitizenEntryForm = () => {
 };
 
 export default GrievancesCitizenEntryForm;
+
+//////////////////////////////////////////////
+// Export to : GrievanceRoutes.js
+//////////////////////////////////////////////

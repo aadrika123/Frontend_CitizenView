@@ -26,6 +26,8 @@ function Screen2
     const { labelStyle, inputStyle } = CommonStyles();
     const [noticeToggle, setnoticeToggle] = useState(false);
 
+    const { allFormDataFun } = props.values;
+
     const initialValues = {
         applyWith: '',
         noticeDate: '',
@@ -45,6 +47,7 @@ function Screen2
 
         onSubmit: (values) => {
             // alert(JSON.stringify(values));
+            allFormDataFun("applyWith",values);
             props.nextFun();
         },
         validationSchema

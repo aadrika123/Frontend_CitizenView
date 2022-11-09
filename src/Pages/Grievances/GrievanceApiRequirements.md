@@ -11,6 +11,8 @@ postFileComplaint
         ├──complaintPincode
         ├──complaintCity
         ├──complaintLocality
+        ├──complaintWardNo
+        ├──complaintHouseNo
         ├──complaintLandmark
         ├──complaintImage
         └──complaintAdditionalDetails
@@ -34,6 +36,8 @@ getAllComplaintById
         ├──complaintPincode
         ├──complaintCity
         ├──complaintLocality
+        ├──complaintWardNo
+        ├──complaintHouseNo
         ├──complaintLandmark
         ├──complaintImage
         └──complaintAdditionalDetails
@@ -64,13 +68,8 @@ putReopenComplaintById
         ├──complaintPincode
         ├──complaintCity
         ├──complaintLocality
+        ├──complaintWardNo
+        ├──complaintHouseNo
         ├──complaintLandmark
         ├──complaintImage
         └──complaintAdditionalDetails
-
-<!-- On Hold -->
-For Admin
-----------------------------------------------------------------------------
-
-
-

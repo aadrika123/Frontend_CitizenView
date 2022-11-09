@@ -32,64 +32,68 @@ function NewApplication() {
     console.log('form index', formIndex)
 
     const handleAllFormData = (key, formData) => {
-        console.log("====previous form data======= :", formData);
-        setallFormData({ ...allFormData, [key]: formData });
+        console.log("====all previous form data======= :", allFormData);
+        setallFormData({...allFormData, [key]: formData });
 
-        console.log("====all form data======= :", formData);
+        console.log("====all form data======= :", allFormData);
 
+    }
+
+    const values = {
+        allFormDataFun: handleAllFormData
     }
 
     return (
         <>
             {/* Information Screen */}
-            <div className={`w-full absolute top-10 transition-all ${formIndex == 1 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen1 nextFun={nextFun} backFun={backFun} formIndex={formIndex} /></div>
+            <div className={`w-full absolute top-10 transition-all ${formIndex == 1 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen1 nextFun={nextFun} backFun={backFun} formIndex={formIndex} values={values} /></div>
 
             {/* Apply With Screen */}
-            <div className={`w-full absolute top-10 transition-all ${formIndex == 2 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen2 nextFun={nextFun} backFun={backFun} formIndex={formIndex} /></div>
+            <div className={`w-full absolute top-10 transition-all ${formIndex == 2 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen2 nextFun={nextFun} backFun={backFun} formIndex={formIndex} values={values} /></div>
             {/* {formIndex == 2 && <Screen2 nextFun={nextFun} backFun={backFun} formIndex={formIndex} />} */}
 
             {/* Firm Name screen */}
 
-            <div className={`w-full absolute top-10 transition-all ${formIndex == 3 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen3 nextFun={nextFun} backFun={backFun} formIndex={formIndex} /></div>
+            <div className={`w-full absolute top-10 transition-all ${formIndex == 3 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen3 nextFun={nextFun} backFun={backFun} formIndex={formIndex} values={values} /></div>
 
             {/* Area of the firm screen */}
-            <div className={`w-full absolute top-10 transition-all ${formIndex == 4 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen4 nextFun={nextFun} backFun={backFun} formIndex={formIndex} /></div>
+            <div className={`w-full absolute top-10 transition-all ${formIndex == 4 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen4 nextFun={nextFun} backFun={backFun} formIndex={formIndex} values={values} /></div>
 
             {/* Firm type */}
-            <div className={`w-full absolute top-10 transition-all ${formIndex == 5 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen5 nextFun={nextFun} backFun={backFun} formIndex={formIndex} /></div>
+            <div className={`w-full absolute top-10 transition-all ${formIndex == 5 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen5 nextFun={nextFun} backFun={backFun} formIndex={formIndex} values={values} /></div>
 
 
             {/* Onwership of business premises */}
-            <div className={`w-full absolute top-10 transition-all ${formIndex == 6 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen6 nextFun={nextFun} backFun={backFun} formIndex={formIndex} /></div>
+            <div className={`w-full absolute top-10 transition-all ${formIndex == 6 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen6 nextFun={nextFun} backFun={backFun} formIndex={formIndex} values={values} /></div>
 
             {/* Category Type */}
-            <div className={`w-full absolute top-10 transition-all ${formIndex == 7 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen7 nextFun={nextFun} backFun={backFun} formIndex={formIndex} /></div>
+            <div className={`w-full absolute top-10 transition-all ${formIndex == 7 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen7 nextFun={nextFun} backFun={backFun} formIndex={formIndex} values={values} /></div>
 
 
             {/* Ward No */}
-            <div className={`w-full absolute top-10 transition-all ${formIndex == 8 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen8 nextFun={nextFun} backFun={backFun} formIndex={formIndex} /></div>
+            <div className={`w-full absolute top-10 transition-all ${formIndex == 8 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen8 nextFun={nextFun} backFun={backFun} formIndex={formIndex} values={values} /></div>
 
             {/* Premises owner details */}
-            <div className={`w-full absolute top-10 transition-all ${formIndex == 9 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen9 nextFun={nextFun} backFun={backFun} formIndex={formIndex} /></div>
+            <div className={`w-full absolute top-10 transition-all ${formIndex == 9 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen9 nextFun={nextFun} backFun={backFun} formIndex={formIndex} values={values} /></div>
 
 
             {/* Business Description */}
-            <div className={`w-full absolute top-10 transition-all ${formIndex == 10 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen10 nextFun={nextFun} backFun={backFun} formIndex={formIndex} /></div>
+            <div className={`w-full absolute top-10 transition-all ${formIndex == 10 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen10 nextFun={nextFun} backFun={backFun} formIndex={formIndex} values={values} /></div>
 
 
             {/* Nature Of business */}
-            <div className={`w-full absolute top-10 transition-all ${formIndex == 11 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen11 nextFun={nextFun} backFun={backFun} formIndex={formIndex} /></div>
+            <div className={`w-full absolute top-10 transition-all ${formIndex == 11 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen11 nextFun={nextFun} backFun={backFun} formIndex={formIndex} values={values} /></div>
 
 
             {/* Owner Details */}
-            <div className={`w-full absolute top-10 transition-all ${formIndex == 12 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen12 nextFun={nextFun} backFun={backFun} formIndex={formIndex} /></div>
+            <div className={`w-full absolute top-10 transition-all ${formIndex == 12 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen12 nextFun={nextFun} backFun={backFun} formIndex={formIndex} values={values} /></div>
 
 
             {/* License For Details */}
-            <div className={`w-full absolute top-10 transition-all ${formIndex == 13 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen13 nextFun={nextFun} backFun={backFun} formIndex={formIndex} /></div>
+            <div className={`w-full absolute top-10 transition-all ${formIndex == 13 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen13 nextFun={nextFun} backFun={backFun} formIndex={formIndex} values={values} /></div>
 
             {/* Success Screen */}
-            <div className={`w-full absolute top-10 transition-all ${formIndex == 14 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen14 nextFun={nextFun} backFun={backFun} formIndex={formIndex} /></div>
+            <div className={`w-full absolute top-10 transition-all ${formIndex == 14 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen14 nextFun={nextFun} backFun={backFun} formIndex={formIndex} values={values} /></div>
 
         </>
     )

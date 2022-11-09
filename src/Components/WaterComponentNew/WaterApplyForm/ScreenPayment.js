@@ -12,15 +12,17 @@ import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
 
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
-import ThemeStyle from '../Styles/ThemeStyle'
+import ThemeStyle from '../../Styles/ThemeStyle'
 
 
-function SubmitScreen(props) {
+function ScreenPayment(props) {
 
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
     let btnBorder = "border border-2 border-amber-600"
+
+    console.log('water apply data at payment...',props.screenDataSubmit)
     return (
         <>
             <div>
@@ -56,4 +58,4 @@ function SubmitScreen(props) {
     )
 }
 
-export default SubmitScreen
+export default ScreenPayment

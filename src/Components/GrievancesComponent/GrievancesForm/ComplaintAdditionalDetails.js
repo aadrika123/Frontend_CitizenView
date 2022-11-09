@@ -4,18 +4,19 @@
 //    Date - 3rd November 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - Complaint Addition Details
-//    DESCRIPTION - Complaint Addition Details is single input component
+//    Component  - ComplaintAdditionDetails
+//    DESCRIPTION - Citizen gives additional details
 //////////////////////////////////////////////////////////////////////////////////////
 
 import { RiArrowDropLeftFill } from 'react-icons/ri'
-//importing Themestyle function to use predefined colors to maintain uniform theme everywhere
-import ThemeStyle from '../../Styles/ThemeStyle'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+//importing Themestyle function to use predefined colors to maintain uniform theme everywhere
+import ThemeStyle from '../../Styles/ThemeStyle'
 
 function ComplaintAdditionalDetails(props) {
 
+  // form validation
   const validationSchema = yup.object({
     complaintAdditionalDetails: yup.string().required("enter additional details")
   })
@@ -40,7 +41,7 @@ function ComplaintAdditionalDetails(props) {
 
     <div className="text-xs font-semibold px-2 mt-4 flex">
       
-      {/* Back button */}
+      {/* corner back button */}
       <div className="flex-1">
         <span onClick={props.backFun} className="border-b cursor-pointer border-black">
           <RiArrowDropLeftFill className="inline text-xl" />
@@ -90,7 +91,7 @@ function ComplaintAdditionalDetails(props) {
         {/* Buttons */}
         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
 
-          {/* Back */}
+          {/* Back button */}
           <div className="col-span-6">
             {" "}
             <button
@@ -101,7 +102,7 @@ function ComplaintAdditionalDetails(props) {
             </button>
           </div>
 
-          {/* Submit */}
+          {/* Submit button */}
           <div className="col-span-6">
             {" "}
             <button
@@ -121,3 +122,7 @@ function ComplaintAdditionalDetails(props) {
 }
 
 export default ComplaintAdditionalDetails
+
+///////////////////////////////////////////////////////
+// Export to : GrievancesCitizenEntryForm.js
+///////////////////////////////////////////////////////

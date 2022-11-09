@@ -23,6 +23,8 @@ function Screen14(props) {
     const { labelStyle, inputStyle } = CommonStyles();
     const [tocStatusToggle, settocStatusToggle] = useState(false);
 
+    const { allFormDataFun } = props.values;
+    
     const handleChange = () => {
 
     }
@@ -35,11 +37,11 @@ function Screen14(props) {
             </div>
             <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                 <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
-                    <div className="col-span-12"> <h1 className={`font-bold text-green-500 text-2xl`}>Congratulations</h1></div>
+                    <div className="col-span-12"> <h1 className={`font-bold bg-green-500 text-2xl rounded text-white text-center`}>Thank You !</h1></div>
                     {/* <div className="col-span-12"> <h1 className={` ${titleColor} text-sm opacity-40`}>Enter Number of years you require a license For.</h1></div> */}
 
                     <div className="form-group mb-2 md:mb-6 col-span-12">
-                        <label className="form-label inline-block mb-1 text-amber-600 text-sm font-bold">Your Application is Successfull !<span className='text-red-500'>*</span></label>
+                        <label className="form-label inline-block mb-1 text-teal-600 text-md font-bold">Your Application is Successfull ! kindly Note down your application number for future references.<span className='text-red-500'>*</span></label>
                         <img src="https://cdn-icons-png.flaticon.com/512/3083/3083650.png" alt="" className='' />
                         <div className="">
 

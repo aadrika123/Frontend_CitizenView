@@ -18,12 +18,15 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const GrievancesRoutes = () => {
 
+  // react query constant
   const queryClient = new QueryClient()
 
   return (
     <>
 
 <QueryClientProvider client={queryClient}>
+
+  {/* Routes */}
       <Routes>
 
         <Route
@@ -43,9 +46,10 @@ const GrievancesRoutes = () => {
 
       </QueryClientProvider>
 
+
+    {/* Toast Component */}
       <ToastContainer
       position="top-center"
-      limit={1}
       autoClose={3000}
       hideProgressBar={false}
       newestOnTop={false}
