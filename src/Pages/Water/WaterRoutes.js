@@ -25,11 +25,11 @@ import WaterIndex from './WaterIndex'
 
 function WaterRoutes() {
 
-    const globalData = useContext(contextVar);
+    // const globalData = useContext(contextVar);
 
-    useEffect(() => {
-        globalData.setModule('WATER');
-    }, [])
+    // useEffect(() => {
+    //     globalData.setModule('WATER');
+    // }, [])
 
     return (
         <Routes>

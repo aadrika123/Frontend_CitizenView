@@ -59,7 +59,7 @@ function ComplaintAdditionalDetails(props) {
 
           {/* Heading */}
           <h1 className={`font-bold ${titleColor} text-2xl`}>
-            Provide Additional Details
+            Complaint Description
           </h1>
         </div>
         <div className="col-span-12">
@@ -67,15 +67,14 @@ function ComplaintAdditionalDetails(props) {
 
           {/* description */}
           <h1 className={` ${titleColor} text-xs opacity-40`}>
-           If you think apart from information provided till now additional details are required to resolve complaint, provide it below :
+           If you think apart from information provided till now complaint description are required to resolve complaint, provide it below :
           </h1>
         </div>
 
         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
 
           {/* input text area */}
-          <textarea name='complaintAdditionalDetails' type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                             />
+          <textarea name='complaintAdditionalDetails' type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" placeholder='Write brief description about your complaint...' rows={3} />
 
           {/* formik error view */}
           {formik.touched.complaintAdditionalDetails && formik.errors.complaintAdditionalDetails ? (<span className="text-sm text-red-600">{formik.errors.complaintAdditionalDetails}</span>): null}

@@ -85,7 +85,25 @@ function WaterCitizenEntryForm() {
       }
     }
 
-    console.log('---------------------------', allScreenData.PropType.typeOfProperty)
+    console.log('----------connectionTypeId-----------------', allScreenData.connectionType.typeOfConnection)
+    console.log('-----------propertyTypeId----------------', allScreenData.PropType.typeOfProperty)
+    console.log('-----------ownerType----------------', allScreenData.ownerType.typeOfOwner)
+    console.log('-------------connection_through--------------', allScreenData.connectionThrough.holdingNo)
+    console.log('------------saf_no---------------', allScreenData.connectionThrough.holdingNo)
+    console.log('------------holdingNo---------------', allScreenData.PropType.typeOfProperty)
+    console.log('-------------wardId--------------', allScreenData.wardNo.wardNo)
+    console.log('-------------areaSqft--------------', allScreenData.totalArea.totalArea)
+    console.log('-------------address--------------', allScreenData.address.address)
+    console.log('-------------landmark--------------', allScreenData.landmark.landmark)
+    console.log('-------------pin--------------', allScreenData.pin.pinCode)
+
+    console.log('-------------flatCount--------------', allScreenData.noFlat.noFlat)
+    console.log('-------------elecKNo--------------', allScreenData.khataNo.khataNo)
+    console.log('-------------elecBindBookNo--------------', allScreenData.bindBookNo.bindBookNo)
+    console.log('-------------elecAccountNo--------------', allScreenData.accountNo.accountNo)
+
+    console.log('-------------elecCategory--------------', allScreenData.waterHarvestingStatus)
+
 
     const requestBody = {
       // basic details
@@ -95,8 +113,9 @@ function WaterCitizenEntryForm() {
       // proofDocumentId: allScreenData.propertyType,
       // category: allScreenData.categoryType.categoryType,
       category: "BPL",
+      pipelineTypeId: "1",
       connection_through: allScreenData.connectionThrough.holdingNo,
-      saf_no: allScreenData.connectionThrough.holdingNo,
+      saf_no: allScreenData.connectionThrough.safNo,
       holdingNo: allScreenData.connectionThrough.holdingNo,
       wardId: allScreenData.wardNo.wardNo,
       areaSqft: allScreenData.totalArea.totalArea,
@@ -253,8 +272,8 @@ function WaterCitizenEntryForm() {
       <div>
 
         {/* This feedback component display's real time data Entry in the form */}
-        <div  className='absolute top-[36rem] w-full md:w-1/3 mx-auto clear-both' > 
-          <FeedbackComponent allFormData={allScreenData}/>
+        <div className='absolute top-[48rem] w-full md:w-1/3 mx-auto clear-both' >
+          <FeedbackComponent allFormData={allScreenData} />
         </div>
 
 
