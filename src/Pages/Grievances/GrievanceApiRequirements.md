@@ -20,7 +20,7 @@ postFileComplaint
         ├──complaintFiledDate <!-- Generate new -->
         ├──complaintNo <!-- Generate new -->
         ├──complaintStatus <!-- Open or Closed -->
-        └──complaintApplicationStatus <!-- Pending or Filed -->
+        └──complaintApplicationStatus <!-- Pending or ...........  -->
 
 <!-- Get all complaints by Id -->
 getAllComplaintById
@@ -62,7 +62,7 @@ putReopenComplaintById
         ├──complaintFiledDate
         ├──complaintStatus <!-- Open or Closed -->
         ├──complaintNo
-        ├──complaintApplicationStatus <!-- Pending or Filed -->
+        ├──complaintApplicationStatus <!-- Pending or ......... -->
         ├──complaintType
         ├──complaintSubType
         ├──complaintPincode
