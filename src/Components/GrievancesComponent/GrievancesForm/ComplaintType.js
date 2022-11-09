@@ -10,11 +10,11 @@
 import { useState } from "react";
 import { RiArrowDropLeftFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
-//importing Themestyle function to use predefined colors to maintain uniform theme everywhere
-import ThemeStyle from "../../Styles/ThemeStyle";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import ComplaintSubType from "./ComplaintSubType";
+//importing Themestyle function to use predefined colors to maintain uniform theme everywhere
+import ThemeStyle from "../../Styles/ThemeStyle";
 
 function ComplaintType(props) {
 
