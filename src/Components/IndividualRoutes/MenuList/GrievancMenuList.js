@@ -13,7 +13,7 @@ function GrievancMenuList() {
 
 
             <div className='mt-4 text-base text-gray-500 font-semibold mx-2'>
-                <h1 className='font-bold text-lg text-slate-500 my-2'>Grievance ...</h1>
+                <h1 className='font-bold text-lg text-slate-500 my-2 bg-stone-100 py-1.5 uppercase font-mono text-center'>Grievance ...</h1>
 
                 <p className='px-2 mt-1 shadow-md  py-2 cursor-pointer rounded-md hover:bg-gray-50 hover:scale-105 flex justify-between'>
                     <Link to="/grievance-index">Lodge a Complain</Link>
