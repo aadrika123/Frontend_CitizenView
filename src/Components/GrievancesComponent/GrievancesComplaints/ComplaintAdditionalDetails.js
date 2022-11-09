@@ -5,7 +5,7 @@
 //    Revision - 1
 //    Project - JUIDCO
 //    Component  - ComplaintAdditionalDetails
-//    DESCRIPTION - Citizen add their additional details
+//    DESCRIPTION - Citizen add their complaint description
 //////////////////////////////////////////////////////////////////////////////////////
 
 import { RiArrowDropLeftFill } from 'react-icons/ri'
@@ -18,7 +18,7 @@ function ComplaintAdditionalDetails(props) {
 
   // form validation
   const validationSchema = yup.object({
-    complaintAdditionalDetails: yup.string().required("enter additional details")
+    complaintAdditionalDetails: yup.string().required("enter complaint description")
   })
 
   // formik
@@ -28,7 +28,7 @@ function ComplaintAdditionalDetails(props) {
     }, 
 
     onSubmit: (values) => {
-      console.log("Reopen Additional Details => ", values)
+      console.log("Reopen complaint description => ", values)
       props.reopenSuccess(values)
     }, validationSchema
   })
