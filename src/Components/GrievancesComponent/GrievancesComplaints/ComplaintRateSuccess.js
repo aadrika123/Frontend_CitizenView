@@ -4,26 +4,29 @@
 //    Date - 3rd November 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - Grievance Rate Success
+//    Component  - GrievanceRateSuccess
+//    Description - Rating or feedback success page
 //////////////////////////////////////////////////////////////////////////////////////
 
-import { BiAddToQueue } from 'react-icons/bi'
-import { RiArrowDropLeftFill } from 'react-icons/ri'
 import {AiTwotoneLike} from 'react-icons/ai'
-import Info from '../../Common/Info'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-function ComplaintRateSuccess(props) {
+function ComplaintRateSuccess() {
 
+    // navigation constant
     const navigate = useNavigate()
 
     //destructuring predefined colors to maintain uniform theme everywhere
     const {bgHeaderColor,titleColor,nextButtonColor,nextBtnHoverColor,backButtonColor,backBtnHoverColor,bgCardColor,bgInfoColor,infoTextColor} = ThemeStyle()
+    
     return (
         <>
+
     <div className="p-2 md:p-10 flex justify-center items-center  overflow-hidden">
+
+      {/* Content */}
       <div
         className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}
       >
@@ -44,8 +47,10 @@ function ComplaintRateSuccess(props) {
         </div>
 
 
+        {/* Button */}
         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
-
+          
+          {/* Go back home button */}
           <div className="col-span-12">
             {" "}
             <button
@@ -65,3 +70,7 @@ function ComplaintRateSuccess(props) {
 }
 
 export default ComplaintRateSuccess
+
+//////////////////////////////////////////////
+// Export to : GreivancesComplaints.js
+//////////////////////////////////////////////

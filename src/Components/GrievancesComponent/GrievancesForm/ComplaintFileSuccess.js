@@ -4,29 +4,31 @@
 //    Date - 3rd November 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - Complaint File Success
-//    DESCRIPTION - Complaint File Success is single input component
+//    Component  - ComplaintFileSuccess
+//    DESCRIPTION - Complaint File Success Page
 //////////////////////////////////////////////////////////////////////////////////////
 
 import {AiTwotoneLike} from 'react-icons/ai'
+import { useNavigate } from 'react-router-dom'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
-import { useNavigate } from 'react-router-dom'
 
 function ComplaintFileSuccess(props) {
 
+    // navigation constants
     const navigate = useNavigate()
 
     //destructuring predefined colors to maintain uniform theme everywhere
     const {bgHeaderColor,titleColor,nextButtonColor,nextBtnHoverColor,backButtonColor,backBtnHoverColor,bgCardColor,bgInfoColor,infoTextColor} = ThemeStyle()
+   
     return (
         <>
-    <div className="text-xs font-semibold px-2 mt-4 flex">
-    </div>
+
     <div className="p-2 md:p-10 flex justify-center items-center  overflow-hidden">
-      <div
-        className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}
-      >
+
+      <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
+
+          {/* Content */}
         <div className="col-span-12 my-2">
           {" "}
           <div className='flex flex-col space-y-2 items-center border py-4 bg-green-800 rounded-sm shadow-md text-white'>
@@ -44,8 +46,10 @@ function ComplaintFileSuccess(props) {
         </div>
 
 
+        {/* Button */}
         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
 
+          {/* Go back to home button */}
           <div className="col-span-12">
             {" "}
             <button
@@ -65,3 +69,7 @@ function ComplaintFileSuccess(props) {
 }
 
 export default ComplaintFileSuccess
+
+///////////////////////////////////////////////////////
+// Export to : GrievancesCitizenEntryForm.js
+///////////////////////////////////////////////////////
