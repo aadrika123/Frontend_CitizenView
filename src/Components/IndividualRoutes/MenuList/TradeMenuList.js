@@ -9,7 +9,6 @@ function TradeMenuList() {
     const imgStyle = "h-10 w-10";
     return (
         <>
-
             <div className='mt-4 text-base text-gray-500 font-semibold mx-2 '>
                 <h1 className='font-bold text-lg text-slate-500 my-2 bg-stone-100 py-1.5 uppercase font-mono text-center'>Trade ...</h1>
                 {/* /trade-index */}
