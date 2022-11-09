@@ -63,9 +63,12 @@ function WaterCitizenEntryForm() {
 
 
   {/* Collecting data from all screen */ }
+  let allFormDt = [];
   const CollectAllScreenData = (key, ScreenData) => {
     setallScreenData({ ...allScreenData, [key]: ScreenData })
     console.log("all form Data", allScreenData)
+
+    // console.log("allFormDAtaSwati", allFormDt.push({ ...allScreenData, [key]: ScreenData }))
 
   }
 
@@ -85,71 +88,61 @@ function WaterCitizenEntryForm() {
       }
     }
 
-    console.log('----------connectionTypeId-----------------', allScreenData.connectionType.typeOfConnection)
-    console.log('-----------propertyTypeId----------------', allScreenData.PropType.typeOfProperty)
-    console.log('-----------ownerType----------------', allScreenData.ownerType.typeOfOwner)
-    console.log('-------------connection_through--------------', allScreenData.connectionThrough.holdingNo)
-    console.log('------------saf_no---------------', allScreenData.connectionThrough.holdingNo)
-    console.log('------------holdingNo---------------', allScreenData.PropType.typeOfProperty)
-    console.log('-------------wardId--------------', allScreenData.wardNo.wardNo)
-    console.log('-------------areaSqft--------------', allScreenData.totalArea.totalArea)
-    console.log('-------------address--------------', allScreenData.address.address)
-    console.log('-------------landmark--------------', allScreenData.landmark.landmark)
-    console.log('-------------pin--------------', allScreenData.pin.pinCode)
 
-    console.log('-------------flatCount--------------', allScreenData.noFlat.noFlat)
-    console.log('-------------elecKNo--------------', allScreenData.khataNo.khataNo)
-    console.log('-------------elecBindBookNo--------------', allScreenData.bindBookNo.bindBookNo)
-    console.log('-------------elecAccountNo--------------', allScreenData.accountNo.accountNo)
-
-    console.log('-------------elecCategory--------------', allScreenData.waterHarvestingStatus)
+    
 
 
     const requestBody = {
       // basic details
-      connectionTypeId: allScreenData.connectionType.typeOfConnection,
-      propertyTypeId: allScreenData.PropType.typeOfProperty,
-      ownerType: allScreenData.ownerType.typeOfOwner,
+      connectionTypeId: allScreenData?.connectionType?.typeOfConnection,
+      propertyTypeId: allScreenData?.PropType?.typeOfProperty,
+      ownerType: allScreenData?.ownerType?.typeOfOwner,
       // proofDocumentId: allScreenData.propertyType,
       // category: allScreenData.categoryType.categoryType,
-      category: "BPL",
-      pipelineTypeId: "1",
-      connection_through: allScreenData.connectionThrough.holdingNo,
-      saf_no: allScreenData.connectionThrough.safNo,
+      // category: "BPL",
+      // pipelineTypeId: "1",
+
+      connection_through: allScreenData?.connectionThrough,
+      saf_no: allScreenData?.connectionThrough?.safNo,
       holdingNo: allScreenData.connectionThrough.holdingNo,
-      wardId: allScreenData.wardNo.wardNo,
-      areaSqft: allScreenData.totalArea.totalArea,
-      address: allScreenData.address.address,
-      landmark: allScreenData.landmark.landmark,
-      pin: allScreenData.pin.pinCode,
-      flatCount: allScreenData.noFlat.noFlat,
-      elecKNo: allScreenData.khataNo.khataNo,
-      elecBindBookNo: allScreenData.bindBookNo.bindBookNo,
-      elecAccountNo: allScreenData.accountNo.accountNo,
-      elecCategory: allScreenData.waterHarvestingStatus,
+      propertyTypeId: allScreenData?.PropType,
+      category: allScreenData?.PropType?.categoryType,
+      pipelineTypeId: allScreenData?.PropType?.pipelineType,
+      flatCount: allScreenData?.PropType?.noFlat,
+      wardId: allScreenData?.wardNo?.wardNo,
+      areaSqft: allScreenData?.totalArea?.totalArea,
+      address: allScreenData?.address?.address,
+      landmark: allScreenData?.landmark?.landMark,
+      pin: allScreenData?.pin?.pinCode,
+      // flatCount: allScreenData.noFlat.noFlat,
+      elecKNo: allScreenData?.khataNo?.khataNo,
+      elecBindBookNo: allScreenData?.bindBookNo?.bindBookNo,
+      elecAccountNo: allScreenData?.accountNo?.accountNo,
+      // elecCategory: allScreenData.waterHarvestingStatus,
+      elecCategory: allScreenData.categoryScreen.categoryTypeData,
 
       //owner
-      // owner: allScreenData.applicantList,
-      owners: [
-        {
-          "ownerName": "Philips Huge",
-          "guardianName": "Martin Gerrics",
-          "mobileNo": "0123456789",
-          "email": "123@gmail.com"
-        },
-        {
-          "ownerName": "Philips Huge",
-          "guardianName": "Martin Gerrics",
-          "mobileNo": "0123456789",
-          "email": "123@gmail.com"
-        },
-        {
-          "ownerName": "Dipu Don",
-          "guardianName": "Dipu",
-          "mobileNo": "0123456789",
-          "email": "123@gmail.com"
-        }
-      ]
+      owners: allScreenData.applicantList,
+      // owners: [
+      //   {
+      //     "ownerName": "Philips Huge",
+      //     "guardianName": "Martin Gerrics",
+      //     "mobileNo": "0123456789",
+      //     "email": "123@gmail.com"
+      //   },
+      //   {
+      //     "ownerName": "Philips Huge",
+      //     "guardianName": "Martin Gerrics",
+      //     "mobileNo": "0123456789",
+      //     "email": "123@gmail.com"
+      //   },
+      //   {
+      //     "ownerName": "Dipu Don",
+      //     "guardianName": "Dipu",
+      //     "mobileNo": "0123456789",
+      //     "email": "123@gmail.com"
+      //   }
+      // ]
 
 
 
@@ -163,13 +156,34 @@ function WaterCitizenEntryForm() {
         // setloader(false)
         console.log('response after pushing water data', response)
         setScreenDataSubmit(response.data)
-        // notify(`Saf form submitted successfully with application no ${response?.data?.data?.safNo}`, 'success')
-        nextFun(6)
+        // nextFun()
 
       })
       .catch(function (error) {
         console.log('errorrr.... ', error);
       })
+
+      console.log('----------owner list-----------------', allScreenData.applicantList)
+    console.log('----------elecCategory-----------------', allScreenData.categoryScreen.categoryTypeData)
+    console.log('-----------propertyTypeId----------------', allScreenData.PropType.typeOfProperty)
+    console.log('-----------ownerType----------------', allScreenData.ownerType.typeOfOwner)
+    console.log('-------------connection_through--------------', allScreenData.connectionThrough)
+    console.log('------------saf_no---------------', allScreenData.connectionThrough.safNo)
+    console.log('------------holdingNo---------------', allScreenData.connectionThrough.holdingNo)
+    console.log('-------------wardId--------------', allScreenData.wardNo.wardNo)
+    console.log('-------------areaSqft--------------', allScreenData.totalArea.totalArea)
+    console.log('-------------address--------------', allScreenData.address.address)
+    console.log('-------------landmark--------------', allScreenData.landmark.landMark)
+    console.log('-------------pin--------------', allScreenData.pin.pinCode)
+    console.log('-------------flatCount--------------', allScreenData.PropType.noFlat)
+    console.log('-------------elecKNo--------------', allScreenData.khataNo.khataNo)
+    console.log('-------------elecBindBookNo--------------', allScreenData.bindBookNo.bindBookNo)
+    console.log('-------------elecAccountNo--------------', allScreenData.accountNo.accountNo)
+    console.log('-------------elecCategory--------------', allScreenData.waterHarvestingStatus)
+    console.log('-------------propertyTypeId--------------', allScreenData.PropType)
+    console.log('-------------category--------------', allScreenData.PropType.categoryType)
+    console.log('-------------pipelineTypeId--------------', allScreenData.PropType.pipelineType)
+    console.log('-------------flatCount--------------', allScreenData.PropType.noFlat)
   }
 
 
@@ -228,43 +242,38 @@ function WaterCitizenEntryForm() {
 
       {/* {formIndex == 9 && <ScreenAddress nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />} */}
 
-      {/* No. of flat */}
-      <div className={`w-full absolute top-10 transition-all ${formIndex == 10 ? 'translate-x-0' : 'translate-x-full'}`}> <ScreenFlat nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} /></div>
-
-      {/* {formIndex == 10 && <ScreenFlat nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />} */}
-
       {/*Applicant List */}
-      <div className={`w-full absolute top-10 transition-all ${formIndex == 11 ? 'translate-x-0' : 'translate-x-full'}`}> <ScreenApplicantDetail nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} /></div>
+      <div className={`w-full absolute top-10 transition-all ${formIndex == 10 ? 'translate-x-0' : 'translate-x-full'}`}> <ScreenApplicantDetail nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} /></div>
 
       {/* {formIndex == 11 && <ScreenApplicantDetail nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />} */}
 
       {/* khata no */}
-      <div className={`w-full absolute top-10 transition-all ${formIndex == 12 ? 'translate-x-0' : 'translate-x-full'}`}>  <ScreenKhataNo nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} /></div>
+      <div className={`w-full absolute top-10 transition-all ${formIndex == 11 ? 'translate-x-0' : 'translate-x-full'}`}>  <ScreenKhataNo nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} /></div>
 
       {/* {formIndex == 12 && <ScreenKhataNo nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />} */}
 
       {/* Bind Book No */}
-      <div className={`w-full absolute top-10 transition-all ${formIndex == 13 ? 'translate-x-0' : 'translate-x-full'}`}>  <ScreenBindBookNo nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} /></div>
+      <div className={`w-full absolute top-10 transition-all ${formIndex == 12 ? 'translate-x-0' : 'translate-x-full'}`}>  <ScreenBindBookNo nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} /></div>
 
       {/* {formIndex == 13 && <ScreenBindBookNo nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />} */}
 
       {/* Acount No*/}
-      <div className={`w-full absolute top-10 transition-all ${formIndex == 14 ? 'translate-x-0' : 'translate-x-full'}`}>  <ScreenAccountNo nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} /></div>
+      <div className={`w-full absolute top-10 transition-all ${formIndex == 13 ? 'translate-x-0' : 'translate-x-full'}`}>  <ScreenAccountNo nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} /></div>
 
       {/* {formIndex == 14 && <ScreenAccountNo nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />} */}
 
       {/*Category Type */}
-      <div className={`w-full absolute top-10 transition-all ${formIndex == 15 ? 'translate-x-0' : 'translate-x-full'}`}>  <ScreenCategoryType nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} /></div>
+      <div className={`w-full absolute top-10 transition-all ${formIndex == 14 ? 'translate-x-0' : 'translate-x-full'}`}>  <ScreenCategoryType nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} /></div>
 
       {/* {formIndex == 15 && <ScreenCategoryType nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} />} */}
 
       {/* Review Form */}
-      <div className={`w-full absolute top-10 transition-all ${formIndex == 16 ? 'translate-x-0' : 'translate-x-full'}`}> <ScreenFormReview nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} submitFun={submitButtonToggle} allFormData={allScreenData} /></div>
+      <div className={`w-full absolute top-10 transition-all ${formIndex == 15 ? 'translate-x-0' : 'translate-x-full'}`}> <ScreenFormReview nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} submitFun={submitButtonToggle} allFormData={allScreenData} /></div>
 
       {/* {formIndex == 16 && <ScreenFormReview nextFun={nextFun} backFun={backFun} formIndex={formIndex} CollectScreenDataFun={CollectAllScreenData} submitFun={submitButtonToggle} allFormData={allScreenData} />} */}
 
       {/* Payment Form */}
-      <div className={`w-full absolute top-10 transition-all ${formIndex == 17 ? 'translate-x-0' : 'translate-x-full'}`}>  <ScreenPayment backFun={backFun} formIndex={formIndex} submitFun={submitButtonToggle} screenDataSubmit={screenDataSubmit} /></div>
+      <div className={`w-full absolute top-10 transition-all ${formIndex == 16 ? 'translate-x-0' : 'translate-x-full'}`}>  <ScreenPayment backFun={backFun} formIndex={formIndex} submitFun={submitButtonToggle} screenDataSubmit={screenDataSubmit} /></div>
 
       {/* {formIndex == 17 && <ScreenPayment backFun={backFun} formIndex={formIndex} submitFun={submitButtonToggle} screenDataSubmit={screenDataSubmit} />} */}
 
@@ -272,9 +281,7 @@ function WaterCitizenEntryForm() {
       <div>
 
         {/* This feedback component display's real time data Entry in the form */}
-        <div className='absolute top-[48rem] w-full md:w-1/3 mx-auto clear-both' >
-          <FeedbackComponent allFormData={allScreenData} />
-        </div>
+        {formIndex != 15 && <div className={`absolute top-[48rem] w-full md:w-1/3 mx-auto clear-both`}><FeedbackComponent allFormData={allScreenData} /> </div>}
 
 
       </div>

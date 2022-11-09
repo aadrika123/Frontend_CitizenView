@@ -25,6 +25,7 @@ function ScreenConnectionThrough(props) {
     const { labelStyle, inputStyle } = CommonStyles();
     const [connThroughHolding, setConnThroughHolding] = useState()
     const [connThroughSaf, setConnThroughSaf] = useState()
+    
 
     const { api_getConnectionThrough } = CitizenApplyApiList()
     const [connThroughData, setConnThroughData] = useState()
@@ -128,6 +129,8 @@ function ScreenConnectionThrough(props) {
                                     <p className='text-red-500 text-xs'>{formik.touched.safNo && formik.errors.safNo ? formik.errors.safNo : null}</p>
                                 </div>
                             </div>
+
+                            
 
 
 
