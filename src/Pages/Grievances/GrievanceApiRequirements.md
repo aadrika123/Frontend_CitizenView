@@ -73,10 +73,3 @@ putReopenComplaintById
         ├──complaintLandmark
         ├──complaintImage
         └──complaintAdditionalDetails
-
-<!-- On Hold -->
-For Admin
-----------------------------------------------------------------------------
-
-
-

@@ -9,12 +9,13 @@
 
 import {RiArrowDropLeftFill} from 'react-icons/ri'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Components/Styles/ThemeStyle'
-import { useNavigate } from 'react-router-dom'
 
 const GrievancesIndex = () => {
 
+    // navigate constant
     const navigate = useNavigate()
 
 // theme constants
@@ -71,3 +72,7 @@ const GrievancesIndex = () => {
 }
 
 export default GrievancesIndex
+
+//////////////////////////////////////////////
+// Export to : GrievanceRoutes.js
+//////////////////////////////////////////////

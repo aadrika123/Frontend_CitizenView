@@ -7,8 +7,6 @@
 //////////////////////////////////////////////////////////////////////////////////////
 
 import {RiArrowDropLeftFill} from 'react-icons/ri'
-//importing Themestyle function to use predefined colors to maintain uniform theme everywhere
-import ThemeStyle from '../../Styles/ThemeStyle'
 import ComplaintTimeline from './ComplaintTimeline'
 import apiLinks from "../Api/GrievanceApi"
 import { useEffect } from "react";
@@ -18,18 +16,25 @@ import {GlobalData} from '../Context/contextVar'
 import { useContext } from 'react';
 import {useQuery} from 'react-query'
 import {Puff} from 'react-loader-spinner'
+//importing Themestyle function to use predefined colors to maintain uniform theme everywhere
+import ThemeStyle from '../../Styles/ThemeStyle'
 
 function ComplaintSummary(props) {
 
+  // destructing context variable
   const {getId} = useContext(GlobalData)
 
+  // destructing api constant
   const {listComplaint} = apiLinks()
 
+  // constants
   const [complaintData, setComplaintData] = useState([])
   const [status, setStatus] = useState(true)
 
-  console.log("userId => ", getId)
+  // viewing complaint list id
+  console.log("complaint list id => ", getId)
 
+  // getting data by axios and useQuery by id
   const {isLoading, data, error} = useQuery("getComplaintData", async () => {
     try {
       const data = await axios.get(listComplaint + "/" + getId);
@@ -43,6 +48,7 @@ function ComplaintSummary(props) {
   })
 
 
+  // handling timeline according to status
   useEffect(() => {
     complaintData.complaintStatus == 'Closed' ? setStatus(true) : setStatus(false)
   }, [complaintData])
@@ -50,8 +56,11 @@ function ComplaintSummary(props) {
 
   //destructuring predefined colors to maintain uniform theme everywhere
   const {bgHeaderColor,titleColor,nextButtonColor,nextBtnHoverColor,backButtonColor,backBtnHoverColor,bgCardColor,bgInfoColor,infoTextColor} = ThemeStyle()
+  
   return (
     <>
+
+    {/* Corner back button */}
     <div className="text-xs font-semibold px-2 mt-4 flex">
       <div className="flex-1">
         <span onClick={props.backFun} className=" cursor-pointer border-b border-black">
@@ -60,18 +69,22 @@ function ComplaintSummary(props) {
         </span>
       </div>
     </div>
+
+    {/* Main */}
     <div className="p-2 md:p-10 flex justify-center items-center  overflow-hidden">
       <div
         className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}
       >
         <div className="col-span-12">
           {" "}
+          
+          {/* Heading */}
           <h1 className={`font-bold ${titleColor} text-2xl`}>
             Complaint Summary
           </h1>
         </div>
 
-        {/* summary */}
+        {/* complaint summary */}
         {!isLoading ? <div className="col-span-12 bg-zinc-100 rounded-md p-4 mt-4 shadow-md">
           
           <h1 className={` ${titleColor} font-bold col-span-12 pb-2`}>
@@ -114,7 +127,10 @@ function ComplaintSummary(props) {
           </div>
 
         </div> 
+        
         :
+
+        // Loader
          <Puff
             height="80"
             width="80"
@@ -127,6 +143,7 @@ function ComplaintSummary(props) {
             /> 
           }
 
+        {/* Timeline */}
        <ComplaintTimeline rate={props.rate} reopen={props.reopen} status={status}/>
 
         {/* Comments */}
@@ -139,6 +156,7 @@ function ComplaintSummary(props) {
                     </div>
         </div>
 
+          {/* Button */}
           <div className="col-span-6">
             {" "}
             <button
@@ -148,6 +166,7 @@ function ComplaintSummary(props) {
               Send
             </button>
           </div>
+          
         </div>
       </div>
   
@@ -156,3 +175,7 @@ function ComplaintSummary(props) {
 }
 
 export default ComplaintSummary
+
+//////////////////////////////////////////////
+// Export to : GreivancesComplaints.js
+//////////////////////////////////////////////

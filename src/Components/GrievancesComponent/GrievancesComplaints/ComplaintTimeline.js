@@ -8,9 +8,6 @@
 //    DESCRIPTION - Screen 3 is single input component
 //////////////////////////////////////////////////////////////////////////////////////
 
-import { useState } from 'react'
-import { AiFillInfoCircle } from 'react-icons/ai'
-import { RiArrowDropLeftFill } from 'react-icons/ri'
 import {BsFillTelephoneFill} from 'react-icons/bs'
 import ThemeStyle from '../../Styles/ThemeStyle'
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
@@ -20,32 +17,41 @@ function ComplaintTimeline(props) {
 
     //destructuring predefined colors to maintain uniform theme everywhere
     const {bgHeaderColor,titleColor,nextButtonColor,nextBtnHoverColor,backButtonColor,backBtnHoverColor,bgCardColor,bgInfoColor,infoTextColor} = ThemeStyle()
+    
     return (
         <>
 
-<div className="col-span-12 bg-zinc-100 rounded-md p-4 mt-4 shadow-md">
+    <div className="col-span-12 bg-zinc-100 rounded-md p-4 mt-4 shadow-md">
+
+      {/* Heading */}
        <h1 className={` ${titleColor} font-bold col-span-12 pb-2`}>
             Complaint Timeline
           </h1>
 
       <div className='text-sm'>
+
+        {/* Timeline container */}
        <VerticalTimeline layout={'1-column-left'}>
  
-{props.status && <> <VerticalTimelineElement
-  contentStyle={{ background: '#D97706dc', color: '#fff', padding: '10px' }}
-  contentArrowStyle={{ borderRight: '7px solid #D97706' }}
-  position={'right'}
-     className="vertical-timeline-element--work"
-     iconStyle={{ background: '#D97706', color: '#fff' }}
-  >
-    <div>
-      <div>Complaint Resolved</div>
-      <div className='flex space-x-4'>
-        <span onClick={() => props.rate()} className='bg-white px-4 py-1 mt-2 rounded-md text-[#B45309] cursor-pointer hover:shadow-lg hover:bg-[#D97706] hover:text-white text-sm'>RATE</span>
-        <span onClick={() => props.reopen()} className='bg-white px-4 py-1 mt-2 rounded-md text-[#B45309] cursor-pointer hover:shadow-lg hover:bg-[#D97706] hover:text-white text-sm'>REOPEN</span>
-      </div>
-    </div>
-  </VerticalTimelineElement>
+ {/* Viewing timeling according to status */}
+      {props.status && <> 
+
+          {/* Timeline Elements */}
+          <VerticalTimelineElement
+            contentStyle={{ background: '#D97706dc', color: '#fff', padding: '10px' }}
+            contentArrowStyle={{ borderRight: '7px solid #D97706' }}
+            position={'right'}
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: '#D97706', color: '#fff' }}
+            >
+              <div>
+                <div>Complaint Resolved</div>
+                <div className='flex space-x-4'>
+                  <span onClick={() => props.rate()} className='bg-white px-4 py-1 mt-2 rounded-md text-[#B45309] cursor-pointer hover:shadow-lg hover:bg-[#D97706] hover:text-white text-sm'>RATE</span>
+                  <span onClick={() => props.reopen()} className='bg-white px-4 py-1 mt-2 rounded-md text-[#B45309] cursor-pointer hover:shadow-lg hover:bg-[#D97706] hover:text-white text-sm'>REOPEN</span>
+                </div>
+              </div>
+            </VerticalTimelineElement>
  
   <VerticalTimelineElement
   position={'right'}
@@ -124,3 +130,7 @@ function ComplaintTimeline(props) {
 }
 
 export default ComplaintTimeline
+
+//////////////////////////////////////////////
+// Export to : GreivancesSummary.js
+//////////////////////////////////////////////

@@ -8,26 +8,30 @@
 //    DESCRIPTION - Screen 8 is single input component
 //////////////////////////////////////////////////////////////////////////////////////
 
-import { BiAddToQueue } from 'react-icons/bi'
-import { RiArrowDropLeftFill } from 'react-icons/ri'
 import {AiTwotoneLike} from 'react-icons/ai'
-import Info from '../../Common/Info'
+import { useNavigate } from 'react-router-dom'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
-import { Navigate, useNavigate } from 'react-router-dom'
 
-function ComplaintReopenSuccess(props) {
+function ComplaintReopenSuccess() {
 
+  // navigation constant
     const navigate = useNavigate()
 
     //destructuring predefined colors to maintain uniform theme everywhere
     const {bgHeaderColor,titleColor,nextButtonColor,nextBtnHoverColor,backButtonColor,backBtnHoverColor,bgCardColor,bgInfoColor,infoTextColor} = ThemeStyle()
+    
     return (
         <>
+
     <div className="p-2 md:p-10 flex justify-center items-center  overflow-hidden">
+
+
       <div
         className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}
       >
+
+        {/* content */}
         <div className="col-span-12 my-2">
           {" "}
           <div className='flex flex-col space-y-2 items-center border py-4 bg-green-800 rounded-sm shadow-md text-white'>
@@ -45,8 +49,10 @@ function ComplaintReopenSuccess(props) {
         </div>
 
 
+        {/* Button */}
         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
 
+          {/* back to home button */}
           <div className="col-span-12">
             {" "}
             <button
@@ -66,3 +72,7 @@ function ComplaintReopenSuccess(props) {
 }
 
 export default ComplaintReopenSuccess
+
+//////////////////////////////////////////////
+// Export to : GreivancesComplaints.js
+//////////////////////////////////////////////

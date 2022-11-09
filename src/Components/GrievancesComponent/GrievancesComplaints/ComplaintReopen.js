@@ -4,24 +4,24 @@
 //    Date - 3rd November 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - Screen 6
-//    DESCRIPTION - Screen 6 is single input component
+//    Component  - ComplaintReopen
+//    DESCRIPTION - Citizen gives reason for reopening complaint
 //////////////////////////////////////////////////////////////////////////////////////
 
-import {AiFillInfoCircle} from 'react-icons/ai'
 import {RiArrowDropLeftFill} from 'react-icons/ri'
-import {MdCameraEnhance} from 'react-icons/md'
-//importing Themestyle function to use predefined colors to maintain uniform theme everywhere
-import ThemeStyle from '../../Styles/ThemeStyle'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+//importing Themestyle function to use predefined colors to maintain uniform theme everywhere
+import ThemeStyle from '../../Styles/ThemeStyle'
 
 function ComplaintReopen(props) {
 
+  // Validation form
   const validationSchema = yup.object({
     complaintReason: yup.string().required("select reason")
   })
 
+  // formik
   const formik = useFormik({
     initialValues: {
       complaintReason: ""
@@ -38,6 +38,8 @@ function ComplaintReopen(props) {
   const {bgHeaderColor,titleColor,nextButtonColor,nextBtnHoverColor,backButtonColor,backBtnHoverColor,bgCardColor,bgInfoColor,infoTextColor} = ThemeStyle()
   return (
     <>
+
+    {/* Corner back button */}
     <div className="text-xs font-semibold px-2 mt-4 flex">
       <div className="flex-1">
         <span onClick={props.backFun} className="cursor-pointer border-b border-black">
@@ -47,22 +49,30 @@ function ComplaintReopen(props) {
       </div>
     </div>
 
+    {/* Form */}
     <form onSubmit={formik.handleSubmit} onChange={formik.handleChange} className="p-2 md:p-10 flex justify-center items-center  overflow-hidden">
+     
       <div
         className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}
       >
         <div className="col-span-12">
           {" "}
+
+          {/* Heading */}
           <h1 className={`font-bold ${titleColor} text-2xl`}>
             Choose Reason to Re-open the Complaint
           </h1>
         </div>
         <div className="col-span-12">
           {" "}
+
+          {/* Description */}
           <h1 className={` ${titleColor} text-xs opacity-40`}>
             The complaint type you have chosen has following complaint sub-types. Select the option of your choice form the list given below.
           </h1>
         </div>
+
+        {/* Radio boxes */}
         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
           <div className="flex items-center mb-4">
             <input
@@ -124,10 +134,17 @@ function ComplaintReopen(props) {
               No permanent solution
             </label>
             </div>
+
+            {/* formik error viewing */}
             {formik.touched.complaintReason && formik.errors.complaintReason ? (<span className="text-sm text-red-600">{formik.errors.complaintReason}</span>): null}
+
         </div>
 
+
+      {/* Buttons */}
         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
+
+          {/* Back button */}
           <div className="col-span-6">
             {" "}
             <button
@@ -137,6 +154,8 @@ function ComplaintReopen(props) {
               Back
             </button>
           </div>
+
+          {/* Next button  */}
           <div className="col-span-6">
             {" "}
             <button
@@ -147,6 +166,7 @@ function ComplaintReopen(props) {
             </button>
           </div>
         </div>
+
       </div>
     </form>
   </>
@@ -154,3 +174,7 @@ function ComplaintReopen(props) {
 }
 
 export default ComplaintReopen
+
+//////////////////////////////////////////////
+// Export to : GreivancesComplaints.js
+//////////////////////////////////////////////

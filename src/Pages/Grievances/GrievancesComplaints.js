@@ -20,6 +20,7 @@ import ComplaintReopenSuccess from '../../Components/GrievancesComponent/Grievan
 import axios from 'axios'
 // Importing api links
 import apiLinks from "../../Components/GrievancesComponent/Api/GrievanceApi"
+// importing global data constant
 import { GlobalData } from '../../Components/GrievancesComponent/Context/contextVar'
 
 
@@ -31,6 +32,7 @@ const GrievancesComplaints = () => {
     const [toggleSubmitRate ,setToggleSubmitRate] = useState(false)
     const [getId, setGetId] = useState(0)
 
+    // setting id of complaint list
     const postId = (index) => {
       console.log("getting id => ", index)
       setGetId(index)
@@ -42,7 +44,7 @@ const GrievancesComplaints = () => {
      //formIndex variable to hold number of screen to show in form
      const [formIndex, setFormIndex] = useState(1)
 
-   //   calling api
+   //   Destructing api
      const {reopenComplaint} = apiLinks()
 
    //   Forwarding Components for Reopening Complaint
@@ -75,6 +77,7 @@ const GrievancesComplaints = () => {
       .catch((err) => console.log(err))
     }
 
+    // viewing stored data
     useEffect(() => {
       console.log("stored data => ", storeData)
     }, [reopenNext])
@@ -157,3 +160,7 @@ const GrievancesComplaints = () => {
  }
 
 export default GrievancesComplaints
+
+//////////////////////////////////////////////
+// Export to : GrievanceRoutes.js
+//////////////////////////////////////////////
