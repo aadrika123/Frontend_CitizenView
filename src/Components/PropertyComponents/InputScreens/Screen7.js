@@ -82,6 +82,20 @@ function Screen7(props) {
                             // onChange={e => handleField(e)}
                             />
                         </div>
+                        <div className="form-group mb-4 md:mb-6 col-span-12">
+                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Relation</label>
+                            <select
+                                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                type="text"
+                                name="group"
+                            // onChange={e => handleField(e)}
+                            >
+                                <option value="S/O">S/O</option>
+                                <option value="D/O">D/O</option>
+                                <option value="C/O">C/O</option>
+                                <option value="W/O">W/O</option>
+                            </select>
+                        </div>
 
                         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
                             <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>

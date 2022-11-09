@@ -129,6 +129,22 @@
       "complaintFiledDate": "04-Feb-2021",
       "complaintNo": "PG-PGR-2021-02-04-0005553",
       "id": 9
+    },
+    {
+      "complaintType": "Streetlights",
+      "complaintSubType": "Other",
+      "complaintPincode": "834001",
+      "complaintCity": "City B",
+      "complaintLocality": "Locality A",
+      "complaintWardNo": "Culpa ipsam consecte",
+      "complaintHouseNo": "Tempore error amet",
+      "complaintLandmark": "Praesentium reprehen",
+      "complaintAdditionalDetails": "Obcaecati fuga Cons",
+      "complaintStatus": "Open",
+      "complaintApplicationStatus": "Pending for assignment",
+      "complaintFiledDate": "04-Feb-2021",
+      "complaintNo": "PG-PGR-2021-02-04-0005553",
+      "id": 10
     }
   ],
   "rateComplaint": [
@@ -238,6 +254,14 @@
       "complaintRemark": "",
       "complaintComment": "",
       "id": 15
+    },
+    {
+      "complaintRate": 4.5,
+      "complaintRemark": [
+        "Quality of Work"
+      ],
+      "complaintComment": "Ullamco fuga Est es",
+      "id": 16
     }
   ],
   "reopenComplaint": [
@@ -286,6 +310,11 @@
       "complaintReason": "No permanent solution",
       "complaintAdditionalDetails": "Amet mollit error p",
       "id": 9
+    },
+    {
+      "complaintReason": "No permanent solution",
+      "complaintAdditionalDetails": "Dicta deserunt conse",
+      "id": 10
     }
   ]
 }
