@@ -22,7 +22,7 @@ function ScreenFormReview(props) {
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
-    const { connectionType, connectionThrough, PropType, accountNo, address, applicantList, bindBookNo, khataNo, landmark, noFlat, ownerType, pin, totalArea, wardNo } = props?.allFormData;
+    const { connectionType, connectionThrough, PropType, accountNo, address, applicantList, bindBookNo, khataNo, landmark, noFlat, ownerType, pin, totalArea, wardNo,categoryScreen } = props?.allFormData;
 
 
     return (
@@ -231,22 +231,22 @@ function ScreenFormReview(props) {
                                 </div>
                             </div>
 
-                            {/* {accountNo?.accountNo == null ? "" :
+                            {/* {accountNo?.accountNo == null ? "" : */}
                                 <div className='grid grid-cols-2 '>
                                     <div className="">
                                         <label className={`text-xs ml-2 font-medium text-gray-500`}>Category Type</label>
                                     </div>
                                     <div className=''>
-                                        <label className={`text-xs ml-2 font-medium text-gray-800`}></label>
+                                        <label className={`text-xs ml-2 font-medium text-gray-800`}>{categoryScreen?.categoryTypeData}</label>
                                     </div>
                                 </div>
-                            } */}
+                            {/* } */}
                         </div>
 
                         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
                             <div className="col-span-6"> <button onClick={() => props.backFun()} type="button" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
 
-                            <div className="col-span-6">  <button onClick={() => props.submitFun()} type="button" className=" px-6 py-1 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out">Submit</button></div>
+                            <div className="col-span-6">  <button onClick={() => props.submitFun()} type="submit" className=" px-6 py-1 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out">Submit</button></div>
                         </div>
 
                         {/* <Link to='/water-submitNewApply'> */}

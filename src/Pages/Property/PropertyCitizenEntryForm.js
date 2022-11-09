@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 import FeedbackScreen from '../../Components/PropertyComponents/InputScreens/FeedbackScreen'
 import Screen1 from '../../Components/PropertyComponents/InputScreens/Screen1'
 import Screen10 from '../../Components/PropertyComponents/InputScreens/Screen10'
@@ -10,18 +11,20 @@ import Screen15 from '../../Components/PropertyComponents/InputScreens/Screen15'
 import Screen16 from '../../Components/PropertyComponents/InputScreens/Screen16'
 import Screen17 from '../../Components/PropertyComponents/InputScreens/Screen17'
 import Screen2 from '../../Components/PropertyComponents/InputScreens/Screen2'
+import Screen2Hording from '../../Components/PropertyComponents/InputScreens/Screen2Hording'
+import Screen2PetrolPump from '../../Components/PropertyComponents/InputScreens/Screen2PetrolPump'
+import Screen2RainWater from '../../Components/PropertyComponents/InputScreens/Screen2RainWater'
 import Screen3 from '../../Components/PropertyComponents/InputScreens/Screen3'
 import Screen4 from '../../Components/PropertyComponents/InputScreens/Screen4'
 import Screen5 from '../../Components/PropertyComponents/InputScreens/Screen5'
 import Screen6 from '../../Components/PropertyComponents/InputScreens/Screen6'
 import Screen7 from '../../Components/PropertyComponents/InputScreens/Screen7'
 import Screen8 from '../../Components/PropertyComponents/InputScreens/Screen8'
-import Screen9 from '../../Components/PropertyComponents/InputScreens/Screen9'
+import Screen9 from '../../Components/PropertyComponents/InputScreens/Screen9.1'
 
 function PropertyCitizenEntryForm() {
     //formIndex variable to hold number of screen to show in form
     const [formIndex, setFormIndex] = useState(1)
-
     const [isResidential, setIsResidential] = useState()
     const [typeOfProperty, setTypeOfProperty] = useState()
     const [plotSize, setPlotSize] = useState()
@@ -39,6 +42,13 @@ function PropertyCitizenEntryForm() {
     const [identityDocType, setIdentityDocType] = useState()
     const [safNo, setSafNo] = useState()
 
+    //Screens Data
+    const [basicDetailsData, setBasicDetailsData] = useState()
+
+console.log("basicDetailsData",basicDetailsData)
+    //Master Data States
+    const [masterData, setMasterData] = useState()
+
     //backward 1 step from currentIndex
     const backFun = () => setFormIndex(prev => prev - 1)
 
@@ -47,15 +57,37 @@ function PropertyCitizenEntryForm() {
 
     // console.log('form index',formIndex)
 
+    const bearer = "1426|1zWdOB2vIqIIR4YgQkSMNjo533BFflMrFbbxMMCP";
+
+    const header = {
+        headers: {
+            Authorization: `Bearer ${bearer}`,
+            Accept: 'application/json',
+        }
+    }
+
+
+    useEffect(() => {
+        axios.get('http://192.168.0.16:8000/api/property/saf/master-saf', header)
+            .then(function (res) {
+                console.log("Masster Data", res.data.data)
+                setMasterData(res.data.data)
+            })
+            .catch(function (err) {
+                console.log("Master Data Fetch Error", err)
+            })
+    }, [])
+
+
     const payloadData = {
         "assessmentType": "NewAssessment",
-        'isResidential': isResidential?.isResidential,  //screen1
+        'isResidential' :"",
         // basic details
-        "ward": 50,
-        "newWard": 50,
-        "ownershipType": ownerType?.ownerType,                    //Screen11,
-        "propertyType": typeOfProperty?.typeOfProperty,           //screen2
-        "zone": "",
+        "ward": basicDetailsData?.wardNo,
+        "newWard": basicDetailsData?.newWardNo,
+        "ownershipType": basicDetailsData?.ownershipType,                
+        "propertyType": basicDetailsData?.propertyType,          
+        "zone": basicDetailsData?.zone,
         "isMobileTower": 0,
         "towerArea": 222.1,
         "towerInstallationDate": "2017-01-04",
@@ -115,29 +147,7 @@ function PropertyCitizenEntryForm() {
 
     }
 
-    let finalData = {
-        // 'isResidential': isResidential?.isResidential,  //screen1
-        // 'typeOfProperty': typeOfProperty?.typeOfProperty, //screen2
-        // 'plotSize': plotSize?.plotSize,                    //Screen3
-        // 'numberOfBasements': numberOfBasements?.numberOfBasements, //screen4
-        // 'floorDetails' : floorDetails, //Screen 5
-        'pinPropertyLocation': pinPropertyLocation?.pinPropertyLocation, //Screen 6
-        'pincode': pincode?.pincode,                    //Screen 7
-        'propertyAddress': propertyAddress,              //Screen 8
-        'landmark': landmark?.landmark,                  //Screen 9
-        'addressDocumantType': addressDocumantType?.addressDocumantType, //Screen10
-        'ownerType': ownerType?.ownerType,                    //Screen 11
-        // 'ownerDetails' :ownerDetails,              //Screen 12
-        'specialOwnerCategory': specialOwnerCategory?.specialOwnerCategory, //Screen 13
-        'ownerAddress': ownerAddress,                       //Scree14
-        'identityDocType': identityDocType                 //Screen15
-    }
-    console.log("Final Data is :- ", finalData)
 
-    const screen1Data = (e) => {
-        console.log("Screen 1 Data in Entry Form", e)
-        setIsResidential(e)
-    }
     const screen2Data = (e) => {
         console.log("Screen 2 Data in Entry Form", e)
         setTypeOfProperty(e)
@@ -204,6 +214,28 @@ function PropertyCitizenEntryForm() {
     return (
         <>
             <div>
+                {formIndex == 1 && <Screen1 nextFun={nextFun} backFun={backFun} masterData={masterData} data={setBasicDetailsData} formIndex={formIndex} />}
+                {formIndex == 2 && <Screen2 nextFun={nextFun} backFun={backFun} data={screen2Data} formIndex={formIndex} />}
+                {formIndex == 3 && <Screen2Hording nextFun={nextFun} backFun={backFun} data={screen2Data} formIndex={formIndex} />}
+                {formIndex == 4 && <Screen2PetrolPump nextFun={nextFun} backFun={backFun} data={screen2Data} formIndex={formIndex} />}
+                {formIndex == 5 && <Screen2RainWater nextFun={nextFun} backFun={backFun} data={screen2Data} formIndex={formIndex} />}
+                {formIndex == 6 && <Screen3 nextFun={nextFun} backFun={backFun} data={screen3Data} formIndex={formIndex} />}
+                {formIndex == 7 && <Screen4 nextFun={nextFun} backFun={backFun} data={screen4Data} formIndex={formIndex} />}
+                {formIndex == 8 && <Screen5 nextFun={nextFun} backFun={backFun} data={screen5Data} formIndex={formIndex} />}
+                {formIndex == 9 && <Screen6 nextFun={nextFun} backFun={backFun} data={screen6Data} formIndex={formIndex} />}
+                {formIndex == 10 && <Screen7 nextFun={nextFun} backFun={backFun} data={screen7Data} formIndex={formIndex} />}
+                {formIndex == 11 && <Screen8 nextFun={nextFun} backFun={backFun} data={screen8Data} formIndex={formIndex} />}
+                {formIndex == 12 && <Screen9 nextFun={nextFun} backFun={backFun} data={screen9Data} formIndex={formIndex} />}
+                {formIndex == 13 && <Screen10 nextFun={nextFun} backFun={backFun} data={screen10Data} formIndex={formIndex} />}
+                {formIndex == 14 && <Screen11 nextFun={nextFun} backFun={backFun} data={screen11Data} formIndex={formIndex} />}
+                {formIndex == 15 && <Screen12 nextFun={nextFun} backFun={backFun} data={screen12Data} formIndex={formIndex} />}
+                {formIndex == 16 && <Screen13 nextFun={nextFun} backFun={backFun} data={screen13Data} formIndex={formIndex} />}
+                {formIndex == 17 && <Screen14 nextFun={nextFun} backFun={backFun} data={screen14Data} formIndex={formIndex} />}
+                {formIndex == 18 && <Screen15 nextFun={nextFun} backFun={backFun} data={screen15Data} formIndex={formIndex} />}
+                {formIndex == 19 && <Screen16 nextFun={nextFun} backFun={backFun} data={screen16Data} payloadData={payloadData} formIndex={formIndex} />}
+                {formIndex == 20 && <Screen17 nextFun={nextFun} backFun={backFun} safNo={safNo} formIndex={formIndex} />}
+
+                <FeedbackScreen payloadData={payloadData} />
 
                 {/* <div className={`w-full absolute top-10 transition-all ${formIndex == 1 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen1 nextFun={nextFun} backFun={backFun} data={screen1Data} formIndex={formIndex} /> </div>
                 <div className={`w-full absolute top-10 transition-all ${formIndex == 2 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen2 nextFun={nextFun} backFun={backFun} data={screen2Data} formIndex={formIndex} /> </div>
@@ -225,7 +257,7 @@ function PropertyCitizenEntryForm() {
 
 
 
-           {/* <div className={`${formIndex == 1 ? 'block' : 'hidden' }`}> <Screen1 nextFun={nextFun} backFun={backFun} data={screen1Data} formIndex={formIndex} /> </div>
+                {/* <div className={`${formIndex == 1 ? 'block' : 'hidden' }`}> <Screen1 nextFun={nextFun} backFun={backFun} data={screen1Data} formIndex={formIndex} /> </div>
            <div className={`${formIndex == 2 ? 'block' : 'hidden' }`}> <Screen2 nextFun={nextFun} backFun={backFun} data={screen2Data} formIndex={formIndex} /> </div>
            <div className={`${formIndex == 3 ? 'block' : 'hidden' }`}> <Screen3 nextFun={nextFun} backFun={backFun} data={screen3Data} formIndex={formIndex} /></div>
            <div className={`${formIndex == 4 ? 'block' : 'hidden' }`}> <Screen4 nextFun={nextFun} backFun={backFun} data={screen4Data} formIndex={formIndex} /></div>
@@ -244,25 +276,7 @@ function PropertyCitizenEntryForm() {
            <div className={`${formIndex == 17 ? 'block' : 'hidden' }`}> <Screen17 nextFun={nextFun} backFun={backFun} safNo={safNo} formIndex={formIndex} /></div> */}
 
 
-                {formIndex == 1 && <Screen1 nextFun={nextFun} backFun={backFun} data={screen1Data} formIndex={formIndex} />}
-                {formIndex == 2 && <Screen2 nextFun={nextFun} backFun={backFun} data={screen2Data} formIndex={formIndex} />}
-                {formIndex == 3 && <Screen3 nextFun={nextFun} backFun={backFun} data={screen3Data} formIndex={formIndex} />}
-                {formIndex == 4 && <Screen4 nextFun={nextFun} backFun={backFun} data={screen4Data} formIndex={formIndex} />}
-                {formIndex == 5 && <Screen5 nextFun={nextFun} backFun={backFun} data={screen5Data} formIndex={formIndex} />}
-                {formIndex == 6 && <Screen6 nextFun={nextFun} backFun={backFun} data={screen6Data} formIndex={formIndex} />}
-                {formIndex == 7 && <Screen7 nextFun={nextFun} backFun={backFun} data={screen7Data} formIndex={formIndex} />}
-                {formIndex == 8 && <Screen8 nextFun={nextFun} backFun={backFun} data={screen8Data} formIndex={formIndex} />}
-                {formIndex == 9 && <Screen9 nextFun={nextFun} backFun={backFun} data={screen9Data} formIndex={formIndex} />}
-                {formIndex == 10 && <Screen10 nextFun={nextFun} backFun={backFun} data={screen10Data} formIndex={formIndex} />}
-                {formIndex == 11 && <Screen11 nextFun={nextFun} backFun={backFun} data={screen11Data} formIndex={formIndex} />}
-                {formIndex == 12 && <Screen12 nextFun={nextFun} backFun={backFun} data={screen12Data} formIndex={formIndex} />}
-                {formIndex == 13 && <Screen13 nextFun={nextFun} backFun={backFun} data={screen13Data} formIndex={formIndex} />}
-                {formIndex == 14 && <Screen14 nextFun={nextFun} backFun={backFun} data={screen14Data} formIndex={formIndex} />}
-                {formIndex == 15 && <Screen15 nextFun={nextFun} backFun={backFun} data={screen15Data} formIndex={formIndex} />}
-                {formIndex == 16 && <Screen16 nextFun={nextFun} backFun={backFun} data={screen16Data} payloadData={payloadData} formIndex={formIndex} />}
-                {formIndex == 17 && <Screen17 nextFun={nextFun} backFun={backFun} safNo={safNo} formIndex={formIndex} />}
 
-                <FeedbackScreen payloadData={payloadData} />
             </div>
         </>
     )

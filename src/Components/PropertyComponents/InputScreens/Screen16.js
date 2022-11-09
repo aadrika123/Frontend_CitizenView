@@ -25,7 +25,7 @@ function Screen16(props) {
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
-    const bearer = "1364|MtSng08KRVAOVpfiS1eTwsFjlMRQSxVRkLRVfbBT";
+    const bearer = "1426|1zWdOB2vIqIIR4YgQkSMNjo533BFflMrFbbxMMCP";
 
     const header = {
         headers: {

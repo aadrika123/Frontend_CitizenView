@@ -21,17 +21,24 @@ import { BiAddToQueue } from 'react-icons/bi'
 
 function Screen1(props) {
 
+    const masterData = props?.masterData;
 
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
     const navigate = useNavigate();
 
+    const goBack = () => {
+        navigate("/")
+    }
+
     const formik = useFormik({
         initialValues: {
-            unitUsageType: '',
-            occupancyType: '',
-            totalBuiltArea: '',
+            wardNo: '',
+            newWardNo: '',
+            ownershipType: '',
+            propertyType: '',
+            zone: '',
         },
         onSubmit: values => {
             // alert(JSON.stringify(values, null, 2));
@@ -40,80 +47,74 @@ function Screen1(props) {
         },
     });
 
-    const handleUnitUsagesType = e => formik.values.unitUsageType = e.target.value
-    const handleOccupancy = e => formik.values.occupancyType = e.target.value
-    const handleTotalBulidArea = e => formik.values.totalBuiltArea = e.target.value
+
+    const handleWardNo = e => formik.values.wardNo = e.target.value
+    const handleNewWardNo = e => formik.values.newWardNo = e.target.value
+    const handleOwnershipType = e => formik.values.ownershipType = e.target.value
+    const handlePropertyType = e => formik.values.propertyType = e.target.value
+    const handleZone = e => formik.values.zone = e.target.value
+
 
     return (
         <>
             <form onSubmit={formik.handleSubmit}>
                 <div className='text-xs font-semibold px-2 mt-4 flex'>
-                    <div className="flex-1"><span onClick={props.backFun} className='border-b border-black'><RiArrowDropLeftFill className="inline text-xl" />Back</span></div>
+                    <div className="flex-1"><span onClick={goBack} className='border-b border-black'><RiArrowDropLeftFill className="inline text-xl" />Back</span></div>
                     <div className="flex-1 text-right"><span className=''>{props?.formIndex} of 10</span></div>
                 </div>
                 <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                     <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-5 md:p-10`}>
 
-                    <div className="col-span-12 text-gray-400 font-semibold">Basic Details</div>
-
                         <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Basic Details</h1></div>
+                        <div className="col-span-12"> <h1 className={` ${titleColor} text-sm mt-2 opacity-40`}>Provide the landmark to help us react the property location easily.</h1></div>
+
                         <div className="form-group mb-4 md:mb-6 col-span-12 mt-2">
                             <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Ward No<span className='text-red-500'>*</span></label>
                             <select
                                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                onChange={e => handleUnitUsagesType(e)}
-                                name="unitUsageType"
+                                onChange={e => handleWardNo(e)}
+                                name="wardNo"
                                 required
                             >
                                 <option>--select--</option>
-                                {/* {
-                                            props?.preFormData?.wardList?.map((data) => (
-                                                <option value={data.id}>{data.name}</option>
-                                            ))
-                                        } */}
-                                <option value="demo1">Demo 1</option>
-                                <option value="demo2">Demo 2</option>
-
+                                {
+                                    masterData?.ward_master?.map((data) => (
+                                        <option value={data.id}>{data.ward_name}</option>
+                                    ))
+                                }
                             </select>
-
                         </div>
 
                         <div className="form-group mb-4 md:mb-6 col-span-12 mt-2">
                             <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">New Ward No<span className='text-red-500'>*</span></label>
                             <select
                                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                onChange={e => handleOccupancy(e)}
-                                name="occupancyType"
+                                onChange={e => handleNewWardNo(e)}
+                                name="newWardNo"
                                 required
                             >
                                 <option>--select--</option>
-                                {/* {
-                                            props?.preFormData?.wardList?.map((data) => (
-                                                <option value={data.id}>{data.name}</option>
-                                            ))
-                                        } */}
-                                <option value="demo4">Demo 4</option>
-                                <option value="demo5">Demo 5</option>
+                                {
+                                    masterData?.ward_master?.map((data) => (
+                                        <option value={data.id}>{data.ward_name}</option>
+                                    ))
+                                }
                             </select>
                         </div>
                         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                             <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Ownership Type<span className='text-red-500'>*</span></label>
                             <select
                                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                onChange={e => handleTotalBulidArea(e)}
-                                name="totalBulidArea"
+                                onChange={e => handleOwnershipType(e)}
+                                name="ownershipType"
                                 required
                             >
                                 <option>--select--</option>
-                                {/* {
-                                            props?.preFormData?.wardList?.map((data) => (
-                                                <option value={data.id}>{data.name}</option>
-                                            ))
-                                        } */}
-
-                                <option value="demo7">Demo 7</option>
-                                <option value="demo8">Demo 8</option>
-
+                                {
+                                    masterData?.ownership_types?.map((data) => (
+                                        <option value={data.id}>{data.ownership_type}</option>
+                                    ))
+                                }
                             </select>
 
                         </div>
@@ -121,20 +122,14 @@ function Screen1(props) {
                             <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Property Type<span className='text-red-500'>*</span></label>
                             <select
                                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                onChange={e => handleTotalBulidArea(e)}
-                                name="totalBulidArea"
+                                onChange={e => handlePropertyType(e)}
+                                name="propertyType"
                                 required
                             >
                                 <option>--select--</option>
-                                {/* {
-                                            props?.preFormData?.wardList?.map((data) => (
-                                                <option value={data.id}>{data.name}</option>
-                                            ))
-                                        } */}
-
-                                <option value="demo7">Demo 7</option>
-                                <option value="demo8">Demo 8</option>
-
+                                {masterData?.property_type?.map((data) => (
+                                    <option value={data.id}>{data.property_type}</option>
+                                ))}
                             </select>
 
                         </div>
@@ -142,25 +137,18 @@ function Screen1(props) {
                             <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Zone<span className='text-red-500'>*</span></label>
                             <select
                                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                onChange={e => handleTotalBulidArea(e)}
-                                name="totalBulidArea"
+                                onChange={e => handleZone(e)}
+                                name="Zone"
                                 required
                             >
                                 <option>--select--</option>
-                                {/* {
-                                            props?.preFormData?.wardList?.map((data) => (
-                                                <option value={data.id}>{data.name}</option>
-                                            ))
-                                        } */}
-
-                                <option value="demo7">Demo 7</option>
-                                <option value="demo8">Demo 8</option>
-
+                                <option value="1">Zone 1</option>
+                                <option value="2">Zone 2</option>
                             </select>
 
                         </div>
                         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
-                            <div className="col-span-6"> <button onClick={navigate("/")} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
+                            <div className="col-span-6"> <button onClick={goBack} className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
                             <div className="col-span-6"> <button type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>
                         </div>
                     </div>

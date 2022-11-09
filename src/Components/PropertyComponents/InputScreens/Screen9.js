@@ -8,7 +8,7 @@
 //    DESCRIPTION - Scrren7 is single input component
 //////////////////////////////////////////////////////////////////////////////////////
 
-import { AiFillInfoCircle } from 'react-icons/ai'
+import { BiAddToQueue } from 'react-icons/bi'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
@@ -21,7 +21,10 @@ function Screen9(props) {
 
     const formik = useFormik({
         initialValues: {
-            landmark: '',
+            city: '',
+            locality: '',
+            street: '',
+            houseNo: '',
         },
         onSubmit: values => {
             // alert(JSON.stringify(values, null, 2));
@@ -30,7 +33,11 @@ function Screen9(props) {
         },
     });
 
-    const handleField = e => formik.values.landmark = e.target.value
+    const handleCity = e => formik.values.city = e.target.value
+    const handleLocality = e => formik.values.locality = e.target.value
+    const handleStreet = e => formik.values.street = e.target.value
+    const handleHouseNo = e => formik.values.houseNo = e.target.value
+
 
     return (
         <>
@@ -41,22 +48,64 @@ function Screen9(props) {
                 </div>
                 <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                     <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
-                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Provide Landmark</h1></div>
-                        <div className="col-span-12"> <h1 className={` ${titleColor} text-sm mt-2 opacity-40`}>Provide the landmark to help us react the property location easily.</h1></div>
+                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Floor Details</h1></div>
+                        {/* <div className="col-span-12"> <h1 className={` ${titleColor} text-sm mt-2 opacity-40`}>Choose the locality/mohalla of the Property from the list given below..</h1></div> */}
                         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
 
                             <div>
-                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Landmark<span className='text-red-500'>*</span></label>
-                                {/* <input type="textarea" /> */}
-                                <textarea
-                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                    name="landmark"
-                                    rows="3"
-                                    onChange={e => handleField(e)}
-                                    required
-                                ></textarea>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Floor No<span className='text-red-500'>*</span></label>
+                                <select name='street' onChange={e => handleStreet(e)} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" >
+                                    <option value="">Select</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                </select>
                             </div>
+                            <div>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Usage Type<span className='text-red-500'>*</span></label>
+                                <select name='street' onChange={e => handleStreet(e)} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" >
+                                    <option value="">Select</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Occupancy Type<span className='text-red-500'>*</span></label>
+                                <select name='street' onChange={e => handleStreet(e)} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" >
+                                    <option value="">Select</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Construction Type<span className='text-red-500'>*</span></label>
+                                <select name='street' onChange={e => handleStreet(e)} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" >
+                                    <option value="">Select</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Built Up Area (in Sq. Ft)<span className='text-red-500'>*</span></label>
+                                <input name='houseNo' onChange={e => handleHouseNo(e)} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" />
+                            </div>
+                            <div>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">From Date<span className='text-red-500'>*</span></label>
+                                <input name='houseNo' onChange={e => handleHouseNo(e)} type="date" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" />
+                            </div>
+                            <div>
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Upto Date (Leave blank for current date)<span className='text-red-500'>*</span></label>
+                                <input name='houseNo' onChange={e => handleHouseNo(e)} type="date" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" />
+                            </div>
+                            
+
+                            
+
                         </div>
+                        <div className="col-span-12 text-amber-600 font-semibold mt-4"><BiAddToQueue className="inline" /> Add Floor(s)</div>
 
                         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
                             <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
