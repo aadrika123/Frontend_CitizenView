@@ -34,7 +34,6 @@ function ScreenLandmark(props) {
             landMark: '',
         },
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
             props.CollectScreenDataFun("landmark", values)
             props.nextFun()
             console.log("landmark", values)
@@ -54,14 +53,14 @@ function ScreenLandmark(props) {
                                     <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Landmark</label>
                                 </div>
                                 <div className=" items-center mb-4">
-                                    <textarea name="landMark" className={`${inputStyle}`} placeholder="What does your firm do. Tell us about the services you offer !" value={formik.values.landMark} onChange={formik.handleChange}></textarea>
+                                    <textarea name="landMark" className={`${inputStyle}`} placeholder="Enter Landmark" value={formik.values.landMark} onChange={formik.handleChange}></textarea>
                                     <p className='text-red-500 text-xs'>{formik.touched.landMark && formik.errors.landMark ? formik.errors.landMark : null}</p>
                                 </div>
 
                             </div>
 
                             <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
-                                <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
+                                <div className="col-span-6"> <button onClick={() => props.backFun()} type="button" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
                                 <div className="col-span-6"> <button type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>
                             </div>
                         </div>
