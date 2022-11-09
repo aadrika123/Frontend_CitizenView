@@ -22,7 +22,7 @@ function ScreenPayment(props) {
 
     let btnBorder = "border border-2 border-amber-600"
 
-    console.log('water apply data at payment...',props.screenDataSubmit)
+    console.log('water apply data at payment...',props.screenDataSubmit.data)
     return (
         <>
             <div>
@@ -42,7 +42,7 @@ function ScreenPayment(props) {
                             </div>
                             <div className="text-center -mt-3 ">
                                 <label className="ml-2 text-sm font-medium text-gray-500 ">Thank You For Submitting the application </label>
-                                <label className="ml-2 text-sm font-bold text-gray-900 ">Application No. WAT345678909876 </label>
+                                <label className="ml-2 text-sm font-bold text-gray-900 ">{props.screenDataSubmit.data}</label>
                             </div>
                         </div>
                         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">

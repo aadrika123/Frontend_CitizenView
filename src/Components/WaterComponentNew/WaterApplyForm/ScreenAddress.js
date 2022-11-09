@@ -49,7 +49,7 @@ function ScreenAddress(props) {
                     <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                         <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 md:p-10`}>
                         <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Address</h1></div>
-                            <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>Do you have a notice no to apply with or it's a normal application. select accordingly</h1></div>
+                            {/* <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>Do you have a notice no to apply with or it's a normal application. select accordingly</h1></div> */}
                             
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                                 <div className="col-span-12">
