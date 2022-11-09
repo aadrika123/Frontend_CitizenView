@@ -17,7 +17,7 @@ import { useEffect, useRef, useState } from 'react';
 import { contextVar } from './Components/GlobalState/ContextVar';
 
 function App() {
-  const [sideShow, setsideShow] = useState(false);
+  const [sideShow, setsideShow] = useState(true);
   const [moduleName, setmoduleName] = useState("JUIDCO")
   const [sidebarBody, setsidebarBody] = useState('')
 
@@ -47,7 +47,7 @@ function App() {
         <BrowserRouter>
           <NewHeader showSidebar={setHeader} show={sideShow} />
           <Sidebar showSidebar={setHeader} show={sideShow} sidebarBody={sidebarBody} sidebarBodyFun={setsidebarBody} />
-          <div className={`${sideShow ? 'opacity-70' : ''}`}>
+          <div className={`${sideShow ? 'opacity-70 md:opacity-100' : ''}`}>
             <Routes>
               <Route path="/" element={<IndividualRoutes />} />
               <Route path="/home" element={<IndividualRoutes />} />

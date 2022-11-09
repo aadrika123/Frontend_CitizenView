@@ -33,7 +33,7 @@ function Screen13(props) {
 
     const initialValues = {
         tocStatus: '',
-        licenseForYears: '',
+        licenseForYears: '1',
     }
 
     const validationSchema = yup.object(
@@ -100,7 +100,7 @@ function Screen13(props) {
                             <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">License For Years<span className='text-red-500'>*</span></label>
                             <div className="w-full overflow-auto">
                                 <select name="licenseForYears" id="" className={`${inputStyle} uppercase`} onChange={formik.handleChange} value={formik.values.licenseForYears} >
-                                    <option value="">select</option>
+                                    {/* <option value="">select</option> */}
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>

@@ -26,7 +26,7 @@ function Screen1
                 <div className="flex-1 text-right"><span className=''>{props?.formIndex} of 10</span></div>
             </div>
             <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
-                <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
+                <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full  p-4 py-10 md:p-10`}>
                     <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Trade License Registration?</h1></div>
                     <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>It would take 2 minutes to complete this application and the following documents are required in .pdf or jpg format to complete the application.</h1></div>
                     <div className="form-group mb-4 md:mb-6 col-span-12 mt-4 text-gray-600 font-semibold">

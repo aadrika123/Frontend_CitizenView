@@ -6,10 +6,10 @@ import TradeIndex from './TradeIndex'
 
 
 function TradeRoutes() {
-    const globalData = useContext(contextVar)
-    useEffect(() => {
-        globalData.setModule('TRADE');
-    }, [])
+    // const globalData = useContext(contextVar)
+    // useEffect(() => {
+    //     globalData.setModule('TRADE');
+    // }, [])
    
     return (
         <Routes>

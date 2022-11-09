@@ -4,7 +4,10 @@ function InitialMenuList() {
     return (
         <>
             <div className='w-full mt-4 px-4 text-xs '>
-                <h1 className='font-bold text-xl text-slate-500 my-2'>...</h1>
+                <h1 className='font-bold text-lg text-slate-500 my-2 bg-stone-100 py-1.5 uppercase font-mono text-center'>
+                    <span>Dashboard</span>
+                    {/* <span>...</span> */}
+                </h1>
                 <div className='grid grid-cols-4  justify-between gap-0 ' >
                     <div className='col-span-1 text-center rounded-md shadow-lg '>
                         <h1 className='text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-stone-500 to-purple-500'>2</h1>
