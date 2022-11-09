@@ -5,6 +5,7 @@
 //    Revision - 1
 //    Project - JUIDCO
 //    Component  - Complaint Type
+//    DESCRIPTION - Citizen select complaint Type
 //////////////////////////////////////////////////////////////////////////////////////
 
 import { useState } from "react";
