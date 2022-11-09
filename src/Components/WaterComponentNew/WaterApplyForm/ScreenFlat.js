@@ -65,11 +65,11 @@ function ScreenFlat(props) {
 
                     </div>
                     <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
-                        <div className='p-2 relative '>
+                        {/* <div className='p-2 relative '>
                             <div className={`absolute top-0 left-0 w-full h-full ${bgInfoColor} opacity-20`}></div>
                             <div className={`font-semibold ${infoTextColor} `}><AiFillInfoCircle className="inline" /> Info</div>
                             <div className={`text-xs ${infoTextColor} mt-2`}>Select independent build if you're assessing for the complete constructed area of the property</div>
-                        </div>
+                        </div> */}
                     </div>
                 </form>
             </div>

@@ -17,6 +17,7 @@ import CommonStyles from '../../IndividualRoutes/CommonStyles';
 import ThemeStyle from '../../Styles/ThemeStyle'
 import CitizenApplyApiList from '../CitizenViewWaterApiList';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function ScreenConnType(props) {
 
@@ -66,7 +67,7 @@ function ScreenConnType(props) {
             typeOfConnection: '',
         },
         onSubmit: values => {
-          
+
             props.CollectScreenDataFun("connectionType", values)
             props.nextFun()
         },
@@ -96,18 +97,18 @@ function ScreenConnType(props) {
                                 </div>
                             </div>
                             <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
-                                <div className="col-span-6"> <button onClick={() => props.backFun()} type="button" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
+                                <div className="col-span-6"> <button type="button" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}><Link to="/">Back </Link> </button></div>
                                 <div className="col-span-6"> <button type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>
                             </div>
                         </div>
 
                     </div>
                     <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
-                        <div className='p-2 relative '>
+                        {/* <div className='p-2 relative '>
                             <div className={`absolute top-0 left-0 w-full h-full ${bgInfoColor} opacity-20`}></div>
                             <div className={`font-semibold ${infoTextColor} `}><AiFillInfoCircle className="inline" /> Info</div>
                             <div className={`text-xs ${infoTextColor} mt-2`}>Select independent build if you're assessing for the complete constructed area of the property</div>
-                        </div>
+                        </div> */}
                     </div>
                 </form>
             </div>
