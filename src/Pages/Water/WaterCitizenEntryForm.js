@@ -78,7 +78,7 @@ function WaterCitizenEntryForm() {
     alert("submit")
 
     // let token = window.localStorage.getItem('token')
-    let token = '1402|aVxsPywaSl44Fgh1cTmHg0rit2Abgl2zHZJ8JAF1'
+    let token = '1475|XrSd3de86bSUpbUnog4TA7YtodIknrgrnU9N6g22'
     console.log('token at basic details is post method...', token)
     const header = {
       headers:
@@ -163,27 +163,6 @@ function WaterCitizenEntryForm() {
         console.log('errorrr.... ', error);
       })
 
-      console.log('----------owner list-----------------', allScreenData.applicantList)
-    console.log('----------elecCategory-----------------', allScreenData.categoryScreen.categoryTypeData)
-    console.log('-----------propertyTypeId----------------', allScreenData.PropType.typeOfProperty)
-    console.log('-----------ownerType----------------', allScreenData.ownerType.typeOfOwner)
-    console.log('-------------connection_through--------------', allScreenData.connectionThrough)
-    console.log('------------saf_no---------------', allScreenData.connectionThrough.safNo)
-    console.log('------------holdingNo---------------', allScreenData.connectionThrough.holdingNo)
-    console.log('-------------wardId--------------', allScreenData.wardNo.wardNo)
-    console.log('-------------areaSqft--------------', allScreenData.totalArea.totalArea)
-    console.log('-------------address--------------', allScreenData.address.address)
-    console.log('-------------landmark--------------', allScreenData.landmark.landMark)
-    console.log('-------------pin--------------', allScreenData.pin.pinCode)
-    console.log('-------------flatCount--------------', allScreenData.PropType.noFlat)
-    console.log('-------------elecKNo--------------', allScreenData.khataNo.khataNo)
-    console.log('-------------elecBindBookNo--------------', allScreenData.bindBookNo.bindBookNo)
-    console.log('-------------elecAccountNo--------------', allScreenData.accountNo.accountNo)
-    console.log('-------------elecCategory--------------', allScreenData.waterHarvestingStatus)
-    console.log('-------------propertyTypeId--------------', allScreenData.PropType)
-    console.log('-------------category--------------', allScreenData.PropType.categoryType)
-    console.log('-------------pipelineTypeId--------------', allScreenData.PropType.pipelineType)
-    console.log('-------------flatCount--------------', allScreenData.PropType.noFlat)
   }
 
 

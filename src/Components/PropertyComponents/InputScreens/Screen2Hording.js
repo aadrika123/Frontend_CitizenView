@@ -18,38 +18,31 @@ import { useState } from 'react';
 
 
 function Screen2Hording(props) {
-    const [hadMobileTower, setHadMobileTower] = useState("No")
     const [hoardingBoard, setHoardingBoard] = useState("NO")
-    const [petrolPump, setPetrolPump] = useState("No")
 
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
     const formik = useFormik({
         initialValues: {
-            hasMobileTower: '',
             hasHoardingBoard: '',
-            hasPetrolPump: ''
+            hoardingBoardArea:'',
+            hoardingBoardInstallDate:'',
         },
         onSubmit: values => {
             // alert(JSON.stringify(values, null, 2));
-            props.data(values)
+            props.data("hasHoardingBoard",values)
             props.nextFun()
         },
     });
-    const handdleHadMobileTower = e => {
-        formik.values.hasMobileTower = e.target.value
-        setHadMobileTower(e.target.value)
-    }
+
     const handdleHoardingBoard = e => {
         formik.values.hasHoardingBoard = e.target.value
         setHoardingBoard(e.target.value)
     }
-    const handlePetrolPump = e => {
-        formik.values.hasPetrolPump = e.target.value
-        setPetrolPump(e.target.value)
-    }
 
+const handleHoardingBoardArea = e => formik.values.hoardingBoardArea = e.target.value;
+const handleHoardingBoardInstallData = e => formik.values.hoardingBoardInstallDate = e.target.value;
 
     return (
         <>
@@ -63,9 +56,9 @@ function Screen2Hording(props) {
 
                         {/* <div className="col-span-12 text-gray-400 font-semibold">Basic Details</div> */}
 
+                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Hoarding Board</h1></div>
+                        <div className="col-span-12"> <h1 className={` ${titleColor} text-sm mt-2 opacity-40`}>Provide the landmark to help us react the property location easily.</h1></div>
 
-                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-xl`}>Hoarding Board</h1></div>                         
-                       
                         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                             <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Property has Hoarding Board(s) ?<span className='text-red-500'>*</span></label>
                             <select
@@ -86,7 +79,7 @@ function Screen2Hording(props) {
                                     <input
                                         type="text"
                                         className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                        // onChange={e => handleOccupancy(e)}
+                                        onChange={e => handleHoardingBoardArea(e)}
                                         name="occupancyType"
                                     />
                                 </div>
@@ -95,7 +88,7 @@ function Screen2Hording(props) {
                                     <input
                                         type="date"
                                         className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                        // onChange={e => handleOccupancy(e)}
+                                        onChange={e => handleHoardingBoardInstallData(e)}
                                         name="occupancyType"
                                         required
                                     />

@@ -19,8 +19,6 @@ import { useState } from 'react';
 
 function Screen2(props) {
     const [hadMobileTower, setHadMobileTower] = useState("No")
-    const [hoardingBoard, setHoardingBoard] = useState("NO")
-    const [petrolPump, setPetrolPump] = useState("No")
 
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
@@ -28,12 +26,12 @@ function Screen2(props) {
     const formik = useFormik({
         initialValues: {
             hasMobileTower: '',
-            hasHoardingBoard: '',
-            hasPetrolPump: ''
+            mobileTowerArea:'',
+            mobileTowerInstallDate:'',
         },
         onSubmit: values => {
             // alert(JSON.stringify(values, null, 2));
-            props.data(values)
+            props.data("hasMobileTower",values)
             props.nextFun()
         },
     });
@@ -41,14 +39,11 @@ function Screen2(props) {
         formik.values.hasMobileTower = e.target.value
         setHadMobileTower(e.target.value)
     }
-    const handdleHoardingBoard = e => {
-        formik.values.hasHoardingBoard = e.target.value
-        setHoardingBoard(e.target.value)
-    }
-    const handlePetrolPump = e => {
-        formik.values.hasPetrolPump = e.target.value
-        setPetrolPump(e.target.value)
-    }
+
+    const handleMobileTowerArea = e => formik.values.mobileTowerArea = e.target.value
+    const handleMobileTowerInstalDate = e => formik.values.mobileTowerInstallDate = e.target.value
+
+
 
 
     return (
@@ -61,9 +56,9 @@ function Screen2(props) {
                 <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                     <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-5 md:p-10`}>
 
+                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Mobile Tower</h1></div>
+                        <div className="col-span-12"> <h1 className={` ${titleColor} text-sm mt-2 opacity-40`}>Provide the landmark to help us react the property location easily.</h1></div>
 
-
-                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-xl`}>Mobile Tower</h1></div>
 
                         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                             <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Property has Mobile Tower(s) ?<span className='text-red-500'>*</span></label>
@@ -85,7 +80,7 @@ function Screen2(props) {
                                     <input
                                         type="text"
                                         className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                        // onChange={e => handleOccupancy(e)}
+                                        onChange={e => handleMobileTowerArea(e)}
                                         name="occupancyType"
                                     />
                                 </div>
@@ -94,7 +89,7 @@ function Screen2(props) {
                                     <input
                                         type="date"
                                         className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                        // onChange={e => handleOccupancy(e)}
+                                        onChange={e => handleMobileTowerInstalDate(e)}
                                         name="occupancyType"
                                         required
                                     />

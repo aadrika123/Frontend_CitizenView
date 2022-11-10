@@ -25,15 +25,21 @@ function Screen6(props) {
 
     const formik = useFormik({
         initialValues: {
-            pinPropertyLocation: '',
+            buildingPlanApproveNo:'',
+            buildingPlanApproveDate:'',
+            waterConsumerNo:'',
+            waterConnectionDate:''
         },
         onSubmit: values => {
             // alert(JSON.stringify(values, null, 2));
-            props.data(values)
+            props.data("waterDetails",values)
             props.nextFun()
         },
     });
-    const handleRadioButtons = e => formik.values.pinPropertyLocation = e.target.value
+    const handleBuildingPlanAppNo = e => formik.values.buildingPlanApproveNo = e.target.value
+    const handleBuildingPlanAppDate = e => formik.values.buildingPlanApproveDate = e.target.value
+    const handleWaterConsumerNo = e => formik.values.waterConsumerNo = e.target.value
+    const handleWaterConncetionDate = e => formik.values.waterConnectionDate = e.target.value
 
     return (
         <>
@@ -54,8 +60,8 @@ function Screen6(props) {
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Building Plan Approval No.</label>
                                 <input
                                     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                    // onChange={e => handleUnitUsagesType(e)}
-                                    name="unitUsageType"
+                                    onChange={e => handleBuildingPlanAppNo(e)}
+                                    name="buildingPlanApproveNo"
                                 />
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12">
@@ -63,16 +69,16 @@ function Screen6(props) {
                                 <input
                                     type="date"
                                     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                    // onChange={e => handleUnitUsagesType(e)}
-                                    name="unitUsageType"
+                                    onChange={e => handleBuildingPlanAppDate(e)}
+                                    name="buildingPlanApproveDate"
                                 />
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12">
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Water Consumer No.</label>
                                 <input
                                     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                    // onChange={e => handleUnitUsagesType(e)}
-                                    name="unitUsageType"
+                                    onChange={e => handleWaterConsumerNo(e)}
+                                    name="waterConsumerNo"
                                 />
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12">
@@ -80,8 +86,8 @@ function Screen6(props) {
                                 <input
                                     type="date"
                                     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                    // onChange={e => handleUnitUsagesType(e)}
-                                    name="unitUsageType"
+                                    onChange={e => handleWaterConncetionDate(e)}
+                                    name="waterConnectionDate"
                                 />
                             </div>
 

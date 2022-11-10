@@ -14,28 +14,38 @@ import Info from '../../Common/Info'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 import { useFormik } from 'formik';
+import { useState } from 'react';
 
 
 function Screen5(props) {
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
+    const [isChecked, setIsChecked] = useState(false)
+
     const formik = useFormik({
         initialValues: {
-            unitUsageType: '',
-            occupancyType: '',
-            totalBuiltArea: '',
+            electricKno: '',
+            electricAccNo: '',
+            electricBindBookNo: '',
+            electricConncectionCategory:'',
         },
         onSubmit: values => {
             // alert(JSON.stringify(values, null, 2));
-            props.data(values)
+            props.data("electricityDetails",values)
             props.nextFun()
         },
     });
 
-    const handleUnitUsagesType = e => formik.values.unitUsageType = e.target.value
-    const handleOccupancy = e => formik.values.occupancyType = e.target.value
-    const handleTotalBulidArea = e => formik.values.totalBuiltArea = e.target.value
+    const handleElecticityKNo = e => formik.values.electricKno = e.target.value
+    const handleElecticityAccNo = e => formik.values.electricAccNo = e.target.value
+    const handleElecticityBindBookNo = e => formik.values.electricBindBookNo = e.target.value
+    const handleElecticityConCat = e => formik.values.electricConncectionCategory = e.target.value
+
+    const handleCheckbox = (e) => {
+        console.log("Check Box", e.target.checked)
+        setIsChecked(e.target.checked)
+    }
 
     return (
         <>
@@ -49,50 +59,50 @@ function Screen5(props) {
                         <div className="col-span-12 mb-2"> <h1 className={`font-bold ${titleColor} text-2xl`}>Electricity Details</h1></div>
 
                         <div className='col-span-12 text-gray-700 text-xs'>
-                            <input type="checkbox" name="" id="" />
+                            <input type="checkbox" name="" id="" onChange={(e) => handleCheckbox(e)} />
                             <span className='text-red-600 font-semibold ml-2 '>Note </span> : In case, there is no Electric Connection. You have to upload Affidavit Form-I. (Please Tick)
 
                         </div>
+                        {!isChecked && <div className='col-span-12'>
+                            <div className="form-group mb-4 md:mb-6 col-span-12 mt-2">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Electricity K. No<span className='text-red-500'>*</span></label>
+                                <input
+                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                    onChange={e => handleElecticityKNo(e)}
+                                    name="electricKno"
+                                />
 
-                        <div className="form-group mb-4 md:mb-6 col-span-12 mt-2">
-                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Electricity K. No<span className='text-red-500'>*</span></label>
-                            <input
-                                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                onChange={e => handleUnitUsagesType(e)}
-                                name="unitUsageType"
-                            />
+                            </div>
+                            <div className='col-span-12 text-center font-semibold text-2xl text-red-600'>or</div>
+                            <div className="form-group mb-4 md:mb-6 col-span-12">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">ACC No.<span className='text-red-500'>*</span></label>
+                                <input
+                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                    onChange={e => handleElecticityAccNo(e)}
+                                    name="electricAccNo"
+                                />
+                            </div>
+                            <div className="form-group mb-4 md:mb-6 col-span-12">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">BIND/BOOK No.<span className='text-red-500'>*</span></label>
+                                <input
+                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                    onChange={e => handleElecticityBindBookNo(e)}
+                                    name="electricBindBookNo"
+                                />
+                            </div>
+                            <div className="form-group mb-4 md:mb-6 col-span-12">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Electricity Consumer Category<span className='text-red-500'>*</span></label>
+                                <select
+                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                    onChange={e => handleElecticityConCat(e)}
+                                    name="electricConncectionCategory"
+                                >
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
 
-                        </div>
-                        <div className='col-span-12 text-center font-semibold text-2xl text-red-600'>or</div>
-                        <div className="form-group mb-4 md:mb-6 col-span-12">
-                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">ACC No.<span className='text-red-500'>*</span></label>
-                            <input
-                                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                onChange={e => handleUnitUsagesType(e)}
-                                name="unitUsageType"
-                            />
-                        </div>
-                        <div className="form-group mb-4 md:mb-6 col-span-12">
-                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">BIND/BOOK No.<span className='text-red-500'>*</span></label>
-                            <input
-                                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                onChange={e => handleUnitUsagesType(e)}
-                                name="unitUsageType"
-                            />
-                        </div>
-                        <div className="form-group mb-4 md:mb-6 col-span-12">
-                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Electricity Consumer Category<span className='text-red-500'>*</span></label>
-                            <select
-                                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                onChange={e => handleUnitUsagesType(e)}
-                                name="unitUsageType"
-                            >
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                            </select>
-                        </div>
-
-
+                        </div>}
 
                         {/* <div className="col-span-12 text-amber-600 font-semibold mt-4"><BiAddToQueue className="inline" /> Add Floor</div> */}
                         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
