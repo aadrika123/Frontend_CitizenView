@@ -26,6 +26,7 @@ function ScreenPropertyType(props) {
 
     const { labelStyle, inputStyle } = CommonStyles();
     const [residentialTypeToggle, setResidentialTypeToggle] = useState()
+    const [flatNumber, setFlatNumber] = useState()
 
 
     const { api_getPropertyType } = CitizenApplyApiList()
@@ -74,6 +75,7 @@ function ScreenPropertyType(props) {
             typeOfProperty: '',
             categoryType: '',
             pipelineType: '',
+            noFlat: '',
         },
         onSubmit: values => {
             props.CollectScreenDataFun("PropType", values)
@@ -90,6 +92,7 @@ function ScreenPropertyType(props) {
 
         console.log("name : " + name + "values : " + vals);
         { name === 'typeOfProperty' && (vals == 1 ? setResidentialTypeToggle(true) : setResidentialTypeToggle(false)) }
+        { name === 'typeOfProperty' && (vals == 7 ? setFlatNumber(true) : setFlatNumber(false)) }
     }
     return (
         <>
@@ -109,7 +112,7 @@ function ScreenPropertyType(props) {
                                         {propTypeData?.map((data) => (
                                             <option value={data.id}>{data.property_type}</option>
                                         ))}
-                                        
+
                                     </select>
                                     <p className='text-red-500 text-xs'>{formik.touched.typeOfProperty && formik.errors.typeOfProperty ? formik.errors.typeOfProperty : null}</p>
                                 </div>
@@ -136,8 +139,16 @@ function ScreenPropertyType(props) {
                                     </div>
                                 </div>
 
+                                <div className={`form-group md:mb-6 col-span-12 mt-4 text-gray-600 font-semibold ${flatNumber ? 'grid' : 'hidden'}`}>
+                                    <div className=" items-center">
+                                        <div className="col-span-12"> <h1 className={` ${titleColor} text-md`}>No. of Flat</h1></div>
+                                        <input type="text" name="noFlat" className={`${inputStyle} `} placeholder="Enter No. of Flat" value={formik.values.noFlat} onChange={formik.handleChange} />
+                                        <p className='text-red-500 text-xs'>{formik.touched.noFlat && formik.errors.noFlat ? formik.errors.noFlat : null}</p>
+                                    </div>
+                                </div>
+
                             </div>
-                            <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
+                            <div className="col-span-12 grid grid-cols-12 gap-x-6 ">
                                 <div className="col-span-6"> <button onClick={() => props.backFun()} type="button" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
                                 <div className="col-span-6"> <button type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>
                             </div>

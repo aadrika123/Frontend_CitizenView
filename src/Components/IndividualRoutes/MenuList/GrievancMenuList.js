@@ -21,7 +21,7 @@ function GrievancMenuList() {
                 </p>
                 <p className='px-2 mt-1 shadow-md  py-2 cursor-pointer rounded-md hover:bg-gray-50 hover:scale-105  flex justify-between'>
                     <Link to="/">Track Your Grievance status</Link>
-                    <img src={renewal} alt="" title='NEW APPLICATION' className={`${imgStyle}`} />
+                    <img src={renewal} alt="" title='NEW APPLICATION' className={`${imgStyle}`} />git
                 </p>
 
             </div>

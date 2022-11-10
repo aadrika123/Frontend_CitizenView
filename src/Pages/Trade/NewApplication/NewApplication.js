@@ -14,9 +14,13 @@ import Screen11 from '../../../Components/TradeComponents/InputScreens/Screen11'
 import Screen12 from '../../../Components/TradeComponents/InputScreens/Screen12'
 import Screen13 from '../../../Components/TradeComponents/InputScreens/Screen13'
 import Screen14 from '../../../Components/TradeComponents/InputScreens/Screen14'
+import axios from 'axios'
+import TradeFeedbackComponent from '../../../Components/IndividualRoutes/TradeFeedbackComponent'
 
 
 function NewApplication() {
+
+    const [fieldData, setfieldData] = useState({})
 
     const [allFormData, setallFormData] = useState([])
 
@@ -33,15 +37,18 @@ function NewApplication() {
 
     const handleAllFormData = (key, formData) => {
         console.log("====all previous form data======= :", allFormData);
-        setallFormData({...allFormData, [key]: formData });
+        setallFormData({ ...allFormData, [key]: formData });
 
         console.log("====all form data======= :", allFormData);
 
     }
 
+
+
     const values = {
         allFormDataFun: handleAllFormData
     }
+
 
     return (
         <>
@@ -94,6 +101,8 @@ function NewApplication() {
 
             {/* Success Screen */}
             <div className={`w-full absolute top-10 transition-all ${formIndex == 14 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen14 nextFun={nextFun} backFun={backFun} formIndex={formIndex} values={values} /></div>
+
+            <div className='w-full absolute top-[36rem]  '><TradeFeedbackComponent fieldData={allFormData} /></div>
 
         </>
     )

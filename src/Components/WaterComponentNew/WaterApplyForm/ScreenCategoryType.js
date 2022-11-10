@@ -20,18 +20,21 @@ function ScreenCategoryType(props) {
 
     const formik = useFormik({
         initialValues: {
-            categoryType: '',
+            categoryTypeData: '',
         },
         onSubmit: values => {
-            props.CollectScreenDataFun("categoryType", values)
+            
+            console.log("categoryScreen....", values)
+            // return
+            props.CollectScreenDataFun("categoryScreen", values)
             props.nextFun()
-            console.log("categoryType", values)
+            console.log("categoryScreen....", values)
         },
     });
     return (
         <>
             <div>
-                <form onSubmit={formik.handleSubmit}>
+                <form onSubmit={formik.handleSubmit} onChange={formik.handleChange}>
                     <div className='text-xs font-semibold pl-2 mt-4'><span className='border-b border-black'><RiArrowDropLeftFill className="inline text-xl" />Back</span></div>
                     <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                         <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 md:p-10`}>
@@ -41,8 +44,8 @@ function ScreenCategoryType(props) {
                                     <input
                                         className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
                                         type="radio"
-                                        id="residential"
-                                        name="categoryType"
+                                        id="categoryTypeData"
+                                        name="categoryTypeData"
                                         value="residential"
                                         onChange={formik.handleChange}
                                         required
@@ -54,8 +57,8 @@ function ScreenCategoryType(props) {
                                     <input
                                         className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
                                         type="radio"
-                                        id="commercial"
-                                        name="categoryType"
+                                        id="categoryTypeData"
+                                        name="categoryTypeData"
                                         value="commercial"
                                         onChange={formik.handleChange}
                                         required
@@ -66,8 +69,8 @@ function ScreenCategoryType(props) {
                                     <input
                                         className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
                                         type="radio"
-                                        id="agriculture"
-                                        name="categoryType"
+                                        id="categoryTypeData"
+                                        name="categoryTypeData"
                                         value="agriculture"
                                         onChange={formik.handleChange}
                                         required
@@ -78,8 +81,8 @@ function ScreenCategoryType(props) {
                                     <input
                                         className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
                                         type="radio"
-                                        id="lowTension"
-                                        name="categoryType"
+                                        id="categoryTypeData"
+                                        name="categoryTypeData"
                                         value="lowTension"
                                         onChange={formik.handleChange}
                                         required
@@ -90,8 +93,8 @@ function ScreenCategoryType(props) {
                                     <input
                                         className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
                                         type="radio"
-                                        id="highTension"
-                                        name="categoryType"
+                                        id="categoryTypeData"
+                                        name="categoryTypeData"
                                         value="highTension"
                                         onChange={formik.handleChange}
                                         required
