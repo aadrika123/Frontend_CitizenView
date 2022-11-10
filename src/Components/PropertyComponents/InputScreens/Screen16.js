@@ -25,7 +25,7 @@ function Screen16(props) {
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
-    const bearer = "1426|1zWdOB2vIqIIR4YgQkSMNjo533BFflMrFbbxMMCP";
+    const bearer = "1478|vGZADnTinTHsaluolnVXrh5wQiR2PaIJeAMzBz9k";
 
     const header = {
         headers: {
@@ -70,11 +70,17 @@ function Screen16(props) {
 
         axios.post('http://192.168.0.16:8000/api/property/saf/apply', props.payloadData, header)
             .then(function (response) {
-                console.log("Form Submitted succesfully.", response.data)
-                setFormsubmitLoder(false)
-                setGeneratedSafNo(response.data.data.safNo)
-                props.data(response.data.data.safNo)
-                props.nextFun()
+                if (response.data.status) {
+                    console.log("Form Submitted succesfully.", response.data)
+                    setFormsubmitLoder(false)
+                    setGeneratedSafNo(response.data.data.safNo)
+                    props.data(response.data.data.safNo)
+                    props.nextFun()
+                }else{
+                    console.log("Something went wrong, Bacend Exception :- ", response)
+                    setFormsubmitLoder(false)
+                    alert("Backend Error")
+                }
             })
             .catch(function (error) {
                 console.log("Failed to Submit form Data", error);

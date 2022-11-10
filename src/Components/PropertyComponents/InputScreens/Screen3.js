@@ -22,15 +22,25 @@ function Screen3(props) {
 
     const formik = useFormik({
         initialValues: {
-            plotSize: '',
+            propertyKhataNo: '',
+            propertyPlotNo: '',
+            propertyVillageMauja: '',
+            propertyAreaOfPlot: '',
+            propertyRoadWidth: ''
         },
         onSubmit: values => {
             // alert(JSON.stringify(values, null, 2));
-            props.data(values)
+            props.data("propertyDetails", values)
             props.nextFun()
         },
     });
-    const handleField = e => formik.values.plotSize = e.target.value
+    const handleKhataNo = e => formik.values.propertyKhataNo = e.target.value
+    const handlePlotNo = e => formik.values.propertyPlotNo = e.target.value
+    const hanldeVillage = e => formik.values.propertyVillageMauja = e.target.value
+    const handleAreofPloat = e => formik.values.propertyAreaOfPlot = e.target.value
+    const handleRoadWidth = e => formik.values.propertyRoadWidth = e.target.value
+
+
     return (
         <>
             <form onSubmit={formik.handleSubmit}>
@@ -40,7 +50,8 @@ function Screen3(props) {
                 </div>
                 <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                     <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}>
-                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Property Address & Details</h1></div>
+                        <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Property Details</h1></div>
+                        <div className="col-span-12"> <h1 className={` ${titleColor} text-sm mt-2 opacity-40`}>Provide the landmark to help us react the property location easily.</h1></div>
 
                         <div className="form-group md:mb-6 col-span-12 my-4">
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
@@ -48,8 +59,8 @@ function Screen3(props) {
                                 <input
                                     type="text"
                                     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                    // onChange={e => handleOccupancy(e)}
-                                    name="occupancyType"
+                                    onChange={e => handleKhataNo(e)}
+                                    name="propertyKhataNo"
                                 />
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
@@ -57,8 +68,8 @@ function Screen3(props) {
                                 <input
                                     type="text"
                                     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                    // onChange={e => handleOccupancy(e)}
-                                    name="occupancyType"
+                                    onChange={e => handlePlotNo(e)}
+                                    name="propertyPlotNo"
                                 />
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
@@ -66,8 +77,8 @@ function Screen3(props) {
                                 <input
                                     type="text"
                                     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                    // onChange={e => handleOccupancy(e)}
-                                    name="occupancyType"
+                                    onChange={e => hanldeVillage(e)}
+                                    name="propertyVillageMauja"
                                 />
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
@@ -75,8 +86,8 @@ function Screen3(props) {
                                 <input
                                     type="text"
                                     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                    // onChange={e => handleOccupancy(e)}
-                                    name="occupancyType"
+                                    onChange={e => handleAreofPloat(e)}
+                                    name="propertyAreaOfPlot"
                                 />
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
@@ -84,8 +95,8 @@ function Screen3(props) {
                                 <input
                                     type="text"
                                     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                    // onChange={e => handleOccupancy(e)}
-                                    name="occupancyType"
+                                    onChange={e => handleRoadWidth(e)}
+                                    name="propertyRoadWidth"
                                 />
                             </div>
                         </div>
