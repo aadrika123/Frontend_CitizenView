@@ -12,6 +12,7 @@ import InitialMenuList from './MenuList/InitialMenuList'
 import TopBlock from './TopBlock';
 import { contextVar } from '../GlobalState/ContextVar';
 import HorizontalNew from './HorizontalNew';
+import ProtectedRoutes from '../Login/ProtectedRoutes';
 
 
 function IndividualRoutes() {
@@ -30,6 +31,7 @@ function IndividualRoutes() {
     return (
         <div className={`${container}`}>
 
+            {/* <ProtectedRoutes /> */}
             {/* <div className={`${boxStyle}`}>
                 <div className="flex justify-between  py-2">
                     <h1 className="font-bold text-2xl text-stone-600 px-2">PROPERTY</h1>
@@ -123,6 +125,7 @@ function IndividualRoutes() {
 
             {/* Bottom Navigation */}
             {/* <BottomNavigation showModule={showModule} setShowModuleFun={setShowModule} /> */}
+
         </div>
     )
 }

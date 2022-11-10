@@ -16,13 +16,50 @@ import Screen13 from '../../../Components/TradeComponents/InputScreens/Screen13'
 import Screen14 from '../../../Components/TradeComponents/InputScreens/Screen14'
 import axios from 'axios'
 import TradeFeedbackComponent from '../../../Components/IndividualRoutes/TradeFeedbackComponent'
+import { HEADER, TRADE } from '../../../Components/TradeComponents/TradeApiListFile'
 
 
 function NewApplication() {
 
     const [fieldData, setfieldData] = useState({})
 
-    const [allFormData, setallFormData] = useState([])
+    const [allFormData, setallFormData] = useState({
+        applyWith:
+            { applyWith: '...', noticeDate: '...', noticeNo: '...' },
+        areaInSqft
+            :
+            { areaInSqft: '...' },
+        businessDescription
+            :
+            { businessDescription: '...' },
+        categoryType
+            :
+            { categoryType: '...' },
+        firmName
+            :
+            { firmName: '...' },
+        firmType
+            :
+            { firmType: '...' },
+        onwershipType
+            :
+            { onwershipType: '...' },
+        natureOfBusiness
+            :
+            { natureOfBusiness: '...' },
+        ownerDetails
+            :
+            { ownerName: '...', guardianName: '...', mobile: '...', email: '...' },
+        propertyDetails
+            :
+            { holdingNo: '...', premisesOwner: '...', businessAddress: '...', landmark: '...', pincode: '...' },
+        ward
+            :
+            { wardNo: '...', newWardNo: '...' },
+        licenseFor
+            :
+            { licenseForYears: '...' }
+    })
 
     //formIndex variable to hold number of screen to show in form
     const [formIndex, setFormIndex] = useState(1)
@@ -43,6 +80,63 @@ function NewApplication() {
 
     }
 
+    const getMasterData = () => {
+        axios.get(TRADE.MASTER_DATA_API, HEADER)
+    }
+
+    let finalData = [];
+
+    const reqBody = {
+        initialBusinessDetails:
+        {
+            applyWith: allFormData?.applyWith.applyWith,
+            firmType: allFormData?.firmType.firmType,
+            noticeDate: allFormData?.applyWith.noticeDate,
+            noticeNo: allFormData?.applyWith.noticeNo,
+            ownershipType: allFormData?.onwershipType.onwershipType,
+        },
+        firmDetails:
+        {
+            areaSqft: allFormData?.areaInSqft.areaInSqft,
+            businessAddress: allFormData?.propertyDetails.businessAddress,
+            businessDescription: allFormData?.businessDescription.businessDescription,
+            firmEstdDate: allFormData?.applyWith.firmEstdDate,
+            firmName: allFormData?.firmName.firmName,
+            holdingNo: allFormData?.propertyDetails.holdingNo,
+            landmark: allFormData?.propertyDetails.landmark,
+            natureOfBusiness: allFormData?.natureOfBusiness.natureOfBusiness,
+            newWardNo: allFormData?.ward.newWardNo,
+            pincode: allFormData?.applyWith.applyWith,
+            premisesOwner: allFormData?.applyWith.applyWith,
+            wardNo: allFormData?.ward.wardNo,
+            tocStatus: allFormData?.licenseFor.tocStatus,
+        },
+
+        licenseDetails:
+
+        {
+            licenseFor: allFormData?.licenseFor.licenseForYears,
+
+        },
+
+        ownerDetails:
+            [
+                {
+                    businessOwnerName: allFormData?.ownerDetails.ownerName,
+                    guardianName: allFormData?.ownerDetails.guardianName,
+                    mobileNo: allFormData?.ownerDetails.mobile,
+                    email: allFormData?.ownerDetails.email,
+                },
+                {
+                    businessOwnerName: allFormData?.ownerDetails.ownerName,
+                    guardianName: allFormData?.ownerDetails.guardianName,
+                    mobileNo: allFormData?.ownerDetails.mobile,
+                    email: allFormData?.ownerDetails.email,
+                },
+
+            ],
+        applicationType: "1"
+    }
 
 
     const values = {
@@ -102,7 +196,7 @@ function NewApplication() {
             {/* Success Screen */}
             <div className={`w-full absolute top-10 transition-all ${formIndex == 14 ? 'translate-x-0' : 'translate-x-full'}`}> <Screen14 nextFun={nextFun} backFun={backFun} formIndex={formIndex} values={values} /></div>
 
-            <div className='w-full absolute top-[36rem]  '><TradeFeedbackComponent fieldData={allFormData} /></div>
+            <div className='w-full absolute top-[42rem]  '><TradeFeedbackComponent fieldData={allFormData} /></div>
 
         </>
     )

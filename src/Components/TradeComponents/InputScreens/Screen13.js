@@ -32,7 +32,7 @@ function Screen13(props) {
     }
 
     const initialValues = {
-        tocStatus: '',
+        tocStatus: 0,
         licenseForYears: '1',
     }
 
@@ -47,7 +47,7 @@ function Screen13(props) {
 
         onSubmit: (values) => {
             // alert(JSON.stringify(values));
-            allFormDataFun("licenseFor",values);
+            allFormDataFun("licenseFor", values);
             props.nextFun();
         },
         validationSchema
@@ -58,7 +58,7 @@ function Screen13(props) {
         let vals = e.target.value;
 
         console.log("name : " + name + "values : " + vals);
-        // { name === 'applyWith' && (vals == 1 ? setnoticeToggle(true) : setnoticeToggle(false)) }
+        { name === 'tocStatus' && formik.setFieldValue("tocStatus", vals) }
     }
 
 
@@ -86,8 +86,13 @@ function Screen13(props) {
                         <div className={`${tocStatusToggle ? '' : 'hidden'} form-group mb-4 md:mb-6 col-span-12 mt-4 `}>
                             <label className="form-label inline-block mb-1 text-amber-600 text-sm font-bold">NOTICE<span className='text-red-500'>*</span></label>
                             <div className="w-full overflow-auto text-sm py-2 font-mono text-gray-600  px-2 text-justify border-2 border-dashed border-amber-600 rounded">
-                                <p>Any business that is involved in the selling of tobbacco products, can only take license for <span className='text-sky-400 font-extrabold text-md'> a </span>  year ! </p>
+                                <p><strong className='text-red-500'>1.</strong> Any business that is involved in the selling of tobbacco products, can only take license for <span className='text-sky-400 font-extrabold text-md'> a </span>  year ! </p>
+
+                                <p><strong className='text-red-500'>2.</strong> Your Business code will be automatically converted to  <span className='text-sky-400 font-extrabold text-md'><strong className='text-sky-400'>(187).<br /></strong> Which is a business code for tobacco Product.</span></p>
+
                             </div>
+
+
                             <div>
                                 <label className="form-label inline-block mb-1 mt-4 text-gray-600 text-sm font-semibold">License For Years<span className='text-red-500'>*</span></label>
                                 <select name="licenseForYears" id="" className={`${inputStyle} uppercase`}>

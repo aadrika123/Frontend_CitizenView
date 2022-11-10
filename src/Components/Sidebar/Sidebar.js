@@ -1,21 +1,25 @@
 import React, { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Sidebar(props) {
 
     const contaractSidebar = () => {
         props.showSidebar();
     }
+    const navigate = useNavigate();
 
-    // const componentRef = useRef();
-    // useEffect(() => {
+    const handleLogout = () => {
 
-    //     console.log(componentRef);
-    // }, []);
+        const conf = window.confirm("Are you sure ?");
+        if (conf) {
+            window.localStorage.setItem("token", null);
+            navigate('/login');
+        }
+    }
 
 
     return (
-        <body class={`font-poppins antialiased absolute  top-10 left-0 z-20 transition-all duration-500 ease-in-out ${props.show ? '' : ' -translate-x-full'}`} onClick={contaractSidebar}  id="sidebarBody">
+        <body class={`font-poppins antialiased absolute  top-10 left-0 z-20 transition-all duration-500 ease-in-out ${props.show ? '' : ' -translate-x-full'}`} onClick={contaractSidebar} id="sidebarBody">
             <div id="view" class="h-full w-screen flex flex-row" x-data="{ sidenav: true }" >
                 <div id="sidebar" class="bg-white h-screen md:block shadow-xl px-3 w-48 md:w-60 lg:w-60 overflow-x-hidden transition-transform duration-300 ease-in-out" x-show="sidenav" >
                     <div class="space-y-6 md:space-y-10 mt-10">
@@ -114,7 +118,7 @@ function Sidebar(props) {
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
                                 </svg>
 
-                                <span class=""><Link to="/home"> Logout </Link></span>
+                                <span class=""><button className='' onClick={handleLogout}>Logout</button>  </span>
                             </p>
                         </div>
                     </div>

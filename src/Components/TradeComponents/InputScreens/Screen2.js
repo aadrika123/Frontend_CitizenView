@@ -31,12 +31,14 @@ function Screen2
     const initialValues = {
         applyWith: '',
         noticeDate: '',
-        noticeNo: ''
+        noticeNo: '',
+        firmEstdDate: JSON.stringify(new Date).slice(1, 11)
     }
 
     const validationSchema = yup.object(
         {
             applyWith: yup.number().required("This field is required !"),
+            firmEstdDate: yup.date().required("This field is required !"),
             noticeNo: yup.string().when("applyWith", { is: 1, then: yup.string().required("This is a required field") }),
             noticeDate: yup.string().when("applyWith", { is: 1, then: yup.string().required("This is a required field") }),
         }
@@ -47,7 +49,7 @@ function Screen2
 
         onSubmit: (values) => {
             // alert(JSON.stringify(values));
-            allFormDataFun("applyWith",values);
+            allFormDataFun("applyWith", values);
             props.nextFun();
         },
         validationSchema
@@ -75,6 +77,7 @@ function Screen2
                         <div className="col-span-12"> <h1 className={` ${titleColor} text-xs opacity-40`}>Do you have a notice no to apply with or it's a normal application. select accordingly</h1></div>
                         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4 text-gray-600 font-semibold">
                             <div className=" items-center mb-4">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"> Apply With <span className='text-red-500'>*</span></label>
                                 <select name="applyWith" className={`${inputStyle}`} value={formik.values.applyWith} onChange={formik.handleChange}>
                                     <option value="">SELECT</option>
                                     <option value="1">Notice No.</option>
@@ -86,15 +89,22 @@ function Screen2
 
                             <div className={`${noticeToggle ? 'grid' : 'hidden'}`}>
                                 <div className=" items-center mb-4">
+                                    <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"> Notice Date. <span className='text-red-500'>*</span></label>
                                     <input type="date" name="noticeDate" className={`${inputStyle}`} value={formik.values.noticeDate} onChange={formik.handleChange} />
                                     <span className='text-red-500 text-xs'>{formik.touched.noticeDate && formik.errors.noticeDate ? formik.errors.noticeDate : null}</span>
                                 </div>
                                 <div className=" items-center mb-4">
+                                    <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"> Notice No. <span className='text-red-500'>*</span></label>
                                     <input type="text" name="noticeNo" className={`${inputStyle}`} placeholder="Search With Notice No" value={formik.values.noticeNo} onChange={formik.handleChange} />
                                     <span className='text-red-500 text-xs'>{formik.touched.noticeNo && formik.errors.noticeNo ? formik.errors.noticeNo : null}</span>
                                 </div>
                             </div>
 
+                            <div className=" items-center mb-4">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"> Firm Establishment Date. <span className='text-red-500'>*</span></label>
+                                <input type="date" name="firmEstdDate" className={`${inputStyle}`} placeholder="Enter Firm Estd Date" value={formik.values.firmEstdDate} onChange={formik.handleChange} max={JSON.stringify(new Date).slice(1, 11)} />
+                                <span className='text-red-500 text-xs'>{formik.touched.firmEstdDate && formik.errors.firmEstdDate ? formik.errors.firmEstdDate : null}</span>
+                            </div>
                         </div>
 
                         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">

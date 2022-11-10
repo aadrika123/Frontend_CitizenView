@@ -15,11 +15,14 @@ import NewHeader from './Components/Header/NewHeader';
 import Sidebar from './Components/Sidebar/Sidebar';
 import { useEffect, useRef, useState } from 'react';
 import { contextVar } from './Components/GlobalState/ContextVar';
+import Login from './Components/Login/Login';
+import ProtectedRoutes from './Components/Login/ProtectedRoutes';
 
 function App() {
   const [sideShow, setsideShow] = useState(true);
   const [moduleName, setmoduleName] = useState("JUIDCO")
-  const [sidebarBody, setsidebarBody] = useState('')
+  const [sidebarBody, setsidebarBody] = useState('');
+  const [sideblock, setSideblock] = useState(true);
 
   const setHeader = (e) => {
     sideShow ? setsideShow(false) : setsideShow(true);
@@ -30,28 +33,24 @@ function App() {
     setModule: setmoduleName
   }
 
-
-  // useEffect(() => {
-  //   JSON.stringify(window.location.href).split("/")[3].startsWith("home") && setmoduleName('JUIDCO');
-  //   JSON.stringify(window.location.href).split("/")[3].startsWith("trade") && setmoduleName('TRADE');
-  //   JSON.stringify(window.location.href).split("/")[3].startsWith("water") && setmoduleName('WATER');
-  //   JSON.stringify(window.location.href).split("/")[3].startsWith("prop") && setmoduleName('PROPERTY');
-
-  //   console.log("params : ", JSON.stringify(window.location.href).split("/")[3]);
-  // }, [])
-
-
   return (
     <>
       <contextVar.Provider value={globals} >
-        <BrowserRouter>
-          <NewHeader showSidebar={setHeader} show={sideShow} />
-          <Sidebar showSidebar={setHeader} show={sideShow} sidebarBody={sidebarBody} sidebarBodyFun={setsidebarBody} />
-          <div className={`${sideShow ? 'opacity-70 md:opacity-100' : ''}`}>
+        <BrowserRouter >
+          {
+            !sideblock && <>
+              <NewHeader showSidebar={setHeader} show={sideShow} />
+              <Sidebar showSidebar={setHeader} show={sideShow} sidebarBody={sidebarBody} sidebarBodyFun={setsidebarBody} />
+            </>
+          }
+          <div className={`${sideblock && 'opacity-100'}${sideShow ? 'opacity-70 md:opacity-100' : ''}`}>
             <Routes>
-              <Route path="/" element={<IndividualRoutes />} />
-              <Route path="/home" element={<IndividualRoutes />} />
-              <Route index element={<IndividualRoutes />} />
+
+              {/* <Route element={<ProtectedRoutes />} /> */}
+              <Route path="/home" element={<ProtectedRoutes component={<IndividualRoutes />} />} />
+              <Route index element={<Login showBlock={setSideblock}/>} />
+              <Route path="/login" element={<Login showBlock={setSideblock}/>} />
+              {/* </Route> */}
             </Routes>
 
             <PropertyRoutes />
