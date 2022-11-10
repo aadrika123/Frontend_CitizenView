@@ -35,7 +35,7 @@ function ScreenOwnerType(props) {
     useEffect(() => {
 
         // let token = window.localStorage.getItem('token')
-        let token = '1402|aVxsPywaSl44Fgh1cTmHg0rit2Abgl2zHZJ8JAF1'
+        let token = '1475|XrSd3de86bSUpbUnog4TA7YtodIknrgrnU9N6g22'
         console.log('token at basic details is  get method...', token)
         const header = {
             headers:
