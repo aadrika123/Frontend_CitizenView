@@ -31,14 +31,15 @@ function Screen11(props) {
         ]
     const selectedValue = [{ name: '(198)OTHERS', id: 198 }]
     const onSelect = (selectedList, selectedItem) => {
-
+        formik.setFieldValue("natureOfBusiness", selectedList);
     }
     const onRemove = (selectedList, removedItem) => {
 
+        formik.setFieldValue("natureOfBusiness", selectedList);
     }
 
     const initialValues = {
-        natureOfBusiness: ''
+        natureOfBusiness: selectedValue
     }
 
     const validationSchema = yup.object(
@@ -52,7 +53,7 @@ function Screen11(props) {
 
         onSubmit: (values) => {
             // alert(JSON.stringify(values));
-            allFormDataFun("natureOfBusiness",values);
+            allFormDataFun("natureOfBusiness", values);
             props.nextFun();
         },
         validationSchema

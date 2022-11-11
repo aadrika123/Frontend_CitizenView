@@ -27,7 +27,10 @@ function InitialMenuList() {
                         <p><small>You Applications need action.</small></p>
                         <small className='float-right font-bold pt-2'>04 November 2022.</small>
                     </div>
+                    
                 </div>
+
+                
             </div>
         </>
     )

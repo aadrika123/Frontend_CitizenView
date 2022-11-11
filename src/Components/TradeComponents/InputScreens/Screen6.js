@@ -26,11 +26,11 @@ function Screen6
     const { allFormDataFun } = props.values;
 
     const initialValues = {
-        holdingNo: ''
+        onwershipType: ''
     }
 
     const validationSchema = yup.object(
-        { holdingNo: yup.string().required("This field is required !") }
+        { onwershipType: yup.string().required("This field is required !") }
     );
 
     const formik = useFormik({
@@ -38,7 +38,7 @@ function Screen6
 
         onSubmit: (values) => {
             // alert(JSON.stringify(values));
-            allFormDataFun("holdingNo",values);
+            allFormDataFun("onwershipType",values);
             props.nextFun();
         },
         validationSchema
@@ -67,7 +67,7 @@ function Screen6
 
                         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                             <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Ownership Type.<span className='text-red-500'>*</span></label>
-                            <select name='holdingNo' className={`${inputStyle} uppercase`} placeholder='S Your Holding No.' onChange={formik.handleChange} value={formik.values.holdingNo}>
+                            <select name='onwershipType' className={`${inputStyle} uppercase`} placeholder='S Your Holding No.' onChange={formik.handleChange} value={formik.values.holdingNo}>
                                 <option value="">SELECT</option>
                                 <option value="1">OWN PROPERTY</option>
                                 <option value="2">ON RENT</option>
