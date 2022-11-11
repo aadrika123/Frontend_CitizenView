@@ -1,5 +1,10 @@
+import BaseURL from "../Common/BaseURL"
+
 export default function CitizenApplyApiList() {
-    let baseUrl = "http://192.168.0.148:81"
+
+  const {baseUrl} = BaseURL();
+
+    // let baseUrl = "http://192.168.0.16:8000"
     let apiList = {
         //connection type master data
         api_getConnectionType: `${baseUrl}/api/water/get-connection-type`,
