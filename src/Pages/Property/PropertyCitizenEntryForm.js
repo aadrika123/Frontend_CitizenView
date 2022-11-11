@@ -16,14 +16,13 @@ import Screen4 from '../../Components/PropertyComponents/InputScreens/Screen4'
 import Screen4CorrAddress from '../../Components/PropertyComponents/InputScreens/Screen4CorrAddress'
 import Screen5 from '../../Components/PropertyComponents/InputScreens/Screen5'
 import Screen6 from '../../Components/PropertyComponents/InputScreens/Screen6'
-import Screen7 from '../../Components/PropertyComponents/InputScreens/Screen7'
 import Screen7FloorDetailsNew from '../../Components/PropertyComponents/InputScreens/Screen7FloorDetailsNew'
 import Screen7OwnerDetails from '../../Components/PropertyComponents/InputScreens/Screen7OwnerDetails'
 import PropertyApiList from '../../Components/PropertyComponents/PropertyApiList'
 
 function PropertyCitizenEntryForm() {
 
-    const { propertySafApplyMasterData } = PropertyApiList(); // Fetching Complate API URL
+    const { propertySafApplyMasterData, bearer } = PropertyApiList(); // Fetching Complate API URL
 
 
     const [formIndex, setFormIndex] = useState(1) //formIndex variable to hold number of screen to show in form
@@ -49,7 +48,7 @@ function PropertyCitizenEntryForm() {
     const nextFun = () => setFormIndex(prev => prev + 1)
 
 
-    const bearer = "1478|vGZADnTinTHsaluolnVXrh5wQiR2PaIJeAMzBz9k";
+    // const bearer = "1478|vGZADnTinTHsaluolnVXrh5wQiR2PaIJeAMzBz9k";
 
     const header = {
         headers: {
@@ -146,11 +145,10 @@ function PropertyCitizenEntryForm() {
                 <div className={`${formIndex == 11 ? 'block' : 'hidden'}`}> <Screen4CorrAddress nextFun={nextFun} backFun={backFun} data={saveScreenData} propertyData={allScreenData} formIndex={formIndex} /></div>
                 <div className={`${formIndex == 12 ? 'block' : 'hidden'}`}> <Screen5 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} /></div>
                 <div className={`${formIndex == 13 ? 'block' : 'hidden'}`}> <Screen6 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} /></div>
-                <div className={`${formIndex == 14 ? 'block' : 'hidden'}`}> <Screen7 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} /></div>
-                <div className={`${formIndex == 15 ? 'block' : 'hidden'}`}> <Screen7OwnerDetails nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} /></div>
-                <div className={`${formIndex == 16 ? 'block' : 'hidden'}`}> <Screen7FloorDetailsNew nextFun={nextFun} backFun={backFun} masterData={masterData} data={saveScreenData} formIndex={formIndex} /> </div>
-                <div className={`${formIndex == 17 ? 'block' : 'hidden'}`}> <Screen16 nextFun={nextFun} backFun={backFun} data={setSafNo} payloadData={payloadData} formIndex={formIndex} /></div>
-                <div className={`${formIndex == 18 ? 'block' : 'hidden'}`}> <Screen17 nextFun={nextFun} backFun={backFun} safNo={safNo} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 14 ? 'block' : 'hidden'}`}> <Screen7OwnerDetails nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 15 ? 'block' : 'hidden'}`}> <Screen7FloorDetailsNew nextFun={nextFun} backFun={backFun} masterData={masterData} data={saveScreenData} formIndex={formIndex} /> </div>
+                <div className={`${formIndex == 16 ? 'block' : 'hidden'}`}> <Screen16 nextFun={nextFun} backFun={backFun} data={setSafNo} payloadData={payloadData} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 17 ? 'block' : 'hidden'}`}> <Screen17 nextFun={nextFun} backFun={backFun} safNo={safNo} formIndex={formIndex} /></div>
 
 
 

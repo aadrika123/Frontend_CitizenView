@@ -25,10 +25,10 @@ function Screen16(props) {
     const [generatedSafNo, setGeneratedSafNo] = useState()
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
-const {propertySafApply} = PropertyApiList();
+const {propertySafApply, bearer} = PropertyApiList();
 
 
-    const bearer = "1478|vGZADnTinTHsaluolnVXrh5wQiR2PaIJeAMzBz9k";
+    // const bearer = "1478|vGZADnTinTHsaluolnVXrh5wQiR2PaIJeAMzBz9k";
 
     const header = {
         headers: {

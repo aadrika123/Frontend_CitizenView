@@ -67,8 +67,8 @@ function Screen7OwnerDetails(props) {
             aadhar: '',
             pan: '',
             email: '',
-            isArmedForce: 'no',
-            isSpeciallyAbled: 'no'
+            isArmedForce: '',
+            isSpeciallyAbled: '',
         },
         onSubmit: (values, { setSubmitting, resetForm }) => {
             resetForm();
@@ -84,7 +84,10 @@ function Screen7OwnerDetails(props) {
         <>
             <div>
                 <form onSubmit={formik.handleSubmit}>
-                    <div className='text-xs font-semibold pl-2 mt-4'><span className='border-b border-black'><RiArrowDropLeftFill className="inline text-xl" />Back</span></div>
+                    <div className='text-xs font-semibold px-2 mt-4 flex'>
+                        <div className="flex-1"><span onClick={props.backFun} className='border-b border-black'><RiArrowDropLeftFill className="inline text-xl" />Back</span></div>
+                        <div className="flex-1 text-right"><span className=''>{props?.formIndex} of 10</span></div>
+                    </div>
                     <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                         <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 md:p-10`}>
                             <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Applicant Details</h1></div>
@@ -93,16 +96,42 @@ function Screen7OwnerDetails(props) {
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12 ">
                                 <div className="col-span-12">
-                                    <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Owner Name</label>
+                                    <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">Owner Name</label>
                                 </div>
-
                                 <div className=" items-center mb-2">
                                     <input type="text" name="ownerName" className={`${inputStyle}`} placeholder="Enter owner name" value={formik.values.ownerName} onChange={formik.handleChange} />
                                     <p className='text-red-500 text-xs'>{formik.touched.ownerName && formik.errors.ownerName ? formik.errors.ownerName : null}</p>
-
                                 </div>
+
                                 <div className="col-span-12">
-                                    <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Date of Birth</label>
+                                    <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">Gender</label>
+                                </div>
+                                <div className=" items-center mb-2">
+                                    <select required type="text" name="gender" className={`${inputStyle}`} placeholder="Enter owner name" value={formik.values.gender} onChange={formik.handleChange} >
+                                        <option value="">--Select--</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <p className='text-red-500 text-xs'>{formik.touched.gender && formik.errors.gender ? formik.errors.gender : null}</p>
+                                </div>
+
+                                <div className="col-span-12">
+                                    <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">Relation</label>
+                                </div>
+                                <div className=" items-center mb-2">
+                                    <select required type="text" name="relation" className={`${inputStyle}`} placeholder="Enter owner name" value={formik.values.relation} onChange={formik.handleChange} >
+                                        <option value="">--Select--</option>
+                                        <option value="S/O">S/O</option>
+                                        <option value="D/O">D/O</option>
+                                        <option value="C/O">C/O</option>
+                                        <option value="W/O">W/O</option>
+                                    </select>
+                                    <p className='text-red-500 text-xs'>{formik.touched.relation && formik.errors.relation ? formik.errors.relation : null}</p>
+                                </div>
+
+                                <div className="col-span-12">
+                                    <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">Date of Birth</label>
                                 </div>
                                 <div className=" items-center mb-2">
                                     <input type="date" name="dob" className={`${inputStyle}`} placeholder="Enter Guardian name" value={formik.values.dob} onChange={formik.handleChange} />
@@ -110,14 +139,14 @@ function Screen7OwnerDetails(props) {
                                 </div>
 
                                 <div className="col-span-12">
-                                    <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Guardian Name</label>
+                                    <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">Guardian Name</label>
                                 </div>
                                 <div className=" items-center mb-2">
                                     <input type="text" name="guardianName" className={`${inputStyle}`} placeholder="Enter Guardian name" value={formik.values.guardianName} onChange={formik.handleChange} />
                                     <p className='text-red-500 text-xs'>{formik.touched.guardianName && formik.errors.guardianName ? formik.errors.guardianName : null}</p>
                                 </div>
                                 <div className="col-span-12">
-                                    <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Mobile No. </label>
+                                    <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">Mobile No. </label>
                                 </div>
                                 <div className=" items-center mb-2">
                                     <input type="text" name="mobileNo" className={`${inputStyle}`} placeholder="Enter mobile no" value={formik.values.mobileNo} onChange={formik.handleChange} />
@@ -125,11 +154,42 @@ function Screen7OwnerDetails(props) {
 
                                 </div>
                                 <div className="col-span-12">
-                                    <label for="option1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email ID</label>
+                                    <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">Email ID</label>
                                 </div>
                                 <div className=" items-center mb-2">
                                     <input type="text" name="email" className={`${inputStyle}`} placeholder="Enter email" value={formik.values.email} onChange={formik.handleChange} />
                                     <p className='text-red-500 text-xs'>{formik.touched.email && formik.errors.email ? formik.errors.email : null}</p>
+                                </div>
+
+                                <div className="col-span-12">
+                                    <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">Aadhar No</label>
+                                </div>
+                                <div className=" items-center mb-2">
+                                    <input type="text" name="aadhar" className={`${inputStyle}`} placeholder="Enter Aadhar" value={formik.values.aadhar} onChange={formik.handleChange} />
+                                    <p className='text-red-500 text-xs'>{formik.touched.aadhar && formik.errors.aadhar ? formik.errors.aadhar : null}</p>
+                                </div>
+                                <div className="col-span-12">
+                                    <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">PAN No</label>
+                                </div>
+                                <div className=" items-center mb-2">
+                                    <input type="text" name="pan" className={`${inputStyle}`} placeholder="Enter PAN" value={formik.values.pan} onChange={formik.handleChange} />
+                                    <p className='text-red-500 text-xs'>{formik.touched.pan && formik.errors.pan ? formik.errors.pan : null}</p>
+                                </div>
+                                <div className="col-span-12">
+                                    <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">Are You belong to Armed Forces ?</label>
+                                </div>
+                                <div className=" items-center mb-2 flex mt-1">
+                                    <input type="radio" name="isArmedForce" className={`${inputStyle}  w-4 h-4 mr-2`} value="Yes" onChange={formik.handleChange} /> <span className='-mt-1'>Yes</span>
+                                    <input type="radio" name="isArmedForce" className={`${inputStyle}  w-4 h-4 mx-2`} value="No" onChange={formik.handleChange} /> <span className='-mt-1'>No</span>
+                                    <p className='text-red-500 text-xs'>{formik.touched.isArmedForce && formik.errors.isArmedForce ? formik.errors.isArmedForce : null}</p>
+                                </div>
+                                <div className="col-span-12">
+                                    <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">Are You Specially-Abled ?</label>
+                                </div>
+                                <div className=" items-center mb-2 flex mt-1">
+                                    <input type="radio" name="isSpeciallyAbled" className={`${inputStyle}  w-4 h-4 mr-2`} value="Yes" onChange={formik.handleChange} /> <span className='-mt-1'>Yes</span>
+                                    <input type="radio" name="isSpeciallyAbled" className={`${inputStyle}  w-4 h-4 mx-2`} value="No" onChange={formik.handleChange} /> <span className='-mt-1'>No</span>
+                                    <p className='text-red-500 text-xs'>{formik.touched.isSpeciallyAbled && formik.errors.isSpeciallyAbled ? formik.errors.isSpeciallyAbled : null}</p>
                                 </div>
 
 

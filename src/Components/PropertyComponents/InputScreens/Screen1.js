@@ -17,6 +17,8 @@ import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik';
 import Info from '../../Common/Info'
 import { BiAddToQueue } from 'react-icons/bi'
+import * as yup from 'yup';
+
 
 
 function Screen1(props) {
@@ -27,6 +29,13 @@ function Screen1(props) {
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
     const navigate = useNavigate();
+
+    const validationSchema = yup.object(
+        {
+            wardNo: yup.string().required("This is a required field !"),
+            
+        }
+    );
 
     const goBack = () => {
         navigate("/")
@@ -77,6 +86,7 @@ function Screen1(props) {
                                     ))
                                 }
                             </select>
+                            <p className='text-red-500 text-xs'>{formik.touched.wardNo && formik.errors.wardNo ? formik.errors.wardNo : null}</p>
                         </div>
 
                         <div className="form-group mb-4 md:mb-6 col-span-12 mt-2">
