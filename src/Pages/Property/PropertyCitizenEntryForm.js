@@ -23,18 +23,14 @@ import PropertyApiList from '../../Components/PropertyComponents/PropertyApiList
 
 function PropertyCitizenEntryForm() {
 
-    const {propertySafApplyMasterData} = PropertyApiList();
+    const { propertySafApplyMasterData } = PropertyApiList(); // Fetching Complate API URL
 
-    //formIndex variable to hold number of screen to show in form
-    const [formIndex, setFormIndex] = useState(1)
 
-   
-    const [floorDetails, setFloorDetails] = useState()
-    const [ownerDetails, setOwnerDetails] = useState()
+    const [formIndex, setFormIndex] = useState(1) //formIndex variable to hold number of screen to show in form
+
     const [safNo, setSafNo] = useState() // This is Genetated SAF No
 
-    //All Screens Data
-    const [allScreenData, setAllScreenData] = useState([])
+    const [allScreenData, setAllScreenData] = useState([]) //All Screens Data
 
     const saveScreenData = (key, values) => {
         setAllScreenData({ ...allScreenData, [key]: values })
@@ -95,7 +91,7 @@ function PropertyCitizenEntryForm() {
         "isWaterHarvesting": allScreenData?.hasRailWater?.hasRailWater,
 
         // electricity Details
-        "electricityConnection":allScreenData?.electricityDetails?.electricConncectionCategory,
+        "electricityConnection": allScreenData?.electricityDetails?.electricConncectionCategory,
         "electricityCustNo": allScreenData?.electricityDetails?.electricKno,
         "electricityAccNo": allScreenData?.electricityDetails?.electricAccNo,
         "electricityBindBookNo": allScreenData?.electricityDetails?.electricBindBookNo,
@@ -107,14 +103,14 @@ function PropertyCitizenEntryForm() {
         "waterConnDate": allScreenData?.waterDetails?.waterConnectionDate,
 
         // propertyAddressDetails
-        "khataNo":allScreenData?.propertyDetails?.propertyKhataNo,
+        "khataNo": allScreenData?.propertyDetails?.propertyKhataNo,
         "plotNo": allScreenData?.propertyDetails?.propertyPlotNo,
         "villageMaujaName": allScreenData?.propertyDetails?.propertyVillageMauja,
         "roadType": allScreenData?.propertyDetails?.propertyRoadWidth,
         "areaOfPlot": allScreenData?.propertyDetails?.propertyAreaOfPlot,
         "propAddress": allScreenData?.propertyAddress?.propLocality,
         "propCity": allScreenData?.propertyAddress?.propCity,
-        "propDist":  allScreenData?.propertyAddress?.propDistrict,
+        "propDist": allScreenData?.propertyAddress?.propDistrict,
         "propPinCode": allScreenData?.propertyAddress?.propPin,
         "corrAddress": allScreenData?.propertyCorrAddress?.corrLocality,
         "corrCity": allScreenData?.propertyCorrAddress?.corrCity,
@@ -124,48 +120,41 @@ function PropertyCitizenEntryForm() {
         "previousHoldingId": 0,
         "holdingNo": "sadf474",
 
-        //owner
-        "owner": allScreenData?.ownerDetails,              //Screen 12
-        //floor
-        "floor": allScreenData?.floorDetails, //Screen 5
+        "owner": allScreenData?.ownerDetails,               //owner
+
+        "floor": allScreenData?.floorDetails, //floor
 
     }
     console.log("Payload Data", payloadData)
+
+    console.log("Form Index", formIndex)
 
 
     return (
         <>
             <div>
-                {formIndex == 1 && <Screen1 nextFun={nextFun} backFun={backFun} masterData={masterData} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 2 && <Screen1Ownweship nextFun={nextFun} backFun={backFun} masterData={masterData} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 3 && <Screen1PropertyType nextFun={nextFun} backFun={backFun} masterData={masterData} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 4 && <Screen1PropertyZone nextFun={nextFun} backFun={backFun} masterData={masterData} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 5 && <Screen2 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 6 && <Screen2Hording nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 7 && <Screen2PetrolPump nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 8 && <Screen2RainWater nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 9 && <Screen3 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 10 && <Screen4 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 11 && <Screen4CorrAddress nextFun={nextFun} backFun={backFun} data={saveScreenData} propertyData={allScreenData} formIndex={formIndex} />}
-                {formIndex == 12 && <Screen5 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 13 && <Screen6 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 14 && <Screen7 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 15 && <Screen7OwnerDetails nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}                                
-                {formIndex == 16 && <Screen7FloorDetailsNew nextFun={nextFun} backFun={backFun} masterData={masterData} data={saveScreenData} formIndex={formIndex} />}                
-                {formIndex == 17 && <Screen16 nextFun={nextFun} backFun={backFun} data={setSafNo} payloadData={payloadData} formIndex={formIndex} />}
-                {formIndex == 18 && <Screen17 nextFun={nextFun} backFun={backFun} safNo={safNo} formIndex={formIndex} />}
+                <div className={`${formIndex == 1 ? 'block' : 'hidden'}`}>  <Screen1 nextFun={nextFun} backFun={backFun} masterData={masterData} data={saveScreenData} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 2 ? 'block' : 'hidden'}`}> <Screen1Ownweship nextFun={nextFun} backFun={backFun} masterData={masterData} data={saveScreenData} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 3 ? 'block' : 'hidden'}`}><Screen1PropertyType nextFun={nextFun} backFun={backFun} masterData={masterData} data={saveScreenData} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 4 ? 'block' : 'hidden'}`}> <Screen1PropertyZone nextFun={nextFun} backFun={backFun} masterData={masterData} data={saveScreenData} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 5 ? 'block' : 'hidden'}`}> <Screen2 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 6 ? 'block' : 'hidden'}`}> <Screen2Hording nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 7 ? 'block' : 'hidden'}`}> <Screen2PetrolPump nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 8 ? 'block' : 'hidden'}`}>  <Screen2RainWater nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 9 ? 'block' : 'hidden'}`}> <Screen3 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 10 ? 'block' : 'hidden'}`}> <Screen4 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 11 ? 'block' : 'hidden'}`}> <Screen4CorrAddress nextFun={nextFun} backFun={backFun} data={saveScreenData} propertyData={allScreenData} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 12 ? 'block' : 'hidden'}`}> <Screen5 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 13 ? 'block' : 'hidden'}`}> <Screen6 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 14 ? 'block' : 'hidden'}`}> <Screen7 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 15 ? 'block' : 'hidden'}`}> <Screen7OwnerDetails nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 16 ? 'block' : 'hidden'}`}> <Screen7FloorDetailsNew nextFun={nextFun} backFun={backFun} masterData={masterData} data={saveScreenData} formIndex={formIndex} /> </div>
+                <div className={`${formIndex == 17 ? 'block' : 'hidden'}`}> <Screen16 nextFun={nextFun} backFun={backFun} data={setSafNo} payloadData={payloadData} formIndex={formIndex} /></div>
+                <div className={`${formIndex == 18 ? 'block' : 'hidden'}`}> <Screen17 nextFun={nextFun} backFun={backFun} safNo={safNo} formIndex={formIndex} /></div>
 
-               
-                {/* {formIndex == 16 && <Screen9 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 15 && <Screen8 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 17 && <Screen10 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 18 && <Screen11 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 19 && <Screen12 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 20 && <Screen13 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 21 && <Screen14 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 22 && <Screen15 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />} */}
-                
-               
+
+
+
                 <FeedbackScreen payloadData={payloadData} />
 
 
@@ -175,3 +164,24 @@ function PropertyCitizenEntryForm() {
 }
 
 export default PropertyCitizenEntryForm
+
+
+
+// {formIndex == 1 && <Screen1 nextFun={nextFun} backFun={backFun} masterData={masterData} data={saveScreenData} formIndex={formIndex} />}
+//                 {formIndex == 2 && <Screen1Ownweship nextFun={nextFun} backFun={backFun} masterData={masterData} data={saveScreenData} formIndex={formIndex} />}
+//                 {formIndex == 3 && <Screen1PropertyType nextFun={nextFun} backFun={backFun} masterData={masterData} data={saveScreenData} formIndex={formIndex} />}
+//                 {formIndex == 4 && <Screen1PropertyZone nextFun={nextFun} backFun={backFun} masterData={masterData} data={saveScreenData} formIndex={formIndex} />}
+//                 {formIndex == 5 && <Screen2 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
+//                 {formIndex == 6 && <Screen2Hording nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
+//                 {formIndex == 7 && <Screen2PetrolPump nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
+//                 {formIndex == 8 && <Screen2RainWater nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
+//                 {formIndex == 9 && <Screen3 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
+//                 {formIndex == 10 && <Screen4 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
+//                 {formIndex == 11 && <Screen4CorrAddress nextFun={nextFun} backFun={backFun} data={saveScreenData} propertyData={allScreenData} formIndex={formIndex} />}
+//                 {formIndex == 12 && <Screen5 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
+//                 {formIndex == 13 && <Screen6 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
+//                 {formIndex == 14 && <Screen7 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
+//                 {formIndex == 15 && <Screen7OwnerDetails nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
+//                 {formIndex == 16 && <Screen7FloorDetailsNew nextFun={nextFun} backFun={backFun} masterData={masterData} data={saveScreenData} formIndex={formIndex} />}
+//                 {formIndex == 17 && <Screen16 nextFun={nextFun} backFun={backFun} data={setSafNo} payloadData={payloadData} formIndex={formIndex} />}
+//                 {formIndex == 18 && <Screen17 nextFun={nextFun} backFun={backFun} safNo={safNo} formIndex={formIndex} />}
