@@ -36,7 +36,8 @@ function App() {
   return (
     <>
       <contextVar.Provider value={globals} >
-        <BrowserRouter >
+        <BrowserRouter>
+          {/* <BrowserRouter basename="/citizen-mb"> */}
           {
             !sideblock && <>
               <NewHeader showSidebar={setHeader} show={sideShow} />
@@ -48,8 +49,8 @@ function App() {
 
               {/* <Route element={<ProtectedRoutes />} /> */}
               <Route path="/home" element={<ProtectedRoutes component={<IndividualRoutes />} />} />
-              <Route index element={<Login showBlock={setSideblock}/>} />
-              <Route path="/login" element={<Login showBlock={setSideblock}/>} />
+              <Route index element={<Login showBlock={setSideblock} />} />
+              <Route path="/login" element={<Login showBlock={setSideblock} />} />
               {/* </Route> */}
             </Routes>
 
