@@ -16,6 +16,7 @@ import ThemeStyle from '../../Styles/ThemeStyle'
 import { useState } from 'react'
 import axios from 'axios'
 import { RotatingLines } from 'react-loader-spinner'
+import PropertyApiList from '../PropertyApiList'
 
 function Screen16(props) {
     const [disableBtn, setDisableBtn] = useState(true)
@@ -24,6 +25,8 @@ function Screen16(props) {
     const [generatedSafNo, setGeneratedSafNo] = useState()
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
+const {propertySafApply} = PropertyApiList();
+
 
     const bearer = "1478|vGZADnTinTHsaluolnVXrh5wQiR2PaIJeAMzBz9k";
 
@@ -68,7 +71,7 @@ function Screen16(props) {
         console.log("Form Submitting start..")
         setFormsubmitLoder(true)
 
-        axios.post('http://192.168.0.16:8000/api/property/saf/apply', props.payloadData, header)
+        axios.post(propertySafApply, props.payloadData, header)
             .then(function (response) {
                 if (response.data.status) {
                     console.log("Form Submitted succesfully.", response.data)

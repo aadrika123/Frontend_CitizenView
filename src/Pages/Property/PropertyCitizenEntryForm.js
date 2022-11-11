@@ -17,9 +17,14 @@ import Screen4CorrAddress from '../../Components/PropertyComponents/InputScreens
 import Screen5 from '../../Components/PropertyComponents/InputScreens/Screen5'
 import Screen6 from '../../Components/PropertyComponents/InputScreens/Screen6'
 import Screen7 from '../../Components/PropertyComponents/InputScreens/Screen7'
-import Screen8 from '../../Components/PropertyComponents/InputScreens/Screen8'
+import Screen7FloorDetailsNew from '../../Components/PropertyComponents/InputScreens/Screen7FloorDetailsNew'
+import Screen7OwnerDetails from '../../Components/PropertyComponents/InputScreens/Screen7OwnerDetails'
+import PropertyApiList from '../../Components/PropertyComponents/PropertyApiList'
 
 function PropertyCitizenEntryForm() {
+
+    const {propertySafApplyMasterData} = PropertyApiList();
+
     //formIndex variable to hold number of screen to show in form
     const [formIndex, setFormIndex] = useState(1)
 
@@ -59,7 +64,7 @@ function PropertyCitizenEntryForm() {
 
 
     useEffect(() => {
-        axios.get('http://192.168.0.16:8000/api/property/saf/master-saf', header)
+        axios.get(propertySafApplyMasterData, header)
             .then(function (res) {
                 // console.log("Masster Data", res.data.data)
                 setMasterData(res.data.data)
@@ -120,9 +125,9 @@ function PropertyCitizenEntryForm() {
         "holdingNo": "sadf474",
 
         //owner
-        "owner": ownerDetails,              //Screen 12
+        "owner": allScreenData?.ownerDetails,              //Screen 12
         //floor
-        "floor": floorDetails, //Screen 5
+        "floor": allScreenData?.floorDetails, //Screen 5
 
     }
     console.log("Payload Data", payloadData)
@@ -145,12 +150,14 @@ function PropertyCitizenEntryForm() {
                 {formIndex == 12 && <Screen5 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
                 {formIndex == 13 && <Screen6 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
                 {formIndex == 14 && <Screen7 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 15 && <Screen8 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
-                {formIndex == 16 && <Screen16 nextFun={nextFun} backFun={backFun} data={setSafNo} payloadData={payloadData} formIndex={formIndex} />}
-                {formIndex == 17 && <Screen17 nextFun={nextFun} backFun={backFun} safNo={safNo} formIndex={formIndex} />}
+                {formIndex == 15 && <Screen7OwnerDetails nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}                                
+                {formIndex == 16 && <Screen7FloorDetailsNew nextFun={nextFun} backFun={backFun} masterData={masterData} data={saveScreenData} formIndex={formIndex} />}                
+                {formIndex == 17 && <Screen16 nextFun={nextFun} backFun={backFun} data={setSafNo} payloadData={payloadData} formIndex={formIndex} />}
+                {formIndex == 18 && <Screen17 nextFun={nextFun} backFun={backFun} safNo={safNo} formIndex={formIndex} />}
 
                
                 {/* {formIndex == 16 && <Screen9 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
+                {formIndex == 15 && <Screen8 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
                 {formIndex == 17 && <Screen10 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
                 {formIndex == 18 && <Screen11 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}
                 {formIndex == 19 && <Screen12 nextFun={nextFun} backFun={backFun} data={saveScreenData} formIndex={formIndex} />}

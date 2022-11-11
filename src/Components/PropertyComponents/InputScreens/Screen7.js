@@ -8,7 +8,7 @@
 //    DESCRIPTION - Scrren7 is single input component
 //////////////////////////////////////////////////////////////////////////////////////
 
-import { AiFillInfoCircle } from 'react-icons/ai'
+import { BiAddToQueue } from 'react-icons/bi'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
@@ -20,15 +20,36 @@ function Screen7(props) {
 
     const formik = useFormik({
         initialValues: {
-            pincode: '',
+            ownerName: '',
+            ownerGender: '',
+            ownerDob: '',
+            ownerGuardian: '',
+            ownerRelation: '',
+            ownerMobile: '',
+            ownerAadhar: '',
+            ownerPan: '',
+            ownerEmail: '',
+            ownerIsArmedForce: '',
+            ownerSpeciallyAbled: '',
+
         },
         onSubmit: values => {
             // alert(JSON.stringify(values, null, 2));
-            props.data(values)
+            props.data("ownerDetails", values)
             props.nextFun()
         },
     });
-    const handleField = e => formik.values.pincode = e.target.value
+    const handleOwnerName = e => formik.values.ownerName = e.target.value
+    const handleOwnerGender = e => formik.values.ownerGender = e.target.value
+    const handeDob = e => formik.values.ownerDob = e.target.value
+    const handleGurdianName = e => formik.values.ownerGuardian = e.target.value
+    const handleRelation = e => formik.values.ownerRelation = e.target.value
+    const handleMobile = e => formik.values.ownerMobile = e.target.value
+    const handleAadhar = e => formik.values.ownerAadhar = e.target.value
+    const handlePan = e => formik.values.ownerPan = e.target.value
+    const handleEmail = e => formik.values.ownerEmail = e.target.value
+    const handleIsArmedForce = e => formik.values.ownerIsArmedForce = e.target.value
+    const handleSpeciallyAbled = e => formik.values.ownerSpeciallyAbled = e.target.value
 
     return (
         <>
@@ -48,16 +69,16 @@ function Screen7(props) {
                                 <input
                                     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                                     type="text"
-                                    name="group"
-                                // onChange={e => handleField(e)}
+                                    name="ownerName"
+                                    onChange={e => handleOwnerName(e)}
                                 />
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12">
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Gender</label>
                                 <select
                                     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                    name="group"
-                                // onChange={e => handleField(e)}
+                                    name="ownerGender"
+                                    onChange={e => handleOwnerGender(e)}
                                 >
                                     <option value="">-Select-</option>
                                     <option value="Male">Male</option>
@@ -70,8 +91,8 @@ function Screen7(props) {
                                 <input
                                     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                                     type="date"
-                                    name="group"
-                                // onChange={e => handleField(e)}
+                                    name="ownerDob"
+                                    onChange={e => handeDob(e)}
                                 />
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12">
@@ -79,8 +100,8 @@ function Screen7(props) {
                                 <input
                                     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                                     type="text"
-                                    name="group"
-                                // onChange={e => handleField(e)}
+                                    name="ownerGuardian"
+                                    onChange={e => handleGurdianName(e)}
                                 />
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12">
@@ -88,8 +109,8 @@ function Screen7(props) {
                                 <select
                                     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                                     type="text"
-                                    name="group"
-                                // onChange={e => handleField(e)}
+                                    name="ownerRelation"
+                                    onChange={e => handleRelation(e)}
                                 >
                                     <option value="S/O">S/O</option>
                                     <option value="D/O">D/O</option>
@@ -97,7 +118,57 @@ function Screen7(props) {
                                     <option value="W/O">W/O</option>
                                 </select>
                             </div>
+                            <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
+
+                                <div>
+                                    <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Mobile No<span className='text-red-500'>*</span></label>
+                                    <input required name='ownerMobile' onChange={e => handleMobile(e)} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" />
+                                </div>
+                                <div>
+                                    <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Aadhar No<span className='text-red-500'>*</span></label>
+                                    <input required name='ownerAadhar' onChange={e => handleAadhar(e)} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" />
+                                </div>
+                                <div>
+                                    <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">PAN No<span className='text-red-500'>*</span></label>
+                                    <input required name='ownerPan' onChange={e => handlePan(e)} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" />
+                                </div>
+                                <div>
+                                    <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Email<span className='text-red-500'>*</span></label>
+                                    <input required name='ownerEmail' onChange={e => handleEmail(e)} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" />
+                                </div>
+
+                                <div>
+                                    <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Is-Armed-Force?<span className='text-red-500'>*</span></label>
+                                    <select
+                                        className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                        name='ownerIsArmedForce'
+                                        onChange={e => handleIsArmedForce(e)}
+                                        required
+                                    >
+                                        <option value="">--Select --</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Is-Specially-Abled?<span className='text-red-500'>*</span></label>
+                                    <select
+                                        name='ownerSpeciallyAbled'
+                                        onChange={e => handleSpeciallyAbled(e)}
+                                        className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                        required
+                                    >
+                                        <option value="">--Select --</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+
                         </div>
+                        <div className="col-span-12 text-amber-600 font-semibold mt-4"><BiAddToQueue className="inline" /> Add Owners</div>
 
                         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
                             <div className="col-span-6"> <button onClick={() => props.backFun()} type="submit" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
