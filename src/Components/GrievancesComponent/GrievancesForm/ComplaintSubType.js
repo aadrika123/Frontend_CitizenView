@@ -36,7 +36,7 @@ function ComplaintSubType(props) {
 
         {/* sub heading */}
         <div className="col-span-12 mt-8">
-          {" "}
+          
           <h1 className={` ${titleColor} opacity-70`}>
             {props.complaintType}
           </h1>
@@ -44,7 +44,7 @@ function ComplaintSubType(props) {
 
         {/* headint */}
         <div className="col-span-12">
-          {" "}
+          
           <h1 className={`font-bold ${titleColor} text-2xl`}>
             Choose Complaint Sub-Type
           </h1>
@@ -52,7 +52,7 @@ function ComplaintSubType(props) {
 
         {/* description */}
         <div className="col-span-12">
-          {" "}
+          
           <h1 className={` ${titleColor} text-xs opacity-40`}>
             The complaint type you have chosen has following complaint sub-types. Select the option of your choice form the list given below.
           </h1>

@@ -49,7 +49,7 @@ function ComplaintReopenImage(props) {
                      <div className="col-span-6"> <button onClick={()=>props.reopenNext()} type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>
                      
                      <div className="col-span-12 my-4 text-center">
-                          {" "}
+                          
 
                           {/* skip an continue button */}
                           <button

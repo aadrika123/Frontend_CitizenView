@@ -22,6 +22,7 @@ import axios from 'axios'
 import apiLinks from "../../Components/GrievancesComponent/Api/GrievanceApi"
 // importing global data constant
 import { GlobalData } from '../../Components/GrievancesComponent/Context/contextVar'
+import { set } from 'react-hook-form'
 
 
 const GrievancesComplaints = () => {
@@ -31,6 +32,7 @@ const GrievancesComplaints = () => {
     const [toggleReopen ,setToggleReopen] = useState(false)
     const [toggleSubmitRate ,setToggleSubmitRate] = useState(false)
     const [getId, setGetId] = useState(0)
+    const [status , setStatus] = useState()
 
     // setting id of complaint list
     const postId = (index) => {
@@ -40,6 +42,7 @@ const GrievancesComplaints = () => {
 
    //  Collecting datas
     const [storeData, setStoreData] = useState({})
+    const [data, setData] = useState()
 
      //formIndex variable to hold number of screen to show in form
      const [formIndex, setFormIndex] = useState(1)
@@ -66,10 +69,11 @@ const GrievancesComplaints = () => {
 
    //  submit reopen grievance
     const submitReopen = () => {
-      axios.post(reopenComplaint, storeData)
+      axios.post(reopenComplaint+'/'+getId, storeData)
       .then((res) => {
          console.log("successfully reopened...", storeData)
          setFormIndex(prev => prev + 1)
+         setData(res.data.data)
          setToggleRate(false)
          setToggleReopen(true)
          setToggleSubmitRate(false)
@@ -99,7 +103,10 @@ const GrievancesComplaints = () => {
   }
  
      //forward forwarding to complaint Summary
-     const summary = () => {setFormIndex(2)}
+     const summary = (data) => {
+      setStatus(data)
+      setFormIndex(2)
+    }
 
    //   formwarding to complaint rate
      const rate = () => {
@@ -128,7 +135,7 @@ const GrievancesComplaints = () => {
      return (
          <>
 
-            <GlobalData.Provider value={{getId : getId, postId: postId}}>
+            <GlobalData.Provider value={{getId : getId, postId: postId, status: status}}>
                 {/* Complaint List */}
                 {formIndex == 1 && <ComplaintList summary={summary} backFun={backFun} />}
 
@@ -142,7 +149,7 @@ const GrievancesComplaints = () => {
                 {(formIndex == 3 && toggleReopen) ? <ComplaintReopen backFun={backFun} reopenNext={reopenNext} /> : null}
 
                 {/* Complaint Rating Success */}
-                {(formIndex == 4 && toggleSubmitRate) ? <ComplaintRateSuccess /> : null}
+                {(formIndex == 4 && toggleSubmitRate) ? <ComplaintRateSuccess complaintNo={data?.complaintNo} /> : null}
 
                 {/* Complaint Reopening Image */}
                 {(formIndex == 4 && toggleReopen) ? <ComplaintReopenImage backFun={backReopen} reopenNext={reopenNext}/> : null}

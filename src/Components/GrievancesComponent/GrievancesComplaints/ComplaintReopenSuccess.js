@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 
-function ComplaintReopenSuccess() {
+function ComplaintReopenSuccess(props) {
 
   // navigation constant
     const navigate = useNavigate()
@@ -33,16 +33,16 @@ function ComplaintReopenSuccess() {
 
         {/* content */}
         <div className="col-span-12 my-2">
-          {" "}
+          
           <div className='flex flex-col space-y-2 items-center border py-4 bg-green-800 rounded-sm shadow-md text-white'>
             <span className='font-bold text-3xl'>Complaint Reopened</span>
             <span className='border p-4 rounded-full bg-white text-green-800 text-3xl'><AiTwotoneLike/></span>
             <span className='font-semibold'>Complaint No.</span>
-            <span className='font-semibold'>PG-PGR-2021-02-04-000553</span>
+            <span className='font-semibold'>{props?.complaintNo}</span>
           </div>
         </div>
         <div className="col-span-12">
-          {" "}
+          
           <h1 className={` ${titleColor} opacity-70`}>
             The notification along with complaint number is sent to your registered mobile number. You can track the complaint status using mobile or web app.
           </h1>
@@ -54,7 +54,7 @@ function ComplaintReopenSuccess() {
 
           {/* back to home button */}
           <div className="col-span-12">
-            {" "}
+            
             <button
               onClick={() => navigate('/grievance-index')}
               type="submit"

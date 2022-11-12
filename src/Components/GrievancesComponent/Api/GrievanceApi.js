@@ -11,21 +11,25 @@
 const GrievanceApi = () => {
 
     // creating api variable
-    let baseUrl = "http://localhost:8000"
+    let baseUrl = "http://192.168.0.240:82"
+    let userId = 1
 
     let apiList = {
         
         // Register Complaint
-        fileComplaint : `${baseUrl}/fileComplaint`,
+        fileComplaint : `${baseUrl}/api/grievance/postFileComplaint`,
 
         // Rate Complaint
-        rateComplaint : `${baseUrl}/rateComplaint`,
+        rateComplaint : `${baseUrl}/api/grievance/updateRateComplaintById`,
 
         // Reopen Complaint
-        reopenComplaint : `${baseUrl}/reopenComplaint`,
+        reopenComplaint : `${baseUrl}/api/grievance/putReopenComplaintById`,
 
-        // Get Complaint List
-        listComplaint : `${baseUrl}/fileComplaint`,
+        // Get All Complaint List
+        listComplaint : `${baseUrl}/api/grievance/getAllComplaintList/${userId}`, 
+
+        // Get particular Complaint List
+        summaryComplaint : `${baseUrl}/api/grievance/getAllComplaintList`
     
     }
 

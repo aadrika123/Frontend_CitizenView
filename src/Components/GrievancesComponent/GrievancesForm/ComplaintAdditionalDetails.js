@@ -18,13 +18,13 @@ function ComplaintAdditionalDetails(props) {
 
   // form validation
   const validationSchema = yup.object({
-    complaintAdditionalDetails: yup.string().required("enter complaint description")
+    complaintDescription: yup.string().required("enter complaint description")
   })
 
   // Formik
   const formik = useFormik({
     initialValues: {
-      complaintAdditionalDetails: ""
+      complaintDescription: ""
     },
 
     onSubmit : (values) => {
@@ -64,7 +64,7 @@ function ComplaintAdditionalDetails(props) {
 
       {/* Title */}
         <div className="col-span-12">
-          {" "}
+          
           <h1 className={`font-bold ${titleColor} text-2xl`}>
             Complaint Description
           </h1>
@@ -72,7 +72,7 @@ function ComplaintAdditionalDetails(props) {
 
         {/* Description */}
         <div className="col-span-12">
-          {" "}
+          
           <h1 className={` ${titleColor} text-xs opacity-40`}>
             If you think apart from information provided till now complaint description are required to resolve complaint, provide it below:
           </h1>
@@ -80,10 +80,10 @@ function ComplaintAdditionalDetails(props) {
 
       {/* Textarea */}
         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                        <textarea name='complaintAdditionalDetails' value={formik.values.complaintAdditionalDetails} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                        <textarea name='complaintDescription' value={formik.values.complaintDescription} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                              placeholder='Write brief description about your complaint...' rows={3} />
 
-                  {formik.touched.complaintAdditionalDetails && formik.errors.complaintAdditionalDetails ? (<span className="text-sm text-red-600">{formik.errors.complaintAdditionalDetails}</span>): null}
+                  {formik.touched.complaintDescription && formik.errors.complaintDescription ? (<span className="text-sm text-red-600">{formik.errors.complaintDescription}</span>): null}
 
                     </div>
 
@@ -92,7 +92,7 @@ function ComplaintAdditionalDetails(props) {
 
           {/* Back button */}
           <div className="col-span-6">
-            {" "}
+            
             <button
               onClick={() => props.backFun()}
               className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
@@ -103,7 +103,7 @@ function ComplaintAdditionalDetails(props) {
 
           {/* Submit button */}
           <div className="col-span-6">
-            {" "}
+            
             <button
               type="submit"
               className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}

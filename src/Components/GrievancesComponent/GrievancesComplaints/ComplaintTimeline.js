@@ -34,7 +34,7 @@ function ComplaintTimeline(props) {
        <VerticalTimeline layout={'1-column-left'}>
  
  {/* Viewing timeling according to status */}
-      {props.status && <> 
+      {!props.status && <> 
 
           {/* Timeline Elements */}
           <VerticalTimelineElement
@@ -95,7 +95,7 @@ function ComplaintTimeline(props) {
     </div>
   </VerticalTimelineElement> </>}
 
-  {props.status ? <VerticalTimelineElement
+  {!props.status ? <VerticalTimelineElement
  position={'right'}
  contentStyle={{padding: '10px'}}
    className="vertical-timeline-element--work"

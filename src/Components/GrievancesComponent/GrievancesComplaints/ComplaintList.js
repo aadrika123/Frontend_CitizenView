@@ -85,7 +85,7 @@ function ComplaintList(props) {
           className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}
         >
           <div className="col-span-12">
-            {" "}
+            
             
             {/* Heading */}
             <h1 className={`font-bold ${titleColor} text-2xl`}>
@@ -96,21 +96,22 @@ function ComplaintList(props) {
           { !isLoading ?  
 
             // mapping
-            data.data.map((elem) => 
+            data.data.data.map((elem) => 
             
             <>
 
             {/* Complaint list */}
               <div onClick={() => {
-                props.summary()
-                postId(elem.id)
+                props.summary(elem?.complaintStatus)
+                postId(elem?.id)
                 }} className="col-span-12 bg-zinc-100 text-sm flex flex-col p-4 rounded-md shadow-sm hover:shadow-md mt-4 space-y-2 cursor-pointer hover:scale-105 hover:bg-zinc-200 transition-all duration-300 ease-in-out">
               <div>
               <span className={`font-bold ${titleColor} `}>
-              {elem.complaintSubType}
+              {elem?.complaintSubType}
             </span>
+            <span><img src={elem?.complaintImage} alt="" srcset="" /></span>
             <span className="flex flex-wrap space-x-2 items-center space-y-1">
-              <span><BsCalendarEvent/></span><span>{elem.complaintFiledDate}</span>
+              <span><BsCalendarEvent/></span><span>{elem?.complaintDate}</span>
             </span>
               </div>
 
@@ -118,9 +119,9 @@ function ComplaintList(props) {
               <span className={`font-bold ${titleColor} `}>
               Complaint No
             </span>
-            <span>{elem.complaintNo}</span>
-            <span className={(elem.complaintStatus == 'Open') ?`bg-red-100 w-max text-red-700 px-4 py-1.3 rounded-full shadow-sm uppercase`:`bg-green-100 w-max text-green-700 px-4 py-1.3 rounded-full shadow-sm uppercase`}>{elem.complaintStatus}</span>
-            <span>{elem.complaintApplicationStatus}</span>
+            <span>{elem?.complaintNo}</span>
+            {(elem?.complaintStatus) ? <span className= 'bg-red-100 w-max text-red-700 px-4 py-1.3 rounded-full shadow-sm uppercase'>Open</span>: <span className='bg-green-100 w-max text-green-700 px-4 py-1.3 rounded-full shadow-sm uppercase'>Closed</span>}
+            <span>{elem?.complaintApplicationStatus}</span>
               </div>
 
           </div>

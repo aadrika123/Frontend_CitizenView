@@ -97,7 +97,7 @@ function ComplaintLandmark(props) {
           
           {/* back button */}
           <div className="col-span-6">
-            {" "}
+            
             <button
               onClick={() => props.backFun()}
               className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
@@ -118,7 +118,7 @@ function ComplaintLandmark(props) {
 
           {/* skip and continue button */}
           <div className="col-span-12 my-4 text-center">
-                {" "}
+                
                 <button
                   onClick={() => props.nextFun()}
                   type="submit"

@@ -15,11 +15,15 @@ import { useFormik } from 'formik'
 import apiLinks from "../../GrievancesComponent/Api/GrievanceApi"
 import axios from 'axios'
 import * as yup from 'yup'
+import {GlobalData} from '../Context/contextVar'
+import { useContext } from 'react';
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 
 
 function ComplaintRate(props) {
+
+  const {getId} = useContext(GlobalData)
 
   // Validation form
   const validationSchema = yup.object({
@@ -49,7 +53,7 @@ function ComplaintRate(props) {
 
   // submit function
   const funSubmit = (values) => {
-    axios.post(rateComplaint, values)
+    axios.post(rateComplaint+"/"+getId, values)
     .then((res) => {
       props.submitRate()
       console.log("success rated...")
@@ -90,13 +94,13 @@ function ComplaintRate(props) {
 
           {/* star rating */}
           <div className="col-span-12">
-            {" "}
+            
             <h1 className={`font-bold ${titleColor} text-2xl`}>
               How would you rate your experience with us ?
             </h1>
           </div>
           <div className="col-span-12 flex items-center space-x-8">
-            {" "}
+            
             <div>
             <StarsRating
   count={5}
@@ -115,7 +119,7 @@ function ComplaintRate(props) {
 
           {/* Remark feedback */}
           <div className="col-span-12">
-            {" "}
+            
             <h1 className={` ${titleColor} font-bold`}>
              What was good ?
             </h1>
@@ -199,7 +203,7 @@ function ComplaintRate(props) {
 
             {/* Back */}
             <div className="col-span-6">
-              {" "}
+              
               <button
                 onClick={() => props.backFun()}
                 className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
@@ -210,7 +214,7 @@ function ComplaintRate(props) {
 
             {/* Submit */}
             <div className="col-span-6">
-              {" "}
+              
               <button
                 type="submit"
                 className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}

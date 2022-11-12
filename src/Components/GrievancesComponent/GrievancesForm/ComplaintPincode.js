@@ -57,7 +57,7 @@ function ComplaintPincode(props) {
 
             {/* sub heading */}
             <div className="col-span-12">
-              {" "}
+              
               <h1 className={` ${titleColor} opacity-70`}>
                 Complaint's Location
               </h1>
@@ -65,7 +65,7 @@ function ComplaintPincode(props) {
 
             {/* Heading */}
             <div className="col-span-12">
-              {" "}
+              
               <h1 className={`font-bold ${titleColor} text-2xl`}>
                 Do you know the Complaint Pincode ?
               </h1>
@@ -73,7 +73,7 @@ function ComplaintPincode(props) {
 
             {/* description */}
             <div className="col-span-12">
-              {" "}
+              
               <h1 className={` ${titleColor} text-xs opacity-40`}>
                 If you know the complaintPincode of the complaint address, provide below. It will help up us identify complaint locaiton easily or you can skip and continue.
               </h1>
@@ -92,7 +92,7 @@ function ComplaintPincode(props) {
               
               {/* button button */}
               <div className="col-span-6">
-                {" "}
+                
                 <button
                   onClick={() => props.backFun()}
                   className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
@@ -103,7 +103,7 @@ function ComplaintPincode(props) {
 
               {/* next button */}
               <div className="col-span-6">
-                {" "}
+                
                 <button
                   type="submit"
                   className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
@@ -114,7 +114,7 @@ function ComplaintPincode(props) {
 
               {/* skip and continue button */}
               <div className="col-span-12 my-4 text-center">
-                {" "}
+                
                 <button
                   onClick = {() =>{ 
                     props.nextFun()

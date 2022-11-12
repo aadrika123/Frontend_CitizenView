@@ -20,7 +20,7 @@ function ComplaintAddress(props) {
   const validationSchema = yup.object({
       complaintCity : yup.string().required("select city"),
       complaintLocality: yup.string().required("select locality or mohalla"),
-      complaintWardNo: yup.string().required("enter ward no."),
+      wardId: yup.string().required("enter ward no."),
   })
 
   // Formik
@@ -28,7 +28,7 @@ function ComplaintAddress(props) {
     initialValues: {
       complaintCity : '',
       complaintLocality: '',
-      complaintWardNo: '',
+      wardId: '',
       complaintHouseNo: ''
     },
 
@@ -70,7 +70,7 @@ function ComplaintAddress(props) {
 
         {/* Sub title */}
         <div className="col-span-12">
-          {" "}
+          
           <h1 className={` ${titleColor} opacity-70`}>
             Complaint's Location
           </h1>
@@ -78,7 +78,7 @@ function ComplaintAddress(props) {
 
         {/* Title */}
         <div className="col-span-12">
-          {" "}
+          
           <h1 className={`font-bold ${titleColor} text-2xl`}>
             Provide Complaint address
           </h1>
@@ -86,7 +86,7 @@ function ComplaintAddress(props) {
 
         {/* Description */}
         <div className="col-span-12">
-          {" "}
+          
           <h1 className={` ${titleColor} text-xs opacity-40`}>
             Choose the locality/mohalla of the complaint from the list given below.
           </h1>
@@ -135,11 +135,11 @@ function ComplaintAddress(props) {
 
                       {/* Ward No. */}
                         <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Ward No.<span className='text-red-500'>*</span></label>
-                        <input name="complaintWardNo" value={formik.values.complaintWardNo} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" placeholder='Enter ward no.'
+                        <input name="wardId" value={formik.values.wardId} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md" placeholder='Enter ward no.'
                              />
 
                       {/* formik error view */}
-                      {formik.touched.complaintWardNo && formik.errors.complaintWardNo ? (<span className="text-sm text-red-600">{formik.errors.complaintWardNo}</span>): null}
+                      {formik.touched.wardId && formik.errors.wardId ? (<span className="text-sm text-red-600">{formik.errors.wardId}</span>): null}
 
                     </div>
 
@@ -157,7 +157,7 @@ function ComplaintAddress(props) {
 
           {/* Back */}
           <div className="col-span-6">
-            {" "}
+            
             <button
               onClick={() => props.backFun()}
               className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
@@ -168,7 +168,7 @@ function ComplaintAddress(props) {
 
           {/* Next */}
           <div className="col-span-6">
-            {" "}
+            
             <button
               type="submit"
               className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
