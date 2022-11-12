@@ -155,7 +155,7 @@ function PropertyCitizenEntryForm() {
 
 
 
-                <div className={`${formIndex == 16 | 17 ? 'hidden' : 'block'}`}>  <FeedbackScreen payloadData={payloadData} /> </div>
+                <div className={`${formIndex == 16 || formIndex == 17 ? 'hidden' : 'block'}`}>  <FeedbackScreen payloadData={payloadData} /> </div>
 
 
             </div>

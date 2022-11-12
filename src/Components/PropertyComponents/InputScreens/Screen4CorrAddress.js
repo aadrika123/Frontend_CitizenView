@@ -43,7 +43,7 @@ function Screen4CorrAddress(props) {
             corrState: propertyAddress?.propState,
         },
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+            // alert(JSON.stringify(values, null, 2));
             props.data("propertyCorrAddress", values)
             props.nextFun()
         },
