@@ -94,7 +94,7 @@ function ComplaintType(props) {
 
           {/* heading */}
           <div className="col-span-12">
-            {" "}
+            
             <h1 className={`font-bold ${titleColor} text-2xl`}>
               Select Complaint Type
             </h1>
@@ -102,7 +102,7 @@ function ComplaintType(props) {
 
           {/* description */}
           <div className="col-span-12">
-            {" "}
+            
             <h1 className={` ${titleColor} text-xs opacity-40`}>
               Select the option related to your complaint from the list given
               below. If the complaint type you ar looking for is not listed
@@ -149,7 +149,7 @@ function ComplaintType(props) {
 
             {/* back button */}
             <div className="col-span-6">
-              {" "}
+              
               <button
                 onClick={() => navigate("/grievance-index")}
                 className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
@@ -160,7 +160,7 @@ function ComplaintType(props) {
 
             {/* Next button */}
             <div className="col-span-6">
-              {" "}
+              
               <button
                 type="submit"
                 className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}

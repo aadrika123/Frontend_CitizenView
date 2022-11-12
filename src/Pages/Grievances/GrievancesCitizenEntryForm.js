@@ -18,42 +18,56 @@ import ComplaintImage from "../../Components/GrievancesComponent/GrievancesForm/
 import ComplaintAdditionalDetails from "../../Components/GrievancesComponent/GrievancesForm/ComplaintAdditionalDetails";
 import ComplaintFileSuccess from "../../Components/GrievancesComponent/GrievancesForm/ComplaintFileSuccess";
 // Importing api links
-import apiLinks from "../../Components/GrievancesComponent/Api/GrievanceApi"
+import apiLinks from "../../Components/GrievancesComponent/Api/GrievanceApi";
 
 const GrievancesCitizenEntryForm = () => {
-
   // storing datas
-  const [storeData, setStoreData] = useState({})
+  const [storeData, setStoreData] = useState({});
+  const [successData, setSuccessData] = useState()
 
   // Destructing api
-  const{fileComplaint} = apiLinks()
+  const { fileComplaint } = apiLinks();
 
   // collecting data
   const postData = (data) => {
-    console.log("data get => ",data)
-    setStoreData(Object.assign(storeData,data))
+    console.log("data get => ", data);
+    setStoreData(Object.assign(storeData, data));
   };
 
-// viewing stored data
+  // viewing stored data
   useEffect(() => {
-    console.log("stored data => ", storeData)
-  }, [postData])
+    console.log("stored data => ", storeData);
+  }, [postData]);
 
   // submiting complaint data
   const submitData = (data) => {
-    console.log("data get => ",data)
-    setStoreData(Object.assign(storeData,data))
+    console.log("data get => ", data);
+    setStoreData(Object.assign(storeData, data));
 
     // static added data for dummy server api
-    setStoreData(Object.assign(storeData,{complaintStatus: "Open", complaintApplicationStatus: "Pending for assignment", complaintFiledDate: "04-Feb-2021", complaintNo: "PG-PGR-2021-02-04-0005553",}))
-    
-    axios.post(fileComplaint,storeData)
-    .then((response) => {
-        setFormIndex(prev => prev+1)
-        console.log("data posted successfully....", storeData)
-    })
-    .catch((error) => console.log("data post error => ", error))
-  }
+    // setStoreData(Object.assign(storeData,{complaintStatus: "Open", complaintApplicationStatus: "Pending for assignment", complaintFiledDate: "04-Feb-2021", complaintNo: "PG-PGR-2021-02-04-0005553",}))
+
+    postComplaint();
+  };
+
+  const postComplaint = () => {
+    axios
+      .post(fileComplaint, storeData)
+      .then((response) => {
+        setSuccessData(response.data.data[0])
+        setFormIndex((prev) => prev + 1);
+        console.log("data posted successfully....", storeData);
+      })
+      .catch((error) =>
+        console.log(
+          "data post error => ",
+          error,
+          "\n",
+          "data is => ",
+          storeData
+        )
+      );
+  };
 
   //formIndex variable to hold number of screen to show in form
   const [formIndex, setFormIndex] = useState(1);
@@ -68,72 +82,68 @@ const GrievancesCitizenEntryForm = () => {
 
   return (
     <>
+      {/* Complaint Type */}
+      {formIndex == 1 && (
+        <ComplaintType
+          nextFun={nextFun}
+          backFun={backFun}
+          formIndex={formIndex}
+          postData={postData}
+        />
+      )}
 
-        {/* Complaint Type */}
-        {formIndex == 1 && (
-          <ComplaintType
-            nextFun={nextFun}
-            backFun={backFun}
-            formIndex={formIndex}
-            postData={postData}
-          />
-        )}
+      {/* Complaint Pin Code */}
+      {formIndex == 2 && (
+        <ComplaintPincode
+          nextFun={nextFun}
+          backFun={backFun}
+          formIndex={formIndex}
+          postData={postData}
+        />
+      )}
 
-        {/* Complaint Pin Code */}
-        {formIndex == 2 && (
-          <ComplaintPincode
-            nextFun={nextFun}
-            backFun={backFun}
-            formIndex={formIndex}
-            postData={postData}
-          />
-        )}
+      {/* Complaint Address */}
+      {formIndex == 3 && (
+        <ComplaintAddress
+          nextFun={nextFun}
+          backFun={backFun}
+          formIndex={formIndex}
+          postData={postData}
+        />
+      )}
 
-        {/* Complaint Address */}
-        {formIndex == 3 && (
-          <ComplaintAddress
-            nextFun={nextFun}
-            backFun={backFun}
-            formIndex={formIndex}
-            postData={postData}
-          />
-        )}
+      {/* Complaint Landmark */}
+      {formIndex == 4 && (
+        <ComplaintLandmark
+          nextFun={nextFun}
+          backFun={backFun}
+          formIndex={formIndex}
+          postData={postData}
+        />
+      )}
 
-        {/* Complaint Landmark */}
-        {formIndex == 4 && (
-          <ComplaintLandmark
-            nextFun={nextFun}
-            backFun={backFun}
-            formIndex={formIndex}
-            postData={postData}
-          />
-        )}
+      {/* Complaint Image */}
+      {formIndex == 5 && (
+        <ComplaintImage
+          nextFun={nextFun}
+          backFun={backFun}
+          formIndex={formIndex}
+          postData={postData}
+        />
+      )}
 
-        {/* Complaint Image */}
-        {formIndex == 5 && (
-          <ComplaintImage
-            nextFun={nextFun}
-            backFun={backFun}
-            formIndex={formIndex}
-            postData={postData}
-          />
-        )}
+      {/* Complaint Additional Details */}
+      {formIndex == 6 && (
+        <ComplaintAdditionalDetails
+          backFun={backFun}
+          formIndex={formIndex}
+          submitData={submitData}
+          postData={postData}
+        />
+      )}
 
-        {/* Complaint Additional Details */}
-        {formIndex == 6 && (
-          <ComplaintAdditionalDetails
-            backFun={backFun}
-            formIndex={formIndex}
-            submitData={submitData}
-            postData={postData}
-          />
-        )}
-
-        {/* Complaint succes screen */}
-        {formIndex == 7 && (
-          <ComplaintFileSuccess/>
-        )}
-
+      {/* Complaint succes screen */}
+      {formIndex == 7 && <ComplaintFileSuccess complaintNo={successData?.complaintNo}/>}
     </>
   );
 };

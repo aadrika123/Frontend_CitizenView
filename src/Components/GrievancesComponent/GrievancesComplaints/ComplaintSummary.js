@@ -22,14 +22,13 @@ import ThemeStyle from '../../Styles/ThemeStyle'
 function ComplaintSummary(props) {
 
   // destructing context variable
-  const {getId} = useContext(GlobalData)
+  const {getId, status} = useContext(GlobalData)
 
   // destructing api constant
-  const {listComplaint} = apiLinks()
+  const {summaryComplaint} = apiLinks()
 
   // constants
   const [complaintData, setComplaintData] = useState([])
-  const [status, setStatus] = useState(true)
 
   // viewing complaint list id
   console.log("complaint list id => ", getId)
@@ -37,21 +36,15 @@ function ComplaintSummary(props) {
   // getting data by axios and useQuery by id
   const {isLoading, data, error} = useQuery("getComplaintData", async () => {
     try {
-      const data = await axios.get(listComplaint + "/" + getId);
+      const data = await axios.post(summaryComplaint, getId);
       console.log("getting complaint data => ", data)
-      setComplaintData(data.data)
+      setComplaintData(data.data.data)
       return data;
     }
     catch (error) {
       throw Error("Unable to get complaint data", error);
     }
   })
-
-
-  // handling timeline according to status
-  useEffect(() => {
-    complaintData.complaintStatus == 'Closed' ? setStatus(true) : setStatus(false)
-  }, [complaintData])
 
 
   //destructuring predefined colors to maintain uniform theme everywhere
@@ -76,7 +69,6 @@ function ComplaintSummary(props) {
         className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}
       >
         <div className="col-span-12">
-          {" "}
           
           {/* Heading */}
           <h1 className={`font-bold ${titleColor} text-2xl`}>
@@ -113,7 +105,7 @@ function ComplaintSummary(props) {
           <hr />
           <div className="col-span-12 w-full flex flex-wrap my-1">
             <div className="col-span-6 text-sm font-bold text-zinc-800  w-1/2 ">Additional Details</div>
-            <div className="col-span-6 text-sm w-1/2 ">{complaintData?.complaintAdditionalDetails}</div>
+            <div className="col-span-6 text-sm w-1/2 ">{complaintData?.complaintDescription}</div>
           </div>
           <hr />
           <div className="col-span-12 w-full flex flex-wrap my-1">
@@ -158,7 +150,6 @@ function ComplaintSummary(props) {
 
           {/* Button */}
           <div className="col-span-6">
-            {" "}
             <button
               type="submit"
               className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}

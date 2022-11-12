@@ -56,7 +56,7 @@ function ComplaintReopen(props) {
         className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 py-10 md:p-10`}
       >
         <div className="col-span-12">
-          {" "}
+          
 
           {/* Heading */}
           <h1 className={`font-bold ${titleColor} text-2xl`}>
@@ -64,7 +64,7 @@ function ComplaintReopen(props) {
           </h1>
         </div>
         <div className="col-span-12">
-          {" "}
+          
 
           {/* Description */}
           <h1 className={` ${titleColor} text-xs opacity-40`}>
@@ -146,7 +146,7 @@ function ComplaintReopen(props) {
 
           {/* Back button */}
           <div className="col-span-6">
-            {" "}
+            
             <button
               onClick={() => props.backFun()}
               className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
@@ -157,7 +157,7 @@ function ComplaintReopen(props) {
 
           {/* Next button  */}
           <div className="col-span-6">
-            {" "}
+            
             <button
               type="submit"
               className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}
