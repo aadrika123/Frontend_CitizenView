@@ -33,7 +33,8 @@ function Screen1(props) {
     const validationSchema = yup.object(
         {
             wardNo: yup.string().required("This is a required field !"),
-            
+            newWardNo: yup.string().required("This is a required field !"),
+
         }
     );
 
@@ -48,9 +49,9 @@ function Screen1(props) {
         },
         onSubmit: values => {
             // alert(JSON.stringify(values, null, 2));
-            props.data("wardDetails",values)
+            props.data("wardDetails", values)
             props.nextFun()
-        },
+        }, validationSchema
     });
 
 
@@ -104,10 +105,11 @@ function Screen1(props) {
                                     ))
                                 }
                             </select>
+                            <p className='text-red-500 text-xs'>{formik.touched.newWardNo && formik.errors.newWardNo ? formik.errors.newWardNo : null}</p>
                         </div>
-                        
-                        
-                        
+
+
+
                         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
                             <div className="col-span-6"> <button onClick={goBack} type="button" className={`shadow-lg w-full px-6 py-4 ${backButtonColor} text-white font-medium text-xs leading-tight  rounded  ${backBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Back</button></div>
                             <div className="col-span-6"> <button type="submit" className={`shadow-lg w-full px-6 py-4 ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`}>Next</button></div>

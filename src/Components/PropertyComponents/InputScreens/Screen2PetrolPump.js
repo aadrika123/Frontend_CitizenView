@@ -15,6 +15,7 @@ import Info from '../../Common/Info'
 import ThemeStyle from '../../Styles/ThemeStyle'
 import { useFormik } from 'formik';
 import { useState } from 'react';
+import * as yup from 'yup';
 
 
 function Screen2PetrolPump(props) {
@@ -23,25 +24,33 @@ function Screen2PetrolPump(props) {
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
+    const validationSchema = yup.object(
+        {
+            hasPetrolPump: yup.string().required("This is a required field !"),
+            // petrolPumpArea: yup.string().required("This is a required field !"),
+            // petrolPumpInstallDate: yup.string().required("This is a required field !"),
+        }
+    );
+
     const formik = useFormik({
         initialValues: {
             hasPetrolPump: '',
-            petrolPumpArea:'',
-            petrolPumpInstallDate:''
+            petrolPumpArea: '',
+            petrolPumpInstallDate: ''
         },
         onSubmit: values => {
             // alert(JSON.stringify(values, null, 2));
-            props.data("hasPetrolPump",values)
+            props.data("hasPetrolPump", values)
             props.nextFun()
-        },
+        }, validationSchema
     });
 
     const handlePetrolPump = e => {
         formik.values.hasPetrolPump = e.target.value
         setPetrolPump(e.target.value)
     }
-const handlePetrolPumpArea = e => formik.values.petrolPumpArea = e.target.value;
-const handlePetrolPumpInstallDate = e => formik.values.petrolPumpInstallDate = e.target.value;
+    const handlePetrolPumpArea = e => formik.values.petrolPumpArea = e.target.value;
+    const handlePetrolPumpInstallDate = e => formik.values.petrolPumpInstallDate = e.target.value;
 
 
     return (
@@ -64,13 +73,14 @@ const handlePetrolPumpInstallDate = e => formik.values.petrolPumpInstallDate = e
                             <select
                                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                                 onChange={e => handlePetrolPump(e)}
-                                name="occupancyType"
+                                name="hasPetrolPump"
                                 required
                             >
                                 <option>--select--</option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
                             </select>
+                            <p className='text-red-500 text-xs'>{formik.touched.hasPetrolPump && formik.errors.hasPetrolPump ? formik.errors.hasPetrolPump : null}</p>
                         </div>
                         {petrolPump == "Yes" &&
                             <div className='col-span-12'>
@@ -80,8 +90,10 @@ const handlePetrolPumpInstallDate = e => formik.values.petrolPumpInstallDate = e
                                         type="text"
                                         className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                                         onChange={e => handlePetrolPumpArea(e)}
-                                        name="occupancyType"
+                                        name="petrolPumpArea"
                                     />
+                                    <p className='text-red-500 text-xs'>{formik.touched.petrolPumpArea && formik.errors.petrolPumpArea ? formik.errors.petrolPumpArea : null}</p>
+
                                 </div>
                                 <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
                                     <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Installation Date<span className='text-red-500'>*</span></label>
@@ -89,9 +101,10 @@ const handlePetrolPumpInstallDate = e => formik.values.petrolPumpInstallDate = e
                                         type="date"
                                         className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                                         onChange={e => handlePetrolPumpInstallDate(e)}
-                                        name="occupancyType"
-                                        required
+                                        name="petrolPumpInstallDate"
+                                        
                                     />
+                                    <p className='text-red-500 text-xs'>{formik.touched.petrolPumpInstallDate && formik.errors.petrolPumpInstallDate ? formik.errors.petrolPumpInstallDate : null}</p>
                                 </div>
                             </div>}
 

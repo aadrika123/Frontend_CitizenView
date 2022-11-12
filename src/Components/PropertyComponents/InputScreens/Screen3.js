@@ -14,11 +14,22 @@ import Info from '../../Common/Info'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 import { useFormik } from 'formik';
+import * as yup from 'yup';
 
 
 function Screen3(props) {
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
+
+    const validationSchema = yup.object(
+        {
+            propertyKhataNo: yup.string().required("This is a required field !"),
+            propertyPlotNo: yup.string().required("This is a required field !"),
+            propertyVillageMauja: yup.string().required("This is a required field !"),
+            propertyAreaOfPlot: yup.string().required("This is a required field !"),
+            propertyRoadWidth: yup.string().required("This is a required field !"),
+        }
+    );
 
     const formik = useFormik({
         initialValues: {
@@ -32,7 +43,7 @@ function Screen3(props) {
             // alert(JSON.stringify(values, null, 2));
             props.data("propertyDetails", values)
             props.nextFun()
-        },
+        }, validationSchema
     });
     const handleKhataNo = e => formik.values.propertyKhataNo = e.target.value
     const handlePlotNo = e => formik.values.propertyPlotNo = e.target.value
@@ -62,6 +73,8 @@ function Screen3(props) {
                                     onChange={e => handleKhataNo(e)}
                                     name="propertyKhataNo"
                                 />
+                                <p className='text-red-500 text-xs'>{formik.touched.propertyKhataNo && formik.errors.propertyKhataNo ? formik.errors.propertyKhataNo : null}</p>
+
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Plot No<span className='text-red-500'>*</span></label>
@@ -71,6 +84,8 @@ function Screen3(props) {
                                     onChange={e => handlePlotNo(e)}
                                     name="propertyPlotNo"
                                 />
+                                <p className='text-red-500 text-xs'>{formik.touched.propertyPlotNo && formik.errors.propertyPlotNo ? formik.errors.propertyPlotNo : null}</p>
+
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Village/Mauja Name<span className='text-red-500'>*</span></label>
@@ -80,6 +95,8 @@ function Screen3(props) {
                                     onChange={e => hanldeVillage(e)}
                                     name="propertyVillageMauja"
                                 />
+                                <p className='text-red-500 text-xs'>{formik.touched.propertyVillageMauja && formik.errors.propertyVillageMauja ? formik.errors.propertyVillageMauja : null}</p>
+
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Area of Plot (in Decimal)<span className='text-red-500'>*</span></label>
@@ -89,6 +106,8 @@ function Screen3(props) {
                                     onChange={e => handleAreofPloat(e)}
                                     name="propertyAreaOfPlot"
                                 />
+                                <p className='text-red-500 text-xs'>{formik.touched.propertyAreaOfPlot && formik.errors.propertyAreaOfPlot ? formik.errors.propertyAreaOfPlot : null}</p>
+
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Road Width (in ft)<span className='text-red-500'>*</span></label>
@@ -98,6 +117,8 @@ function Screen3(props) {
                                     onChange={e => handleRoadWidth(e)}
                                     name="propertyRoadWidth"
                                 />
+                                <p className='text-red-500 text-xs'>{formik.touched.propertyRoadWidth && formik.errors.propertyRoadWidth ? formik.errors.propertyRoadWidth : null}</p>
+
                             </div>
                         </div>
 

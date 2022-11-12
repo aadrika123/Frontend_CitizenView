@@ -17,6 +17,7 @@ import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik';
 import Info from '../../Common/Info'
 import { BiAddToQueue } from 'react-icons/bi'
+import * as yup from 'yup';
 
 
 function Screen1Ownweship(props) {
@@ -28,6 +29,12 @@ function Screen1Ownweship(props) {
 
     const navigate = useNavigate();
 
+    const validationSchema = yup.object(
+        {
+            ownershipType: yup.string().required("This is a required field !"),
+        }
+    );
+
 
     const formik = useFormik({
         initialValues: {
@@ -37,7 +44,7 @@ function Screen1Ownweship(props) {
             // alert(JSON.stringify(values, null, 2));
             props.data("ownerdhip",values)
             props.nextFun()
-        },
+        },validationSchema
     });
 
 
@@ -72,6 +79,7 @@ function Screen1Ownweship(props) {
                                     ))
                                 }
                             </select>
+                            <p className='text-red-500 text-xs'>{formik.touched.ownershipType && formik.errors.ownershipType ? formik.errors.ownershipType : null}</p>
 
                         </div>
 

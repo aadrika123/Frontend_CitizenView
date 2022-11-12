@@ -15,6 +15,7 @@ import Info from '../../Common/Info'
 import ThemeStyle from '../../Styles/ThemeStyle'
 import { useFormik } from 'formik';
 import { useState } from 'react';
+import * as yup from 'yup';
 
 
 function Screen5(props) {
@@ -22,6 +23,15 @@ function Screen5(props) {
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
     const [isChecked, setIsChecked] = useState(false)
+
+    const validationSchema = yup.object(
+        {
+            electricKno: yup.string().required("This is a required field !"),
+            electricAccNo: yup.string().required("This is a required field !"),
+            electricBindBookNo: yup.string().required("This is a required field !"),
+            electricConncectionCategory: yup.string().required("This is a required field !"),            
+        }
+    );
 
     const formik = useFormik({
         initialValues: {
@@ -34,7 +44,7 @@ function Screen5(props) {
             // alert(JSON.stringify(values, null, 2));
             props.data("electricityDetails",values)
             props.nextFun()
-        },
+        },validationSchema
     });
 
     const handleElecticityKNo = e => formik.values.electricKno = e.target.value
@@ -71,6 +81,7 @@ function Screen5(props) {
                                     onChange={e => handleElecticityKNo(e)}
                                     name="electricKno"
                                 />
+                                <p className='text-red-500 text-xs'>{formik.touched.electricKno && formik.errors.electricKno ? formik.errors.electricKno : null}</p>
 
                             </div>
                             <div className='col-span-12 text-center font-semibold text-2xl text-red-600'>or</div>
@@ -81,6 +92,8 @@ function Screen5(props) {
                                     onChange={e => handleElecticityAccNo(e)}
                                     name="electricAccNo"
                                 />
+                                <p className='text-red-500 text-xs'>{formik.touched.electricAccNo && formik.errors.electricAccNo ? formik.errors.electricAccNo : null}</p>
+
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12">
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">BIND/BOOK No.<span className='text-red-500'>*</span></label>
@@ -89,6 +102,8 @@ function Screen5(props) {
                                     onChange={e => handleElecticityBindBookNo(e)}
                                     name="electricBindBookNo"
                                 />
+                                <p className='text-red-500 text-xs'>{formik.touched.electricBindBookNo && formik.errors.electricBindBookNo ? formik.errors.electricBindBookNo : null}</p>
+
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12">
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Electricity Consumer Category<span className='text-red-500'>*</span></label>
@@ -100,6 +115,8 @@ function Screen5(props) {
                                     <option value="0">0</option>
                                     <option value="1">1</option>
                                 </select>
+                                <p className='text-red-500 text-xs'>{formik.touched.electricConncectionCategory && formik.errors.electricConncectionCategory ? formik.errors.electricConncectionCategory : null}</p>
+
                             </div>
 
                         </div>}

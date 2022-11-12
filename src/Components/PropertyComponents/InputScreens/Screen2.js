@@ -15,6 +15,7 @@ import Info from '../../Common/Info'
 import ThemeStyle from '../../Styles/ThemeStyle'
 import { useFormik } from 'formik';
 import { useState } from 'react';
+import * as yup from 'yup';
 
 
 function Screen2(props) {
@@ -23,17 +24,25 @@ function Screen2(props) {
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
+    const validationSchema = yup.object(
+        {
+            hasMobileTower: yup.string().required("This is a required field !"),
+            // mobileTowerArea: yup.string().required("This is a required field !"),
+            // mobileTowerInstallDate: yup.string().required("This is a required field !"),
+        }
+    );
+
     const formik = useFormik({
         initialValues: {
             hasMobileTower: '',
-            mobileTowerArea:'',
-            mobileTowerInstallDate:'',
+            mobileTowerArea: '',
+            mobileTowerInstallDate: '',
         },
         onSubmit: values => {
             // alert(JSON.stringify(values, null, 2));
-            props.data("hasMobileTower",values)
+            props.data("hasMobileTower", values)
             props.nextFun()
-        },
+        }, validationSchema
     });
     const handdleHadMobileTower = e => {
         formik.values.hasMobileTower = e.target.value
@@ -65,13 +74,15 @@ function Screen2(props) {
                             <select
                                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                                 onChange={e => handdleHadMobileTower(e)}
-                                name="occupancyType"
+                                name="hasMobileTower"
                                 required
                             >
                                 <option>--select--</option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
                             </select>
+                            <p className='text-red-500 text-xs'>{formik.touched.hasMobileTower && formik.errors.hasMobileTower ? formik.errors.hasMobileTower : null}</p>
+
                         </div>
                         {hadMobileTower == "Yes" &&
                             <div className='col-span-12'>
@@ -81,8 +92,10 @@ function Screen2(props) {
                                         type="text"
                                         className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                                         onChange={e => handleMobileTowerArea(e)}
-                                        name="occupancyType"
+                                        name="mobileTowerArea"
                                     />
+                                    <p className='text-red-500 text-xs'>{formik.touched.mobileTowerArea && formik.errors.mobileTowerArea ? formik.errors.mobileTowerArea : null}</p>
+
                                 </div>
                                 <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
                                     <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Installation Date<span className='text-red-500'>*</span></label>
@@ -90,14 +103,16 @@ function Screen2(props) {
                                         type="date"
                                         className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                                         onChange={e => handleMobileTowerInstalDate(e)}
-                                        name="occupancyType"
-                                        required
+                                        name="mobileTowerInstallDate"
+                                        
                                     />
+                                    <p className='text-red-500 text-xs'>{formik.touched.mobileTowerInstallDate && formik.errors.mobileTowerInstallDate ? formik.errors.mobileTowerInstallDate : null}</p>
+
                                 </div>
                             </div>}
-                    
 
-                        
+
+
 
 
                         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">

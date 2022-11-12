@@ -51,10 +51,15 @@ function Screen7OwnerDetails(props) {
     }
 
     const submitRecord = () => {
-        props.data("ownerDetails", ownerRecord)
-        props.nextFun()
-
+        if (ownerRecord.length == 0) {
+            alert("Add Atlest One Owner")
+        } else {
+            props.data("ownerDetails", ownerRecord)
+            props.nextFun()
+        }
     }
+
+    console.log("ownerDetails", ownerRecord.length)
 
     const formik = useFormik({
         initialValues: {
@@ -102,7 +107,7 @@ function Screen7OwnerDetails(props) {
                                     <input type="text" name="ownerName" className={`${inputStyle}`} placeholder="Enter owner name" value={formik.values.ownerName} onChange={formik.handleChange} />
                                     <p className='text-red-500 text-xs'>{formik.touched.ownerName && formik.errors.ownerName ? formik.errors.ownerName : null}</p>
                                 </div>
-                                                                                               
+
 
                                 <div className="col-span-12">
                                     <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">Guardian Name</label>

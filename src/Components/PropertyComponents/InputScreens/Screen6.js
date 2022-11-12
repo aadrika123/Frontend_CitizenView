@@ -14,14 +14,21 @@ import { RiArrowDropLeftFill } from 'react-icons/ri'
 import ThemeStyle from '../../Styles/ThemeStyle'
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik';
+import * as yup from 'yup';
 
 
 function Screen6(props) {
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
-
-    const navigate = useNavigate();
+    const validationSchema = yup.object(
+        {
+            buildingPlanApproveNo: yup.string().required("This is a required field !"),
+            buildingPlanApproveDate: yup.string().required("This is a required field !"),
+            waterConsumerNo: yup.string().required("This is a required field !"),
+            waterConnectionDate: yup.string().required("This is a required field !"),            
+        }
+    );
 
     const formik = useFormik({
         initialValues: {
@@ -34,7 +41,7 @@ function Screen6(props) {
             // alert(JSON.stringify(values, null, 2));
             props.data("waterDetails",values)
             props.nextFun()
-        },
+        },validationSchema
     });
     const handleBuildingPlanAppNo = e => formik.values.buildingPlanApproveNo = e.target.value
     const handleBuildingPlanAppDate = e => formik.values.buildingPlanApproveDate = e.target.value
@@ -63,6 +70,8 @@ function Screen6(props) {
                                     onChange={e => handleBuildingPlanAppNo(e)}
                                     name="buildingPlanApproveNo"
                                 />
+                                <p className='text-red-500 text-xs'>{formik.touched.buildingPlanApproveNo && formik.errors.buildingPlanApproveNo ? formik.errors.buildingPlanApproveNo : null}</p>
+
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12">
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Building Plan Approval Date</label>
@@ -72,6 +81,8 @@ function Screen6(props) {
                                     onChange={e => handleBuildingPlanAppDate(e)}
                                     name="buildingPlanApproveDate"
                                 />
+                                <p className='text-red-500 text-xs'>{formik.touched.buildingPlanApproveDate && formik.errors.buildingPlanApproveDate ? formik.errors.buildingPlanApproveDate : null}</p>
+
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12">
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Water Consumer No.</label>
@@ -80,6 +91,8 @@ function Screen6(props) {
                                     onChange={e => handleWaterConsumerNo(e)}
                                     name="waterConsumerNo"
                                 />
+                                <p className='text-red-500 text-xs'>{formik.touched.waterConsumerNo && formik.errors.waterConsumerNo ? formik.errors.waterConsumerNo : null}</p>
+
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12">
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Water Connection Date</label>
@@ -89,6 +102,8 @@ function Screen6(props) {
                                     onChange={e => handleWaterConncetionDate(e)}
                                     name="waterConnectionDate"
                                 />
+                                <p className='text-red-500 text-xs'>{formik.touched.waterConnectionDate && formik.errors.waterConnectionDate ? formik.errors.waterConnectionDate : null}</p>
+
                             </div>
 
                         </div>

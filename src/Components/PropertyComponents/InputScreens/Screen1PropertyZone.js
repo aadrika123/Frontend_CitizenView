@@ -17,6 +17,7 @@ import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik';
 import Info from '../../Common/Info'
 import { BiAddToQueue } from 'react-icons/bi'
+import * as yup from 'yup';
 
 
 function Screen1PropertyZone(props) {
@@ -26,7 +27,11 @@ function Screen1PropertyZone(props) {
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
-    const navigate = useNavigate();
+    const validationSchema = yup.object(
+        {
+            zone: yup.string().required("This is a required field !"),
+        }
+    );
 
 
     const formik = useFormik({
@@ -37,7 +42,7 @@ function Screen1PropertyZone(props) {
             // alert(JSON.stringify(values, null, 2));
             props.data("propertyZone",values)
             props.nextFun()
-        },
+        },validationSchema
     });
 
 
@@ -64,13 +69,15 @@ function Screen1PropertyZone(props) {
                             <select
                                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                                 onChange={e => handleZone(e)}
-                                name="Zone"
+                                name="zone"
                                 required
                             >
                                 <option>--select--</option>
                                 <option value="1">Zone 1</option>
                                 <option value="2">Zone 2</option>
                             </select>
+                            <p className='text-red-500 text-xs'>{formik.touched.zone && formik.errors.zone ? formik.errors.zone : null}</p>
+
                         </div>
 
 

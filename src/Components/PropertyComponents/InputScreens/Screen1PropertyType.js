@@ -17,6 +17,7 @@ import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik';
 import Info from '../../Common/Info'
 import { BiAddToQueue } from 'react-icons/bi'
+import * as yup from 'yup';
 
 
 function Screen1PropertyType(props) {
@@ -26,8 +27,11 @@ function Screen1PropertyType(props) {
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
-    const navigate = useNavigate();
-
+    const validationSchema = yup.object(
+        {
+            propertyType: yup.string().required("This is a required field !"),
+        }
+    );
 
     const formik = useFormik({
         initialValues: {
@@ -35,9 +39,9 @@ function Screen1PropertyType(props) {
         },
         onSubmit: values => {
             // alert(JSON.stringify(values, null, 2));
-            props.data("propertyType",values)
+            props.data("propertyType", values)
             props.nextFun()
-        },
+        }, validationSchema
     });
 
 
@@ -71,6 +75,7 @@ function Screen1PropertyType(props) {
                                     <option value={data.id}>{data.property_type}</option>
                                 ))}
                             </select>
+                            <p className='text-red-500 text-xs'>{formik.touched.propertyType && formik.errors.propertyType ? formik.errors.propertyType : null}</p>
 
                         </div>
 

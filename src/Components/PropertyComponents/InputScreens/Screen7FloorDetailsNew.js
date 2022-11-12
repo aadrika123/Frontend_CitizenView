@@ -53,9 +53,12 @@ function Screen7FloorDetailsNew(props) {
     }
 
     const submitRecord = () => {
+        if(ownerRecord.length == 0){
+            alert("Add atleat one Record")
+        }else{
         props.data("floorDetails", ownerRecord)
         props.nextFun()
-
+        }
     }
 
     const formik = useFormik({

@@ -14,11 +14,22 @@ import Info from '../../Common/Info'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 import { useFormik } from 'formik';
+import * as yup from 'yup';
 
 
 function Screen4(props) {
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
+
+    const validationSchema = yup.object(
+        {
+            propCity: yup.string().required("This is a required field !"),
+            propDistrict: yup.string().required("This is a required field !"),
+            propPin: yup.string().required("This is a required field !"),
+            propLocality: yup.string().required("This is a required field !"),
+            propState: yup.string().required("This is a required field !"),
+        }
+    );
 
     const formik = useFormik({
         initialValues: {
@@ -32,7 +43,7 @@ function Screen4(props) {
             // alert(JSON.stringify(values, null, 2));
             props.data("propertyAddress", values)
             props.nextFun()
-        },
+        },validationSchema
     });
     const handleCity = e => formik.values.propCity = e.target.value
     const handleDistrict = e => formik.values.propDistrict = e.target.value
@@ -62,6 +73,8 @@ function Screen4(props) {
                                     onChange={e => handleCity(e)}
                                     name="propCity"
                                 />
+                                <p className='text-red-500 text-xs'>{formik.touched.propCity && formik.errors.propCity ? formik.errors.propCity : null}</p>
+
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">District<span className='text-red-500'>*</span></label>
@@ -71,6 +84,8 @@ function Screen4(props) {
                                     onChange={e => handleDistrict(e)}
                                     name="propDistrict"
                                 />
+                                <p className='text-red-500 text-xs'>{formik.touched.propDistrict && formik.errors.propDistrict ? formik.errors.propDistrict : null}</p>
+
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">State<span className='text-red-500'>*</span></label>
@@ -80,6 +95,8 @@ function Screen4(props) {
                                     onChange={e => handleState(e)}
                                     name="propState"
                                 />
+                                <p className='text-red-500 text-xs'>{formik.touched.propState && formik.errors.propState ? formik.errors.propState : null}</p>
+
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Pin<span className='text-red-500'>*</span></label>
@@ -89,6 +106,8 @@ function Screen4(props) {
                                     onChange={e => handlePin(e)}
                                     name="propPin"
                                 />
+                                <p className='text-red-500 text-xs'>{formik.touched.propPin && formik.errors.propPin ? formik.errors.propPin : null}</p>
+
                             </div>
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-1">
                                 <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Locality<span className='text-red-500'>*</span></label>
@@ -98,6 +117,8 @@ function Screen4(props) {
                                     onChange={e => handleLocality(e)}
                                     name="propLocality"
                                 />
+                                <p className='text-red-500 text-xs'>{formik.touched.propLocality && formik.errors.propLocality ? formik.errors.propLocality : null}</p>
+
                             </div>
                             {/* <div>
                                 <input type="checkbox" name="" id="" />

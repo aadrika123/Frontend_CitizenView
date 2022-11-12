@@ -15,12 +15,19 @@ import Info from '../../Common/Info'
 import ThemeStyle from '../../Styles/ThemeStyle'
 import { useFormik } from 'formik';
 import { useState } from 'react';
+import * as yup from 'yup';
 
 
 function Screen2RainWater(props) {
 
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
+
+    const validationSchema = yup.object(
+        {
+            hasRailWater: yup.string().required("This is a required field !"),           
+        }
+    );
 
     const formik = useFormik({
         initialValues: {
@@ -30,7 +37,7 @@ function Screen2RainWater(props) {
             // alert(JSON.stringify(values, null, 2));
             props.data("hasRailWater", values)
             props.nextFun()
-        },
+        },validationSchema
     });
     const handleHasRainWater = e => {
         formik.values.hasRailWater = e.target.value
@@ -56,13 +63,15 @@ function Screen2RainWater(props) {
                             <select
                                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                                 onChange={e => handleHasRainWater(e)}
-                                name="occupancyType"
+                                name="hasRailWater"
                                 required
                             >
                                 <option>--select--</option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
                             </select>
+                            <p className='text-red-500 text-xs'>{formik.touched.hasRailWater && formik.errors.hasRailWater ? formik.errors.hasRailWater : null}</p>
+
                         </div>
 
                         <div className="col-span-12 grid grid-cols-12 gap-x-6 mt-6">
