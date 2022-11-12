@@ -25,7 +25,8 @@ function Screen4(props) {
             propCity: '',
             propDistrict: '',
             propPin: '',
-            propLocality: ''
+            propLocality: '',
+            propState:'',
         },
         onSubmit: values => {
             // alert(JSON.stringify(values, null, 2));

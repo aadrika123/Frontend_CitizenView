@@ -79,7 +79,7 @@ function Screen7OwnerDetails(props) {
     });
 
 
-    console.log("applicantList", ownerRecord)
+    // console.log("applicantList", ownerRecord)
     return (
         <>
             <div>
@@ -90,7 +90,7 @@ function Screen7OwnerDetails(props) {
                     </div>
                     <div className='p-2 md:p-10 flex justify-center items-center  overflow-hidden'>
                         <div className={`grid grid-cols-12 ${bgCardColor} shadow-lg w-full md:w-1/3 p-4 md:p-10`}>
-                            <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Applicant Details</h1></div>
+                            <div className="col-span-12"> <h1 className={`font-bold ${titleColor} text-2xl`}>Owner Details</h1></div>
                             <div className="col-span-12 ">
                                 <button type='submit' className={`${nextButtonColor} text-white shadow-lg px-4 py-1 text-xs float-right`}>Add Owner</button>
                             </div>
@@ -102,7 +102,28 @@ function Screen7OwnerDetails(props) {
                                     <input type="text" name="ownerName" className={`${inputStyle}`} placeholder="Enter owner name" value={formik.values.ownerName} onChange={formik.handleChange} />
                                     <p className='text-red-500 text-xs'>{formik.touched.ownerName && formik.errors.ownerName ? formik.errors.ownerName : null}</p>
                                 </div>
+                                                                                               
 
+                                <div className="col-span-12">
+                                    <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">Guardian Name</label>
+                                </div>
+                                <div className=" items-center mb-2">
+                                    <input type="text" name="guardianName" className={`${inputStyle}`} placeholder="Enter Guardian name" value={formik.values.guardianName} onChange={formik.handleChange} />
+                                    <p className='text-red-500 text-xs'>{formik.touched.guardianName && formik.errors.guardianName ? formik.errors.guardianName : null}</p>
+                                </div>
+                                <div className="col-span-12">
+                                    <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">Relation</label>
+                                </div>
+                                <div className=" items-center mb-2">
+                                    <select required type="text" name="relation" className={`${inputStyle}`} placeholder="Enter owner name" value={formik.values.relation} onChange={formik.handleChange} >
+                                        <option value="">--Select--</option>
+                                        <option value="S/O">S/O</option>
+                                        <option value="D/O">D/O</option>
+                                        <option value="C/O">C/O</option>
+                                        <option value="W/O">W/O</option>
+                                    </select>
+                                    <p className='text-red-500 text-xs'>{formik.touched.relation && formik.errors.relation ? formik.errors.relation : null}</p>
+                                </div>
                                 <div className="col-span-12">
                                     <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">Gender</label>
                                 </div>
@@ -117,20 +138,6 @@ function Screen7OwnerDetails(props) {
                                 </div>
 
                                 <div className="col-span-12">
-                                    <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">Relation</label>
-                                </div>
-                                <div className=" items-center mb-2">
-                                    <select required type="text" name="relation" className={`${inputStyle}`} placeholder="Enter owner name" value={formik.values.relation} onChange={formik.handleChange} >
-                                        <option value="">--Select--</option>
-                                        <option value="S/O">S/O</option>
-                                        <option value="D/O">D/O</option>
-                                        <option value="C/O">C/O</option>
-                                        <option value="W/O">W/O</option>
-                                    </select>
-                                    <p className='text-red-500 text-xs'>{formik.touched.relation && formik.errors.relation ? formik.errors.relation : null}</p>
-                                </div>
-
-                                <div className="col-span-12">
                                     <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">Date of Birth</label>
                                 </div>
                                 <div className=" items-center mb-2">
@@ -138,13 +145,6 @@ function Screen7OwnerDetails(props) {
                                     <p className='text-red-500 text-xs'>{formik.touched.dob && formik.errors.dob ? formik.errors.dob : null}</p>
                                 </div>
 
-                                <div className="col-span-12">
-                                    <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">Guardian Name</label>
-                                </div>
-                                <div className=" items-center mb-2">
-                                    <input type="text" name="guardianName" className={`${inputStyle}`} placeholder="Enter Guardian name" value={formik.values.guardianName} onChange={formik.handleChange} />
-                                    <p className='text-red-500 text-xs'>{formik.touched.guardianName && formik.errors.guardianName ? formik.errors.guardianName : null}</p>
-                                </div>
                                 <div className="col-span-12">
                                     <label for="option1" className="text-sm font-medium text-gray-900 dark:text-gray-300">Mobile No. </label>
                                 </div>

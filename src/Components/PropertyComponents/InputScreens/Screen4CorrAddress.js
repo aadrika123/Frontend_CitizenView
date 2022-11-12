@@ -14,7 +14,7 @@ import Info from '../../Common/Info'
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../Styles/ThemeStyle'
 import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 function Screen4CorrAddress(props) {
@@ -22,21 +22,28 @@ function Screen4CorrAddress(props) {
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
     const [handleTik, setHandleTik] = useState(false)
+    const [stateCity, setStateCity] = useState()
 
     const propertyAddress = props.propertyData.propertyAddress;
 
     console.log("Property Address in Corresponding Screen", propertyAddress)
 
+    useEffect(() => {
+      setStateCity(propertyAddress?.propCity)
+    }, [])
+    
+
     const formik = useFormik({
+        enableReinitialize:true,
         initialValues: {
             corrCity: propertyAddress?.propCity,
-            corrDistrict:  propertyAddress?.propDistrict,
-            corrPin:  propertyAddress?.propPin,
-            corrLocality:  propertyAddress?.propLocality,
-            corrState:  propertyAddress?.propState,
+            corrDistrict: propertyAddress?.propDistrict,
+            corrPin: propertyAddress?.propPin,
+            corrLocality: propertyAddress?.propLocality,
+            corrState: propertyAddress?.propState,
         },
         onSubmit: values => {
-            // alert(JSON.stringify(values, null, 2));
+            alert(JSON.stringify(values, null, 2));
             props.data("propertyCorrAddress", values)
             props.nextFun()
         },
@@ -60,7 +67,7 @@ function Screen4CorrAddress(props) {
                         <div className="col-span-12"> <h1 className={` ${titleColor} text-sm mt-2 opacity-40`}>Provide the landmark to help us react the property location easily.</h1></div>
 
                         <div className="col-span-12 my-2">
-                            <input type="checkbox" name="" className='w-4 h-4' checked={handleTik} onChange={(e)=>setHandleTik(e.target.checked)} />
+                            <input type="checkbox" name="" className='w-4 h-4' checked={handleTik} onChange={(e) => setHandleTik(e.target.checked)} />
                             <span className='text-red-700 font-semibold ml-2 mt-2    '>Note </span> : If Corresponding Address Different from Property Address (Please Tick)
                         </div>
 

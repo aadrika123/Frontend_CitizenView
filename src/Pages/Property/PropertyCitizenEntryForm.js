@@ -79,8 +79,8 @@ function PropertyCitizenEntryForm() {
         "propertyType": allScreenData?.propertyType?.propertyType,
         "zone": allScreenData?.propertyZone?.zone,
         "isMobileTower": allScreenData?.hasMobileTower?.hasMobileTower,
-        "towerArea": allScreenData?.mobileTowerArea?.mobileTowerArea,
-        "towerInstallationDate": allScreenData?.mobileTowerArea?.mobileTowerInstallDate,
+        "towerArea": allScreenData?.hasMobileTower?.mobileTowerArea,
+        "towerInstallationDate": allScreenData?.hasMobileTower?.mobileTowerInstallDate,
         "isHoardingBoard": allScreenData?.hasHoardingBoard?.hasHoardingBoard,
         "hoardingArea": allScreenData?.hasHoardingBoard?.hoardingBoardArea,
         "hoardingInstallationDate": allScreenData?.hasHoardingBoard?.hoardingBoardInstallDate,
@@ -109,12 +109,14 @@ function PropertyCitizenEntryForm() {
         "areaOfPlot": allScreenData?.propertyDetails?.propertyAreaOfPlot,
         "propAddress": allScreenData?.propertyAddress?.propLocality,
         "propCity": allScreenData?.propertyAddress?.propCity,
-        "propDist": allScreenData?.propertyAddress?.propDistrict,
+        "propDistrict": allScreenData?.propertyAddress?.propDistrict,
         "propPinCode": allScreenData?.propertyAddress?.propPin,
+        "propState": allScreenData?.propertyAddress?.propState,
         "corrAddress": allScreenData?.propertyCorrAddress?.corrLocality,
         "corrCity": allScreenData?.propertyCorrAddress?.corrCity,
         "corrDist": allScreenData?.propertyCorrAddress?.corrDistrict,
         "corrPinCode": allScreenData?.propertyCorrAddress?.corrPin,
+        "corrState": allScreenData?.propertyAddress?.corrState,
         "landOccupationDate": "2022-09-01",
         "previousHoldingId": 0,
         "holdingNo": "sadf474",
@@ -153,7 +155,7 @@ function PropertyCitizenEntryForm() {
 
 
 
-                <FeedbackScreen payloadData={payloadData} />
+                <div className={`${formIndex == 16 | 17 ? 'hidden' : 'block'}`}>  <FeedbackScreen payloadData={payloadData} /> </div>
 
 
             </div>

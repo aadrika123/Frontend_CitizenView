@@ -87,7 +87,7 @@ function Screen7FloorDetailsNew(props) {
     });
 
 
-    console.log("applicantList", ownerRecord)
+    // console.log("applicantList", ownerRecord)
     return (
         <>
             <div>
