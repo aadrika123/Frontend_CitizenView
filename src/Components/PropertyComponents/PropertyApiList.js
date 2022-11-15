@@ -8,10 +8,12 @@ export default function PropertyApiList() {
 
     let PropertyApiList = {
 
-        bearer : "1558|qIAxvcMK9mNfweyy1hDumiaqjWgBFxcfXr23lJi7",
+        bearer : "1646|P0f6wIoRwPdgQqtNYigWOd0Ursr6CeuOSndTquTe",
         
         propertySafApplyMasterData: `${baseUrl}/api/property/saf/master-saf`,
         propertySafApply: `${baseUrl}/api/property/saf/apply`,
+
+        viewAppliedSafAplications: `${baseUrl}/api/citizens/applied-applications`,  //Method get
 
 
 

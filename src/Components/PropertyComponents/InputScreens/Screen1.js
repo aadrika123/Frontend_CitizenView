@@ -39,7 +39,7 @@ function Screen1(props) {
     );
 
     const goBack = () => {
-        navigate("/")
+        navigate("/property-index")
     }
 
     const formik = useFormik({
