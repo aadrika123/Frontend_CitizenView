@@ -56,11 +56,14 @@ function ViewAppliedApplications(props) {
             .catch(function (err) { console.log("Error", err) })
     }, [])
 
-    console.log("fetchedData", fetchedData?.Property)
+    console.log("Applied SAF LISt", fetchedData?.Property)
+
+
+    // console.log("saf data to sone++++++",safId)
 
     return (
         <>
-            {safId ? <PropertyViewAndPayDemand goBack={()=>setSafId()} safApplicationId={safId} /> :
+            {safId ? <PropertyViewAndPayDemand goBack={() => setSafId()} safApplicationId={safId} /> :
                 <div>
                     <div className='text-xs font-semibold px-2 mt-4 flex'>
                         <div className="flex-1"><span onClick={goBack} className='border-b border-black'><RiArrowDropLeftFill className="inline text-xl" />Back</span></div>
@@ -73,16 +76,16 @@ function ViewAppliedApplications(props) {
 
                             </div>
 
-                            <div className='ml-56'>
-                                <div>
-                                    <RotatingLines
-                                        strokeColor="#e87f0e"
-                                        strokeWidth="5"
-                                        animationDuration="0.75"
-                                        width="40"
-                                        visible={formsubmitLoder}
-                                    />
-                                </div>
+                            <div className='col-span-12'>
+                            <div className='flex justify-center mt-1'>
+                                <RotatingLines
+                                    strokeColor="#e87f0e"
+                                    strokeWidth="5"
+                                    animationDuration="0.75"
+                                    width="40"
+                                    visible={formsubmitLoder}
+                                />
+                            </div>
                             </div>
 
                             {/* {****** Application List *********} */}
@@ -103,7 +106,7 @@ function ViewAppliedApplications(props) {
                                                     <label className={`text-xs ml-2 font-medium text-amber-600`}>SAF Number</label>
                                                 </div>
                                                 <div className=''>
-                                                    <label className={`text-xs ml-2 font-medium text-amber-600`} >{items.saf_no}</label>
+                                                    <label className={`text-xs ml-2 font-medium text-amber-600`} >{items.saf_no} / {items.application_id}</label>
                                                 </div>
                                             </div>
 
@@ -126,7 +129,7 @@ function ViewAppliedApplications(props) {
 
                                             <div className=' text-center mt-4'>
                                                 {/* <Link to='/water-viewDetail'> */}
-                                                <button onClick={() => setSafId(items.application_id)} className={`shadow-lg px-3 py-2 ml-1  ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`} >View And Pay Demand</button>
+                                                <button onClick={() => setSafId(items)} className={`shadow-lg px-3 py-2 ml-1  ${nextButtonColor} text-white font-medium text-xs leading-tight  rounded  ${nextBtnHoverColor} hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`} >View And Pay Demand</button>
                                                 {/* </Link> */}
 
                                             </div>

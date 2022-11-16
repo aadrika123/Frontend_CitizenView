@@ -8,25 +8,167 @@
 //    DESCRIPTION - water sublist compomnent which sublist category
 //////////////////////////////////////////////////////////////////////////////////////
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 
 //importing Themestyle function to use predefined colors to maintain uniform theme everywhere
 import ThemeStyle from '../../../src/Components/Styles/ThemeStyle'
+import PropertyApiList from '../../Components/PropertyComponents/PropertyApiList'
+import { RotatingLines } from 'react-loader-spinner'
 
 
 
 function PropertyViewAndPayDemand(props) {
 
+    const [fetchedData, setFetchedData] = useState()
+    const [loader, setLoader] = useState(false) // Used when click on Pay Now
+
+    const [loaderForFetchDemand, setLoaderForFetchDemand] = useState(false)
+
+
+
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
-   console.log("safApplicationId", props.safApplicationId)
+    const { bearer, amountCalculateBySafId, generateOrderId } = PropertyApiList();
+
+    const header = {
+        headers: {
+            Authorization: `Bearer ${bearer}`,
+            Accept: 'application/json',
+        }
+    }
+
+    const safDetailsData = props?.safApplicationId;
+    const safAppId = parseInt(safDetailsData?.application_id);
+
+    console.log("safApplication Details", safDetailsData)
+    console.log("fetched DEMAND Data", fetchedData)
+    console.log("1) SAF Application ID", safAppId)
+
+
+    useEffect(() => { //Fetch Demand Details => amount, tax etc
+        setLoaderForFetchDemand(true)
+        axios.post(amountCalculateBySafId, { "id": safAppId }, header)  // Default "ulbId":1
+            .then(function (res) {
+                setFetchedData(res.data.data)
+                setLoaderForFetchDemand(false)
+                console.log("2) Tis................", res)
+            })
+            .catch(function (err) { console.log("Error", err) })
+    }, [safDetailsData])
+
+    //Payment Code Start From Here
+
+    const amount = fetchedData?.demand?.payableAmount;
+
+    const getOrderId = async () => {
+
+        // check razorpay server
+        const res = await (
+            "https://checkout.razorpay.com/v1/checkout.js"
+        );
+
+        if (!res) {
+            alert("Razorpay SDK failed to load. Are you online?");
+            return;
+        }
+
+        const orderIdPayload = {
+            "id": safAppId,
+            "amount": amount,
+            "module": "water"
+        }
+
+        setLoader(true)
+        axios.post(generateOrderId, orderIdPayload, header)
+            .then((res) => {
+                console.log("Order Id Response ", res.data)
+                if (res.data.status === true) {
+                    console.log("OrderId Generated", res.data.data.orderId)
+                    payNow(res.data.data.orderId, res.data.data.amount)
+                    setLoader(false)
+                }
+            })
+            .catch((err) => {
+                alert("Backend Server error. Unable to Generate Order Id");
+                console.log("Order Id ERROR ", err)
+                setLoader(false)
+            })
+    }
+
+
+    const payNow = (orderId, amount) => {
+        var options = {
+            key: "rzp_test_3MPOKRI8WOd54p",
+            amount: amount,
+            currency: "INR",
+            image: "http://example.com/your_logo.jpg",
+            name: "JUDCO Corp.",
+            description: "Testing with SAM and WEbhook",
+            order_id: orderId,
+            handler: function (response) {
+                console.log("All response", response)
+                alert("Payment Susscess", response.razorpay_payment_id);
+                console.log("Payment ID", response.razorpay_payment_id);
+
+            },
+            // handler: async function (response) {
+            //     const data = {
+            //         orderCreationId: orderId,
+            //         razorpayPaymentId: response.razorpay_payment_id,
+            //         razorpayOrderId: response.razorpay_order_id,
+            //         razorpaySignature: response.razorpay_signature,
+            //     };
+            //     const result = await axios.post("http://localhost:5000/payment/success", data);
+            //     alert(result.data.msg);
+            // },
+            prefill: {
+                name: "Sam",
+                email: "sam@testmail.com",
+                contact: 9785458000
+            },
+            "modal": {
+                "ondismiss": function (response) {
+                    console.log("Payment Cancel BY user", response);
+                    // saveData("Cancel by User", "Cancel")
+                },
+                "onfailed": function (response) {
+                    console.log("Payment Failed Response", response);
+                    // saveData(response.razorpay_payment_id, "Failed")
+                }
+            },
+            notes: {
+                address: "Razorpay Corporate office"
+            },
+            theme: {
+                color: "#3399cc"
+            }
+        };
+        var pay = new window.Razorpay(options);
+
+        pay.on('payment.failed', function (response) {
+            console.log("Failed Response", response)
+            alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+        });
+
+        pay.open();
+        // setLoader(false)
+    }
+
+
+    //Payment Code END From Here
+
+
+
     return (
         <>
+
             <div>
                 <div className='text-xs font-semibold px-2 mt-4 flex'>
                     <div className="flex-1"><span onClick={props.goBack} className='border-b border-black'><RiArrowDropLeftFill className="inline text-xl" />Back</span></div>
@@ -44,10 +186,18 @@ function PropertyViewAndPayDemand(props) {
                             <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
                                 <div className='grid grid-cols-2 '>
                                     <div className="">
-                                        <label className={`text-xs ml-2 font-medium text-gray-500`}>Service</label>
+                                        <label className={`text-xs ml-2 font-medium text-gray-500`}>Property Type</label>
                                     </div>
                                     <div className=''>
-                                        <label className={`text-xs ml-2 font-medium text-gray-800`} >{`{New Assessment}`}</label>
+                                        <label className={`text-xs ml-2 font-medium text-gray-800`} >{fetchedData?.demand?.isResidential ? 'Residential' : 'Commercial'}</label>
+                                    </div>
+                                </div>
+                                <div className='grid grid-cols-2 '>
+                                    <div className="">
+                                        <label className={`text-xs ml-2 font-medium text-gray-500`}>Assessment Type</label>
+                                    </div>
+                                    <div className=''>
+                                        <label className={`text-xs ml-2 font-medium text-gray-800`} >{safDetailsData?.assessment_type}</label>
                                     </div>
                                 </div>
                                 <div className='grid grid-cols-2 '>
@@ -55,24 +205,17 @@ function PropertyViewAndPayDemand(props) {
                                         <label className={`text-xs ml-2 font-medium text-gray-500`}>SAF Number</label>
                                     </div>
                                     <div className=''>
-                                        <label className={`text-xs ml-2 font-medium text-gray-800`}>{`{SAF/01/02A/00035}`}</label>
+                                        <label className={`text-xs ml-2 font-medium text-gray-800`}>{safDetailsData?.saf_no} / {safDetailsData?.application_id}</label>
                                     </div>
                                 </div>
+
+
                                 <div className='grid grid-cols-2 '>
                                     <div className="">
-                                        <label className={`text-xs ml-2 font-medium text-gray-500`}>Status</label>
+                                        <label className={`text-xs ml-2 font-medium text-gray-500`}>Holding No</label>
                                     </div>
                                     <div className=''>
-                                        <label className={`text-xs ml-2 font-medium text-gray-800`}>Pending for field inspection</label>
-                                    </div>
-                                </div>
-                                
-                                <div className='grid grid-cols-2 '>
-                                    <div className="">
-                                        <label className={`text-xs ml-2 font-medium text-gray-500`}>Comments</label>
-                                    </div>
-                                    <div className=''>
-                                        <label className={`text-xs ml-2 font-medium text-gray-800`}>inspecting</label>
+                                        <label className={`text-xs ml-2 font-medium text-gray-800`}>{safDetailsData?.holding_no}</label>
                                     </div>
                                 </div>
                                 {/* <div className=' text-center mt-4'>
@@ -86,53 +229,97 @@ function PropertyViewAndPayDemand(props) {
 
 
                         {/* {****** Fee Estimate *********} */}
-                        <div className='col-span-12 bg-gray-50 p-2 shadow-md mt-2 mb-1'>
-                            <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
-                                <div className='grid grid-cols-2 '>
-                                    <div className="">
-                                        <label className={`text-xs ml-2 font-medium text-gray-500`}>Application Fee</label>
-                                    </div>
-                                    <div className=''>
-                                        <label className={`text-xs ml-2 font-medium text-gray-800`} >275</label>
-                                    </div>
-                                </div>
-                                <div className='grid grid-cols-2 '>
-                                    <div className="">
-                                        <label className={`text-xs ml-2 font-medium text-gray-500`}>Service Fee</label>
-                                    </div>
-                                    <div className=''>
-                                        <label className={`text-xs ml-2 font-medium text-gray-800`}>3813</label>
-                                    </div>
-                                </div>
-                                <div className='grid grid-cols-2 '>
-                                    <div className="">
-                                        <label className={`text-xs ml-2 font-medium text-gray-500`}>Tax</label>
-                                    </div>
-                                    <div className=''>
-                                        <label className={`text-xs ml-2 font-medium text-gray-800`}>204.4</label>
-                                    </div>
-                                </div>
-                                <div className='grid grid-cols-2 divide-y '>
-                                    <div className="">
-                                        <label className={`text-xs ml-2 font-bold text-gray-500 divide-y-2`}>Total amount</label>
-                                    </div>
-                                    <div className=''>
-                                        <label className={`text-xs ml-2 font-medium text-gray-800`}>Rs 4292</label>
-                                    </div>
-                                </div>
-
-                                <div className=' text-center mt-4'>
-                                    <button className={`shadow-lg px-3 py-2 ml-1  bg-green-700 text-white font-medium text-xs leading-tight  rounded  hover:bg-green-600 hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`} >Pay Now</button>
-
-                                </div>
-                            </div>
-                            <div className='p-2 relative '>
-                                <div className={`absolute top-0 left-0 w-full h-full bg-green-200 opacity-20`}></div>
-                                <div className={`font-semibold text-sm text-green-800 `}><AiFillInfoCircle className="inline text-sm" /> Info</div>
-                                    <p className={`text-xs text-green-700 mt-1 ml-1`}>You can make payment using UPI / Net Banking / Cards.</p>
-                                
+                        <div className='col-span-12'>
+                            <div className='flex justify-center mt-1'>
+                                <RotatingLines
+                                    strokeColor="#e87f0e"
+                                    strokeWidth="5"
+                                    animationDuration="0.75"
+                                    width="40"
+                                    visible={loaderForFetchDemand}
+                                />
                             </div>
                         </div>
+                        {!loaderForFetchDemand &&
+                            <div className='col-span-12 bg-gray-50 p-2 shadow-md mt-2 mb-1'>
+                                <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
+                                    <div className='grid grid-cols-2 '>
+                                        <div className="">
+                                            <label className={`text-xs ml-2 font-medium text-gray-500`}>Total Tax</label>
+                                        </div>
+                                        <div className=''>
+                                            <label className={`text-xs ml-2 font-medium text-gray-800`}>₹ {fetchedData?.demand?.totalTax}</label>
+                                        </div>
+                                    </div>
+                                    <div className='grid grid-cols-2 '>
+                                        <div className="">
+                                            <label className={`text-xs ml-2 font-medium text-gray-500`}>One Percente Penalty</label>
+                                        </div>
+                                        <div className=''>
+                                            <label className={`text-xs ml-2 font-medium text-gray-800`}>₹ {fetchedData?.demand?.totalOnePercPenalty} </label>
+                                        </div>
+                                    </div>
+                                    <div className='grid grid-cols-2 '>
+                                        <div className="">
+                                            <label className={`text-xs ml-2 font-medium text-gray-500`}>Late Assessment Penalty</label>
+                                        </div>
+                                        <div className=''>
+                                            <label className={`text-xs ml-2 font-medium text-gray-800`}>₹ {fetchedData?.demand?.lateAssessmentPenalty} </label>
+                                        </div>
+                                    </div>
+
+
+                                    <div className='grid grid-cols-2 '>
+                                        <div className="">
+                                            <label className={`text-xs ml-2 font-bold text-gray-500 divide-y-2`}>Total Demand</label>
+                                        </div>
+                                        <div className=''>
+                                            <label className={`text-xs ml-2 font-medium text-gray-800`}>₹ {fetchedData?.demand?.totalDemand}</label>
+                                        </div>
+                                    </div>
+                                    <div className='grid grid-cols-2 '>
+                                        <div className="">
+                                            <label className={`text-xs ml-2 font-medium text-gray-500`}>Rebat Percentage</label>
+                                        </div>
+                                        <div className=''>
+                                            <label className={`text-xs ml-2 font-medium text-gray-800`} >{fetchedData?.demand?.rebatePerc} % </label>
+                                        </div>
+                                    </div>
+
+                                    <div className='grid grid-cols-2 divide-y '>
+                                        <div className="">
+                                            <label className={`text-xs ml-2 font-bold text-gray-500 divide-y-2`}>Payable Amount</label>
+                                        </div>
+                                        <div className=''>
+                                            <label className={`text-xs ml-2 font-medium text-gray-800`}>₹ {fetchedData?.demand?.payableAmount}</label>
+                                        </div>
+                                    </div>
+
+
+                                    <div className='flex justify-center mt-1'>
+                                        <RotatingLines
+                                            strokeColor="#e87f0e"
+                                            strokeWidth="5"
+                                            animationDuration="0.75"
+                                            width="40"
+                                            visible={loader}
+                                        />
+                                    </div>
+
+                                    {!loader &&
+                                        <div className=' text-center mt-4'>
+                                            <button onClick={getOrderId} className={`shadow-lg px-3 py-2 ml-1  bg-green-700 text-white font-medium text-xs leading-tight  rounded  hover:bg-green-600 hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out`} >Pay Now</button>
+                                        </div>
+                                    }
+                                </div>
+                                <div className='p-2 relative '>
+                                    <div className={`absolute top-0 left-0 w-full h-full bg-green-200 opacity-20`}></div>
+                                    <div className={`font-semibold text-sm text-green-800 `}><AiFillInfoCircle className="inline text-sm" /> Info</div>
+                                    <p className={`text-xs text-green-700 mt-1 ml-1`}>You can make payment using UPI / Net Banking / Cards.</p>
+
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
