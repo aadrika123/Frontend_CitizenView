@@ -34,7 +34,7 @@ function PropertyViewAndPayDemand(props) {
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
-    const { bearer, amountCalculateBySafId, generateOrderId } = PropertyApiList();
+    const { bearer, amountCalculateBySafId, generateOrderId,verifyPaymentStatus } = PropertyApiList();
 
     const header = {
         headers: {
@@ -65,6 +65,46 @@ function PropertyViewAndPayDemand(props) {
     //Payment Code Start From Here
 
     const amount = fetchedData?.demand?.payableAmount;
+
+    //API 2 - when payment success we will keep the log in backend
+    const callApiLog = (response) => {
+
+        const sendPayload = {
+            "razorpayOrderId": response.razorpay_order_id,
+            "razorpayPaymentId": response.razorpay_payment_id,
+            "razorpaySignature": response.razorpay_signature
+        }
+
+        axios.post(verifyPaymentStatus, sendPayload, header)
+            .then((res) => {
+                console.log("2nd API Data saved ", res)            
+            })
+            .catch((err) => {               
+                console.log("Error when inserting 2 api data ", err)
+            })
+    }
+
+    //API 2 - when payment failed we will keep the log in backend
+    const callApiLogFailed = (response) => {
+
+        const sendPayload = {
+            "razorpayOrderId": response.error.metadata.order_id,
+            "razorpayPaymentId": response.error.metadata.payment_id,
+            "reason": response.error.reason,
+            "source" : response.error.source,
+            "step" : response.error.step,
+            "code": response.error.code,
+            "description":response.error.description,
+        }
+
+        axios.post(verifyPaymentStatus, sendPayload, header)
+            .then((res) => {
+                console.log("2nd API Filed Data saved ", res)            
+            })
+            .catch((err) => {               
+                console.log("Error when inserting 2 api Failed data ", err)
+            })
+    }
 
     const getOrderId = async () => {
 
@@ -112,7 +152,8 @@ function PropertyViewAndPayDemand(props) {
             description: "Testing with SAM and WEbhook",
             order_id: orderId,
             handler: function (response) {
-                console.log("All response", response)
+                callApiLog(response)  // This function send the data to direct database => backend will verify the data
+                console.log("All response", response)    ///////////////hERE callApiLog
                 alert("Payment Susscess", response.razorpay_payment_id);
                 console.log("Payment ID", response.razorpay_payment_id);
 
@@ -143,7 +184,11 @@ function PropertyViewAndPayDemand(props) {
                 }
             },
             notes: {
-                address: "Razorpay Corporate office"
+                module: "Water",
+                moduleId: 1,
+                ulbId: 2,
+                userId: 3,
+                workFlowID: 3
             },
             theme: {
                 color: "#3399cc"
@@ -153,6 +198,7 @@ function PropertyViewAndPayDemand(props) {
 
         pay.on('payment.failed', function (response) {
             console.log("Failed Response", response)
+            callApiLogFailed(response)  // This functin called when payment got failed. and data log will saved in bacend => using api 2
             alert(response.error.metadata.order_id);
             alert(response.error.metadata.payment_id);
         });

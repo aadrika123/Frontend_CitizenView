@@ -89,7 +89,7 @@ function ViewAppliedApplications(props) {
                             </div>
 
                             {/* {****** Application List *********} */}
-                            {fetchedData?.Property?.map((items) => (
+                            {fetchedData?.Property?.applications?.map((items) => (
                                 <>
                                     <div className='col-span-12 bg-gray-50 p-2 shadow-md mt-2 mb-1'>
                                         <div className="form-group mb-4 md:mb-6 col-span-12 mt-4">
