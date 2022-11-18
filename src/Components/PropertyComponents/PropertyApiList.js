@@ -9,13 +9,13 @@ export default function PropertyApiList() {
     
     // let baseUrl = "http://192.168.0.240:8000"   ////SAM System
     
-    let baseUrl = "http://203.129.217.245:80"   ////SAM System PUBLIC
+    // let baseUrl = "http://203.129.217.245:80"   ////SAM System PUBLIC
 
-    // const {baseUrl} = BaseURL();
+    const {baseUrl} = BaseURL();   // This is server url
 
     let PropertyApiList = {
 
-        bearer : "1740|lbuN2kDH0w0YGoo12mE6EDN6HHyVdh93w0XFFzjk",
+        bearer : "1779|CkwwLIAE5wHiE3QrwjvBprWTApOaKYkzzmBpVNBS",
         
         propertySafApplyMasterData: `${baseUrl}/api/property/saf/master-saf`,
         propertySafApply: `${baseUrl}/api/property/saf/apply`,
@@ -24,7 +24,11 @@ export default function PropertyApiList() {
         
         amountCalculateBySafId: `${baseUrl}/api/property/saf/calculate-by-saf-id`,  //Method POST
 
-        generateOrderId: `${baseUrl}/api/payment/get-order-id`, //POST
+        // generateOrderId: `${baseUrl}/api/payment/get-order-id`, //POST
+        
+        propertyGenerateOrderId: `${baseUrl}/api/property/saf/generate-order-id`, //POST
+
+
 
         verifyPaymentStatus: `${baseUrl}/api/payment/verify-payment-status`, //POST
 

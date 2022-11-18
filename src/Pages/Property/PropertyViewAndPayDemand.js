@@ -29,12 +29,14 @@ function PropertyViewAndPayDemand(props) {
 
     const [loaderForFetchDemand, setLoaderForFetchDemand] = useState(false)
 
+    const [orderIdGeneratedData, setOrderIdGeneratedData] = useState()
+
 
 
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
 
-    const { bearer, amountCalculateBySafId, generateOrderId,verifyPaymentStatus } = PropertyApiList();
+    const { bearer, amountCalculateBySafId, propertyGenerateOrderId, verifyPaymentStatus } = PropertyApiList();
 
     const header = {
         headers: {
@@ -46,20 +48,19 @@ function PropertyViewAndPayDemand(props) {
     const safDetailsData = props?.safApplicationId;
     const safAppId = parseInt(safDetailsData?.application_id);
 
-    console.log("safApplication Details", safDetailsData)
-    console.log("fetched DEMAND Data", fetchedData)
-    console.log("1) SAF Application ID", safAppId)
+    console.log("=============SafApplication Details", safDetailsData)
+    console.log("=============DEMAND Data", fetchedData)
 
 
-    useEffect(() => { //Fetch Demand Details => amount, tax etc
+    useEffect(() => { // => amount, tax etc
         setLoaderForFetchDemand(true)
-        axios.post(amountCalculateBySafId, { "id": safAppId }, header)  // Default "ulbId":1
+        axios.post(amountCalculateBySafId, { "id": safAppId }, header)  //This API Used for Fetch Demand Details | Default "ulbId":1
             .then(function (res) {
                 setFetchedData(res.data.data)
                 setLoaderForFetchDemand(false)
-                console.log("2) Tis................", res)
+                console.log("======AXIOS=== Fetch Demand Details", res)
             })
-            .catch(function (err) { console.log("Error", err) })
+            .catch(function (err) { console.log("Error AXIOS in amountCalculateBySafId", err) })
     }, [safDetailsData])
 
     //Payment Code Start From Here
@@ -75,11 +76,11 @@ function PropertyViewAndPayDemand(props) {
             "razorpaySignature": response.razorpay_signature
         }
 
-        axios.post(verifyPaymentStatus, sendPayload, header)
+        axios.post(verifyPaymentStatus, sendPayload, header) /// This API Will save the data. When response come after payment Sucess -> Not Nessesary
             .then((res) => {
-                console.log("2nd API Data saved ", res)            
+                console.log("2nd API Data saved ", res)
             })
-            .catch((err) => {               
+            .catch((err) => {
                 console.log("Error when inserting 2 api data ", err)
             })
     }
@@ -91,17 +92,17 @@ function PropertyViewAndPayDemand(props) {
             "razorpayOrderId": response.error.metadata.order_id,
             "razorpayPaymentId": response.error.metadata.payment_id,
             "reason": response.error.reason,
-            "source" : response.error.source,
-            "step" : response.error.step,
+            "source": response.error.source,
+            "step": response.error.step,
             "code": response.error.code,
-            "description":response.error.description,
+            "description": response.error.description,
         }
 
-        axios.post(verifyPaymentStatus, sendPayload, header)
+        axios.post(verifyPaymentStatus, sendPayload, header) /// This API Will save the data. When response come after payment FAILED -> Not Nessesary
             .then((res) => {
-                console.log("2nd API Filed Data saved ", res)            
+                console.log("2nd API Filed Data saved ", res)
             })
-            .catch((err) => {               
+            .catch((err) => {
                 console.log("Error when inserting 2 api Failed data ", err)
             })
     }
@@ -121,13 +122,15 @@ function PropertyViewAndPayDemand(props) {
         const orderIdPayload = {
             "id": safAppId,
             "amount": amount,
-            "module": "water"
+            "departmentId": 1,
+            "workflowId": safDetailsData.workflow_id
         }
 
         setLoader(true)
-        axios.post(generateOrderId, orderIdPayload, header)
+        axios.post(propertyGenerateOrderId, orderIdPayload, header)  // This API will generate Order ID
             .then((res) => {
                 console.log("Order Id Response ", res.data)
+                setOrderIdGeneratedData(res.data.data)  // This Data will goes to notes-> and we will use in webhook
                 if (res.data.status === true) {
                     console.log("OrderId Generated", res.data.data.orderId)
                     payNow(res.data.data.orderId, res.data.data.amount)
@@ -176,19 +179,17 @@ function PropertyViewAndPayDemand(props) {
             "modal": {
                 "ondismiss": function (response) {
                     console.log("Payment Cancel BY user", response);
-                    // saveData("Cancel by User", "Cancel")
                 },
                 "onfailed": function (response) {
                     console.log("Payment Failed Response", response);
-                    // saveData(response.razorpay_payment_id, "Failed")
                 }
             },
             notes: {
-                module: "Water",
-                moduleId: 1,
-                ulbId: 2,
-                userId: 3,
-                workFlowID: 3
+                ulbId: orderIdGeneratedData.ulbId || 0,
+                departmentId: orderIdGeneratedData.departmentId || 0,
+                applicationId: orderIdGeneratedData.applicationId || 0,
+                workflowId: orderIdGeneratedData.workflowId || 0,
+                userId: orderIdGeneratedData.userId || 0,
             },
             theme: {
                 color: "#3399cc"
