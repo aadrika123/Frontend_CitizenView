@@ -36,7 +36,7 @@ function App() {
   return (
     <>
       <contextVar.Provider value={globals} >
-        <BrowserRouter>
+        <BrowserRouter basename='/citizen-mb'>
           {/* <BrowserRouter basename="/citizen-mb"> */}
           {
             !sideblock && <>
@@ -44,13 +44,16 @@ function App() {
               <Sidebar showSidebar={setHeader} show={sideShow} sidebarBody={sidebarBody} sidebarBodyFun={setsidebarBody} />
             </>
           }
+          <Routes>
+            <Route path="/login" element={<Login showBlock={setSideblock} />} />
+          </Routes>
           <div className={`${sideblock && 'opacity-100'}${sideShow ? 'opacity-70 md:opacity-100' : ''}`}>
             <Routes>
 
               {/* <Route element={<ProtectedRoutes />} /> */}
               <Route path="/home" element={<ProtectedRoutes component={<IndividualRoutes />} />} />
               <Route index element={<Login showBlock={setSideblock} />} />
-              <Route path="/login" element={<Login showBlock={setSideblock} />} />
+              {/* <Route path="/login" element={<Login showBlock={setSideblock} />} /> */}
               {/* </Route> */}
             </Routes>
 
