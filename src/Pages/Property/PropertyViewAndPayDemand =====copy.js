@@ -12,11 +12,9 @@ import React, { useEffect, useState } from 'react'
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { RiArrowDropLeftFill } from 'react-icons/ri'
 import axios from 'axios'
-import ThemeStyle from '../../../src/Components/Styles/ThemeStyle'
-import { RotatingLines } from 'react-loader-spinner'
+import ThemeStyle from '../../Components/Styles/ThemeStyle'
 import PropertyApiList from '../../Components/PropertyComponents/PropertyApiList'
-
-import RazorpayPaymentScreen from '../../Components/Payment/Razorpay/RazorpayPaymentScreen'
+import { RotatingLines } from 'react-loader-spinner'
 
 
 
@@ -42,25 +40,79 @@ function PropertyViewAndPayDemand(props) {
     const safDetailsData = props?.safApplicationId;  // Getting All Detais of Particular SAF when user choose to make payment against.
     const safAppId = parseInt(safDetailsData?.application_id); // Extracting SAF Applicatin Id from Props.SafApplicatin
 
-    useEffect(() => {
+    // console.log("=============SafApplication Details", safDetailsData)
+    // console.log("=============DEMAND Data", fetchedData)
+
+
+    useEffect(() => { 
         setLoaderForFetchDemand(true)
         axios.post(amountCalculateBySafId, { "id": safAppId }, header)  //This API Used for Fetch Demand Details | Default "ulbId":1
             .then(function (res) {
                 setFetchedData(res.data.data)
                 setLoaderForFetchDemand(false)
+                // console.log("======AXIOS=== Fetch Demand Details", res)
             })
             .catch(function (err) { console.log("Error AXIOS in amountCalculateBySafId", err) })
     }, [safDetailsData])
 
+    //Payment Code Start From Here
+
     const amount = fetchedData?.demand?.payableAmount; // This amount is fetched from user SAF Application and it will be used for generate order id only=> in backend they wil also match the amount
 
+    //API 2 - when payment success we will keep the log in backend
+    const callApiLog = (response) => {
 
+        const sendPayload = {
+            "razorpayOrderId": response.razorpay_order_id,
+            "razorpayPaymentId": response.razorpay_payment_id,
+            "razorpaySignature": response.razorpay_signature
+        }
 
-    const dreturn = (data) => {   // In (DATA) this function returns the Paymen Status, Message and Other Response data form Razorpay Server
-        console.log('Payment Status =>', data)
+        axios.post(verifyPaymentStatus, sendPayload, header) /// This API Will save the data. When response come after payment Sucess -> Not Nessesary
+            .then((res) => {
+                console.log("2nd API Data saved ", res)
+            })
+            .catch((err) => {
+                console.log("Error when inserting 2 api data ", err)
+            })
     }
 
-    const getOrderId = async () => { // This Function is used to Order Id Generation
+    //API 2 - when payment failed we will keep the log in backend
+    const callApiLogFailed = (response) => {
+
+        const sendPayload = {
+            "razorpayOrderId": response.error.metadata.order_id,
+            "razorpayPaymentId": response.error.metadata.payment_id,
+            "reason": response.error.reason,
+            "source": response.error.source,
+            "step": response.error.step,
+            "code": response.error.code,
+            "description": response.error.description,
+        }
+
+        axios.post(verifyPaymentStatus, sendPayload, header) /// This API Will save the data. When response come after payment FAILED -> Not Nessesary
+            .then((res) => {
+                console.log("2nd API Filed Data saved ", res)
+            })
+            .catch((err) => {
+                console.log("Error when inserting 2 api Failed data ", err)
+            })
+    }
+
+
+    // API 1 - Generate Order ID
+
+    const getOrderId = async () => {
+
+        // check razorpay server
+        const res = await (
+            "https://checkout.razorpay.com/v1/checkout.js"
+        );
+
+        if (!res) {
+            alert("Razorpay SDK failed to load. Are you online?");
+            return;
+        }
 
         const orderIdPayload = {
             "id": safAppId,
@@ -75,16 +127,76 @@ function PropertyViewAndPayDemand(props) {
                 console.log("Order Id Response ", res.data)
                 if (res.data.status === true) {
                     console.log("OrderId Generated True", res.data)
-                    RazorpayPaymentScreen(res.data.data, dreturn);  //Send Response Data as Object (amount, orderId, ulbId, departmentId, applicationId, workflowId, userId, name, email, contact) will call razorpay payment function to show payment popup                                      
+                    payNow(res.data.data)  // Response Data (amount and Order ID) will call razorpay payment function to show payment popup
                     setLoader(false)
                 }
             })
             .catch((err) => {
                 alert("Backend Server error. Unable to Generate Order Id");
-                console.log("ERROR :-  Unable to Generate Order Id ", err)
+                console.log("Order Id ERROR ", err)
                 setLoader(false)
             })
     }
+
+
+    const payNow = (generatedData) => {
+        var options = {
+            key: "rzp_test_3MPOKRI8WOd54p",
+            amount: generatedData.amount,
+            currency: "INR",
+            image: "http://example.com/your_logo.jpg",
+            name: "JUDCO Corp.",
+            description: "Testing with SAM and WEbhook",
+            order_id: generatedData.orderId,
+            handler: function (response) {
+                callApiLog(response)  // This function send the data to direct database => backend will verify the data
+                console.log("All response", response)    
+                alert("Payment Susscess", response.razorpay_payment_id);
+                console.log("Payment ID", response.razorpay_payment_id);
+            },
+           
+            prefill: {
+                name: generatedData.name,
+                email: generatedData.email,
+                contact: generatedData.mobile
+            },
+            "modal": {
+                "ondismiss": function (response) {
+                    console.log("Payment Cancel BY user", response);
+                },
+                "onfailed": function (response) {
+                    console.log("Payment Failed Response", response);
+                }
+            },
+            notes: {
+                ulbId: generatedData.ulbId || 0,
+                departmentId: generatedData.departmentId || 0,
+                applicationId: generatedData.applicationId || 0,
+                workflowId: generatedData.workflowId || 0,
+                userId: generatedData.userId || 0,
+                name: generatedData.name || 0,
+                email: generatedData.email || 0,
+                contact: generatedData.mobile || 0,
+            },
+            theme: {
+                color: "#3399cc"
+            }
+        };
+        var pay = new window.Razorpay(options);
+
+        pay.on('payment.failed', function (response) {
+            console.log("Failed Response", response)
+            callApiLogFailed(response)  // This functin called when payment got failed. and data log will saved in bacend => using api 2
+            alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+        });
+
+        pay.open();
+    }
+
+
+    //Payment Code END From Here
+
 
 
     return (

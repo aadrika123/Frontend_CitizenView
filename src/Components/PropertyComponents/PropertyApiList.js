@@ -15,7 +15,7 @@ export default function PropertyApiList() {
 
     let PropertyApiList = {
 
-        bearer : "1779|CkwwLIAE5wHiE3QrwjvBprWTApOaKYkzzmBpVNBS",
+        bearer : "1947|z65b8XABthULr51p8djlyzdDZFVl3sLWbprkaPpr",
         
         propertySafApplyMasterData: `${baseUrl}/api/property/saf/master-saf`,
         propertySafApply: `${baseUrl}/api/property/saf/apply`,
@@ -30,7 +30,7 @@ export default function PropertyApiList() {
 
 
 
-        verifyPaymentStatus: `${baseUrl}/api/payment/verify-payment-status`, //POST
+        verifyPaymentStatus: `${baseUrl}/api/payment/verify-payment-status`, //POST // use to store the data if payment failed or success=> 
 
 
 
