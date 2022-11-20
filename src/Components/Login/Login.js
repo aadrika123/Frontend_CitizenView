@@ -33,12 +33,12 @@ function Login(props) {
         validationSchema
     })
     return (
-        <div className='mx-auto w-full bg-white h-screen md:h-auto'>
+        <div className='mx-auto w-full h-screen md:h-auto'>
             {/* <button className='bg-green-400 text-stone-50 px-3 py-1 m-2 hover:bg-green-500' onClick={() => { dispatch(LOGIN({ isLoggedIn: true })) }}>click me</button> */}
-            <div className="grid  md:mt-12 md:ml-96">
+            <div className="grid  md:mt-12 w-full px-2">
                 {/* <div className="text-3xl font-semibold w-96 text-center text-gray-700 ">Sign in to your account</div> */}
 
-                <div className="w-96 bg-white p-12 pt-4 md:shadow-2xl mt-10 border md:animate__animated animate__slideInDown  rounded-lg  ">
+                <div className="w-full md:w-96 bg-white p-12 pt-4 md:shadow-2xl mt-10 border md:animate__animated animate__slideInDown  rounded-lg  mx-auto">
                     <div className="flex mb-6 gap-1"><div className="flex-initial"><img className='w-10' src="https://cdn-icons-png.flaticon.com/512/1646/1646779.png" /></div>
                         <div className="flex-initial grid items-center text-center text-lg font-semibold ">Sign in to your account
                             {/* Ranchi Municipal Corporation */}
