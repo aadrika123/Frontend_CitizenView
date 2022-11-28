@@ -71,23 +71,33 @@ function PropertyCitizenEntryForm() {
 
 
     const payloadData = {
-        "assessmentType": "NewAssessment",
+        "transferModeId":1,
+        "dateOfPurchase":"2021-11-01",
+        "isOwnerChanged":1,
+
+
+
+        "assessmentType": "1",  // NewAssessment = 1
         // basic details
         "ward": allScreenData?.wardDetails?.wardNo,
         "newWard": allScreenData?.wardDetails?.newWardNo,
         "ownershipType": allScreenData?.ownerdhip?.ownershipType,
         "propertyType": allScreenData?.propertyType?.propertyType,
         "zone": allScreenData?.propertyZone?.zone,
-        "isMobileTower": allScreenData?.hasMobileTower?.hasMobileTower,
+        // "isMobileTower": allScreenData?.hasMobileTower?.hasMobileTower,
+        "isMobileTower": 0,
         "towerArea": allScreenData?.hasMobileTower?.mobileTowerArea,
         "towerInstallationDate": allScreenData?.hasMobileTower?.mobileTowerInstallDate,
-        "isHoardingBoard": allScreenData?.hasHoardingBoard?.hasHoardingBoard,
+        // "isHoardingBoard": allScreenData?.hasHoardingBoard?.hasHoardingBoard,
+        "isHoardingBoard": 0,
         "hoardingArea": allScreenData?.hasHoardingBoard?.hoardingBoardArea,
         "hoardingInstallationDate": allScreenData?.hasHoardingBoard?.hoardingBoardInstallDate,
-        "isPetrolPump": allScreenData?.hasPetrolPump?.hasPetrolPump,
+        // "isPetrolPump": allScreenData?.hasPetrolPump?.hasPetrolPump,
+        "isPetrolPump": 0,
         "undergroundArea": allScreenData?.hasPetrolPump?.petrolPumpArea,
         "petrolPumpCompletionDate": allScreenData?.hasPetrolPump?.petrolPumpInstallDate,
-        "isWaterHarvesting": allScreenData?.hasRailWater?.hasRailWater,
+        // "isWaterHarvesting": allScreenData?.hasRailWater?.hasRailWater,
+        "isWaterHarvesting": 0,
 
         // electricity Details
         "electricityConnection": allScreenData?.electricityDetails?.electricConncectionCategory,

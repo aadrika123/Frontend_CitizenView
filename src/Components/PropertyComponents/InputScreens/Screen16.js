@@ -50,23 +50,6 @@ function Screen16(props) {
         }
     }
 
-    const datadf = {
-        "assessmentType": "NewAssessment",
-        "ward": 50,
-        "propertyType": 1,
-        "ownershipType": 1,
-        "roadType": 41.111,
-        "areaOfPlot": 3228,
-        "isMobileTower": 0,
-        "towerArea": 222.1,
-        "towerInstallationDate": "2017-01-04",
-        "isHoardingBoard": 0,
-        "isPetrolPump": 0,
-        "landOccupationDate": "2022-09-01",
-        "isWaterHarvesting": 1,
-        "previousHoldingId": 0,
-        "holdingNo": "sadf474"
-    }
 
     const formSubmit = () => {
         console.log("Form Submitting start..")

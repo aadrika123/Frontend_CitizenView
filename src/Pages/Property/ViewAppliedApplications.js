@@ -27,6 +27,7 @@ function ViewAppliedApplications(props) {
 
     const [fetchedData, setFetchedData] = useState()
     const [safId, setSafId] = useState()
+    const [message, setMessage] = useState(false)
 
     //destructuring predefined colors to maintain uniform theme everywhere
     const { bgHeaderColor, titleColor, nextButtonColor, nextBtnHoverColor, backButtonColor, backBtnHoverColor, bgCardColor, bgInfoColor, infoTextColor } = ThemeStyle()
@@ -47,16 +48,22 @@ function ViewAppliedApplications(props) {
     }
 
     useEffect(() => { //get Department By ulb
+        setMessage(false)
         setFormsubmitLoder(true)
         axios.get(viewAppliedSafAplications, header, { "module": "Property" })  // Default "ulbId":1
             .then(function (res) {
+                if(fetchedData?.Property?.applications.length == 0) setMessage(" Your Applied List is 0 ")
                 setFetchedData(res.data.data)
                 setFormsubmitLoder(false)
             })
-            .catch(function (err) { console.log("Error", err) })
+            .catch(function (err) {
+                console.log("Error", err)
+                setFormsubmitLoder(false)
+                setMessage("Error : Something went wrong.")
+            })
     }, [])
 
-    console.log("Applied SAF LISt", fetchedData?.Property)
+    console.log("Applied SAF LISt", fetchedData?.Property?.applications)
 
 
     // console.log("saf data to sone++++++",safId)
@@ -77,17 +84,17 @@ function ViewAppliedApplications(props) {
                             </div>
 
                             <div className='col-span-12'>
-                            <div className='flex justify-center mt-1'>
-                                <RotatingLines
-                                    strokeColor="#e87f0e"
-                                    strokeWidth="5"
-                                    animationDuration="0.75"
-                                    width="40"
-                                    visible={formsubmitLoder}
-                                />
+                                <div className='flex justify-center mt-1'>
+                                    <RotatingLines
+                                        strokeColor="#e87f0e"
+                                        strokeWidth="5"
+                                        animationDuration="0.75"
+                                        width="40"
+                                        visible={formsubmitLoder}
+                                    />
+                                </div>
                             </div>
-                            </div>
-
+                            <div className='col-span-12'><div className='flex justify-center mt-1 text-red-600 font-semibold'>   {message && message} </div></div>
                             {/* {****** Application List *********} */}
                             {fetchedData?.Property?.applications?.map((items) => (
                                 <>
